@@ -34,8 +34,15 @@
 .accepted-responses {
 	margin-bottom: 15px;
 }
-.response-filters a:first-child {
-	border-right: 1px solid #007bff;
+.filter-response-link {
+  background: #ff0;
+  padding: 3vw;
+  float: left;
+  margin: 1vw;
+}
+.filter-response-link:first-child {
 	margin-right: 5px;
-	padding-right: 10px;
+}
+.response-filters {
+  overflow: auto
 }

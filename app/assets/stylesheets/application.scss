@@ -30,6 +30,14 @@ body {
   background-color: #000;
   font-family: 'Rubik', sans-serif;
 }
+input[type='checkbox'] {
+  padding: 1vw;
+  display: inline-block;
+  margin-left: 0vw;
+  margin-right: 4vw;
+  position: relative;
+  transform: scale(3);
+}
 .nav-bar {
 	background-color: #f5113b;
 	color: white;
@@ -56,11 +64,12 @@ body {
 	border-radius: 5px;
 }
 .flash {
-	color: white;
-	padding: 15px;
-	border: 1px solid white;
-	margin: 10px;
-	border-radius: 10px;
+  color: #ecef35;
+  padding: 15px;
+  border: 3px solid yellow;
+  margin: 10px;
+  border-radius: 10px;
+  background: #130808;
 }
 .my-space {
 	padding-left: 0px !important;

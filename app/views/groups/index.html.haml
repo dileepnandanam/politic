@@ -1,6 +1,6 @@
 .my-space.col-lg-4.col-sm-6.col-12.pull-left
   .responses-container
-    %h3.white My groups
+    %h3 My groups
     - @groups.each do |group|
       = render partial: 'group', locals: {group: group, actions: true}
     - @other_groups.each do |group|
@@ -10,9 +10,9 @@
     = link_to 'New group', new_group_path, class: 'add-question', remote: true
 
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
-  %h3.white
+  %h3
     Find Groups
-  .search.white.pull-right
+  .search.pull-right
     Search
     = text_field_tag 'search',nil, data: {url: search_groups_path(page: 1)}
   .clearfix

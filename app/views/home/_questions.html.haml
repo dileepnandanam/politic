@@ -13,5 +13,5 @@
     = link_to 'View more', questions_path(query: params[:query], page: params[:page].present? ? params[:page].to_i + 1 : 2), remote: true, class: 'view-more view-more-questions'
 
 - if @questions.length == 0 && params[:query].present?
-  .white
+  
     No results

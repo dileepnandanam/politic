@@ -1,6 +1,6 @@
-.white.response-form
+.response-form
   %h2 Log in
-  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = simple_form_for(User.new, as: 'User', url: session_path(User.new)) do |f|
     .form-inputs
       = f.input :email,                      
         required: false,                     
@@ -9,6 +9,7 @@
       = f.input :password,                              
         required: false,                                
         input_html: { autocomplete: "current-password" }
-      = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+      = f.input :remember_me, as: :boolean
     .form-actions
       = f.button :submit, "Log in"
+    = link_to 'Join', new_user_registration_path

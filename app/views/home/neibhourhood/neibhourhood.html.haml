@@ -1,9 +1,9 @@
 = link_to 'view graphical representation of your neibhourhood', '#', class: 'view-neibhourhood d-none', remote: true
 .neibhourhood-container
-  %h3.white
+  %h3
     Explore your neibhourhood
   - if @connections.count <= 1
-    .white.message
+    .message
       You dont have any neibhours. Respond to questions or ask questions to get neibhours.
   .world.col-lg-12.col-sm-12.col-xs-12
     .neibhourhood.pull-left

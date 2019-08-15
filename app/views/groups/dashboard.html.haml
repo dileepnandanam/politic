@@ -1,5 +1,5 @@
 .my-space.my-responses.col-lg-8.col-sm-6.col-xs-12.pull-left
-  %h3.white
+  %h3
     Responses
   .response-filters
     = link_to 'new responses', responses_group_path(state: 'new'), class: 'filter-response-link', remote: true
@@ -8,7 +8,7 @@
     = render partial: 'responses', locals: {state: 'new'}
 
 .my-space.col-lg-4.col-sm-6.col-xs-12.pull-left
-  %h3.white
+  %h3
     Entrance Questions
   - if @questions.count == 0
     .question.help-text

@@ -1,5 +1,5 @@
 .my-space.col-lg-4.col-sm-6.col-xs-12.pull-left
-  %h3.white
+  %h3
     Entrance Questions
   - if @questions.count == 0
     .question.help-text
@@ -12,7 +12,7 @@
   .questions-actions
     = link_to 'Add question', new_group_question_path, class: 'add-question', remote: true
 .my-space.my-responses.col-lg-8.col-sm-6.col-xs-12.pull-left
-  %h3.white
+  %h3
     Responses
   .responses-container
     = render partial: 'responses'

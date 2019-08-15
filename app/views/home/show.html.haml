@@ -1,12 +1,12 @@
 - if current_user.blank?
-  .main-description.white
+  .main-description
     Ask questions and answer questions to find friends who have similar view points.
 
 - if current_user && current_user.gender.blank?
   = render partial: 'gender_form'
-%h3.white
+%h3
   See what people are asking
-.search.white.pull-right
+.search.pull-right
   Search
   = text_field_tag 'search', nil, data: {url: questions_path(page: 1)}
 .clearfix

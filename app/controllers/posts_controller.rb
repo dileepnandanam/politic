@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :check_user, only: [:downvote, :upvote, :destroy, :new, :create]
+  before_action :check_user, only: [:downvote, :upvote, :destroy, :create]
   def show
     @post = Post.find(params[:id])
   end
@@ -15,7 +15,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    render 'new', layout: false
+    if current_user
+      render 'new', layout: false
+    else
+      render 'devise/sessions/new', layout: false
+    end
   end
 
   def create

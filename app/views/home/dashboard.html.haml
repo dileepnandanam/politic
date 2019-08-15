@@ -1,5 +1,5 @@
 .my-space.my-responses.col-lg-8.col-sm-6.col-xs-12.pull-left
-  %h3.white
+  %h3
     Responses
   .response-filters
     = link_to 'new responses', responses_path(state: 'new'), class: 'filter-response-link', remote: true
@@ -11,7 +11,7 @@
   .accepted-responses
     = render partial: 'accepted_responses'
 
-  %h3.white
+  %h3
     My Questions
   - if @questions.count == 0
     .question.help-text
