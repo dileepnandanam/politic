@@ -19,8 +19,12 @@
   font-weight: 400;
   font-size: 4vw;
   letter-spacing: 1px;
-  line-height: 1vw;
+  line-height: 5vw;
   color: #0a0801;
+}
+.post-body img {
+  margin-top: 3%;
+  width: 100%;
 }
 .cast-vote {
 	border-radius: 5px;
@@ -62,12 +66,14 @@
 	margin-bottom: 10px;
 }
 .comment-actions a {
-  background: blue;
-  padding: 0.5% 1%;
+  background: #771414;
+  padding: 0.5% 2%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   margin-right: 12px !important;
   display: inline-block;
-  border-radius: 3px;
+  border-radius: 12px;
   color: white;
   margin-bottom: 12px;
 }
@@ -88,4 +94,7 @@
 }
 .image-upload label {
 	display: none;
+}
+.imogee {
+  font-size: 4vw;
 }

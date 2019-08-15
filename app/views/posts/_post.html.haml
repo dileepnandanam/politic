@@ -8,7 +8,7 @@
   .post-body
     = auto_link post.text, html: {target: '_blank'}
     - if post.image.present?
-      = image_tag post.image.url(:original), class: 'post-image col-lg-6 col-md-8 col-12'
+      = image_tag post.image.url(:original), class: 'post-image'
   .clearfix
   .pull-right= render partial: 'users/user_details', locals: {user: post.user}
   .clearfix
