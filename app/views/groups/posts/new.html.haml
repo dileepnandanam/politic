@@ -1,0 +1,8 @@
+= simple_form_for([@group, @post], html: { class: 'post-form' }) do |f|
+  = f.input :text, label: false
+  = link_to 'Add image', '#', remote: true, class: 'open-image-upload'
+  .image-upload.d-none
+    = f.input :image, label: 'Upload image'
+  .clearfix
+  = f.submit :post, class: 'btn-primary'
+  = link_to 'cancel', '#', class: 'cancel-form', remote: true

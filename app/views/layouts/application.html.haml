@@ -1,0 +1,42 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
+    %meta{ :name=>"google-site-verification", :content=>"LbppSvRcx4L5w9qSvaMXR_UEv7SybzS4dVcqtkZFb6I"}
+    %meta{ :name=>"Description", :content=> "make friends who thinks like you by asking questions. accept friend request by reviewing answers to questions you asked"}
+    %a{ :rel=>"canonical", :href=>"https://www.faqfacebook.com" }
+    %title Openstalk
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .page.col-lg-9.col-sm-9.col-12
+      .banner{style: 'background-image: url("https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__340.jpg")'}
+        .banner-overlay
+          .banner-top
+          .banner-heading
+            Need HELP!!
+          .banner-site-description
+            Non Profit Organisation
+      
+      .nav-bar
+        - if current_user
+          .pull-right
+            = link_to current_user.name || current_user.email, connections_users_path
+          .pull-right
+            = link_to "posts", '/posts'
+        - else
+          .pull-right
+            = link_to "Sign in", new_user_session_path
+          .pull-right
+            = link_to "Sign up", new_user_registration_path
+        .pull-right{class: controller_name + action_name == 'homeshow' ? 'd-none' : ''}
+          = link_to 'home', '/'
+        .clearfix
+      .common-bg{class: "#{controller_name}-#{action_name}"}
+        - if flash[:notice].present?
+          .flash
+            = flash[:notice]
+        = yield

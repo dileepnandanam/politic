@@ -1,0 +1,10 @@
+.affiliations.white
+  - @affiliations.each do |affiliation|
+    = render partial: 'affiliation', locals: {affiliation: affiliation}
+.clearfix
+= link_to 'add', '#', remote: true, class: 'new-affiliation-link', onclick: '$(".new-affiliation-form").removeClass("d-none")'
+.new-affiliation-form.white.d-none
+  = simple_form_for(Affiliation.new, html: {remote: true, class: 'create-affiliation-form'}) do |f|
+    = f.input :name
+    = f.input :url
+    = f.submit "Add"
