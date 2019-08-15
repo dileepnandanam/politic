@@ -98,3 +98,9 @@
 .imogee {
   font-size: 4vw;
 }
+.question {
+  background-color: #a1c317;
+  color: white;
+  border: 3px solid #3d3d40;
+  color: black;
+}

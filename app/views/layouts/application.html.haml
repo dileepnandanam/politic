@@ -26,6 +26,8 @@
             = link_to current_user.name || current_user.email, connections_users_path
           .pull-right
             = link_to "posts", '/posts'
+          .pull-right
+            = link_to "dashboard", '/dashboard'
         - else
           .pull-right
             = link_to "Sign in", new_user_session_path
