@@ -5,16 +5,22 @@
 	border-radius: 5px;
 	margin-bottom: 12px;
 	padding: 10px 10px 0px 10px;
-	background-color: white;
+  border: 2px #c7a29c;
 }
 .post {
   padding-bottom: 8px;
+  background: linear-gradient(to right, rgba(243,93,73,1) 0%, rgba(181,163,239,1) 0%, rgba(249,124,102,1) 100%);
 }
 .group-post:first-child {
 	margin-top: 12px;
 }
 .post-body {
 	margin-top: 10px;
+  font-weight: 400;
+  font-size: 4vw;
+  letter-spacing: 1px;
+  line-height: 1vw;
+  color: #0a0801;
 }
 .cast-vote {
 	border-radius: 5px;
@@ -47,6 +53,7 @@
 	border-radius: 8px;
 	padding: 10px;
 	margin-bottom: 10px;
+  padding: 10px 0px 10px 0px;
 }
 .image-upload .form-group {
 	margin-bottom: 0px;

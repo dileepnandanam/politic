@@ -4,22 +4,21 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
     %meta{ :name=>"google-site-verification", :content=>"LbppSvRcx4L5w9qSvaMXR_UEv7SybzS4dVcqtkZFb6I"}
-    %meta{ :name=>"Description", :content=> "make friends who thinks like you by asking questions. accept friend request by reviewing answers to questions you asked"}
-    %a{ :rel=>"canonical", :href=>"https://www.faqfacebook.com" }
-    %title Openstalk
+    %meta{ :name=>"Description", :content=> "Social networking app exclusivly for children"}
+    %title KSNWA
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .page.col-lg-9.col-sm-9.col-12
-      .banner{style: 'background-image: url("https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__340.jpg")'}
+      .banner{style: %{background-image: url("#{default_banner}")}}
         .banner-overlay
           .banner-top
           .banner-heading
-            Need HELP!!
+            KSNWA
           .banner-site-description
-            Non Profit Organisation
+            Kids Social Networking APP
       
       .nav-bar
         - if current_user
