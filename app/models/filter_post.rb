@@ -7,7 +7,7 @@ class FilterPost
 
   def self.match_stmt(object, attrs, words)
     attrs.map do |attr|
-      words.split(/[. ,\n|]/).map do |word|
+      words.to_s.split(/[. ,\n|]/).map do |word|
         "#{object.class.table_name}.#{attr} !~* '#{word}'"
       end.join(' and ')
     end.join(' and ')
