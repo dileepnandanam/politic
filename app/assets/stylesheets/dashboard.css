@@ -18,21 +18,31 @@
 	color: white;
 }
 .question-text {
-	font-weight: normal;
+	font-weight: 600;
+  color: red;
+}
+.answer-text {
+  color: yellow;
+  font-weight: 600;
 }
 .answer {
-	border-bottom: 1px solid #9d9da5;
-	margin: 5px 0px 5px 0px;
-    padding: 5px;
+  margin: 5px 0px 8px 0px;
+  padding: 6px;
+  background: linear-gradient(45deg, #464a0b, transparent);
+  border: 2px solid indianred;
+  border-radius: 8px;
 }
 .answer:last-child {
-	border-bottom: none;
+	margin-bottom: 12px;
 }
 .questions-actions a {
 	margin-right: 12px;
 }
 .accepted-responses {
 	margin-bottom: 15px;
+}
+.user-details, .accept-response, .answer-action a {
+  color: #a78383 !important;
 }
 .filter-response-link {
   background: #ff0;
