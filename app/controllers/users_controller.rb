@@ -28,8 +28,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(badwords: params[:user][:badwords]) if params[:user][:pin] == current_user.pin
-    render json: {message: 'updated bad words to filter'}
+    if params[:user][:pin] == current_user.pin
+      current_user.update(badwords: params[:user][:badwords])
+      flash[:notice] = 'Monitoring Updated'
+    else
+      flash[:notice] = 'Wrong PIN entered'
+    end
+    redirect_to root_path
   end
 
   protected

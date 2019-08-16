@@ -10,7 +10,7 @@
     - if post.image.present?
       = image_tag post.image.url(:original), class: 'post-image'
   .clearfix
-  .pull-right= render partial: 'users/user_details', locals: {user: post.user}
+  .pull-right.user-avathar= render partial: 'users/user_details', locals: {user: post.user}
   .clearfix
   = render partial: 'posts/comment_actions', locals: {post: post}
   .clearfix
