@@ -58,6 +58,6 @@ class Groups::PostsController < ApplicationController
   end  
 
   def post_params
-    params.require(:post).permit(:text, :image)
+    params.require(:post).permit(:text, :image, :title)
   end
 end

@@ -18,9 +18,9 @@ class Post < ApplicationRecord
     votes.where(weight: -1).count
   end
 
-  def self.search(q, usser)
+  def self.search(q, user)
     condition = match_stmt(q)
-    FilterPost.filter(Post.where(condition), [:text, :title], user.badwords)
+    FilterPost.filter(Post.where(condition), [:text, :title], user)
   end
 
   def self.match_stmt(q)

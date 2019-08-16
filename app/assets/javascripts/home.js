@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function() {
 				query: query
 			},
 			success: function(data) {
-				$('.questions').html(data)
+				$('.questions, .posts').html(data)
 				$('#masonry-container').masonry('destroy')
 				initMasonry()
 			}

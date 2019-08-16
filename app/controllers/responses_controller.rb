@@ -11,7 +11,7 @@ class ResponsesController < ApplicationController
 
   def create
   	@response = Response.create response_params.merge(responce_user_id: current_user.id)
-    flash[:notice] = "You have successfully answered #{@response.user.name}'s questions"
+    flash[:notice] = "Requested to connect #{@response.user.name}"
     if @response.responce_user_id == @response.user_id
       @response.delete
     else

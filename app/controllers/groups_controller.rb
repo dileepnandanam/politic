@@ -63,6 +63,7 @@ class GroupsController < ApplicationController
   def destroy
     @group = current_user.groups.find(params[:id])
     @group.destroy
+    render json: {message: 'group deleted'}
   end
 
   protected

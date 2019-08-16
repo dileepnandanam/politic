@@ -7,15 +7,11 @@
       = link_to 'delete', group_post_comment_path(comment.post.group, comment.post, comment), remote: true, method: :delete, class: 'delete-post'
   .clearfix
   .post-body
-    = auto_link comment.text, html: {target: '_blank'}
+    = auto_link with_imogee(comment.text), html: {target: '_blank'}
   .clearfix
-  .votes-container.pull-left
-    = render partial: 'groups/posts/votes', locals: {post: comment}
-  .comment-actions  
-    = link_to 'reply', new_group_post_comment_path(comment.post.group, comment.post, parent_id: comment.id), remote: true, class: 'new-comment-link comment-action pull-left'
-    
-    - if comment.children.count > 0
-      = link_to "show #{comment.children.count} reply#{comment.children.count > 1 ? 's' : ''}", group_post_comments_path(comment.post.group, comment.post, parent_id: comment.id), remote: true, class: 'expand-comment comment-action pull-left'
+  = render partial: 'groups/posts/comment_actions', locals: {post: comment}
+  - if comment.children.count > 0
+    = link_to "show #{comment.children.count} reply#{comment.children.count > 1 ? 's' : ''}", post_comments_path(comment.post.group, comment.post, parent_id: comment.id), remote: true, class: 'expand-comment comment-action pull-left'
   .clearfix
   .new-comment
   .comments-container.d-none

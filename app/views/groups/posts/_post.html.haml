@@ -1,22 +1,18 @@
 .group-post.post
-  = render partial: 'users/user_details', locals: {user: post.user}
   .post-actions.pull-right
     - if post.user == current_user
       = link_to 'delete', group_post_path(post.group, post), remote: true, method: :delete, class: 'delete-post'
   .clearfix
+  .post-title
+    %h2= link_to post.title, group_post_path(post.group, post)
   .post-body
     = auto_link post.text, html: {target: '_blank'}
     - if post.image.present?
-      = image_tag post.image.url(:original), class: 'post-image col-lg-6 col-md-8 col-12'
+      = image_tag post.image.url(:original), class: 'post-image'
   .clearfix
-  
-  .votes-container.pull-left
-    = render partial: 'groups/posts/votes', locals: {post: post}
-  .comment-actions  
-    = link_to 'new comment', new_group_post_comment_path(post.group, post), remote: true, class: 'new-comment-link comment-action pull-left'
-    - if post.comments.count > 0
-      = link_to "show #{post.comments.count} comment#{post.comments.count > 1 ? 's' : ''}", group_post_comments_path(post.group, post), remote: true, class: 'expand-comment comment-action pull-left'
-    = link_to 'share', "https://www.facebook.com/sharer/sharer.php?u=#{URI.encode group_post_url(post.group, post)}", class: 'share'
+  .pull-right.user-avathar= render partial: 'users/user_details', locals: {user: post.user}
+  .clearfix
+  = render partial: 'groups/posts/comment_actions', locals: {post: post}
   .clearfix
   .new-comment
   .comments-container.d-none

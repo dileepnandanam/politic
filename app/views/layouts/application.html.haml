@@ -35,7 +35,7 @@
           = link_to "Sign in", new_user_session_path, class: 'pull-right'
           
           = link_to "Sign up", new_user_registration_path, class: 'pull-right'
-          = link_to 'home', '/', class: 'pull-right'
+        = link_to 'home', '/', class: 'pull-right'
         .clearfix
       .common-bg{class: "#{controller_name}-#{action_name}"}
         - if flash[:notice].present?

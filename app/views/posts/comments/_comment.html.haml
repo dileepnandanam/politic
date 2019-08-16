@@ -7,7 +7,7 @@
       = link_to 'delete', post_comment_path(comment.post, comment), remote: true, method: :delete, class: 'delete-post'
   .clearfix
   .post-body
-    = auto_link comment.text, html: {target: '_blank'}
+    = auto_link with_imogee(comment.text), html: {target: '_blank'}
   .clearfix
   = render partial: 'posts/comment_actions', locals: {post: comment}
   - if comment.children.count > 0

@@ -5,8 +5,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    if params[:q].present?
-      @posts = Post.search(params[:q], current_user)
+    if params[:query].present?
+      @posts = Post.search(params[:query], current_user)
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       mark_seen(@posts)
     else
@@ -72,7 +72,7 @@ class PostsController < ApplicationController
   def mark_seen(posts)
     return unless current_user.present?
     posts.group_by(&:user_id).each do |user_id, ps|
-      Connection.where(user_id: current_user.id, to_user_id: user_id).first.update(last_seen_post_id: ps.max_by(&:id).id)
+      Connection.where(user_id: current_user.id, to_user_id: user_id).first.try(:update, last_seen_post_id: ps.max_by(&:id).id)
     end
   end
 
