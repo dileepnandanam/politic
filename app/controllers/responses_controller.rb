@@ -22,6 +22,8 @@ class ResponsesController < ApplicationController
   def accept
     @response = current_user.responses.find(params[:id])
     @response.update(accepted: true)
+    Connection.create(user_id: @response.user_id, to_user_id: @response.responce_user_id)
+    Connection.create(to_user_id: @response.user_id, user_id: @response.responce_user_id)
     render 'accept', layout: false
     ResponseMailer.with(user: current_user, response_user: @response.responce_user).response_accepted.deliver_later
   end

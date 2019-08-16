@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   
+  has_many :connections
   has_many :questions
   has_many :responses
   has_many :posted_responses, foreign_key: :responce_user_id, class_name: 'Response'
@@ -8,6 +9,7 @@ class User < ApplicationRecord
   has_many :groups
   has_many :comments
   has_many :votes
+  has_many :notifications
 
   validates :name, presence: true
   # Include default devise modules. Others available are:
@@ -31,5 +33,10 @@ class User < ApplicationRecord
       user.gender = auth.info.gender
       user.link = auth.info.link
     end
+  end
+
+  after_create :set_pin
+  def set_pin
+    self.update(pin: rand.to_s[2..5])
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_11_033407) do
+ActiveRecord::Schema.define(version: 2019_08_16_023850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,10 +48,28 @@ ActiveRecord::Schema.define(version: 2019_08_11_033407) do
     t.integer "parent_id"
   end
 
+  create_table "connections", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "to_user_id"
+    t.integer "last_seen_post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "groups", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.integer "comment_id"
+    t.text "message"
+    t.boolean "seen", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -106,6 +124,8 @@ ActiveRecord::Schema.define(version: 2019_08_11_033407) do
     t.string "image_content_type"
     t.bigint "image_file_size"
     t.datetime "image_updated_at"
+    t.text "badwords"
+    t.string "pin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

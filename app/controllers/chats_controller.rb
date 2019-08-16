@@ -6,9 +6,9 @@ class ChatsController < ApplicationController
     if @chat.save
       ApplicationCable::ChatNotificationsChannel.broadcast_to(
         @user,
-        chat: render_to_string(:partial => 'chat', locals: {chat: reverse(@chat)}, format: :html),
-        sender_id: current_user.id,
-        ack_url: seen_chat_path(@chat)
+        chat: "fff",
+        sender_id: User.last.id,
+        ack_url: ''
       )
       render 'create', layout: false
     else

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+
   root to: "posts#index"
   get 'dashboard', to: 'home#dashboard'
   get 'accepted_responses', to: 'home#accepted_responses'
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users do
+    get :notifications, on: :member
     get :connections, on: :collection
     resources :responses do
       put :accept, on: :member
