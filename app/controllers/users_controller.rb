@@ -28,12 +28,24 @@ class UsersController < ApplicationController
   end
 
   def update
-    if params[:user][:pin] == current_user.pin
+    if params[:user][:pin].to_s == current_user.pin.to_s
       current_user.update(badwords: params[:user][:badwords])
       flash[:notice] = 'Monitoring Updated'
     else
       flash[:notice] = 'Wrong PIN entered'
     end
+    redirect_to root_path
+  end
+
+  def posts
+    @user = User.find(params[:id])
+    @posts = @user.posts.paginate(page: params[:page], per_page: 12)
+    @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2))
+  end
+
+  def disconnect
+    @user = User.find(params[:id])
+    current_user.connections.where(to_user_id: @user.id).delete_all
     redirect_to root_path
   end
 

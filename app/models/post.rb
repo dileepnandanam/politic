@@ -17,4 +17,22 @@ class Post < ApplicationRecord
   def downvote_count
     votes.where(weight: -1).count
   end
+
+  def self.search(q, usser)
+    condition = match_stmt(q)
+    FilterPost.filter(Post.where(condition), [:text, :title], user.badwords)
+  end
+
+  def self.match_stmt(q)
+    keys = q.to_s.split(/[ .\n=;,&%]/)
+    keys.map{|key| "posts.title ~* '#{key}' or posts.text ~* '#{key}'"}.join(' and ')
+  end
+
+  def self.get_all(user)
+    FilterPost.filter(Post.all, [:text, :title], user)
+  end
+
+  def self.latest_for(user)
+    FilterPost.filter(Feed.new(user).get, [:text, :title], user)
+  end
 end

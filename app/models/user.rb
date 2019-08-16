@@ -39,4 +39,8 @@ class User < ApplicationRecord
   def set_pin
     self.update(pin: rand.to_s[2..5])
   end
+
+  def connected_to(user2)
+    connections.where(to_user_id: user2.id).count > 0
+  end
 end

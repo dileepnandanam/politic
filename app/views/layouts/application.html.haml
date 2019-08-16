@@ -10,7 +10,7 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
+  %body{style: "background-image: url('#{default_background}')"}
     .page.col-lg-9.col-sm-9.col-12
       .banner{style: %{background-image: url("#{default_banner}")}}
         .banner-overlay
@@ -22,24 +22,24 @@
       
       .nav-bar
         - if current_user
-          .pull-right
-            = link_to current_user.name || current_user.email, connections_users_path
-          .notification_count.pull-right{style: current_user.notifications.unseen.count > 0 ? "background: red !important" : ''}
-            = link_to current_user.notifications.unseen.count, notifications_user_path(current_user)
-          .pull-right
-            = link_to "posts", '/posts'
-          .pull-right
-            = link_to "dashboard", '/dashboard'
+          
+          = link_to current_user.name || current_user.email, connections_users_path, class: 'pull-right'
+          
+          = link_to current_user.notifications.unseen.count, notifications_user_path(current_user), class: 'pull-right notification_count pull-right', style: (current_user.notifications.unseen.count > 0 ? "background: red !important" : '')
+          
+          = link_to "posts", '/posts', class: 'pull-right'
+          
+          = link_to "dashboard", '/dashboard', class: 'pull-right'
         - else
-          .pull-right
-            = link_to "Sign in", new_user_session_path
-          .pull-right
-            = link_to "Sign up", new_user_registration_path
-        .pull-right{class: controller_name + action_name == 'homeshow' ? 'd-none' : ''}
-          = link_to 'home', '/'
+          
+          = link_to "Sign in", new_user_session_path, class: 'pull-right'
+          
+          = link_to "Sign up", new_user_registration_path, class: 'pull-right'
+          = link_to 'home', '/', class: 'pull-right'
         .clearfix
       .common-bg{class: "#{controller_name}-#{action_name}"}
         - if flash[:notice].present?
           .flash
             = flash[:notice]
         = yield
+

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     end
   end
   resources :users do
+    get :posts, on: :member
+    put :disconnect, on: :member
     get :notifications, on: :member
     get :connections, on: :collection
     resources :responses do

@@ -5,9 +5,18 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order('created_at DESC').paginate(per_page: 12, page: params[:page])
-    
-    @posts = FilterPost.filter(@posts,[:text, :title], current_user.try(:badwords))
+    if params[:q].present?
+      @posts = Post.search(params[:q], current_user)
+      @posts = @posts.paginate(per_page: 12, page: params[:page])
+      mark_seen(@posts)
+    else
+      @posts = Post.latest_for(current_user)
+      @posts = @posts.paginate(per_page: 12, page: params[:page])
+      mark_seen(@posts)
+    end
+
+    @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2))
+
     if request.format.html?
       render 'index'
     else
@@ -59,6 +68,13 @@ class PostsController < ApplicationController
   end
 
   protected
+
+  def mark_seen(posts)
+    return unless current_user.present?
+    posts.group_by(&:user_id).each do |user_id, ps|
+      Connection.where(user_id: current_user.id, to_user_id: user_id).first.update(last_seen_post_id: ps.max_by(&:id).id)
+    end
+  end
 
   def post_params
     params.require(:post).permit(:text, :image, :title)

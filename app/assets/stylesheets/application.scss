@@ -28,6 +28,9 @@
 body {
 	min-height: 100vh;
   background-color: #000;
+  background-attachment: fixed;
+  background-size: cover;
+  background-size: cover;
   font-family: 'Rubik', sans-serif;
 }
 input[type='checkbox'] {
@@ -37,6 +40,12 @@ input[type='checkbox'] {
   margin-right: 4vw;
   position: relative;
   transform: scale(3);
+}
+input, input:hover, label {
+  color: black !important;
+}
+input[type='submit']:hover {
+  cursor: pointer;
 }
 .nav-bar {
 	background-color: #421f26;
@@ -96,7 +105,7 @@ h5 {
 	margin-bottom: 10px;
 }
 .question, .group-post {
-  background-color: #000;
+  background-color: #e8b49b;
   color: white;
   border: 3px solid #3d3d40;
 }
