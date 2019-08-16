@@ -6,6 +6,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order('created_at DESC').paginate(per_page: 12, page: params[:page])
+    
+    @posts = FilterPost.filter(@posts,[:text, :title], current_user.try(:badwords))
     if request.format.html?
       render 'index'
     else

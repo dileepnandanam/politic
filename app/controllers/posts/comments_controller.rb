@@ -14,6 +14,7 @@ class Posts::CommentsController < ApplicationController
   def index
     @post = Post.find(params[:post_id])
     @comments = @post.comments.where(parent_id: params[:parent_id]).paginate(page: params[:page], per_page: 5)
+    @comments = FilterPost.filter(@comments,[:text], current_user.try(:badwords))
     render 'comments', layout: false
   end
 
