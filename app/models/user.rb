@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
   after_create :set_pin
   def set_pin
-    self.update(pin: rand.to_s[2..5])
+    update(pin: rand.to_s[2..5])
   end
 
   def connected_to(user2)
