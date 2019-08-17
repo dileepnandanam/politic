@@ -115,8 +115,8 @@ body {
 	overflow: hidden;
 }
 .page {
-	background: white;
-	color: black;
+	background: rgba(4,5,7,0.5);
+	color: white;
 	margin: auto;
 	padding: 0px 0px 20px 0px;
 	position: relative;
@@ -127,10 +127,11 @@ a, a:hover {
 }
 
 .banner {
-	background-size: cover;
-	position: relative;
-	width: 100%;
-	padding: 74% 0px 0px 0px;
+  background-size: contain;
+  position: relative;
+  width: 100%;
+  padding: 74% 0px 0px 0px;
+  background-position: center;
 }
 .banner-overlay {
 	width: 100%;

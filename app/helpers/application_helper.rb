@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def default_banner
-    %{https://www.readersdigest.ca/wp-content/uploads/sites/14/2013/03/6-facts-to-know-before-owning-a-puppy.jpg}
+    %{https://media.architecturaldigest.com/photos/5ced629704c41e1a9b9a8bcf/16:9/w_1280,c_limit/Bugatti-LVN-7%2520%255BBugatti%255D.jpg}
   end
 
   def default_background
