@@ -1,3 +1,4 @@
+= raw_message = nil
 - target = notification.target
 - if target.is_a?(Comment)
   - if target.post.group_id.present?
@@ -11,7 +12,8 @@
     - bindings = {'url' => link_to('Post', post_path(target))}
 - elsif target.is_a?(Connection)
   - bindings = {'user1' => link_to(target.connected_to.name, posts_user_path(target.connected_to)), 'user2' => link_to(target.user.name, posts_user_path(target.user))}
-
+- else
+  raw_message = notification.message
 .question
   .question-text
-    = raw Notification.generate_msg(notification.target, notification.action, bindings)
+    = raw_message || raw(Notification.generate_msg(notification.target, notification.action, bindings))

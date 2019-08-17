@@ -12,7 +12,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body{style: "background-image: url('#{default_background}')"}
     .page.col-lg-9.col-sm-9.col-12
-      .banner{style: %{background-image: url("#{default_banner}")}, class: controller_name}
+      .banner{style: %{background-image: url("#{default_banner}")}, class: "#{controller_name}_page"}
         .banner-overlay
           .banner-top
           .banner-heading

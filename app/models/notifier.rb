@@ -1,6 +1,6 @@
 class Notifier < ApplicationJob
 
-  def perform_now_or_later(user, action, object)
+  def self.perform_now_or_later(user, action, object)
     if Rails.env.production?
       Notifier.perform_later(user, action, object)
     else
