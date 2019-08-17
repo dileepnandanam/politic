@@ -49,7 +49,11 @@ class User < ApplicationRecord
     end
   end
 
-  def connected_to(user2)
-    connections.where(to_user_id: user2.id).count > 0
+  def is_connected_to?(user)
+    Connection.where(to_user_id: [id, user.id], user_id: [id: user.id]).count > 0
+  end
+
+  def has_unread_chats
+    Chat.where(reciver_id: id, seen: false).count > 0
   end
 end

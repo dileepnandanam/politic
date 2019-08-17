@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   has_many :votes
   has_many :comments
 
+  after_create :notify_connections
+
   default_scope -> {order('created_at DESC')}
 
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
@@ -34,5 +36,11 @@ class Post < ApplicationRecord
 
   def self.latest_for(user)
     FilterPost.filter(Feed.new(user).get, [:text, :title], user)
+  end
+
+  def notify_connections
+    Connection.where(to_user_id: user_id).map(&:user).each do |user|
+      Notifier.perform_now_or_later user, 'create', self
+    end
   end
 end

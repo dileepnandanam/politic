@@ -37,6 +37,6 @@ class Groups::ResponsesController < ApplicationController
   end
 
   def response_params
-    params.require(:response).permit(:user_id, :answers_attributes => [:question_id, :text])
+    params.permit(:response).permit(:user_id, :answers_attributes => [:question_id, :text])
   end
 end

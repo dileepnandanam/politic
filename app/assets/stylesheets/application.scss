@@ -138,11 +138,15 @@ a, a:hover {
 }
 
 .banner {
+  display: none;
   background-size: contain;
   position: relative;
   width: 100%;
   padding: 74% 0px 0px 0px;
   background-position: center;
+}
+.banner.posts {
+  display: block;
 }
 .banner-overlay {
 	width: 100%;
@@ -182,4 +186,7 @@ input, textarea {
 .btn-primary {
   color: black;
   font-weight: 600;
+}
+.unfollow {
+  color: white;
 }

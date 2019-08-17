@@ -10,13 +10,18 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def switch
+    sign_in(:user, User.find(params[:id]))
+    redirect_to root_path
+  end
+
   def notifications
     @notifications = current_user.notifications.where(seen: false).all.to_a
     @notifications.each{|notification| notification.update(seen: true)}
   end
 
   def connections
-    @connections = User.where(id: current_user.connections.map(&:to_user_id))
+    @connections = User.where(id: current_user.connections.map(&:to_user_id) + Connection.where(to_user_id: current_user.id).all - [current_user.id]).uniq
 
     @unseen_counts = Chat.where(reciver_id: current_user.id, seen: false).group(:sender_id).count('*')
 

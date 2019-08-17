@@ -1,6 +1,7 @@
 $(document).on('turbolinks:load', function() {
 	App.cable.subscriptions.create("ApplicationCable::ChatNotificationsChannel", {
 		received(data) {
+			$('.my-connections').addClass('has-new-chats')
 			chat_thread = $('#' + data['sender_id'] + '.chat-thread')
 			if(chat_thread.length == 0) {
 				chat_ico = $('#' + data['sender_id'] + '.question')

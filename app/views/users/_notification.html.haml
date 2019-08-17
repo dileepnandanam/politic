@@ -1,3 +1,17 @@
+- target = notification.target
+- if target.is_a?(Comment)
+  - if target.post.group_id.present?
+    - bindings = {'url' => link_to('Comment', group_post_path(target.post.group, target.post, comment_id: target.parent_id))}
+  - else
+    - bindings = {'url' => link_to('Post', post_path(target.post, comment_id: target.id))}
+- elsif target.is_a?(Post)
+  - if target.group_id.present?
+    - bindings = {'url' => link_to('Post', group_post_path(target.group, target))}
+  - else
+    - bindings = {'url' => link_to('Post', post_path(target))}
+- elsif target.is_a?(Connection)
+  - bindings = {'user1' => link_to(target.connected_to.name, posts_user_path(target.connected_to)), 'user2' => link_to(target.user.name, posts_user_path(target.user))}
+
 .question
   .question-text
-    = notification.message
+    = raw Notification.generate_msg(notification.target, notification.action, bindings)

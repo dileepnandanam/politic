@@ -2,7 +2,7 @@ class ResponsesController < ApplicationController
   before_action :check_user
   def new
     @user = User.find params[:user_id]
-    redirect_to posts_user_path(@user) if current_user.present? && current_user.connected_to(@user)
+    redirect_to posts_user_path(@user) if current_user.present? && current_user.is_connected_to?(@user)
     @response = Response.new
   	@user.questions.each do |q|
       @response.answers << Answer.new(question_id: q.id)

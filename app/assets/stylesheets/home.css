@@ -1,3 +1,9 @@
+.home-access_restricted a, .home-access_restricted a:hover {
+	color: yellow;
+}
+.has-new-chats {
+	background-color: red !important;
+}
 .search {
 	margin: 0px !important;
 	width: 62%;

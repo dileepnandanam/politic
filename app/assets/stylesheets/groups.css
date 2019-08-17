@@ -46,6 +46,9 @@
 .comment .comment {
 	margin-left: 12px;
 }
+.add-question {
+  color: white;
+}
 .post_text {
 	margin-bottom: 0px !important;
 }
@@ -108,10 +111,14 @@
   color: white;
   border: 3px solid #3d3d40;
   color: black;
+  display: inline-block;
 }
 .dashboard-main-action {
   background-color: #eee;
   padding: 2%;
   margin: 12px;
   float: left;
+}
+a {
+  color: white;
 }
