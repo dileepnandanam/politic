@@ -13,7 +13,7 @@
 - elsif target.is_a?(Connection)
   - bindings = {'user1' => link_to(target.connected_to.name, posts_user_path(target.connected_to)), 'user2' => link_to(target.user.name, posts_user_path(target.user))}
 - else
-  raw_message = notification.message
+  - raw_message = notification.message
 .question
   .question-text
     = raw_message || raw(Notification.generate_msg(notification.target, notification.action, bindings))

@@ -2,7 +2,7 @@ class Notification < ApplicationRecord
   belongs_to :user
   scope :unseen, -> {where seen: false}
 
-  belongs_to :target, polymorphic: true
+  belongs_to :target, polymorphic: true, optional: true
 
   Translations = {
     user_create: '{url} created',
