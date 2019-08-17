@@ -19,7 +19,7 @@
             KSNWA
           .banner-site-description
             Kids Social Networking APP
-      - if Rails.env.development?
+      - if Rails.env.development? || true
         .acc-switcher
           - User.all.each do |u|
             = link_to u.name, switch_user_path(u), class: 'question'
