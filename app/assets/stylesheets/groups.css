@@ -21,6 +21,7 @@
   letter-spacing: 1px;
   line-height: 5vw;
   color: #0a0801;
+  word-break: break-word;
 }
 .post-body img {
   margin-top: 3%;
