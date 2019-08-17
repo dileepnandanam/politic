@@ -6,6 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def notify
+    return if Rails.env.production?
     Notification.create(user_id: current_user.id, message: 'Your 4 digit PIN number is ' + current_user.pin + ', keep out of reach of children')
     ApplicationCable::NotificationsChannel.broadcast_to(
       current_user,
