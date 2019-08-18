@@ -9,6 +9,7 @@ class Notifier < ApplicationJob
   end
 
   def perform(user, action, object)
+    return if(user == object.user) # dont notify user about his action
     notification = Notification.create(user_id: user.id, target: object, action: action)
     ApplicationCable::NotificationsChannel.broadcast_to(
       user,

@@ -16,7 +16,8 @@ class UsersController < ApplicationController
   end
 
   def notifications
-    @notifications = current_user.notifications.where(seen: false).all.to_a
+    @notifications = current_user.notifications.where(seen: false).order('created_at DESC').all.to_a
+    @old = current_user.notifications.where(seen: true).order('created_at DESC').all.to_a
     @notifications.each{|notification| notification.update(seen: true)}
   end
 

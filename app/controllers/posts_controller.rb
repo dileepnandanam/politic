@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     if(@post.save)
       render 'post', layout: false
     else 
-      render 'new', layout: false
+      render 'new', layout: false, status: 422
     end
   end
 
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
     if current_vote
       current_vote.delete      
     end
-    Vote.create(user_id: current_user.id, post_id: params[:id], weight: 1)
+    Vote.create(user_id: current_user.id, post_id: params[:id], weight: 1) if @post.user != current_user
     render 'comment_actions', layout: false
   end
 
@@ -63,7 +63,7 @@ class PostsController < ApplicationController
     if current_vote
       current_vote.delete
     end
-    Vote.create(user_id: current_user.id, post_id: params[:id], weight: -1)
+    Vote.create(user_id: current_user.id, post_id: params[:id], weight: -1) if @post.user != current_user
     render 'comment_actions', layout: false
   end
 

@@ -40,12 +40,7 @@ class User < ApplicationRecord
     update(pin: rand.to_s[2..5])
 
     if Rails.env.production?
-      Notification.create(user_id: id, message: 'Your 4 digit PIN number is ' + pin + ', keep out of reach of children')
-      ApplicationCable::NotificationsChannel.broadcast_to(
-        self,
-        notification: 'new notification'
-      )
-
+      Notifier.perform_now_or_later self, 'create', self
     end
   end
 

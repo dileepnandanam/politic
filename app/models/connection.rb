@@ -6,8 +6,13 @@ class Connection < ApplicationRecord
 
   def notify_connections
     # notify my friends and friends of newly connected friends
-    User.where(id: [to_user_id] + user.connections.map(&:to_user_id) + to_user.connections.map(&:to_user_id) - [user_id]) do |user|
-      Notifier.perform_now_or_later self, 'create', self
+    
+    
+    reciver_ids = Connection.where(to_user_id: to_user_id).map(&:user_id) - [user_id]
+    User.where(id: reciver_ids).each do |user|
+      Notifier.perform_now_or_later user, 'create', self
     end
+
+    Notifier.perform_now_or_later user, 'create_personal', self
   end
 end

@@ -34,7 +34,7 @@ class Posts::CommentsController < ApplicationController
     if current_vote
       current_vote.delete      
     end
-    Vote.create(user_id: current_user.id, comment_id: params[:id], weight: 1)
+    Vote.create(user_id: current_user.id, comment_id: params[:id], weight: 1) if @comment.user != current_user
     render 'posts/comment_actions', layout: false
   end
 
@@ -44,7 +44,7 @@ class Posts::CommentsController < ApplicationController
     if current_vote
       current_vote.delete      
     end
-    Vote.create(user_id: current_user.id, comment_id: params[:id], weight: -1)
+    Vote.create(user_id: current_user.id, comment_id: params[:id], weight: -1) if @comment.user != current_user
     render 'posts/comment_actions', layout: false
   end
 
