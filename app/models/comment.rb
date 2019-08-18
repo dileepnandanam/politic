@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :user
   has_many :votes
-  belongs_to :parent, class_name: 'Comment'
+  belongs_to :parent, class_name: 'Comment', optional: true
 
   before_destroy :cancel_notifications
   
