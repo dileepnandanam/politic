@@ -25,7 +25,7 @@ class Posts::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = current_user.comments.find(params[:id]).delete
+    @comment = current_user.comments.find(params[:id]).destroy
   end
 
   def upvote

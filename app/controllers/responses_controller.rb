@@ -10,7 +10,7 @@ class ResponsesController < ApplicationController
   end
 
   def create
-  	@response = Response.create response_params.merge(responce_user_id: current_user.id)
+  	@response = Response.create response_params.merge(user_id: current_user.id)
     flash[:notice] = "Requested to connect #{@response.user.name}"
     if @response.responce_user_id == @response.user_id
       @response.delete
@@ -32,6 +32,6 @@ class ResponsesController < ApplicationController
   protected
 
   def response_params
-    params.require(:response).permit(:user_id, :answers_attributes => [:question_id, :text])
+    params.require(:response).permit(:responce_user_id, :answers_attributes => [:question_id, :text])
   end
 end

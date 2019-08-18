@@ -25,7 +25,7 @@ class Groups::PostsController < ApplicationController
 
   def destroy
     @post = current_user.posts.find(params[:id])
-    @post.delete
+    @post.destroy
   end
 
   def upvote
