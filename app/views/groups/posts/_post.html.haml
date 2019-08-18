@@ -15,5 +15,10 @@
   = render partial: 'groups/posts/comment_actions', locals: {post: post}
   .clearfix
   .new-comment
-  .comments-container.d-none
+  .comments-container{class: params[:comment_id].present? ? '' : 'd-none'}
     .comments
+      - comment = post.comments.find(params[:comment_id])
+      - if comment
+        = render partial: 'posts/comments/comment', locals: {expand: true, new: false, comment: comment.parent || comment}
+  
+

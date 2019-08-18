@@ -13,5 +13,4 @@
     = link_to "show #{post.comments.count} comment#{post.comments.count > 1 ? 's' : ''}", post_comments_path(post), remote: true, class: 'expand-comment comment-action pull-left'
   - if post.is_a?(Post)
     = link_to 'share', "https://www.facebook.com/sharer/sharer.php?u=#{URI.encode post_url(post)}", class: 'share'
-  - if post.is_a? Comment
-    = link_to 'reply', new_post_comment_path(post.post, parent_id: post.id), remote: true, class: 'new-comment-link comment-action pull-left'
+    

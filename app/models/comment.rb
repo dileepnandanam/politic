@@ -3,7 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :user
   has_many :votes
   belongs_to :parent, class_name: 'Comment', optional: true
-
+  has_many :children, class_name: 'Comment', foreign_key: :parent_id
+  validates :text, presence: true
   before_destroy :cancel_notifications
   
   def cancel_notifications

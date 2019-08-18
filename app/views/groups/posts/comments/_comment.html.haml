@@ -1,4 +1,4 @@
-.comment.group-post{class: new ? 'latest-comment' : ''}
+.comment.group-post{class: new ? 'latest-comment' : '', id: "comment_#{comment.id}"}
   .pull-left.user-details
     = image_tag comment.user.image.url(:thumb)
     = comment.user.name
@@ -14,5 +14,7 @@
     = link_to "show #{comment.children.count} reply#{comment.children.count > 1 ? 's' : ''}", post_comments_path(comment.post.group, comment.post, parent_id: comment.id), remote: true, class: 'expand-comment comment-action pull-left'
   .clearfix
   .new-comment
-  .comments-container.d-none
+  .comments-container{expand ? '' : 'd-none'}
     .comments
+      - if expand
+        = render partial: 'groups/posts/comments', locals: {comments: comment.children.paginate(per_page: comment.children.count, page: 1)}
