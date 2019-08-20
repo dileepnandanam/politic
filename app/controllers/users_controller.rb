@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_user
+  before_action :check_user, only: [:show, :edit, :notifications, :connections, :update, :posts, :disconnect]
   after_action :mark_as_seen, only: [:show]
   def show
   	@chats = get_chats(params[:id])

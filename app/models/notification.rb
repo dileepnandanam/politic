@@ -18,7 +18,6 @@ class Notification < ApplicationRecord
 
   def generate_msg(obj, action, binds)
     trans = Translations["#{obj.class.name}_#{action}".underscore]
-    pp
     binds.each{|key, val| trans.gsub!("{#{key}}", val.to_s)}
     trans
   end
