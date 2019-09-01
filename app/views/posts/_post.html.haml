@@ -6,7 +6,7 @@
   .post-title
     %h2= link_to post.title, post_path(post)
   .post-body
-    = auto_link post.text, html: {target: '_blank'}
+    = auto_link MarkdownRenderer.render(post.text), html: {target: '_blank'}
     - if post.image.present?
       = image_tag post.image.url(:original), class: 'post-image'
   .clearfix

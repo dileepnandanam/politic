@@ -81,3 +81,33 @@
 .leave-chat {
 	margin-left: 12px;
 }
+.preview {
+	position: fixed !important;
+	top: 0px;
+	background-color: white !important;
+	left: 12.48%;
+	padding: 2% !important;
+	color: black !important;
+}
+.preview-body {
+	min-height: 40vh;
+	max-height: 40vh;
+	overflow: scroll;
+}
+.close-cancel:hover {
+	color: black !important;
+	text-decoration: none !important;
+	cursor: pointer !important;
+}
+.close-cancel {
+	color: black !important;
+	text-decoration: none !important;
+}
+pre code {
+	padding: 4%;
+	background-color: #1a3916;
+	margin-left: 0%;
+	border-radius: 10px;
+	color: yellow !important;
+	display: block;
+}

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'access_restricted', to: 'home#access_restricted'
 
   resources :posts, controller: 'posts' do
+    get :preview, on: :member
     put :upvote, on: :member
     put :downvote, on: :member
     resources :comments, controller: 'posts/comments' do

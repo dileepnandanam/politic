@@ -4,8 +4,8 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
     %meta{ :name=>"google-site-verification", :content=>"LbppSvRcx4L5w9qSvaMXR_UEv7SybzS4dVcqtkZFb6I"}
-    %meta{ :name=>"Description", :content=> "Social networking app exclusivly for children"}
-    %title KSNWA
+    %meta{ :name=>"Description", :content=> "Starter tutorials for neive programmers"}
+    %title Starter tutorials for neive programmers
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -16,9 +16,9 @@
         .banner-overlay
           .banner-top
           .banner-heading
-            KSNWA
+            LetsStart();
           .banner-site-description
-            Kids Social Networking APP
+            Starter tutorials for neive programmers
       - if Rails.env.development? || true
         .acc-switcher
           - User.all.each do |u|
@@ -46,3 +46,9 @@
             = flash[:notice]
         = yield
 
+    .preview.page.col-lg-9.col-sm-9.col-12.d-none.container
+      .float-right
+        .close-cancel
+          ❎
+      .clearfix
+      .col-lg-12.col-sm-q2.col-12.preview-body

@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = Post.create(title: 'Enter title', text: 'Enter your content in md markdown synatx', user_id: current_user.id)
     if current_user
       render 'new', layout: false
     else
@@ -33,11 +33,12 @@ class PostsController < ApplicationController
     end
   end
 
-  def create
-    @post = Post.new(post_params.merge(user_id: current_user.id))
+  def update
+    @post = Post.find(params[:id])
+    @post.assign_attributes(post_params)
     if(@post.save)
-      render 'post', layout: false
-    else 
+      render plain: preview(@post.text)
+    else
       render 'new', layout: false, status: 422
     end
   end
@@ -68,6 +69,10 @@ class PostsController < ApplicationController
   end
 
   protected
+
+  def preview(text)
+    MarkdownRenderer.render(text)
+  end
 
   def mark_seen(posts)
     return unless current_user.present?

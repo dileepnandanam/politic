@@ -1,4 +1,4 @@
-= simple_form_for([@group, @post], remote: true, html: { class: 'post-form' }) do |f|
+= simple_form_for(@post, remote: true, html: { class: 'post-form' }) do |f|
   = f.input :title
   = f.input :text
   = link_to 'Add image', '#', remote: true, class: 'open-image-upload'

@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def default_banner
-    %{https://media.architecturaldigest.com/photos/5ced629704c41e1a9b9a8bcf/16:9/w_1280,c_limit/Bugatti-LVN-7%2520%255BBugatti%255D.jpg}
+    %{https://media2.giphy.com/media/A06UFEx8jxEwU/source.gif}
   end
 
   def default_background

@@ -33,4 +33,8 @@ $(document).on('turbolinks:load', function() {
 	$('.gender_form').find('input').on('change', function() {
 		$(this).closest('form').submit().remove()
 	})
+
+	$(document).on('click', '.close-cancel', function() {
+		$(this).closest('.preview').addClass('d-none')
+	})
 })

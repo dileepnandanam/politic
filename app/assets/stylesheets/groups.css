@@ -9,7 +9,7 @@
 }
 .post {
   padding-bottom: 8px;
-  background: linear-gradient(to right, rgba(243,93,73,1) 0%, rgba(181,163,239,1) 0%, rgba(249,124,102,1) 100%);
+  background-color: white;
 }
 .group-post:first-child {
 	margin-top: 12px;
@@ -121,4 +121,7 @@
 }
 a {
   color: white;
+}
+.post-form textarea {
+  height: 40vh !important;
 }
