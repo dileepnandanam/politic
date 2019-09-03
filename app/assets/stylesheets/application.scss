@@ -62,10 +62,13 @@ form a {
 	border-bottom: 4px solid #f9dc10;
 }
 .nav-bar .pull-right {
-  padding: 1% 2%;
+  padding: 0.5% 2%;
   margin: 1%;
-  background: #f2f5f9;
-  border-radius: 11px;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 20px;
+  color: white;
+  text-transform: capitalize;
 }
 .nav-bar div {
 	margin-right: 20px;

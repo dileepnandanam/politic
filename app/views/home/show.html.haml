@@ -7,8 +7,7 @@
 %h3
   See what people are asking
 .search.pull-right
-  Search
-  = text_field_tag 'search', nil, data: {url: questions_path(page: 1)}
+  = text_field_tag 'search', nil, placeholder: 'Search Posts', data: {url: questions_path(page: 1)}
 .clearfix
 
 .questions#masonry-container

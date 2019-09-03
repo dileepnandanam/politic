@@ -38,9 +38,6 @@
 .questions-actions a {
 	margin-right: 12px;
 }
-.accepted-responses {
-	margin-bottom: 15px;
-}
 .user-details, .accept-response, .answer-action a {
   color: #382323 !important
 }
@@ -55,4 +52,18 @@
 }
 .response-filters {
   overflow: auto
+}
+.response-filters a {
+    background: transparent !important;
+    color: white !important;
+    font-size: 25px !important;
+    font-weight: 100;
+    padding: 20px 20px 20px 0px !important;
+    margin:  0px !important;
+}
+.my-responses > a {
+    margin: 0px 30px 20px 0px !important;
+}
+.dashboard-main-action {
+    font-size: 20px !important;  
 }

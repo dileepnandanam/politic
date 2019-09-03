@@ -1,0 +1,106 @@
+body {
+    background-image: none !important;
+    background-color: #480d0d;
+}
+h3 {
+    font-size: 32px !important;
+}
+a.add-question {
+    font-size: 20px;
+    font-weight: 200;
+}
+.add-question:hover, a:hover {
+    color: yellow !important;
+}
+.search {
+    font-size: 20px
+}
+.search input {
+    font-size: 20px !important;
+    border: none !important;
+    border-radius: 3px !important;
+    color: black !important;
+    margin-top: 12px;
+}
+label {
+    font-size: 26px;
+    font-weight: 100;
+    color: yellow;
+}
+form {
+    background: transparent !important;
+}
+input, textarea {
+    font-size: 20px !important;
+    color: black !important;
+    background-color: white !important;
+    background: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+}
+.cancel-form, input[name=commit] {
+    font-size: 20px;
+    font-weight: 100;
+    background-color: green !important;
+    padding: 2% !important;
+    border-radius: 4px;
+    color: white !important;
+    text-transform: uppercase !important;
+    float: left !important;
+    margin-right: 12px !important;
+}
+input[name=commit] {
+    margin-right: 12px !important
+}
+.question {
+    min-width: 60% !important;
+    min-height: 100px !important;
+    position: relative;
+    
+    display: block;
+    min-height: 30px !important;
+    border: 1px solid rgb(98,11,230);
+    background: transparent;
+    color: white !important;
+}
+.question-text {
+    color: white !important;
+}
+.question-actions a {
+    color: white;
+    font-size: 20px;
+}
+.question-actions {
+    margin-top: 0px !important;
+    padding-top: 1px !important;
+}
+.dashboard-main-action {
+    background: transparent;
+    color: white !important;
+    font-size: 32px;
+    font-weight: 100;
+    padding: 0px !important;
+    margin-top: 0px !important;
+}
+.dashboard-main-action a {
+    background: transparent;
+    color: white !important;
+    font-size: 32px;
+    font-weight: 100;
+    padding: 0px !important;
+}
+.accepted-responses {
+    margin-top: 0px !important;
+}
+form input, form textarea {
+    border: none !important;
+    background-color: white !important;
+    border-radius: 4px !important;
+    font-size: 20px !important;
+}
+.common-bg form {
+    background: transparent !important;
+}
+.question {
+    background: transparent !important;
+}

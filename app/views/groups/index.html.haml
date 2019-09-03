@@ -11,10 +11,9 @@
   .questions-container
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
   %h3
-    Find codegroup Groups
+    Find codegroups
   .search
-    Search
-    = text_field_tag 'search',nil, data: {url: search_groups_path(page: 1)}
+    = text_field_tag 'search', nil, placeholder: 'search', data: {url: search_groups_path(page: 1)}
   .clearfix
   .questions
     = render partial: 'groups/groups', locals: {groups: Group.order('created_at DESC').paginate(page: 1, per_page: 5)}

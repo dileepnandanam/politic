@@ -2,6 +2,6 @@
   = f.input :name
   = f.input :description
   .clearfix
-  = f.submit 'Submit', class: 'btn-primary'
+  = f.submit 'Submit', class: 'btn-primary pull-left'
+  = link_to 'cancel', '#', class: 'cancel-form pull-left', remote: true
   .clearfix
-  = link_to 'cancel', '#', class: 'cancel-form', remote: true
