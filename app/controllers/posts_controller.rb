@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class PostsController < PostBaseController
   before_action :check_user, only: [:downvote, :upvote, :destroy, :create]
   def show
     @post = Post.find(params[:id])
@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def index
     if params[:query].present?
-      @posts = Post.search(params[:query], current_user)
+      @posts = Post.search(params[:query], current_user, params[:pin])
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       mark_seen(@posts)
     else
@@ -30,16 +30,6 @@ class PostsController < ApplicationController
       render 'new', layout: false
     else
       render 'devise/sessions/new', layout: false
-    end
-  end
-
-  def update
-    @post = Post.find(params[:id])
-    @post.assign_attributes(post_params)
-    if(@post.save)
-      render plain: preview(@post.text)
-    else
-      render 'new', layout: false, status: 422
     end
   end
 
@@ -69,10 +59,6 @@ class PostsController < ApplicationController
   end
 
   protected
-
-  def preview(text)
-    MarkdownRenderer.render(text)
-  end
 
   def mark_seen(posts)
     return unless current_user.present?

@@ -12,6 +12,10 @@ $(document).on('turbolinks:load', function() {
 		})
 	})
 
+  $(document).on('click', ".post-form > input[type='submit']", function() {
+    $(this).closest('form').hide('fast')
+  })
+
 	$('.questions-container').on('ajax:success', '.delete-post', function(e) {
 		$(this).closest('.group-post, .comment').remove()
 	})

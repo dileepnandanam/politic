@@ -1,16 +1,18 @@
 class Feed
-  attr_accessor :user
+  attr_accessor :user, :group
   def initialize(user)
+    @group = group
     @user = user
   end
 
-  def get()
+  def get(posts)
     if user.present?
-      Post.joins(%{
+      posts = posts.joins(%{
         inner join connections on connections.to_user_id = posts.user_id
-      }).where('posts.id > coalesce(connections.last_seen_post_id, 0) and connections.user_id = ?', user.id).order('posts.created_at DESC')
+      }).order('posts.created_at DESC')
+      posts
     else
-      Post.all
+      posts
     end
   end
 

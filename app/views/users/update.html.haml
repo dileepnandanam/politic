@@ -1,0 +1,5 @@
+%h3
+  Bad Word Filtering is Active
+.bad-words
+  - current_user.badwords.to_s.split(',').map(&:strip).each do |w|
+    = link_to w, posts_path(query: w, pin: current_user.pin), class: 'bad-word-posts'

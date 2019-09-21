@@ -25,6 +25,9 @@
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700,900&display=swap');
 
+a {
+  font-size: 24px;
+}
 body {
 	min-height: 100vh;
   background-color: #000;
@@ -99,6 +102,9 @@ form a {
 }
 .user-details img {
 	width: 30px;
+}
+H1 {
+  font-size: 6vw;
 }
 h2 {
 	font-size: 5vw;

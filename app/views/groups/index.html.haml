@@ -1,17 +1,17 @@
 .my-space.col-lg-4.col-sm-6.col-12.pull-left
-  .responses-container
-    %h3 My codegroup Groups
+  .responses-container.questions-container
+    %h3= "My #{AppConst::GroupType.pluralize}"
     - @groups.each do |group|
       = render partial: 'group', locals: {group: group, actions: true}
     - @other_groups.each do |group|
       = render partial: 'group', locals: {group: group, actions: false}
   .new-question
   .questions-actions
-    = link_to 'New codegroup', new_group_path, class: 'add-question', remote: true
+    = link_to "New #{AppConst::GroupType.camelize}", new_group_path, class: 'add-question', remote: true
   .questions-container
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
   %h3
-    Find codegroups
+    = "Find #{AppConst::GroupType.pluralize.camelize}"
   .search
     = text_field_tag 'search', nil, placeholder: 'search', data: {url: search_groups_path(page: 1)}
   .clearfix

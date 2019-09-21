@@ -5,5 +5,5 @@
   .image-upload
     = f.input :image, label: 'Upload image'
   .clearfix
-  = f.submit :post, class: 'btn-primary'
+  = f.submit :post, class: 'btn-primary', data: { disable_with: false }
   = link_to 'cancel', '#', class: 'cancel-form', remote: true

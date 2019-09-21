@@ -37,10 +37,11 @@ class UsersController < ApplicationController
     if params[:user][:pin].to_s == current_user.pin.to_s
       current_user.update(badwords: params[:user][:badwords])
       flash[:notice] = 'Monitoring Updated'
+      render 'update', layout: false
     else
       flash[:notice] = 'Wrong PIN entered'
+      render 'edit', layout: false
     end
-    redirect_to root_path
   end
 
   def posts

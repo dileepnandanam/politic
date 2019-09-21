@@ -1,0 +1,8 @@
+.bad-word-posts {
+  color: white;
+  background-color: blue;
+  border-radius: 6px;
+  padding: 4px;
+  margin: 10px;
+  display: inline-block;
+}

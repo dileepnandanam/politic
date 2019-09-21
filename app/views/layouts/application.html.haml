@@ -12,10 +12,10 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body{style: "background-image: url('#{default_background}')"}
     .page.col-lg-12.col-sm-12.col-12
-      - if params[:password] == 'ifuckinglovecoding'
+      - if Rails.env.development?
         .acc-switcher
           - User.all.each do |u|
-            = link_to u.name, switch_user_path(u), class: 'question'
+            = link_to"#{u.name}(#{u.pin})", switch_user_path(u), class: 'question'
       .nav-bar
         - if current_user
           
@@ -29,7 +29,7 @@
 
           = link_to 'Monitor Content', edit_user_path(current_user), class: 'pull-right'
         
-          = link_to "Codegroups", groups_path, class: 'pull-right'
+          = link_to "Schools", groups_path, class: 'pull-right'
         - else
           
           = link_to "Sign in", new_user_session_path, class: 'pull-right'

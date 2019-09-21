@@ -1,4 +1,4 @@
-class Groups::PostsController < ApplicationController
+class Groups::PostsController < PostBaseController
   before_action :check_user
   before_action :check_membership
   def show
@@ -7,20 +7,33 @@ class Groups::PostsController < ApplicationController
 
   def index
     @group = Group.find(params[:group_id])
-    @posts = @group.posts.order('created_at DESC').paginate(per_page: 2, page: params[:page])
-    render 'index', layout: false
+    if params[:query].present?
+      @posts = @group.posts.search(params[:query], current_user, params[:pin])
+      @posts = @posts.paginate(per_page: 12, page: params[:page])
+      mark_seen(@posts)
+    else
+      @posts = @group.posts.latest_for(current_user)
+      @posts = @posts.paginate(per_page: 12, page: params[:page])
+      mark_seen(@posts)
+    end
+
+    @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2))
+
+    if request.format.html?
+      render 'index'
+    else
+      render 'posts', layout: false
+    end
   end
 
   def new
-    @post = Post.new
     @group = Group.find(params[:group_id])
-    render 'new', layout: false
-  end
-
-  def create
-    @group = Group.find(params[:group_id])
-    @post = @group.posts.create(post_params.merge(user_id: current_user.id))
-    render 'post', layout: false
+    @post = @group.posts.create(title: 'Enter title', text: 'Enter your content in md markdown synatx', user_id: current_user.id)
+    if current_user
+      render 'new', layout: false
+    else
+      render 'devise/sessions/new', layout: false
+    end
   end
 
   def destroy

@@ -27,9 +27,13 @@ class Post < ApplicationRecord
     votes.where(weight: -1).count
   end
 
-  def self.search(q, user)
+  def self.search(q, user, pin)
     condition = match_stmt(q)
-    FilterPost.filter(Post.where(condition), [:text, :title], user)
+    if user && pin == user.pin
+      Post.where(condition)
+    else
+      FilterPost.filter(Post.where(condition), [:text, :title], user)
+    end
   end
 
   def self.match_stmt(q)
@@ -38,11 +42,16 @@ class Post < ApplicationRecord
   end
 
   def self.get_all(user)
-    FilterPost.filter(Post.all, [:text, :title], user)
+    all = true
+    FilterPost.filter(Feed.new(user).get(all), [:text, :title], user)
+  end
+
+  def all_unmoderated(user)
+    Feed.new(user).get
   end
 
   def self.latest_for(user)
-    FilterPost.filter(Feed.new(user).get, [:text, :title], user)
+    FilterPost.filter(Feed.new(user).get(self), [:text, :title], user)
   end
 
   def notify_connections
