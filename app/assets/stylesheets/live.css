@@ -35,7 +35,7 @@ input, textarea {
     color: black !important;
     background-color: white !important;
     background: white !important;
-    border: none !important;
+    border: 1px solid !important;
     border-radius: 4px !important;
 }
 .cancel-form, input[name=commit] {
@@ -93,8 +93,7 @@ input[name=commit] {
     margin-top: 0px !important;
 }
 form input, form textarea {
-    border: none !important;
-    background-color: white !important;
+    border: 1px black !important;
     border-radius: 4px !important;
     font-size: 20px !important;
 }
@@ -103,4 +102,11 @@ form input, form textarea {
 }
 .question {
     background: transparent !important;
+}
+.comment, .post {
+    overflow: auto !important;
+    padding-bottom: 14px;
+}
+.comment-actions a {
+    font-size: 17px;
 }
