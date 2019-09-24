@@ -11,6 +11,13 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body{style: "background-image: url('#{default_background}')"}
+    - if @group.present?
+      .banner{style: "background-image: url(#{asset_url('h1.jpg')})"}
+        .banner-overlay
+          .banner-heading
+            = @group.name
+          .banner-site-description
+            = @group.description
     .page.col-lg-12.col-sm-12.col-12
       - if Rails.env.development?
         .acc-switcher

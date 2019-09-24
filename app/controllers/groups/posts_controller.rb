@@ -28,7 +28,20 @@ class Groups::PostsController < PostBaseController
 
   def new
     @group = Group.find(params[:group_id])
-    @post = @group.posts.create(title: 'Enter title', text: 'Enter your content in md markdown synatx', user_id: current_user.id)
+    @post = @group.posts.create(title: 'Topic', text: %{
+# Headin
+
+## Sub Heading
+
+describe your story
+
+* point 1 
+* point 2
+
+```
+  important notes
+```
+      }, user_id: current_user.id)
     if current_user
       render 'new', layout: false
     else

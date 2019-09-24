@@ -19,7 +19,11 @@ class ApplicationController < ActionController::Base
 
     def check_user
       unless current_user
-        redirect_to access_restricted_path and return
+        if request.format.html?
+          redirect_to access_restricted_path and return
+        else
+          render 'home/access_restricted', layout: false
+        end
       end
     end
 

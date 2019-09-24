@@ -1,6 +1,7 @@
 = simple_form_for @group, remote: true do |f|
   = f.input :name
   = f.input :description
+  = f.input :image, label: 'header image'
   .clearfix
   = f.submit 'Submit', class: 'btn-primary pull-left'
   = link_to 'cancel', '#', class: 'cancel-form pull-left', remote: true

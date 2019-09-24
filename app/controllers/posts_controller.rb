@@ -1,5 +1,5 @@
 class PostsController < PostBaseController
-  before_action :check_user, only: [:downvote, :upvote, :destroy, :create]
+  before_action :check_user, only: [:downvote, :upvote, :destroy, :create, :new]
   def show
     @post = Post.find(params[:id])
   end
