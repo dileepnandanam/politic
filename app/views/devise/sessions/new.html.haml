@@ -1,6 +1,6 @@
 .response-form
   %h2 Log in
-  = simple_form_for(User.new, as: 'User', url: session_path(User.new)) do |f|
+  = simple_form_for(User.new, url: signin_users_path) do |f|
     .form-inputs
       = f.input :email,                      
         required: false,                     

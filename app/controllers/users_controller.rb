@@ -10,6 +10,16 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def signin
+    user = User.where(email: params[:user][:email]).first
+    if user.present? && user.valid_password?(params[:user][:password])
+      sign_in(user)
+      redirect_to root_path
+    else
+      redirect_to new_session_path(User.new)
+    end
+  end
+
   def switch
     sign_in(:user, User.find(params[:id]))
     redirect_to root_path

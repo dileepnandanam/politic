@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :redirect_to_affiliated_site
+  #before_action :redirect_to_affiliated_site
 
   def connections_for(user)
   	connections = (
@@ -40,5 +40,6 @@ class ApplicationController < ActionController::Base
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :image, :name, :pin])
+      devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password, :password_confirmation, :image, :name, :pin])
     end
 end
