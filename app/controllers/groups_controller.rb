@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :check_user
+  before_action :check_user, only: [:index, :dashboard, :responses, :new, :edit, :create, :update, :destroy]
   before_action :find_group, only: [:dashboard, :responses]
   def index
     @groups = current_user.groups
