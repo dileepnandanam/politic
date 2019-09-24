@@ -1,5 +1,5 @@
 class Groups::PostsController < PostBaseController
-  before_action :check_user, only: [:new, :destroy, :upvote, :downvote]
+  before_action :check_user
   before_action :check_membership
   def show
     @post = Post.find(params[:id])
