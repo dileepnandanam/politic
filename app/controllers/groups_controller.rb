@@ -15,8 +15,10 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    unless !current_user && @group.user == current_user || current_user.posted_responses.where(group_id: @group.id).first.present?
-      redirect_to new_group_response_path(@group)
+    if current_user
+      unless @group.user == current_user || current_user.posted_responses.where(group_id: @group.id).first.present?
+        redirect_to new_group_response_path(@group)
+      end
     end
     @posts = @group.posts.order('created_at DESC').paginate(page: params[:page], per_page: 2)
   end
