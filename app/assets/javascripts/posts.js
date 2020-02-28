@@ -56,4 +56,10 @@ $(document).on('turbolinks:load', function() {
       form = $(this).closest('form')[0]
       $.debounce(1000, function(){save_post(form)})()
     })
+
+    $(document).on('ajax:success', '.post-form', function(e, data, status, xhr) {
+      $('.posts').prepend(e.detail[2].responseText)
+    }).on('ajax:error', function(e) {
+      $(this).closest.replaceWith(e.detail[2].responseText)
+    })
 })

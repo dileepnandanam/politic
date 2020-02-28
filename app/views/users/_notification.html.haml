@@ -7,7 +7,7 @@
     - bindings = {'url' => link_to('commented', post_path(target.post, comment_id: target.parent_id)), 'post' => link_to(target.post.title, post_path(target.post, comment_id: target.parent_id)), 'user' => link_to(target.user.name, posts_user_path(target.user))}
 - elsif target.is_a?(Post)
   - if target.group_id.present?
-    - bindings = {'user' => link_to(target.user.name, posts_users_path(target.user)), 'url' => link_to(target.title, group_post_path(target.group, target)), 'group' => " on school #{target.group.name}"}
+    - bindings = {'user' => link_to(target.user.name, posts_users_path(target.user)), 'url' => link_to(target.title, group_post_path(target.group, target)), 'group' => " on project #{target.group.name}"}
   - else
     - bindings = {'user' => link_to(target.user.name, posts_user_path(target.user)), 'url' => link_to(target.title, post_path(target)), 'group' => ''}
 - elsif target.is_a?(Connection)

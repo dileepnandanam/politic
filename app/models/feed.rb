@@ -15,8 +15,4 @@ class Feed
       posts
     end
   end
-
-  def mark_seen_untle(post)
-    user.connection.where(to_user_id: post.user_id).first.update(last_seen_post_id: post.id)
-  end
 end

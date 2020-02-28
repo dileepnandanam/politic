@@ -111,3 +111,13 @@ pre code {
 	color: yellow !important;
 	display: block;
 }
+.edit-open {
+	font-size: 40px;
+	margin-top: -23px;
+	color: red;
+}
+.edit-open:hover {
+	color: black !important;
+	text-decoration: none !important;
+	cursor: pointer !important;
+}

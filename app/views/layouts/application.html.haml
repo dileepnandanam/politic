@@ -20,7 +20,7 @@
             .banner-site-description
               = @group.description
     .page.col-lg-12.col-sm-12.col-12
-      - if Rails.env.development? && false
+      - if Rails.env.development?
         .acc-switcher
           - User.all.each do |u|
             = link_to"#{u.name}(#{u.pin})", switch_user_path(u), class: 'question'
@@ -37,7 +37,7 @@
 
           = link_to 'Monitor Content', edit_user_path(current_user), class: 'pull-right'
         
-          = link_to "Schools", groups_path, class: 'pull-right'
+          = link_to "projects", groups_path, class: 'pull-right'
         - else
           
           = link_to "Sign in", new_user_session_path, class: 'pull-right'
@@ -51,9 +51,3 @@
             = flash[:notice]
         = yield
 
-    .preview.page.col-lg-9.col-sm-9.col-12.d-none.container
-      .float-right
-        .close-cancel
-          ❎
-      .clearfix
-      .col-lg-12.col-sm-q2.col-12.preview-body

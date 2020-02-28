@@ -25,12 +25,26 @@ class PostsController < PostBaseController
   end
 
   def new
-    @post = Post.create(title: 'Enter title', text: 'Enter your content in md markdown synatx', user_id: current_user.id)
+    @post = Post.new
     if current_user
       render 'new', layout: false
     else
       render 'devise/sessions/new', layout: false
     end
+  end
+
+  def create
+    @post = current_user.posts.create post_params
+    if @post.valid?
+      render 'post', layout: false
+    else
+      render 'new', layout: false
+    end
+  end
+
+  def edit
+    @post = Post.find params[:id]
+    render 'new', layout: false
   end
 
   def destroy

@@ -11,7 +11,6 @@ class Connection < ApplicationRecord
     User.where(id: reciver_ids).each do |user|
       Notifier.perform_now_or_later user, 'create', self
     end
-    binding.pry
     Notifier.perform_now_or_later user, 'create_personal', self
   end
 end
