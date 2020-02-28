@@ -1,4 +1,4 @@
-%h1 Decide what your kid should not see in posts, chats and comments.
+%h1 Decide what you should not see in posts, chats and comments.
 = simple_form_for(current_user, remote: true, method: 'put', url: user_path(current_user), html: { class: 'monitor-form' }) do |f|
   = f.input :badwords, label: 'Enter coma seperated list of bad words to be filtered'
   - f.object.pin = ''
