@@ -6,7 +6,7 @@ class PostsController < PostBaseController
 
   def index
     if params[:query].present?
-      @posts = Post.search(params[:query], current_user)
+      @posts = Post.search(params[:query], orientation)
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       mark_seen(@posts)
     else
@@ -77,16 +77,16 @@ class PostsController < PostBaseController
       redirect_to root_path(q: params[:q])
     else
       if params[:q].present?
-        @links = Link.search(params[:q], orientation, params[:order]).paginate(page: params[:page], per_page: 20)
-        @count = Link.search_count params[:q], orientation
-        #if @links.blank? || @links.next_page.blank?
+        @posts = Post.search(params[:q], orientation, params[:order]).paginate(page: params[:page], per_page: 20)
+        @count = Post.search_count params[:q], orientation
+        #if @posts.blank? || @posts.next_page.blank?
         if params[:crawl].present?
           Searcher.perform_later params[:q]
         elsif params[:random].present?
-          @links = Link.normal.with_orientation(orientation).order(Arel.new('random()')).paginate(per_page: 20, page: 1)
+          @posts = Post.normal.with_orientation(orientation).order(Arel.new('random()')).paginate(per_page: 20, page: 1)
         end
       else
-        @links = Link.normal.with_orientation(orientation).paginate(per_page: 20, page: params[:page])
+        @posts = Post.normal.with_orientation(orientation).paginate(per_page: 20, page: params[:page])
       end
       render 'search', layout: false
     end
@@ -94,6 +94,23 @@ class PostsController < PostBaseController
 
 
   protected
+
+  def orientation
+    @orientation = cookies[:orientation]
+    @orientation
+  end
+
+  def set_orientation
+    if params[:orientation].present?
+      cookies[:orientation] = params[:orientation]
+    elsif params[:q].to_s.include?('gay')
+      cookies[:orientation] = 'gay'
+    elsif params[:q].to_s.include?('lesb')
+      cookies[:orientation] = 'lesbian'
+    elsif params[:q].to_s.include?('straight')
+      cookies[:orientation] = nil
+    end
+  end
 
   def mark_seen(posts)
     return unless current_user.present?
