@@ -6,7 +6,7 @@ class PostsController < PostBaseController
 
   def index
     if params[:query].present?
-      @posts = Post.search(params[:query], current_user, params[:pin])
+      @posts = Post.search(params[:query], current_user)
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       mark_seen(@posts)
     else
@@ -71,6 +71,27 @@ class PostsController < PostBaseController
     Vote.create(user_id: current_user.id, post_id: params[:id], weight: -1) if @post.user != current_user
     render 'comment_actions', layout: false
   end
+
+   def search
+    if request.format.html?
+      redirect_to root_path(q: params[:q])
+    else
+      if params[:q].present?
+        @links = Link.search(params[:q], orientation, params[:order]).paginate(page: params[:page], per_page: 20)
+        @count = Link.search_count params[:q], orientation
+        #if @links.blank? || @links.next_page.blank?
+        if params[:crawl].present?
+          Searcher.perform_later params[:q]
+        elsif params[:random].present?
+          @links = Link.normal.with_orientation(orientation).order(Arel.new('random()')).paginate(per_page: 20, page: 1)
+        end
+      else
+        @links = Link.normal.with_orientation(orientation).paginate(per_page: 20, page: params[:page])
+      end
+      render 'search', layout: false
+    end
+  end
+
 
   protected
 

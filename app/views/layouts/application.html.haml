@@ -35,7 +35,8 @@
           
           = link_to "dashboard", '/dashboard', class: 'pull-right'
 
-          = link_to 'Monitor Content', edit_user_path(current_user), class: 'pull-right'
+          - if false
+            = link_to 'Monitor Content', edit_user_path(current_user), class: 'pull-right'
         
           = link_to "projects", groups_path, class: 'pull-right'
         - else

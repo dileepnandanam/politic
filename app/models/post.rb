@@ -14,6 +14,37 @@ class Post < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   
   validates :title, presence: true
+  
+  default_scope -> {where(hidden: false)}
+  scope :favourite, -> {where('favourite = true')}
+  scope :normal, -> {where("COALESCE(LOWER(text), '') NOT LIKE '%#{'dik'.reverse}%'").order('updated_at DESC')}
+  scope :with_orientation, -> (orientation) {
+    orientation == 'straight' || orientation.blank? ? where("not(COALESCE(LOWER(title), '') LIKE '%gay%') ") : where("LOWER(title) LIKE '%#{orientation}%'")
+  }
+
+  def self.search(q, orientation = nil, order= 'DESC')
+    if match_stmt(q, '')[0].blank?
+      Post.where('1 = 2')
+    else
+      Post.with_orientation(orientation)
+        .select("#{Post.new.attributes.keys.join(', ')}")
+        .where(['title', 'text'].map{|att| "#{match_stmt(q, att)[0]} >= #{match_stmt(q, att)[1]}"}.join(' OR '))
+        .order("updated_at #{order}")
+    end
+  end
+
+  
+  def self.match_stmt(q, column)
+    stop_words.each{|sw| q.gsub!(Regexp.new("[$\s]#{sw}[\s^]", 'i'), '')}
+    keys = q.split(/[\s,:;\-\(\)\.\/]/).select{|w| w.length > 1}
+    match_stmt_str = keys.map{|w| "COALESCE((LOWER(#{column}) LIKE '%#{w.downcase}%'), FALSE)::int"}.join(' + ')
+    match_stmt_str.present? ? [match_stmt_str, keys.count] : "id"
+  end
+
+  def self.stop_words
+    ['ourselves', 'hers', 'between', 'yourself', 'but', 'again', 'there', 'about', 'once', 'during', 'out', 'very', 'having', 'with', 'they', 'own', 'an', 'be', 'some', 'for', 'do', 'its', 'yours', 'such', 'into', 'of', 'most', 'itself', 'other', 'off', 'is', 'am', 'or', 'who', 'as', 'from', 'him', 'each', 'the', 'themselves', 'until', 'below', 'are', 'we', 'these', 'your', 'his', 'through', 'don', 'nor', 'me', 'were', 'her', 'more', 'himself', 'this', 'down', 'should', 'our', 'their', 'while', 'above', 'both', 'up', 'to', 'ours', 'had', 'she', 'all', 'no', 'when', 'at', 'any', 'before', 'them', 'same', 'and', 'been', 'have', 'in', 'will', 'on', 'does', 'yourselves', 'then', 'that', 'because', 'what', 'over', 'why', 'so', 'can', 'did', 'not', 'now', 'under', 'he', 'you', 'herself', 'has', 'just', 'where', 'too', 'only', 'myself', 'which', 'those', 'i', 'after', 'few', 'whom', 't', 'being', 'if', 'theirs', 'my', 'against', 'a', 'by', 'doing', 'it', 'how', 'further', 'was', 'here', 'than']
+  end
+
 
   def cancel_notifications
     Notification.where(target_id: id, target_type: 'Post').delete_all
@@ -25,20 +56,6 @@ class Post < ApplicationRecord
 
   def downvote_count
     votes.where(weight: -1).count
-  end
-
-  def self.search(q, user, pin)
-    condition = match_stmt(q)
-    if user && pin == user.pin
-      Post.where(condition)
-    else
-      FilterPost.filter(Post.where(condition), [:text, :title], user)
-    end
-  end
-
-  def self.match_stmt(q)
-    keys = q.to_s.split(/[ .\n=;,&%]/)
-    keys.map{|key| "posts.title ~* '#{key}' or posts.text ~* '#{key}'"}.join(' and ')
   end
 
   def self.get_all(user)

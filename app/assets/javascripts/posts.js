@@ -2,10 +2,6 @@ $(document).on('turbolinks:load', function() {
 	$('.new-group-post').on('ajax:success', function(e) {
 		new_post = $('.new-post')
 		$('.new-post').html(e.detail[2].responseText)
-		$(new_post).find('.post-form').on('ajax:success', function(e, data, status, xhr) {
-			$('.preview').removeClass('d-none')
-      $('.preview-body').html(e.detail[2].responseText)
-		})
 		$(new_post).find('.open-image-upload').on('click', function(e) {
 			e.preventDefault()
 			$(this).siblings('.image-upload').removeClass('d-none')
@@ -46,15 +42,6 @@ $(document).on('turbolinks:load', function() {
 
     $('.questions-container').on('ajax:success', '.view-more', function(e, data, status, xhr) {
     	$(this).replaceWith(e.detail[2].responseText)
-    })
-
-    save_post = function(form) {
-      Rails.fire(form, 'submit')
-    }
-
-    $(document).on('keyup', '.post-form textarea', function() {
-      form = $(this).closest('form')[0]
-      $.debounce(1000, function(){save_post(form)})()
     })
 
     $(document).on('ajax:success', '.post-form', function(e, data, status, xhr) {
