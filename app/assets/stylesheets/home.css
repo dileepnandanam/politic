@@ -121,3 +121,7 @@ pre code {
 	text-decoration: none !important;
 	cursor: pointer !important;
 }
+.search-panel input {
+	width: 100% !important;
+  border-radius: 7px !important;
+}
