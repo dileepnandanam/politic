@@ -35,15 +35,6 @@ class User < ApplicationRecord
     end
   end
 
-  after_create :set_pin
-  def set_pin
-    update(pin: rand.to_s[2..5])
-
-    if Rails.env.production?
-      Notifier.perform_now_or_later self, 'create', self
-    end
-  end
-
   def is_connected_to?(user)
     Connection.where(to_user_id: [id, user.id], user_id: [id: user.id]).count > 0
   end

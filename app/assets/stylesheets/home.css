@@ -68,6 +68,7 @@
 }
 .view-more-questions-container {
 	width: 100%;
+	color: white !important;
 }
 .gender_form span {
 	display: block;
@@ -124,4 +125,11 @@ pre code {
 .search-panel input {
 	width: 100% !important;
   border-radius: 7px !important;
+}
+.invalid-feedback {
+	font-size: 25px !important;
+  font-weight: 300 !important;
+}
+.white {
+	color: inherit !important;
 }

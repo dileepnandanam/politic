@@ -10,9 +10,8 @@ class PostsController < PostBaseController
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       mark_seen(@posts)
     else
-      @posts = Post.latest_for(current_user)
+      @posts = Post.all
       @posts = @posts.paginate(per_page: 12, page: params[:page])
-      mark_seen(@posts)
     end
 
     @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2))

@@ -27,25 +27,20 @@ class Groups::PostsController < PostBaseController
   end
 
   def new
-    @group = Group.find(params[:group_id])
-    @post = @group.posts.create(title: 'Topic', text: %{
-# Headin
-
-## Sub Heading
-
-describe your story
-
-* point 1 
-* point 2
-
-```
-  important notes
-```
-      }, user_id: current_user.id)
+    @post = Group.find(params[:group_id]).posts.new
     if current_user
-      render 'new', layout: false
+      render 'groups/posts/new', layout: false
     else
       render 'devise/sessions/new', layout: false
+    end
+  end
+
+  def create
+    @post = @group.find(params[:group_id]).posts.create user_id:current_user.id
+    if @post.save
+      render 'group/post', layout: false
+    else
+      render 'group/new', layout: false
     end
   end
 
