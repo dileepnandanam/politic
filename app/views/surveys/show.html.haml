@@ -1,0 +1,7 @@
+.my-space
+  .questions-container
+    .survey-action
+      = link_to 'New post', new_survey_post_path(@survey), remote: true, class: 'new-survey-post'
+    .new-post
+    .posts
+      = render partial: 'surveys/posts/posts', locals: {posts: @posts}

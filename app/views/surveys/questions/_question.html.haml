@@ -1,0 +1,10 @@
+.question{id: "sequence_#{question.id}"}
+  .question-text
+    = question.text
+  .question-actions
+    .pull-left
+      = link_to 'Edit', edit_survey_question_path(@survey, question), remote: true, class: 'edit-question'
+    .pull-left
+      = link_to 'delete', survey_question_path(@survey, question), method: 'delete', remote: true, class: 'delete-question'
+    .clearfix
+  .question-edit-form-container

@@ -14,6 +14,7 @@ class Post < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   
   validates :title, presence: true
+  validates :text, presence: true
   
   default_scope -> {where(hidden: false)}
   scope :favourite, -> {where('favourite = true')}

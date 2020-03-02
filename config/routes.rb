@@ -61,6 +61,12 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :surveys do
+    get :search, on: :collection
+    get :dashboard, on: :member
+    resources :questions, controller: 'surveys/questions'
+    resources :survey_responses, controller: 'surveys/survey_responses'
+  end
 
   resources :affiliations
   get '/:permalink', to: 'home#show'

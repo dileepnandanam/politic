@@ -4,12 +4,14 @@ class User < ApplicationRecord
   has_many :questions
   has_many :responses
   has_many :posted_responses, foreign_key: :responce_user_id, class_name: 'Response'
+  has_many :surve_responses
   has_many :posted_posts, foreign_key: :post_user_id, class_name: 'Post'
   has_many :posts
   has_many :groups
   has_many :comments
   has_many :votes
   has_many :notifications
+  has_many :surveys
 
   validates :name, presence: true
   # Include default devise modules. Others available are:

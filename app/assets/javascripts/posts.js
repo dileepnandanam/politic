@@ -8,10 +8,6 @@ $(document).on('turbolinks:load', function() {
 		})
 	})
 
-  $(document).on('click', ".post-form > input[type='submit']", function() {
-    $(this).closest('form').hide('fast')
-  })
-
 	$('.questions-container').on('ajax:success', '.delete-post', function(e) {
 		$(this).closest('.group-post, .comment').remove()
 	})
@@ -44,9 +40,10 @@ $(document).on('turbolinks:load', function() {
     	$(this).replaceWith(e.detail[2].responseText)
     })
 
-    $(document).on('ajax:success', '.post-form', function(e, data, status, xhr) {
+    $(document).on('ajax:success', '.group-post-form, .post-form, .survey-form', function(e, data, status, xhr) {
       $('.posts').prepend(e.detail[2].responseText)
-    }).on('ajax:error', function(e) {
-      $(this).replaceWith(e.detail[2].responseText)
+      $(this).hide()
+    }).on('ajax:error', function(e, data, status, xhr) {
+      $('.group-post-form, .post-form').replaceWith(e.detail[2].response)
     })
 })

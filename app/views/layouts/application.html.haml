@@ -31,20 +31,25 @@
           
           = link_to current_user.notifications.unseen.count, notifications_user_path(current_user), class: 'pull-right notification_count pull-right', style: (current_user.notifications.unseen.count > 0 ? "background: red !important" : '')
           
-          = link_to "posts", '/posts', class: 'pull-right'
-          
           = link_to "dashboard", '/dashboard', class: 'pull-right'
 
           - if false
             = link_to 'Monitor Content', edit_user_path(current_user), class: 'pull-right'
         
           = link_to "projects", groups_path, class: 'pull-right'
+          
         - else
           
           = link_to "Sign in", new_user_session_path, class: 'pull-right'
           
           = link_to "Sign up", new_user_registration_path, class: 'pull-right'
         = link_to 'home', '/', class: 'pull-right'
+        .clearfix
+      .sub-nav-bar
+        = link_to 'Posts', posts_path, class: 'sub-nav-bar-item'
+        = link_to 'Projects', groups_path, class: 'sub-nav-bar-item'
+        = link_to 'Surveys', surveys_path, class: 'sub-nav-bar-item'
+        = link_to 'quick polls', surveys_path, class: 'sub-nav-bar-item'
         .clearfix
       .common-bg{class: "#{controller_name}-#{action_name}"}
         - if flash[:notice].present?

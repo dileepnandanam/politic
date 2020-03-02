@@ -1,0 +1,19 @@
+.my-space.col-lg-4.col-sm-6.col-12.pull-left
+  .responses-container.questions-container
+    %h3= "My Surveys"
+    - @surveys.each do |survey|
+      = render partial: 'survey', locals: {survey: survey, actions: true}
+    - @other_surveys.each do |survey|
+      = render partial: 'survey', locals: {survey: survey, actions: false}
+  .new-question
+  .questions-actions
+    = link_to "New Survey", new_survey_path, class: 'add-question', remote: true
+  .questions-container
+.my-space.col-lg-8.col-sm-6.col-12.pull-left
+  %h3
+    = "Find Survey"
+  .search
+    = text_field_tag 'search', nil, placeholder: 'search', data: {url: search_surveys_path(page: 1)}
+  .clearfix
+  .questions
+    = render partial: 'surveys/surveys', locals: {surveys: Survey.order('created_at DESC').paginate(page: 1, per_page: 5)}

@@ -122,9 +122,6 @@
 a {
   color: white;
 }
-.post-form textarea {
-  height: 40vh !important;
-}
 .new-comment-link {
   margin-top: 6px !important;
 }

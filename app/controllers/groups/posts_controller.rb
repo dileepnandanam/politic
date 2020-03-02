@@ -8,13 +8,11 @@ class Groups::PostsController < PostBaseController
   def index
     @group = Group.find(params[:group_id])
     if params[:query].present?
-      @posts = @group.posts.search(params[:query], current_user, params[:pin])
+      @posts = @group.posts.search(params[:query], orientation)
       @posts = @posts.paginate(per_page: 12, page: params[:page])
-      mark_seen(@posts)
     else
-      @posts = @group.posts.latest_for(current_user)
+      @posts = @group.posts.all
       @posts = @posts.paginate(per_page: 12, page: params[:page])
-      mark_seen(@posts)
     end
 
     @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2))
@@ -27,7 +25,8 @@ class Groups::PostsController < PostBaseController
   end
 
   def new
-    @post = Group.find(params[:group_id]).posts.new
+    @group = Group.find(params[:group_id])
+    @post = @group.posts.new
     if current_user
       render 'groups/posts/new', layout: false
     else
@@ -36,13 +35,16 @@ class Groups::PostsController < PostBaseController
   end
 
   def create
-    @post = @group.find(params[:group_id]).posts.create user_id:current_user.id
+    @post = current_user.posts.new post_params
+    @post.valid?
     if @post.save
-      render 'group/post', layout: false
+      render 'groups/posts/post', layout: false, status: 200
     else
-      render 'group/new', layout: false
+      @post.valid?
+      render 'groups/posts/new', layout: false, status: 422
     end
   end
+
 
   def destroy
     @post = current_user.posts.find(params[:id])

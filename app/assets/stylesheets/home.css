@@ -68,7 +68,6 @@
 }
 .view-more-questions-container {
 	width: 100%;
-	color: white !important;
 }
 .gender_form span {
 	display: block;
@@ -132,4 +131,30 @@ pre code {
 }
 .white {
 	color: inherit !important;
+}
+#search {
+  height: 40px;
+  font-size: 21px !important;
+  padding-left: 10px;
+}
+.validation-errors {
+	border-radius: 8px;
+	padding: 13px;
+	font-size: 20px;
+}
+.sub-nav-bar {
+  background: azure;
+  position: relative;
+  width: 100%;
+  padding: 12px;
+}
+
+.sub-nav-bar-item {
+	display: table-cell;
+	margin-left: 20px;
+	float: left;
+	color: black;
+}
+a.sub-nav-bar-item:hover {
+	color: red !important;
 }

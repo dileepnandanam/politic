@@ -34,10 +34,11 @@ class PostsController < PostBaseController
 
   def create
     @post = current_user.posts.create post_params
-    if @post.valid?
-      render 'post', layout: false
+    if @post.save
+      render 'post', layout: false, status: 200
     else
-      render 'new', layout: false
+      @post.valid?
+      render 'new', layout: false, status: 422
     end
   end
 
