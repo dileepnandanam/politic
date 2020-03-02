@@ -35,7 +35,7 @@ class Groups::PostsController < PostBaseController
   end
 
   def create
-    @post = current_user.posts.new post_params
+    @post = current_user.posts.new post_params.merge(group_id: @group.id)
     @post.valid?
     if @post.save
       render 'groups/posts/post', layout: false, status: 200
@@ -81,6 +81,7 @@ class Groups::PostsController < PostBaseController
   end  
 
   def post_params
+    @group = Group.find(params[:group_id])
     params.require(:post).permit(:text, :image, :title)
   end
 end
