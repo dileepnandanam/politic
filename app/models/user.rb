@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :votes
   has_many :notifications
   has_many :surveys
+  has_many :quick_polls
 
   validates :name, presence: true
   # Include default devise modules. Others available are:

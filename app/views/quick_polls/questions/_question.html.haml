@@ -1,0 +1,10 @@
+.question{id: "sequence_#{question.id}"}
+  .question-text
+    = question.text
+  .question-actions
+    .pull-left
+      = link_to 'Edit', edit_quick_poll_question_path(@quick_poll, question), remote: true, class: 'edit-question'
+    .pull-left
+      = link_to 'delete', quick_poll_question_path(@quick_poll, question), method: 'delete', remote: true, class: 'delete-question'
+    .clearfix
+  .question-edit-form-container

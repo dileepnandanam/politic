@@ -1,0 +1,16 @@
+.question
+  %h3= quick_poll.name
+  %p
+    = quick_poll.description
+  - if actions
+    .question-actions
+      .pull-left
+        = link_to 'Edit', edit_quick_poll_path(quick_poll), remote: true, class: 'edit-question'
+      .pull-left
+        = link_to 'delete', quick_poll_path(quick_poll), method: 'delete', remote: true, class: 'delete-question'
+      .pull-left
+        = link_to 'dashboard', dashboard_quick_poll_path(quick_poll)
+  .pull-left
+    = link_to 'submit', new_quick_poll_quick_poll_response_path(quick_poll)
+  .clearfix
+  .question-edit-form-container

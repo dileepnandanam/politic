@@ -1,0 +1,6 @@
+.question.response-form
+  .pull-left
+    %h3= @quick_poll.name
+    %p= @quick_poll.description
+  .clearfix
+  = render partial: 'form'

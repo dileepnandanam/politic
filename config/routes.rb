@@ -68,6 +68,13 @@ Rails.application.routes.draw do
     resources :survey_responses, controller: 'surveys/survey_responses'
   end
 
+  resources :quick_polls do
+    get :search, on: :collection
+    get :dashboard, on: :member
+    resources :questions, controller: 'quick_polls/questions'
+    resources :quick_poll_responses, controller: 'quick_polls/quick_poll_responses'
+  end
+
   resources :affiliations
   get '/:permalink', to: 'home#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

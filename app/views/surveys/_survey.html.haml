@@ -1,7 +1,5 @@
 .question
-  = link_to survey_path(survey) do
-    %h3
-      = survey.name
+  %h3= survey.name
   %p
     = survey.description
   - if actions
@@ -12,5 +10,7 @@
         = link_to 'delete', survey_path(survey), method: 'delete', remote: true, class: 'delete-question'
       .pull-left
         = link_to 'dashboard', dashboard_survey_path(survey)
-      .clearfix
+  .pull-left
+    = link_to 'submit', new_survey_survey_response_path(survey)
+  .clearfix
   .question-edit-form-container

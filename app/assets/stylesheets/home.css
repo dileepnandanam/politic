@@ -158,3 +158,6 @@ pre code {
 a.sub-nav-bar-item:hover {
 	color: red !important;
 }
+.question.response-form {
+	background-color: #2d3d3d;
+}

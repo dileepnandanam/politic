@@ -49,7 +49,7 @@
         = link_to 'Posts', posts_path, class: 'sub-nav-bar-item'
         = link_to 'Projects', groups_path, class: 'sub-nav-bar-item'
         = link_to 'Surveys', surveys_path, class: 'sub-nav-bar-item'
-        = link_to 'quick polls', surveys_path, class: 'sub-nav-bar-item'
+        = link_to 'quick polls', quick_polls_path, class: 'sub-nav-bar-item'
         .clearfix
       .common-bg{class: "#{controller_name}-#{action_name}"}
         - if flash[:notice].present?

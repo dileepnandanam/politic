@@ -11,16 +11,6 @@ class SurveysController < ApplicationController
     render 'surveys', layout: false
   end
 
-  def show
-    @survey = Survey.find(params[:id])
-    if current_user
-      unless @survey.user == current_user || current_user.posted_responses.where(survey_id: @survey.id).first.present?
-        redirect_to new_survey_response_path(@survey)
-      end
-    end
-    @posts = @survey.posts.order('created_at DESC').paginate(page: params[:page], per_page: 2)
-  end
-
   def dashboard
     @survey = current_user.surveys.find(params[:id])
     @questions = @survey.questions
@@ -44,7 +34,6 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(survey_params.merge(user_id: current_user.id))
-    binding.pry
     if @survey.save
       render 'survey', layout: false, status: 200
     else

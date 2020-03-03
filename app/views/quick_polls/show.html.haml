@@ -1,0 +1,7 @@
+.my-space
+  .questions-container
+    .quick_poll-action
+      = link_to 'New post', new_quick_poll_post_path(@quick_poll), remote: true, class: 'new-quick_poll-post'
+    .new-post
+    .posts
+      = render partial: 'quick_poll/posts/posts', locals: {posts: @posts}

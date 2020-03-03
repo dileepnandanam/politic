@@ -1,0 +1,14 @@
+.my-space.col-lg-4.col-sm-6.col-xs-12.pull-left
+  %h3
+    QuickPoll Options
+  - if @questions.count == 0
+    .question.help-text
+      %p
+        You haven't created any questions.
+  .questions-container.reorderable
+    - @questions.each do |question|
+      = render partial: 'quick_poll/questions/question', locals: {question: question}
+  .new-question
+  .questions-actions
+    = link_to 'Add option', new_quick_poll_question_path(@quick_poll), class: 'add-question', remote: true
+    = link_to 'Preview', new_quick_poll_quick_poll_response_path(@quick_poll)
