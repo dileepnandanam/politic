@@ -27,13 +27,6 @@
   margin-top: 3%;
   width: 100%;
 }
-.cast-vote {
-	border-radius: 5px;
-	display: block;
-}
-.cast-vote:hover {
-	text-decoration: none;
-}
 .comments {
 	margin-top: 10px;
 }
@@ -69,26 +62,11 @@
 .comment-form {
 	margin-bottom: 10px;
 }
-.comment-actions a {
-  background: #771414;
-  padding: 0.5% 2%;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin-right: 12px !important;
-  display: inline-block;
-  border-radius: 12px;
-  color: white;
-  margin-bottom: 12px;
-}
 .comment-actions a:hover {
 	color: black;
 }
 .comment-actions {
 	margin-top: 12px;
-}
-.cast-vote {
-  background: blue;
 }
 .new-group-post {
 	display: none;
@@ -122,6 +100,10 @@
 a {
   color: white;
 }
-.new-comment-link {
-  margin-top: 6px !important;
+a.comment-action{
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 9px;
+  display: inline-block;
 }

@@ -161,3 +161,6 @@ a.sub-nav-bar-item:hover {
 .question.response-form {
 	background-color: #2d3d3d;
 }
+.post a, .post a:hover {
+	color: black !important;
+}

@@ -23,6 +23,6 @@ class Surveys::SurveyResponsesController < ApplicationController
   end
 
   def response_params
-    params.permit(:response).permit(:user_id, :answers_attributes => [:question_id, :text])
+    params.permit(:survey_response).permit(:user_id, :answers_attributes => [:question_id, :text])
   end
 end

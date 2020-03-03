@@ -7,4 +7,5 @@ class QuickPoll < ApplicationRecord
   has_many :responses
   validates :name, presence: true
   validates :description, presence: true
+  has_many :quick_poll_responses
 end

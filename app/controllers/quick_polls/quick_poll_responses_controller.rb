@@ -4,11 +4,12 @@ class QuickPolls::QuickPollResponsesController < ApplicationController
   before_action :find_quick_poll
   
   def new
+    @quick_poll = QuickPoll.find(params[:quick_poll_id])
     @quick_poll_response = QuickPollResponse.new
   end
 
   def create
-    QuickPollResponse.create(response_params)
+    @quick_poll.quick_poll_responses.create(response_params.merge(user_id: current_user.id))
     flash[:notice] = "Successfully polled"
     redirect_to root_path
   end
@@ -20,6 +21,6 @@ class QuickPolls::QuickPollResponsesController < ApplicationController
   end
 
   def response_params
-    params.permit(:response).permit(:user_id, :question_id)
+    params.require(:quick_poll_response).permit(:question_id)
   end
 end
