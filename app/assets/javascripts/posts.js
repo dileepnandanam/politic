@@ -41,8 +41,9 @@ $(document).on('turbolinks:load', function() {
     })
 
     $(document).on('ajax:success', '.group-post-form, .post-form, .survey-form', function(e, data, status, xhr) {
+      e.preventDefault();
       $('.posts').prepend(e.detail[2].responseText)
-      $(this).hide()
+      $(this).remove()
     }).on('ajax:error', function(e, data, status, xhr) {
       $('.group-post-form, .post-form').replaceWith(e.detail[2].response)
     })

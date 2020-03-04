@@ -4,10 +4,10 @@
   - if @questions.count == 0
     .question.help-text
       %p
-        You haven't created any questions.
+        You haven't created any options.
   .questions-container.reorderable
     - @questions.each do |question|
-      = render partial: 'quick_poll/questions/question', locals: {question: question}
+      = render partial: 'quick_polls/questions/question', locals: {question: question}
   .new-question
   .questions-actions
     = link_to 'Add option', new_quick_poll_question_path(@quick_poll), class: 'add-question', remote: true

@@ -64,6 +64,7 @@ Rails.application.routes.draw do
   resources :surveys do
     get :search, on: :collection
     get :dashboard, on: :member
+    get :responses, on: :member
     resources :questions, controller: 'surveys/questions'
     resources :survey_responses, controller: 'surveys/survey_responses'
   end

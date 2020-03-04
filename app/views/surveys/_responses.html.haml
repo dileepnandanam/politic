@@ -13,4 +13,4 @@
 
 - if @responses.next_page
   .more-responses
-    = link_to 'View more', survey_responses_survey_path(@survey, state: state, page: params[:page].present? ? params[:page].to_i + 1 : 2), remote: true, class: 'view-more'
+    = link_to 'View more', responses_survey_path(@survey, page: params[:page].present? ? params[:page].to_i + 1 : 2), remote: true, class: 'view-more'

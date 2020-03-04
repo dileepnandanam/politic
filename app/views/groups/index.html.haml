@@ -8,7 +8,6 @@
   .new-question
   .questions-actions
     = link_to "New #{AppConst::GroupType.camelize}", new_group_path, class: 'add-question', remote: true
-  .questions-container
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
   %h3
     = "Find #{AppConst::GroupType.pluralize.camelize}"
