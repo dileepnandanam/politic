@@ -1,7 +1,8 @@
 .group-post.post
   .post-actions.pull-right
-    - if post.user == current_user
-      = link_to 'delete', post_path(post), remote: true, method: :delete, class: 'delete-post'
+  .pull-left.user-avathar= render partial: 'users/user_details', locals: {user: post.user}
+  - if post.user == current_user
+    = link_to 'delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right'
   .clearfix
   .post-title
     %h2= link_to post.title, post_path(post)
@@ -9,9 +10,6 @@
     = auto_link MarkdownRenderer.render(post.text), html: {target: '_blank'}
     - if post.image.present?
       = image_tag post.image.url(:original), class: 'post-image'
-  .clearfix
-  .pull-right.user-avathar= render partial: 'users/user_details', locals: {user: post.user}
-  .clearfix
   = render partial: 'posts/comment_actions', locals: {post: post}
   .clearfix
   .new-comment

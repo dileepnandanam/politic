@@ -23,7 +23,8 @@
       - if Rails.env.development?
         .acc-switcher
           - User.all.each do |u|
-            = link_to"#{u.name}(#{u.pin})", switch_user_path(u), class: 'question'
+            = link_to u.name, switch_user_path(u), class: 'user-switch pull-left'
+          .clearfix
       .nav-bar
         - if current_user
           

@@ -3,12 +3,14 @@
     %h3= "My Surveys"
     - @surveys.each do |survey|
       = render partial: 'survey', locals: {survey: survey, actions: true}
-    - @other_surveys.each do |survey|
-      = render partial: 'survey', locals: {survey: survey, actions: false}
-  .new-question
-  .questions-actions
-    = link_to "New Survey", new_survey_path, class: 'add-question', remote: true
-  .questions-container
+    .new-question
+    .questions-actions
+      = link_to "New Survey", new_survey_path, class: 'add-question', remote: true
+  %H3= "Other Surveys"
+  - @other_surveys.each do |survey|
+    = render partial: 'survey', locals: {survey: survey, actions: false}
+
+  
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
   %h3
     = "Find Survey"

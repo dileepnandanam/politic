@@ -4,7 +4,7 @@ class Survey < ApplicationRecord
   belongs_to :group, optional: true
   belongs_to :user
   has_many :questions
-  has_many :responses
+  has_many :survey_responses
   validates :name, presence: true
   validates :description, presence: true
 end

@@ -164,3 +164,6 @@ a.sub-nav-bar-item:hover {
 .post a, .post a:hover {
 	color: black !important;
 }
+.user-avathar, .delete-post {
+	display: inline-block;
+}

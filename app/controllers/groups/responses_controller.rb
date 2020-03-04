@@ -11,6 +11,7 @@ class Groups::ResponsesController < ApplicationController
 
   def create
   	@response = Response.create response_params.merge(responce_user_id: current_user.id, group_id: @group.id)
+    binding.pry
     flash[:notice] = "Requested to join #{AppConst::GroupType} #{@response.group.name}'s questions"
     if @response.responce_user_id == @response.group.user_id
       @response.delete
@@ -37,6 +38,6 @@ class Groups::ResponsesController < ApplicationController
   end
 
   def response_params
-    params.permit(:response).permit(:user_id, :answers_attributes => [:question_id, :text])
+    params.require(:response).permit(:user_id, :answers_attributes => [:question_id, :text])
   end
 end

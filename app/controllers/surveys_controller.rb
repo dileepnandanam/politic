@@ -63,12 +63,7 @@ class SurveysController < ApplicationController
   end
 
   def get_responses
-    responses = @survey.responses.order('id DESC')
-    if params[:state] == 'accepted'
-      responses.where(accepted: true)
-    else
-      responses.where(accepted: false)
-    end
+    responses = @survey.survey_responses.order('id DESC')
   end
 
   def survey_params
