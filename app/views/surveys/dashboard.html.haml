@@ -19,15 +19,5 @@
     .question.help-text
       %p
         No submissions made to the survey
-  - @responses.each do |r|
-    .question
-      = render partial: 'users/user_details', locals: {user: r.user}
-      .clearfix
-      .answers
-        - @survey.questions.each do |q|
-          .answer  
-            .question-text.pull-left.col-lg-5.col-sm-5.col-xs-12
-              = q.text
-            .answer-text.pull-right.col-lg-5.col-sm-5.col-xs-12
-              = q.answer.text
-            .clearfix
+  .responses-container
+    = render partial: 'responses'
