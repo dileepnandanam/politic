@@ -86,4 +86,8 @@ class GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:description, :name, :image)
   end
+
+  def set_flag
+    @flag = 'project'
+  end
 end

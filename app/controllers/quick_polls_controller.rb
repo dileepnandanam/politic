@@ -74,4 +74,8 @@ class QuickPollsController < ApplicationController
   def quick_poll_params
     params.require(:quick_poll).permit(:description, :name, :image)
   end
+
+  def set_flag
+    @flag = 'quick_poll'
+  end
 end

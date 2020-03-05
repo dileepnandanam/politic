@@ -1,4 +1,5 @@
 = simple_form_for([@group, @response]) do |f|
+  = f.hidden_field :user_id, value: @current_user.id
   = f.fields_for :answers do |af|
     = af.input :text, label: af.object.question.text
     = af.hidden_field :question_id, value: af.object.question.id

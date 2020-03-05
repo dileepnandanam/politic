@@ -122,4 +122,8 @@ class PostsController < PostBaseController
   def post_params
     params.require(:post).permit(:text, :image, :title)
   end
+
+  def set_flag
+    @flag = 'post'
+  end
 end

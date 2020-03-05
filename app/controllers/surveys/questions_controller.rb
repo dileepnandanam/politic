@@ -1,6 +1,7 @@
-class Surveys::QuestionsController < ApplicationController
+class Surveys::QuestionsController < SurveysController
   before_action :check_user
   before_action :find_survey
+  before_action :set_flag
   def index
     @questions = @survey.questions
   end
@@ -52,5 +53,9 @@ class Surveys::QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:text)
+  end
+
+  def set_flag
+    @flag = 'survey'
   end
 end

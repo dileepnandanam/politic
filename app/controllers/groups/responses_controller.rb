@@ -11,12 +11,9 @@ class Groups::ResponsesController < ApplicationController
 
   def create
   	@response = Response.create response_params.merge(responce_user_id: current_user.id, group_id: @group.id)
-    binding.pry
     flash[:notice] = "Requested to join #{AppConst::GroupType} #{@response.group.name}'s questions"
     if @response.responce_user_id == @response.group.user_id
       @response.delete
-    else
-      ResponseMailer.with(response_user: @response.responce_user, group: @response.group).new_response_to_group.deliver_later
     end
     redirect_to root_path
   end

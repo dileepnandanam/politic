@@ -1,6 +1,7 @@
 class SurveysController < ApplicationController
   before_action :check_user, only: [:index, :dashboard, :responses, :new, :edit, :create, :update, :destroy]
   before_action :find_survey, only: [:dashboard, :responses]
+  before_action :set_flag
   def index
     @surveys = current_user.surveys
     @other_surveys = Survey.joins(:user).where(user_id: current_user.id).all
@@ -68,5 +69,9 @@ class SurveysController < ApplicationController
 
   def survey_params
     params.require(:survey).permit(:description, :name, :image)
+  end
+
+  def set_flag
+    @flag = 'survey'
   end
 end

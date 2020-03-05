@@ -1,4 +1,4 @@
-class Surveys::SurveyResponsesController < ApplicationController
+class Surveys::SurveyResponsesController < SurveysController
   before_action :check_user, only: [:create, :accept]
   before_action :authenticate_user!, only: [:new]
   before_action :find_survey
@@ -24,5 +24,9 @@ class Surveys::SurveyResponsesController < ApplicationController
 
   def response_params
     params.require(:survey_response).permit(:user_id, :answers_attributes => [:question_id, :text])
+  end
+
+  def set_flag
+    @flag = 'survey'
   end
 end

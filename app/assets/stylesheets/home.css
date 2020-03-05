@@ -1,3 +1,9 @@
+.active-tab {
+	border: 1px solid red;
+	border-radius:4px;
+	background-color: yellow;
+	padding: 3px 5px;
+}
 .user-details .avathar {
 	margin-right: 4px;
 }

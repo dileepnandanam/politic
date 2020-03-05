@@ -3,11 +3,14 @@
     %h3= "My #{AppConst::GroupType.pluralize}"
     - @groups.each do |group|
       = render partial: 'group', locals: {group: group, actions: true}
-    - @other_groups.each do |group|
-      = render partial: 'group', locals: {group: group, actions: false}
   .new-question
   .questions-actions
     = link_to "New #{AppConst::GroupType.camelize}", new_group_path, class: 'add-question', remote: true
+
+  %h3= "Other Projects"
+  - @other_groups.each do |group|
+    = render partial: 'group', locals: {group: group, actions: false}
+  
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
   %h3
     = "Find #{AppConst::GroupType.pluralize.camelize}"
