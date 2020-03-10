@@ -187,3 +187,8 @@ legend {
   font-weight: normal;
   word-break: break-all;
 }
+.form-check input {
+  margin-top: 5px;
+  width: 28px;
+  height: 28px;
+}
