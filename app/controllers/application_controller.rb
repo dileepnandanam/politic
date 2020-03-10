@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     def authenticate_user!
       unless current_user.present?
         session[:after_sign_in_path] = request.url
-        redirect_to user_facebook_omniauth_authorize_path
+        redirect_to new_user_session_path
       end
     end
 
