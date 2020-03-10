@@ -11,7 +11,7 @@ class QuickPolls::QuickPollResponsesController < ApplicationController
   def create
     @quick_poll.quick_poll_responses.create(response_params.merge(user_id: current_user.id))
     flash[:notice] = "Successfully polled"
-    redirect_to root_path
+    render 'thanks', layout: false
   end
 
   protected

@@ -1,4 +1,4 @@
-= simple_form_for([@quick_poll, @quick_poll_response]) do |f|
+= simple_form_for([@quick_poll, @quick_poll_response], html:{remote: true, class: 'quick-poll-form'}) do |f|
   = f.input :question_id, as: :radio_buttons, collection: @quick_poll.questions.map{|q| [q.id, q.text]}, label_method: :second, value_method: :first, label: @quick_poll.description
   = f.submit 'Submit', class: 'btn-primary'
   .clearfix

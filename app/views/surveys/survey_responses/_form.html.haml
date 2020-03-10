@@ -1,4 +1,4 @@
-= simple_form_for([@survey, @survey_response]) do |f|
+= simple_form_for([@survey, @survey_response], html:{remote: true, class: 'survey_response_form' }) do |f|
   = f.fields_for :answers do |af|
     = af.input :text, label: af.object.question.text
     = af.hidden_field :question_id, value: af.object.question.id

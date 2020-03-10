@@ -13,7 +13,7 @@ class Surveys::SurveyResponsesController < SurveysController
   def create
     @response = SurveyResponse.create response_params.merge(user_id: current_user.id, survey_id: @survey.id)
     flash[:notice] = "Successfully answered survey"
-    redirect_to root_path
+    render 'thanks', layout: false
   end
 
   protected

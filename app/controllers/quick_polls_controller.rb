@@ -28,7 +28,7 @@ class QuickPollsController < ApplicationController
   end
 
   def edit
-    @quick_poll = current_user.quick_poll.find(params[:id])
+    @quick_poll = current_user.quick_polls.find(params[:id])
     render 'edit', layout: false, status: 200
   end
 
@@ -42,7 +42,7 @@ class QuickPollsController < ApplicationController
   end
 
   def update
-    @quick_poll = current_user.quick_poll.find(params[:id])
+    @quick_poll = current_user.quick_polls.find(params[:id])
     if @quick_poll.update(quick_poll_params)
       render 'quick_poll', layout: false, status: 200
     else
