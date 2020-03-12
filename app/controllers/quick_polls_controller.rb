@@ -2,8 +2,8 @@ class QuickPollsController < ApplicationController
   before_action :check_user, only: [:index, :dashboard, :responses, :new, :edit, :create, :update, :destroy]
   before_action :find_quick_poll, only: [:dashboard, :responses]
   def index
-    @quick_poll = current_user.quick_polls
-    @other_quick_poll = QuickPoll.joins(:user).where(user_id: current_user.id).all
+    @quick_polls = current_user.quick_polls
+    @other_quick_polls = QuickPoll.joins(:user).where("quick_polls.user_id <> #{current_user.id}").all
   end
 
   def search
@@ -51,7 +51,7 @@ class QuickPollsController < ApplicationController
   end
 
   def destroy
-    @quick_poll = current_user.quick_poll.find(params[:id])
+    @quick_poll = current_user.quick_polls.find(params[:id])
     @quick_poll.destroy
     render json: {message: 'quick_poll deleted'}
   end

@@ -1,13 +1,15 @@
 .my-space.col-lg-4.col-sm-6.col-12.pull-left
   .responses-container.questions-container
     %h3= "My QuickPolls"
-    - @quick_poll.each do |quick_poll|
+    - @quick_polls.each do |quick_poll|
       = render partial: 'quick_poll', locals: {quick_poll: quick_poll, actions: true}
-    - @other_quick_poll.each do |quick_poll|
-      = render partial: 'quick_poll', locals: {quick_poll: quick_poll, actions: false}
   .new-question
   .questions-actions
     = link_to "New QuickPoll", new_quick_poll_path, class: 'add-question', remote: true
+  
+  %H3= "Other Quick Polls"
+  - @other_quick_polls.each do |quick_poll|
+    = render partial: 'quick_poll', locals: {quick_poll: quick_poll, actions: false}
 
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
   %h3

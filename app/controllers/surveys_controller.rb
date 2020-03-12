@@ -4,7 +4,7 @@ class SurveysController < ApplicationController
   before_action :set_flag
   def index
     @surveys = current_user.surveys
-    @other_surveys = Survey.joins(:user).where(user_id: current_user.id).all
+    @other_surveys = Survey.joins(:user).where("surveys.user_id <> #{current_user.id}").all
   end
 
   def search

@@ -188,7 +188,12 @@ legend {
   word-break: break-all;
 }
 .form-check input {
-  margin-top: 5px;
-  width: 28px;
-  height: 28px;
+  margin-top: 5px !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+.form-check label {
+  margin-left: 20px !important;
+  margin-top: 5px !important;
+  padding-top: 0px !important;
 }
