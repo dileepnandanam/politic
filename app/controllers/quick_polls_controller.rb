@@ -7,8 +7,8 @@ class QuickPollsController < ApplicationController
   end
 
   def search
-    @quick_poll = QuickPoll.where("name ~* '#{params[:query]}' or description ~* '#{params[:query]}'").paginate(page: params[:page], per_page: 5)
-    render 'quick_poll', layout: false
+    @quick_polls = QuickPoll.where("name ~* '#{params[:query]}' or description ~* '#{params[:query]}'").paginate(page: params[:page], per_page: 5)
+    render 'quick_polls', layout: false
   end
 
   def dashboard

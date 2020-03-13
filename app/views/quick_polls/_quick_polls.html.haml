@@ -1,5 +1,5 @@
-- quick_poll.each do |g|
-  = render partial: 'quick_polls/quick_poll', locals: {quick_poll: g, actions: false}
+- quick_polls.each do |q|
+  = render partial: 'quick_polls/quick_poll', locals: {quick_poll: q, actions: false}
 .more-responses
-  - if quick_poll.next_page
+  - if quick_polls.next_page
     = link_to 'View more', search_quick_poll_path(query: params[:query], page: (params[:page].present? ? params[:page].to_i + 1 : 2)), remote: true, class: 'view-more'
