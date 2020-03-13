@@ -27,9 +27,10 @@
           .clearfix
       .nav-bar
         - if current_user
-          
+          = link_to "Log Out", destroy_session_path(current_user), method: :delete, class: 'pull-right'
           = link_to current_user.name || current_user.email, connections_users_path, class: 'pull-right my-connections' + (current_user.has_unread_chats ? ' has-new-chats' : '')
           = link_to "dashboard", '/dashboard', class: 'pull-right'
+          
         - else
           
           = link_to "Sign in", new_user_session_path, class: 'pull-right'

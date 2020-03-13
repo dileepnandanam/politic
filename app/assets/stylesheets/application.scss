@@ -229,3 +229,11 @@ a, a:hover {
   color: yellow;
   color: yellow;
 }
+
+input[type='checkbox'] {
+  width: 10px;
+  height: 10px;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  margin-right: 0px;
+}

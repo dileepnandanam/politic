@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
-
+  
   root to: "posts#index"
   get 'dashboard', to: 'home#dashboard'
   get 'accepted_responses', to: 'home#accepted_responses'
