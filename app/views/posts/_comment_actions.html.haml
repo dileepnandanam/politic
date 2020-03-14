@@ -8,5 +8,5 @@
   - else
     - upvote_link = upvote_post_comment_path(post.post, post)
     - downvote_link = downvote_post_comment_path(post.post, post)
-  = link_to "#{post.upvote_count} upvotes", upvote_link, remote: true, method: :put, class: 'cast-vote comment-action'
-  = link_to "#{post.downvote_count} downvotes", downvote_link, remote: true, method: :put, class: 'cast-vote comment-action'
+  = link_to "#{post.upvote_count} upvotes", upvote_link, remote: true, method: :put, class: 'cast-vote comment-action pull-left'
+  = link_to "#{post.downvote_count} downvotes", downvote_link, remote: true, method: :put, class: 'cast-vote comment-action pull-left'

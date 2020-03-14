@@ -22,12 +22,14 @@ class Post < ApplicationRecord
   scope :with_orientation, -> (orientation) {
     orientation == 'straight' || orientation.blank? ? where("not(COALESCE(LOWER(title), '') LIKE '%gay%') ") : where("LOWER(title) LIKE '%#{orientation}%'")
   }
+  scope :with_group_id, -> (group_id) { where(group_id: group_id) }
 
-  def self.search(q, orientation = nil, order= 'DESC')
+
+  def self.search(q, group_id, orientation = nil, order= 'DESC')
     if match_stmt(q, '')[0].blank?
       Post.where('1 = 2')
     else
-      Post.with_orientation(orientation)
+      Post.with_orientation(orientation).with_group_id(group_id)
         .select("#{Post.new.attributes.keys.join(', ')}")
         .where(['title', 'text'].map{|att| "#{match_stmt(q, att)[0]} >= #{match_stmt(q, att)[1]}"}.join(' OR '))
         .order("updated_at #{order}")
