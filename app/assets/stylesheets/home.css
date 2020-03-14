@@ -1,3 +1,10 @@
+.search-panel {
+  width: 100% !important;
+}
+.search-panel input {
+  border-radius: 7px !important;
+  width: 100%;
+}
 .active-tab {
 	border: 1px solid red;
 	border-radius:4px;
@@ -132,10 +139,6 @@ pre code {
 	color: black !important;
 	text-decoration: none !important;
 	cursor: pointer !important;
-}
-.search-panel input {
-	width: 100% !important;
-  border-radius: 7px !important;
 }
 .invalid-feedback {
 	font-size: 25px !important;
