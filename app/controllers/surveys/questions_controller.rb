@@ -52,7 +52,7 @@ class Surveys::QuestionsController < SurveysController
   end
 
   def question_params
-    params.require(:question).permit(:text)
+    params.require(:question).permit(:text, :answer_type)
   end
 
   def set_flag

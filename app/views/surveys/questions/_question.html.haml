@@ -8,3 +8,16 @@
       = link_to 'delete', survey_question_path(@survey, question), method: 'delete', remote: true, class: 'delete-question'
     .clearfix
   .question-edit-form-container
+  .options-area
+    .answer-type-form
+      = simple_form_for [@survey, question] do |q|
+        = q.input :answer_type, as: :radio_buttons, collection: [['text'], ['radio'], ['checkbox']], label_method: :first, value_method: :first, label: 'Answer type'
+        = q.submit 'Change'
+        .clearfix
+
+    .options{class: (question.answer_type == 'text' ? 'd-none' : '')}
+      - question.options.each do |option|
+        = render partial: 'surveys/questions/options/option', locals: { option: option, question: question }
+    .new-option-form
+    = link_to 'New option', new_survey_question_option_path(@survey, question), remote: true, class: 'new-option pull-left ' + (question.answer_type == 'text' ? 'd-none' : '')
+    .clearfix

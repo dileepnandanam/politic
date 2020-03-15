@@ -1,0 +1,4 @@
+.option.question
+  = option.name
+  .clearfix
+  = link_to 'delete', survey_question_option_path(@survey, question, option), method: :delete, remote: true, class: 'delete-option'

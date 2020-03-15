@@ -1,3 +1,8 @@
 .question.help-text {
   margin: 0px 10px 0px 0px;
 }
+.answer-type-form {
+  border: 1px solid red;
+  margin: 2px;
+  padding: 3px 8px;
+}

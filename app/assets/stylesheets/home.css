@@ -190,12 +190,22 @@ legend {
   font-weight: normal;
   word-break: break-all;
 }
-.form-check input {
+.boolean input {
   margin-top: 5px !important;
   width: 30px !important;
   height: 30px !important;
 }
-.form-check label {
+.boolean label {
+  margin-left: 20px !important;
+  margin-top: 5px !important;
+  padding-top: 0px !important;
+}
+.radio_buttons input {
+  margin-top: 5px !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+.radio_buttons label {
   margin-left: 20px !important;
   margin-top: 5px !important;
   padding-top: 0px !important;

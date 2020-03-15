@@ -22,7 +22,7 @@ $(document).on('turbolinks:load', function() {
 		$(this).closest('form').remove()
 	})
 
-	$('.questions-container').on('ajax:success', 'form', function(e) {
+	$(document).on('ajax:success', '.questions-container > div > div > form', function(e) {
 		$(this).closest('.question').replaceWith(e.detail[2].responseText)
 	}).on('ajax:error', 'form', function(e) {
 		$(this).closest('.question-edit-form-container').html(e.detail[2].responseText)
