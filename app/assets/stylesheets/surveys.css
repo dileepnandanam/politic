@@ -6,3 +6,8 @@
   margin: 2px;
   padding: 3px 8px;
 }
+.option a {
+    color: white;
+    font-size: 20px;
+    margin-right: 12px;
+}

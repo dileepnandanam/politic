@@ -1,4 +1,6 @@
 .option.question
   = option.name
   .clearfix
+  .option-edit-form-container
+  = link_to 'edit', edit_survey_question_option_path(@survey, question, option), remote: true, class: 'edit-option'
   = link_to 'delete', survey_question_option_path(@survey, question, option), method: :delete, remote: true, class: 'delete-option'

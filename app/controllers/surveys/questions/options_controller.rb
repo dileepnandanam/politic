@@ -14,6 +14,20 @@ class Surveys::Questions::OptionsController < ApplicationController
     end
   end
 
+  def edit
+    @option = @question.options.find(params[:id])
+    render 'edit', layout: false
+  end
+
+  def update
+    @option = @question.options.find(params[:id])
+    if @option.update(option_params)
+      render 'option', layout: false, status: 200
+    else
+      render 'edit', layout: false, status: 422
+    end
+  end
+
   def destroy
     @question.options.find(params[:id]).delete
   end
