@@ -2,12 +2,16 @@
   margin: 0px 10px 0px 0px;
 }
 .answer-type-form {
-  border: 1px solid red;
+  border: 1px solid #796868;
   margin: 2px;
-  padding: 3px 8px;
+  padding: 8px;
 }
 .option a {
     color: white;
     font-size: 20px;
     margin-right: 12px;
+}
+.stunted {
+  max-height: 75px;
+  overflow: hidden;
 }
