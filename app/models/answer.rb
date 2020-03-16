@@ -1,5 +1,5 @@
 class Answer < ApplicationRecord
-  belongs_to :question
+  belongs_to :question, optional: true
   has_many :choices
   has_one :choice
   has_many :options, through: :choices

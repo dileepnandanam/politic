@@ -1,4 +1,4 @@
 class Choice < ApplicationRecord
-  belongs_to :answer
-  belongs_to :option
+  belongs_to :answer, optional: true
+  belongs_to :option, optional: true
 end

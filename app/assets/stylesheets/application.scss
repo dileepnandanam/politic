@@ -222,3 +222,15 @@ input[type='checkbox'] {
   -webkit-transform: scale(1);
   transform: scale(1)
 }
+input[type='radio'] {
+  width: 25px;
+  height: 25px;
+  margin-right: 11px;
+  padding: 12px;
+  display: inline-block;
+  margin-left: 0px;
+  margin-right: 12px;
+  position: relative;
+  -webkit-transform: scale(1);
+  transform: scale(1)
+}

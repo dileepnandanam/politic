@@ -28,7 +28,7 @@ class Surveys::SurveyResponsesController < SurveysController
   end
 
   def response_params
-    params.require(:survey_response).permit(:user_id, answers_attributes: [:question_id, :text, :choice, choices:[]])
+    params.require(:survey_response).permit(answers_attributes: [:text, :question_id, choices_attributes: [:option_id]])
   end
 
   def set_flag

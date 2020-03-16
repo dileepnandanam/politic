@@ -7,10 +7,12 @@
       = af.input :text
     - elsif af.object.question.answer_type == 'radio'
       = af.fields_for :choices do |afc|
-        = afc.radio_button :option_id, afc.object.option.id
+        = af.label afc.object.option.name
+        = afc.radio_button :option_id, afc.object.option.id, checked: false
     - elsif af.object.question.answer_type == 'checkbox'
       = af.fields_for :choices do |afc|
-        = afc.check_box :option_id, {multiple: true}, afc.object.option.id, nil
+        = af.label afc.object.option.name
+        = afc.check_box :option_id, {multiple: true, checked: false}, afc.object.option.id, nil
     = af.hidden_field :question_id, value: af.object.question.id
     .clearfix
   = f.submit 'Submit', class: 'btn-primary'
