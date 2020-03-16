@@ -3,13 +3,20 @@
     = render partial: 'users/user_details', locals: {user: r.user}
     .clearfix
     .answers
-      - r.answers.joins(:question).each do |a|
+      - r.answers.each do |a|
         .answer  
-          .question-text.pull-left.col-lg-5.col-sm-5.col-xs-12
-            = a.question.text
-          .answer-text.pull-right.col-lg-5.col-sm-5.col-xs-12
-            = a.text
-          .clearfix
+          - if a.question.answer_type == 'text'
+            .question-text.pull-left.col-lg-5.col-sm-5.col-xs-12
+              = a.question.text
+            .answer-text.pull-right.col-lg-5.col-sm-5.col-xs-12
+              = a.text
+            .clearfix
+          - elsif a.question.answer_type == 'radio'
+            .question-text.pull-left.col-lg-5.col-sm-5.col-xs-12
+              = a.question.text
+            .answer-text.pull-right.col-lg-5.col-sm-5.col-xs-12
+              = a.choices.first.option.name
+            .clearfix
 
 - if @responses.next_page
   .more-responses

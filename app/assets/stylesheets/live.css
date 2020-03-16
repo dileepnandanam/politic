@@ -2,8 +2,20 @@ body {
     background-image: none !important;
     background-color: #480d0d;
 }
+h1 {
+    font-size: 42px !important;  
+}
+h2 {
+    font-size: 38px !important;
+}
 h3 {
     font-size: 32px !important;
+}
+h4 {
+    font-size: 28px !important;
+}
+h5 {
+    font-size: 24px !important;
 }
 a.add-question {
     font-size: 20px;

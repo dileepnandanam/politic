@@ -6,11 +6,16 @@ class Surveys::SurveyResponsesController < SurveysController
   def new
     @survey_response = SurveyResponse.new
     @survey.questions.each do |q|
-      @survey_response.answers << Answer.new(question_id: q.id)
+      answer = Answer.new(question_id: q.id)
+      @survey_response.answers << answer
+      q.options.each do |opt|
+        answer.choices << Choice.new(option_id: opt.id)
+      end
     end
   end
 
   def create
+    binding.pry
     @response = SurveyResponse.create response_params.merge(user_id: current_user.id, survey_id: @survey.id)
     flash[:notice] = "Successfully answered survey"
     render 'thanks', layout: false
@@ -23,7 +28,7 @@ class Surveys::SurveyResponsesController < SurveysController
   end
 
   def response_params
-    params.require(:survey_response).permit(:user_id, :answers_attributes => [:question_id, :text])
+    params.require(:survey_response).permit(:user_id, answers_attributes: [:question_id, :text, :choice, choices:[]])
   end
 
   def set_flag

@@ -1,6 +1,17 @@
 = simple_form_for([@survey, @survey_response], html:{remote: true, class: 'survey_response_form' }) do |f|
   = f.fields_for :answers do |af|
-    = af.input :text, label: af.object.question.text
+    = af.object.question.text
+    .clearfix
+    - if af.object.question.answer_type == 'text'
+      = af.object.question.text
+      = af.input :text
+    - elsif af.object.question.answer_type == 'radio'
+      = af.fields_for :choices do |afc|
+        = afc.radio_button :option_id, afc.object.option.id
+    - elsif af.object.question.answer_type == 'checkbox'
+      = af.fields_for :choices do |afc|
+        = afc.check_box :option_id, {multiple: true}, afc.object.option.id, nil
     = af.hidden_field :question_id, value: af.object.question.id
+    .clearfix
   = f.submit 'Submit', class: 'btn-primary'
   .clearfix

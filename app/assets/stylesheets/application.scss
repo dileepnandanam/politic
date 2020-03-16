@@ -25,6 +25,10 @@
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700,900&display=swap');
 
+h1 {
+  font-size: 30px;
+}
+
 a {
   font-size: 24px;
 }
@@ -35,14 +39,6 @@ body {
   background-size: cover;
   background-size: cover;
   font-family: 'Rubik', sans-serif;
-}
-input[type='checkbox'] {
-  padding: 1vw;
-  display: inline-block;
-  margin-left: 0vw;
-  margin-right: 4vw;
-  position: relative;
-  transform: scale(3);
 }
 input, input:hover, label {
   color: #a0b03e !important;
@@ -102,22 +98,6 @@ form a {
 }
 .user-details img {
 	width: 30px;
-}
-H1 {
-  font-size: 6vw;
-}
-h2 {
-	font-size: 5vw;
-}
-h3 {
-	font-size: 4vw;
-	font-weight: 200;
-}
-h4 {
-	font-size: 3vw;
-}
-h5 {
-	font-size: 2vw;
 }
 .view-more {
 	margin-bottom: 10px;
@@ -231,9 +211,14 @@ a, a:hover {
 }
 
 input[type='checkbox'] {
-  width: 10px;
-  height: 10px;
+  width: 25px;
+  height: 25px;
+  margin-right: 11px;
+  padding: 12px;
+  display: inline-block;
+  margin-left: 0px;
+  margin-right: 12px;
+  position: relative;
   -webkit-transform: scale(1);
-  transform: scale(1);
-  margin-right: 0px;
+  transform: scale(1)
 }
