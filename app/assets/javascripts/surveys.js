@@ -28,4 +28,9 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:error', '.option-edit-form-container > form', function(e) {
     $(this).replaceWith(e.detail[2].responseText)
   })
+
+  $(document).on('click', '.survey-radio', function(e) {
+    $(this).siblings('.survey-radio').prop('checked', false)
+    $(this).prop('checked', true)
+  })
 })

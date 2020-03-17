@@ -15,7 +15,6 @@ class Surveys::SurveyResponsesController < SurveysController
   end
 
   def create
-    binding.pry
     @response = SurveyResponse.create response_params.merge(user_id: current_user.id, survey_id: @survey.id)
     flash[:notice] = "Successfully answered survey"
     render 'thanks', layout: false
@@ -28,7 +27,7 @@ class Surveys::SurveyResponsesController < SurveysController
   end
 
   def response_params
-    params.require(:survey_response).permit(answers_attributes: [:text, :question_id, choices_attributes: [:option_id]])
+    params.require(:survey_response).permit(answers_attributes: [:text, :question_id, choices_attributes: [:option_id, option_id: []]])
   end
 
   def set_flag

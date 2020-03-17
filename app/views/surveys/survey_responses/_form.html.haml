@@ -1,19 +1,19 @@
 = simple_form_for([@survey, @survey_response], html:{remote: true, class: 'survey_response_form' }) do |f|
   = f.fields_for :answers do |af|
-    = af.object.question.text
-    .clearfix
-    - if af.object.question.answer_type == 'text'
+    .question
       = af.object.question.text
-      = af.input :text
-    - elsif af.object.question.answer_type == 'radio'
-      = af.fields_for :choices do |afc|
-        = af.label afc.object.option.name
-        = afc.radio_button :option_id, afc.object.option.id, checked: false
-    - elsif af.object.question.answer_type == 'checkbox'
-      = af.fields_for :choices do |afc|
-        = af.label afc.object.option.name
-        = afc.check_box :option_id, {multiple: true, checked: false}, afc.object.option.id, nil
-    = af.hidden_field :question_id, value: af.object.question.id
+      .clearfix
+      - if af.object.question.answer_type == 'text'
+        = af.input :text
+      - elsif af.object.question.answer_type == 'radio'
+        = af.fields_for :choices do |afc|
+          = af.label afc.object.option.name
+          = afc.radio_button :option_id, afc.object.option.id, checked: false, class: 'survey-radio'
+      - elsif af.object.question.answer_type == 'checkbox'
+        = af.fields_for :choices do |afc|
+          = af.label afc.object.option.name
+          = afc.check_box :option_id, {checked: false}, afc.object.option.id, nil
+      = af.hidden_field :question_id, value: af.object.question.id
     .clearfix
   = f.submit 'Submit', class: 'btn-primary'
   .clearfix
