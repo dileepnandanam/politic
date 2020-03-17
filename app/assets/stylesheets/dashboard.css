@@ -31,7 +31,6 @@
 .answer {
   margin: 5px 0px 8px 0px;
   padding: 6px;
-  background: linear-gradient(45deg, #464a0b, transparent);
   border: 2px solid indianred;
   border-radius: 8px;
 }

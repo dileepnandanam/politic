@@ -1,3 +1,4 @@
 = simple_form_for([@survey, @question, @option], html:{class: 'option-form', remote: true}) do |f|
   = f.input :name
   = f.submit 'submit'
+  = link_to 'cancel', '#', class: 'cancel-form pull-left', remote: true
