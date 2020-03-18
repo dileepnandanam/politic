@@ -5,4 +5,8 @@ $(document).on('turbolinks:load', function() {
     $('.survey_response_form, .quick-poll-form').replaceWith('<h1>Something went wrong.Try again later</h1>')
   })
 
+  $(document).on('click', '.survey-radio', function(e) {
+    $(this).siblings('.survey-radio').prop('checked', false)
+    $(this).prop('checked', true)
+  })
 })

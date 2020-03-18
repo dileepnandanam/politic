@@ -29,7 +29,5 @@ $(document).on('turbolinks:load', function() {
     $(this).replaceWith(e.detail[2].responseText)
   })
 
-  $(document).on('change', 'input[name="question[answer_type]"]', function(e) {
-    $(this).closest('form').find('input[type="submit"]').removeClass('d-none')
-  })
+ 
 })
