@@ -9,7 +9,7 @@
       .pull-left
         = link_to 'delete', quick_poll_path(quick_poll), method: 'delete', remote: true, class: 'delete-question'
       .pull-left
-        = link_to 'dashboard', dashboard_quick_poll_path(quick_poll)
+        = link_to 'dashboard', dashboard_quick_poll_path(quick_poll), class: 'dashboard'
   .pull-left
     = link_to 'submit', new_quick_poll_quick_poll_response_path(quick_poll)
   .clearfix

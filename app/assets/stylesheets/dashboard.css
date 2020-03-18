@@ -9,7 +9,7 @@
   color: white;
 }
 .question:last-child {
-	margin-bottom: 0px;
+	margin-bottom: 8px;
 }
 .question-actions {
 	margin-top: 20px;

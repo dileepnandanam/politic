@@ -1,6 +1,12 @@
 .question.help-text {
   margin: 0px 10px 0px 0px;
 }
+.question-text {
+  margin-bottom: 12px;
+}
+.question textarea {
+  margin-top: 12px;
+}
 .answer-type-form {
   margin: 2px;
   padding: 8px;
@@ -40,4 +46,14 @@ a.edit-option, a.delete-option, a.edit-question, a.delete-question, a.new-option
 } 
 .answer .question-text, .answer .answer-text {
   font-weight: normal;
+}
+.dashboard {
+  font-weight: normal;
+}
+
+.edit-question, .delete-question, .dashboard, .delete-option, .edit-option, .new-option, .add-question {
+  padding: 3px 5px;
+  border-radius: 5px;
+  border: 2px solid #3d3d3f;
+  margin-top: 8px; 
 }

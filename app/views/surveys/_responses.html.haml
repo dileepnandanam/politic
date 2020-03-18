@@ -28,7 +28,8 @@
           .answer-text.pull-right.col-lg-6.col-sm-5.col-xs-12
             - if a.choices.present?
               - a.choices.each do |choice|
-                = choice.option.name
+                .question
+                  = choice.option.name
               .clearfix
             - else
               = 'User has skipped this question'

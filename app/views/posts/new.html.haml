@@ -1,6 +1,6 @@
 = simple_form_for(@post, remote: true, html: { class: 'post-form' }) do |f|
   = f.input :title
-  = f.input :text
+  = f.input :text, label: 'Content'
   .image-upload
     = f.input :image, label: 'Upload image'
   .clearfix

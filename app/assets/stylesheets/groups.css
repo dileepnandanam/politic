@@ -10,6 +10,7 @@
 .post {
   padding-bottom: 8px;
   background-color: white;
+  border-radius: 12px;
 }
 .group-post:first-child {
 	margin-top: 12px;
