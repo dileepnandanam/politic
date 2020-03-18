@@ -1,4 +1,4 @@
-.my-space.col-lg-4.col-sm-6.col-xs-12.pull-left
+.my-space.col-lg-4.col-md-6.col-sm-6.col-xs-12col-12.pull-left
   %h3
     Survey Questions
   - if @questions.count == 0
@@ -12,12 +12,12 @@
   .questions-actions
     = link_to 'Add question', new_survey_question_path(@survey), class: 'add-question', remote: true
     = link_to 'Preview', new_survey_survey_response_path(@survey)
-.my-space
+.my-space.col-lg-8.col-md-6.col-sm-6.col-xs-12.col-12.pull-left
   %h3
     Survey Responses
   - if @responses.count == 0
     .question.help-text
       %p
         No submissions made to the survey
-  .responses-container.my-space.col-lg-8.col-sm-6.col-12.pull-left
+  .responses-container
     = render partial: 'responses'

@@ -3,8 +3,9 @@ $(document).on('turbolinks:load', function() {
     $(this).siblings('.new-option-form').html(e.detail[2].responseText)
   })
   
-  $(document).on('ajax:success', '.option-form', function(e) {
+  $(document).on('ajax:success', '.new-option-form > form', function(e) {
     $(this).closest('.new-option-form').siblings('.options').append(e.detail[2].responseText)
+    $(this).remove()
   })
 
   $(document).on('ajax:error', '.option-form', function(e) {
@@ -25,9 +26,8 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.option-edit-form-container > form', function(e) {
     $(this).closest('.option').replaceWith(e.detail[2].responseText)
   })
-  $(document).on('ajax:error', '.option-edit-form-container > form', function(e) {
-    $(this).replaceWith(e.detail[2].responseText)
-  })
 
- 
+  $(document).on('change', 'input[name="question[answer_type]"]', function(e) {
+    $(this).closest('form').find('input[type="submit"]').removeClass('d-none')
+  })
 })

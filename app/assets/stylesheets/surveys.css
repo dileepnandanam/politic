@@ -32,3 +32,12 @@
   background-color: white !important;
   color: black !important;
 }
+.new-option {
+  font-size: 20px;
+}
+a.edit-option, a.delete-option, a.edit-question, a.delete-question, a.new-option {
+  font-weight: normal;
+} 
+.answer .question-text, .answer .answer-text {
+  font-weight: normal;
+}

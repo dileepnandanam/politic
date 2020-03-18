@@ -1,4 +1,4 @@
-= simple_form_for [@survey, @question], remote: true do |f|
+= simple_form_for [@survey, @question], {remote: true, class: 'option-form'} do |f|
   = f.input :text, label: false
   .clearfix
   = f.submit 'Submit', class: 'btn-primary float-left'

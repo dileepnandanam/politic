@@ -8,21 +8,30 @@
           .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
             = a.question.text
           .answer-text.pull-right.col-lg-6.col-sm-6.col-xs-12
-            = a.text
+            - if a.text.present?
+              = a.text
+            - else
+              = 'User has skipped this question'
           .clearfix
         - elsif a.question.answer_type == 'radio'
           .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
             = a.question.text
           .answer-text.pull-right.col-lg-6.col-sm-6.col-xs-12
-            = a.choices.first.option.name
+            - if a.choices.present?
+              = a.choices.first.option.name
+            - else
+              = 'User has skipped this question'
           .clearfix
         - elsif a.question.answer_type == 'checkbox'
           .question-text.pull-left.col-lg-6.col-sm-5.col-xs-12
             = a.question.text
           .answer-text.pull-right.col-lg-6.col-sm-5.col-xs-12
-            - a.choices.each do |choice|
-              = choice.option.name
+            - if a.choices.present?
+              - a.choices.each do |choice|
+                = choice.option.name
               .clearfix
+            - else
+              = 'User has skipped this question'
           .clearfix
 - if @responses.next_page
   .more-responses
