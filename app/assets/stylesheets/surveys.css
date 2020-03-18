@@ -21,3 +21,15 @@
 .responses-container .user-name {
   color: yellow;
 }
+.survey-label {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+.survey-question-text {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+.response-form, .response-form .question, .response-form.question {
+  background-color: white !important;
+  color: black !important;
+}
