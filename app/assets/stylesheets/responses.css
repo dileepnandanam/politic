@@ -8,3 +8,9 @@
 .new_response {
 	margin-top: 10px;
 }
+.accepted-responses > .question > .user-details {
+  color: white !important;
+}
+.leave-chat {
+  color: yellow !important;
+}

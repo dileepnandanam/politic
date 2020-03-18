@@ -2,7 +2,6 @@
   margin: 0px 10px 0px 0px;
 }
 .answer-type-form {
-  border: 1px solid #796868;
   margin: 2px;
   padding: 8px;
 }
@@ -29,7 +28,7 @@
   font-size: 24px;
   margin-bottom: 12px;
 }
-.response-form, .response-form .question, .response-form.question {
+.response-form, .response-form .question, .response-form.question, .response-form.question label {
   background-color: white !important;
   color: black !important;
 }
