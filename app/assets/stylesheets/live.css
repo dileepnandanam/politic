@@ -113,7 +113,7 @@ form input, form textarea {
     background: transparent !important;
 }
 .question {
-    background: darkcyan !important;
+    background-color: #4670e2 !important
 }
 .comment, .post {
     overflow: auto !important;

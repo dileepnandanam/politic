@@ -2,7 +2,7 @@
 	background-color: white;
 	border-radius: 5px;
 	padding: 12px;
-	margin: 15px 0px 15px 0px;
+	margin: 15px 0px 0px 0px;
 	/*box-shadow: 2px 2px 3px #f2f5f9;*/
 }
 .question a {
@@ -33,7 +33,7 @@
   padding: 6px;
   border: 2px solid #210d0d;
   border-radius: 8px;
-  background: seagreen;
+  background: #2e358b;
 }
 .answer:last-child {
 	margin-bottom: 12px;

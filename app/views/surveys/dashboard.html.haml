@@ -5,7 +5,7 @@
     .question.help-text
       %p
         You haven't created any questions.
-  .questions-container.reorderable
+  .questions-container.responses-container.reorderable
     - @questions.each do |question|
       = render partial: 'surveys/questions/question', locals: {question: question}
   .new-question

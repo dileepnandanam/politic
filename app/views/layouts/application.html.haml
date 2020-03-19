@@ -11,7 +11,7 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body{style: "background-image: url('#{default_background}')"}
+  %body
     - if @group.present?
       .banner{style: "background-image: url(#{@group.present? ? @group.image.url : 'https://indiasudar.files.wordpress.com/2008/11/dsc05802.jpg'})"}
         .banner-heading
