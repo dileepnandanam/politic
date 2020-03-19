@@ -11,6 +11,8 @@
   padding-bottom: 8px;
   background-color: white;
   border-radius: 12px;
+  padding: 21px;
+  text-align: justify;
 }
 .group-post:first-child {
 	margin-top: 12px;
@@ -20,7 +22,7 @@
   font-weight: 400;
   font-size: 20px;
   letter-spacing: 1px;
-  line-height: 16px;
+  line-height: 30px;
   color: #0a0801;
   word-break: break-word;
 }
@@ -114,4 +116,12 @@ a.user-switch.pull-left {
   padding: 1px;
   border-radius: 9px;
   background-color: blue;
+}
+.post-title {
+  width: 100%;
+}
+.post-title h1 {
+  width: 70%;
+  margin: auto;
+  text-align: center;
 }

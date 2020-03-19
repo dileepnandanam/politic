@@ -5,7 +5,7 @@
     = link_to 'delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right'
   .clearfix
   .post-title
-    %h2= link_to post.title, post_path(post)
+    %h1= link_to post.title, post_path(post)
   .post-body
     = auto_link MarkdownRenderer.render(post.text), html: {target: '_blank'}
     - if post.image.present?

@@ -4,7 +4,7 @@
       = link_to 'delete', group_post_path(post.group, post), remote: true, method: :delete, class: 'delete-post'
   .clearfix
   .post-title
-    %h2= link_to post.title, group_post_path(post.group, post)
+    %h1= link_to post.title, group_post_path(post.group, post)
   .post-body
     = auto_link MarkdownRenderer.render(post.text), html: {target: '_blank'}
     - if post.image.present?
