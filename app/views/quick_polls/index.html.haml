@@ -7,13 +7,14 @@
   .questions-actions
     = link_to "New QuickPoll", new_quick_poll_path, class: 'add-question', remote: true
   
-  %H3= "Other Quick Polls"
-  - @other_quick_polls.each do |quick_poll|
-    = render partial: 'quick_poll', locals: {quick_poll: quick_poll, actions: false}
+  - if false
+    %H3= "Other Quick Polls"
+    - @other_quick_polls.each do |quick_poll|
+      = render partial: 'quick_poll', locals: {quick_poll: quick_poll, actions: false}
 
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
   %h3
-    = "Find QuickPoll"
+    = "Find QuickPolls"
   .search
     = text_field_tag 'search', nil, placeholder: 'search', data: {url: search_quick_polls_path(page: 1)}
   .clearfix

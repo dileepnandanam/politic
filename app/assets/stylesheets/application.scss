@@ -40,7 +40,7 @@ body {
   background-size: cover;
   font-family: 'Rubik', sans-serif;
 }
-input, input:hover, label {
+input, input:hover {
   color: #a0b03e !important;
 }
 input[type='submit']:hover {
@@ -127,7 +127,7 @@ body {
 	overflow: hidden;
 }
 .page {
-	background: rgba(4,5,7,0.5);
+	background: #cdfcd780;
 	color: white;
 	margin: auto;
 	padding: 0px 0px 20px 0px;
@@ -142,7 +142,7 @@ a, a:hover {
   background-size: cover;
   position: relative;
   width: 100%;
-  padding: 74% 0px 0px 0px;
+  padding: 20px 10px 10px 10px;
   background-position: center;
 }
 .banner.posts_page {
@@ -160,25 +160,23 @@ a, a:hover {
 	height: 28%;
 }
 .banner-heading {
-	text-shadow: 0px 1px 13px #b1b125, 0 0px 11px #7b775a;
+	text-shadow: 0px 1px 13px #15150a, 0 0px 11px #080804;
 	position: relative;
 	margin: auto;
+  margin-top: 20px;
 	width: 70%;
 	text-align: center;
 	color: white;
-	font-size: 6vw;
-  position: absolute;
-  top: 46%;
+	font-size: 24px;
   width: 100%;
 }
 .banner-site-description {
+  text-shadow: 0px 1px 13px #15150a, 0 0px 11px #080804;
   margin: auto;
-  margin-top: 7vh;
+  margin-top: 12px;
   width: fit-content;
   color: yellow;
-  font-size: 4vw;
-  position: absolute;
-  top: 65%;
+  font-size: 20px;
   width: 100%;
   text-align: center;
 }
@@ -233,4 +231,10 @@ input[type='radio'] {
   position: relative;
   -webkit-transform: scale(1);
   transform: scale(1)
+}
+label {
+  color: #11120b;
+}
+.btn-primary {
+  border: 2px solid black !important;
 }

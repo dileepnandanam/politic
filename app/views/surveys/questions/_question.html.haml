@@ -12,7 +12,7 @@
     .answer-type-form-container
       = simple_form_for [@survey, question], html: {class: 'answer-type-form', remote: true} do |q|
         = q.input :answer_type, as: :radio_buttons, collection: [['text'], ['radio'], ['checkbox']], label_method: :first, value_method: :first, :class => 'question-type'
-        = q.submit 'Change', class: 'd-none'
+        = q.submit 'Change', class: 'd-none btn-primary'
         .clearfix
 
     .options{class: (question.answer_type == 'text' ? 'd-none' : '')}

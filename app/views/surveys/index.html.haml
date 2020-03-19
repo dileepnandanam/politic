@@ -6,9 +6,11 @@
   .new-question
   .questions-actions
     = link_to "New Survey", new_survey_path, class: 'add-question', remote: true
-  %H3= "Other Surveys"
-  - @other_surveys.each do |survey|
-    = render partial: 'survey', locals: {survey: survey, actions: false}
+    
+    - if false
+      %H3= "Other Surveys"
+      - @other_surveys.each do |survey|
+        = render partial: 'survey', locals: {survey: survey, actions: false}
 
   
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
