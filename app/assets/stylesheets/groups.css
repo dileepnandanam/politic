@@ -125,3 +125,6 @@ a.user-switch.pull-left {
   margin: auto;
   text-align: center;
 }
+.expand-comment {
+  font-size: 17px;
+}
