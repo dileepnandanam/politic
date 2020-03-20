@@ -1,7 +1,7 @@
 .new-response
   %h3
-    You dont have access to this resource
+    Please Sign up or sign in if you have already joined
   .actions
-    = link_to 'sign in', new_user_session_path
+    = link_to 'Already joined', new_user_session_path, class: 'session-links btn-primary'
     %br
-    = link_to 'sign up', new_user_registration_path
+    = link_to 'Sign up', new_user_registration_path, class: 'session-links btn-primary'

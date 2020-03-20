@@ -32,6 +32,15 @@ h1 {
 a {
   font-size: 24px;
 }
+.flash {
+  font-size: 24px !important;
+}
+.session-links {
+  color: white !important;
+  padding: 4px;
+  margin-top: 12px;
+  display: inline-block;
+}
 body {
 	min-height: 100vh;
   background-color: #9d97f5d4;
@@ -199,7 +208,7 @@ input, textarea {
   color: white !important;
 }
 .response-form {
-  background-color: #263636 !important;
+  background-color: #513bbb !important;
   padding: 2% !important;
 }
 a, a:hover {
