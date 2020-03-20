@@ -1,3 +1,14 @@
+bind_post = function() {
+  $(document).on('ajax:success', '.group-post-form, .post-form', function(e, data, status, xhr) {
+    $(document).off('ajax:success', '.group-post-form, .post-form')
+    $(this).remove()
+    $('.posts-container').prepend(e.detail[2].responseText)
+    bind_post()
+  }).on('ajax:error', function(e, data, status, xhr) {
+    $('.group-post-form, .post-form').replaceWith(e.detail[2].response)
+  })
+}
+bind_post()
 $(document).on('turbolinks:load', function() {
 	$('.new-group-post').on('ajax:success', function(e) {
 		new_post = $('.new-post')
@@ -40,17 +51,5 @@ $(document).on('turbolinks:load', function() {
     	$(this).replaceWith(e.detail[2].responseText)
     })
 
-    $(document).on('ajax:success', '.group-post-form', function(e, data, status, xhr) {
-      $('.posts-container').prepend(e.detail[2].responseText)
-      $(this).remove()
-    }).on('ajax:error', function(e, data, status, xhr) {
-      $('.group-post-form, .post-form').replaceWith(e.detail[2].response)
-    })
-
-    $(document).on('ajax:success', '.post-form', function(e, data, status, xhr) {
-      $('.posts-container').prepend(e.detail[2].responseText)
-      $(this).remove()
-    }).on('ajax:error', function(e, data, status, xhr) {
-      $('.group-post-form, .post-form').replaceWith(e.detail[2].response)
-    })
+    
 })
