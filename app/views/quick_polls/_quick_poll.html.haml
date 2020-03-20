@@ -1,5 +1,6 @@
 .question
-  %h3= quick_poll.name
+  = link_to new_quick_poll_quick_poll_response_path(quick_poll) do
+    %h3.clickable= quick_poll.name
   %p
     = quick_poll.description
   - if actions

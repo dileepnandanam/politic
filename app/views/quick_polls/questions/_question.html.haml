@@ -1,5 +1,5 @@
 .question{id: "sequence_#{question.id}"}
-  .question-text
+  .question-text.clickable
     = question.text
   .count
     = "#{@quick_poll.quick_poll_responses.where(question_id: question.id).count('distinct quick_poll_responses.user_id')} people voted"

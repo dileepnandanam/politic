@@ -3,4 +3,8 @@
     %h3= @survey.name
     %p= @survey.description
   .clearfix
-  = render partial: 'form'
+  - if @survey.questions.count > 0
+    = render partial: 'form'
+  - else
+    %h3
+      This survey is not ready to answer

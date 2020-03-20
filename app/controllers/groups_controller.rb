@@ -16,8 +16,8 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     if current_user
-      unless @group.user == current_user || current_user.posted_responses.where(group_id: @group.id).first.present?
-        redirect_to new_group_response_path(@group)
+      unless @group.user == current_user || current_user.is_a_member_of(@group)
+        redirect_to new_group_response_path(@group) and return
       end
     end
     @posts = @group.posts.order('created_at DESC').paginate(page: params[:page], per_page: 2)

@@ -19,7 +19,7 @@
           .banner-site-description
             = @group.description
     .page.col-lg-12.col-sm-12.col-12
-      - if Rails.env.development? && false
+      - if Rails.env.development?
         .acc-switcher
           - User.all.each do |u|
             = link_to u.name, switch_user_path(u), class: 'user-switch pull-left'

@@ -246,3 +246,12 @@ label {
 .btn-primary {
   border: 2px solid black !important;
 }
+.clickable {
+  width: 100%;
+  background: #4d4ac8;
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+.invalid-feedback {
+  color: #d6ee14;
+}
