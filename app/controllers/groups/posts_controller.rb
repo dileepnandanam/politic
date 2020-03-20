@@ -18,7 +18,7 @@ class Groups::PostsController < PostBaseController
     @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2))
 
     if request.format.html?
-      render 'index'
+      render 'index', layout: false
     else
       render 'posts', layout: false
     end

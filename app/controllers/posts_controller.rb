@@ -6,11 +6,11 @@ class PostsController < PostBaseController
 
   def index
     if params[:query].present?
-      @posts = Post.search(params[:query], orientation)
+      @posts = Post.search(params[:query], nil, orientation)
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       mark_seen(@posts)
     else
-      @posts = Post.all
+      @posts = Post.where(group_id: nil).all
       @posts = @posts.paginate(per_page: 12, page: params[:page])
     end
 

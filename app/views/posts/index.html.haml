@@ -5,4 +5,5 @@
   .group-action
     = link_to 'New post', new_post_path, remote: true, class: 'new-group-post'
   .new-post
-  = render partial: 'posts', locals: {posts: @posts}
+  .posts-container
+    = render partial: 'posts', locals: {posts: @posts}

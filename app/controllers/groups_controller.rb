@@ -21,6 +21,12 @@ class GroupsController < ApplicationController
       end
     end
     @posts = @group.posts.order('created_at DESC').paginate(page: params[:page], per_page: 2)
+    @next_path = group_path(@group, page: (params[:page].present? ? params[:page].to_i + 1 : 2))
+    if request.format.html?
+      render 'show'
+    else
+      render 'groups/posts/posts', layout: false
+    end
   end
 
   def dashboard
