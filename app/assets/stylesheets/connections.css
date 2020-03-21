@@ -23,18 +23,19 @@
 	margin-bottom: 10px;
 	max-width: 70%;
 	border: 1px solid #ddf;
+  font-size: 24px;
 }
 .chat:last-child {
 	margin-bottom: none;
 }
 .unseen-count {
 	padding: 6px;
-    background-color: #082259;
-    border-radius: 50%;
-    margin: 5px 0px 0px 10px;
-    color: white;
-    min-width: 34px;
-    text-align: center;
+  background-color: #082259;
+  border-radius: 50%;
+  margin: 5px 0px 0px 10px;
+  color: white;
+  min-width: 34px;
+  text-align: center;
 }
 .full-width {
 	width: 100%;

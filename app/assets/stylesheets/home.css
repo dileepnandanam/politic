@@ -169,6 +169,8 @@ pre code {
 	margin-left: 20px;
 	float: left;
 	color: black;
+  padding: 3px 5px;
+  border: 1px solid white;
 }
 a.sub-nav-bar-item:hover {
 	color: red !important;

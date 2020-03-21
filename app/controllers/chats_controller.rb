@@ -6,8 +6,8 @@ class ChatsController < ApplicationController
     if @chat.save
       ApplicationCable::ChatNotificationsChannel.broadcast_to(
         @user,
-        chat: "fff",
-        sender_id: User.last.id,
+        chat: @chat.text,
+        sender_id: current_user.id,
         ack_url: ''
       )
       render 'create', layout: false

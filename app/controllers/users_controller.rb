@@ -70,11 +70,12 @@ class UsersController < ApplicationController
 
   def mark_as_seen
   	unless action_name == 'connections' and params[:user_id].nil?
-  	  @chats.update_all(seen: true)
+  	  @chats.each{|chat| chat.update(seen: true)}
     end
   end
 
   def get_chats(from_user_id)
-    Chat.where("sender_id = ? or reciver_id = ? and sender_id = ? or reciver_id = ?", current_user.id, current_user.id, from_user_id, from_user_id).order('created_at ASC')
+    total = Chat.where(sender_id: current_user.id, reciver_id: from_user_id) + Chat.where(sender_id: from_user_id, reciver_id: current_user.id)
+    total.sort_by(&:created_at)
   end
 end

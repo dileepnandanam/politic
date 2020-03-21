@@ -74,6 +74,10 @@ class Post < ApplicationRecord
     FilterPost.filter(Feed.new(user).get(self), [:text, :title], user)
   end
 
+  def children
+    comments.where(parent_id: nil)
+  end
+
   def notify_connections
     Connection.where(to_user_id: user_id).map(&:user).each do |user|
       Notifier.perform_now_or_later user, 'create', self
