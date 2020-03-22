@@ -88,6 +88,26 @@ class PostsController < PostBaseController
     }
   end
 
+  def pin
+    if current_user.admin?
+      @post = current_user.posts.find(params[:id])
+      @post.update(featured: true)
+      render 'posts/_unpin', layout: false, locals: { post: @post }
+    else
+      render json: {ack: 'unauthorized'}
+    end
+  end
+
+  def unpin
+    if current_user.admin?
+      @post = current_user.posts.find(params[:id])
+      @post.update(featured: false)
+      render 'posts/_pin', layout: false, locals: { post: @post }
+    else
+      render json: {ack: 'unauthorized'}
+    end
+  end
+
 
   protected
 

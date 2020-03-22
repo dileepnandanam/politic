@@ -2,8 +2,11 @@
   .search-panel.search
     = text_field_tag 'search',nil, placeholder: 'search', data: {url: posts_path(page: 1)}
   .clearfix
+  .featured-posts
+    - Post.where(featured: true).order('updated_at DESC').each do |p|
+      = render partial: 'post', locals: {post: p}
   .group-action
     = link_to 'New post', new_post_path, remote: true, class: 'new-group-post'
   .new-post
   .posts-container
-    = render partial: 'posts', locals: {posts: @posts}
+    = render partial: 'posts', locals: {posts: @posts.reject{|p| p.featured?}}

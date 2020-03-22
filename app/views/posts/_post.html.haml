@@ -1,12 +1,19 @@
 .group-post.post
   .post-actions.pull-right
   .pull-left.user-avathar= render partial: 'users/user_details', locals: {user: post.user}
-  - if post.user == current_user
-    = link_to 'delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right'
+  .post-actions
+    - if post.user == current_user
+      = link_to 'delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right delete-question'
+      - if current_user.admin?
+        - if post.featured?
+          = render partial: 'unpin', locals: {post: post}
+        - else
+          = render partial: 'pin', locals: {post: post}
   .clearfix
   .post-title
     %h1= link_to post.title, post_path(post)
   .post-body
+    .clearfix 
     = auto_link MarkdownRenderer.render(post.text), html: {target: '_blank'}
     - if post.image.present?
       = image_tag post.image.url(:original), class: 'post-image'

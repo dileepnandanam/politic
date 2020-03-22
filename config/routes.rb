@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     put :upvote, on: :member
     put :downvote, on: :member
     put :select_survey, on: :member
+    put :pin, on: :member
+    put :unpin, on: :member
     resources :comments, controller: 'posts/comments' do
       put :upvote, on: :member
       put :downvote, on: :member

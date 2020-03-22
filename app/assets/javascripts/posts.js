@@ -85,4 +85,8 @@ bind_survey_pin()
       $(this).closest('.post-body').find('.survey-select-container').data(id, e.detail[0].id)
       present_survey()
     })
+
+    $(document).on('ajax:success', '.feature', function(e) {
+      $(this).replaceWith(e.detail[2].responseText)
+    })
 })
