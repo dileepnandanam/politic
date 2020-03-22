@@ -10,6 +10,8 @@
     = auto_link MarkdownRenderer.render(post.text), html: {target: '_blank'}
     - if post.image.present?
       = image_tag post.image.url(:original), class: 'post-image'
+    = render partial: 'surveys/selection', locals: {post: post}
+    .survey-container{data: {id: post.survey_id}}
   = render partial: 'posts/comment_actions', locals: {post: post}
   .clearfix
   .new-comment
@@ -19,4 +21,5 @@
         - comment = post.comments.find(params[:comment_id])
       - if comment
         = render partial: 'posts/comments/comment', locals: {expand: true, new: false, comment: comment.parent || comment}
+  
   

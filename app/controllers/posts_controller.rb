@@ -72,6 +72,22 @@ class PostsController < PostBaseController
     render 'comment_actions', layout: false
   end
 
+  def select_survey
+    if params[:post][:survey_id].blank?
+      current_user.posts.find(params[:id]).update(survey_id: nil)
+      render json: {
+        ack: "No survey has got pinned to this post",
+        id: nil
+      } and return
+    end
+    @survey = current_user.surveys.find(params[:post][:survey_id])
+    current_user.posts.find(params[:id]).update(survey_id: @survey.id)
+    render json: {
+      ack: "Pinning survey #{@survey.name}",
+      id: @survey.id
+    }
+  end
+
 
   protected
 

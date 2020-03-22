@@ -1,6 +1,5 @@
 class Surveys::SurveyResponsesController < SurveysController
   before_action :check_user, only: [:create, :accept]
-  before_action :authenticate_user!, only: [:new]
   before_action :find_survey
   
   def new
@@ -11,6 +10,12 @@ class Surveys::SurveyResponsesController < SurveysController
       q.options.each do |opt|
         answer.choices << Choice.new(option_id: opt.id)
       end
+    end
+
+    if request.format.html?
+      render 'new'
+    else
+      render 'new', layout: false
     end
   end
 

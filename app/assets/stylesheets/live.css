@@ -3,7 +3,8 @@ body {
     background-color: #480d0d;
 }
 h1 {
-    font-size: 42px !important;  
+    font-size: 42px !important;
+    text-align: left !important;  
 }
 h2 {
     font-size: 38px !important;

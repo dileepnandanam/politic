@@ -1,0 +1,10 @@
+- if post.user == current_user
+  = link_to 'Pin survey to this post', '#', class: 'survey-select clickable', remote: true
+  .survey-select-container.d-none
+    = form_for [:select_survey, post], method: :put, html: {class: 'survey-select-form', remote: true} do |f|
+      = f.select :survey_id, current_user.surveys.map{|s| [s.name, s.id]}, html: {class: 'survey-select-box'}, include_blank: true
+      .clearfix
+      = f.submit 'pin survey'
+      .clearfix
+  .pin-survey-ack
+  .clearfix

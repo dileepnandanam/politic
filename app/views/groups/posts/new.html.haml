@@ -1,8 +1,6 @@
 = simple_form_for([@group, @post], remote: true, html: { class: 'group-post-form' }) do |f|
   = f.input :title
   = f.input :text
-  .image-upload
-    = f.input :image, label: 'Upload image'
   .clearfix
   = f.submit :post, class: 'btn-primary pull-left'
   = link_to 'cancel', '#', class: 'cancel-form pull-left', remote: true

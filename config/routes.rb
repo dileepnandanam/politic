@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get :preview, on: :member
     put :upvote, on: :member
     put :downvote, on: :member
+    put :select_survey, on: :member
     resources :comments, controller: 'posts/comments' do
       put :upvote, on: :member
       put :downvote, on: :member

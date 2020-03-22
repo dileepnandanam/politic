@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   belongs_to :group, optional: true
   has_many :votes
   has_many :comments
+  belongs_to :survey, optional: true
   before_destroy :cancel_notifications
 
   after_create :notify_connections
