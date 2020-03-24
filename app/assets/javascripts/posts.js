@@ -3,13 +3,15 @@ present_survey = function() {
     id = $(elem).data('id')
     if(id == null)
       $(elem).html('')
-    url = '/surveys/' + id + '/survey_responses/new'
-    $.ajax({
-      url: url,
-      success: function(data) {
-        $(elem).html(data)
-      }
-    })
+    else {
+      url = '/surveys/' + id + '/survey_responses/new'
+      $.ajax({
+        url: url,
+        success: function(data) {
+          $(elem).html(data)
+        }
+      })
+    }
   })
 }
 
@@ -18,13 +20,15 @@ present_quick_poll = function() {
     id = $(elem).data('id')
     if(id == null)
       $(elem).html('')
-    url = '/quick_polls/' + id + '/quick_poll_responses/new'
-    $.ajax({
-      url: url,
-      success: function(data) {
-        $(elem).html(data)
-      }
-    })
+    else {
+      url = '/quick_polls/' + id + '/quick_poll_responses/new'
+      $.ajax({
+        url: url,
+        success: function(data) {
+          $(elem).html(data)
+        }
+      })
+    }
   })
 }
 
@@ -33,13 +37,15 @@ present_project = function() {
     id = $(elem).data('id')
     if(id == null)
       $(elem).html('')
-    url = '/groups/' + id + '/responses/new'
-    $.ajax({
-      url: url,
-      success: function(data) {
-        $(elem).html(data)
-      }
-    })
+    else {
+      url = '/groups/' + id + '/responses/new'
+      $.ajax({
+        url: url,
+        success: function(data) {
+          $(elem).html(data)
+        }
+      })
+    }
   })
 }
 
@@ -121,6 +127,12 @@ bind_project_pin()
 
     $(document).on('ajax:success', '.view-more', function(e, data, status, xhr) {
     	$(this).replaceWith(e.detail[2].responseText)
+      bind_survey_pin()
+      present_survey()
+      bind_quick_poll_pin()
+      present_quick_poll()
+      bind_project_pin()
+      present_project()
     })
     
     $(document).on('ajax:success', '.survey-select-form', function(e) {
