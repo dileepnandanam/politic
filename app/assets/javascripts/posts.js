@@ -1,6 +1,8 @@
 present_survey = function() {
   $.each($('.survey-container'), function(i, elem) {
     id = $(elem).data('id')
+    if(id == null)
+      $(elem).html('')
     url = '/surveys/' + id + '/survey_responses/new'
     $.ajax({
       url: url,
@@ -10,9 +12,32 @@ present_survey = function() {
     })
   })
 }
+
+present_quick_poll = function() {
+  $.each($('.quick-poll-container'), function(i, elem) {
+    id = $(elem).data('id')
+    if(id == null)
+      $(elem).html('')
+    url = '/quick_polls/' + id + '/quick_poll_responses/new'
+    $.ajax({
+      url: url,
+      success: function(data) {
+        $(elem).html(data)
+      }
+    })
+  })
+}
+
 bind_survey_pin = function() {
   $('.survey-select').click(function(e) {
     $(this).siblings('.survey-select-container').removeClass('d-none')
+  })
+}
+
+
+bind_quick_poll_pin = function() {
+  $('.quick-poll-select').click(function(e) {
+    $(this).siblings('.quick-poll-select-container').removeClass('d-none')
   })
 }
 
@@ -23,6 +48,7 @@ bind_post = function() {
     $('.posts-container').prepend(e.detail[2].responseText)
     bind_post()
     bind_survey_pin()
+    bind_quick_poll_pin()
   }).on('ajax:error', function(e, data, status, xhr) {
     $('.group-post-form, .post-form').replaceWith(e.detail[2].response)
   })
@@ -31,6 +57,7 @@ bind_post()
 $(document).on('turbolinks:load', function() {
   
 bind_survey_pin()
+bind_quick_poll_pin()
 
 	$('.new-group-post').on('ajax:success', function(e) {
 		new_post = $('.new-post')
@@ -84,6 +111,21 @@ bind_survey_pin()
     $(document).on('ajax:success', '.survey-select-form', function(e) {
       $(this).closest('.post-body').find('.survey-select-container').data(id, e.detail[0].id)
       present_survey()
+    })
+
+
+
+    $(document).on('ajax:success', '.quick-poll-select-form', function(e) {
+      $(this).closest('.quick-poll-select-container').siblings('.pin-quick-poll-ack').html(e.detail[0]['ack'])
+      $(this).closest('.post-body').find('.quick-poll-container').data('id', e.detail[0]['id'])
+      $(this).closest('.quick-poll-select-container').addClass('d-none')
+      present_quick_poll()
+    })
+
+    present_quick_poll()
+    $(document).on('ajax:success', '.quick-poll-select-form', function(e) {
+      $(this).closest('.post-body').find('.quick-poll-select-container').data(id, e.detail[0].id)
+      present_quick_poll()
     })
 
     $(document).on('ajax:success', '.feature', function(e) {

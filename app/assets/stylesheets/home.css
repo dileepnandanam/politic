@@ -8,7 +8,7 @@
 .active-tab {
 	border: 1px solid red;
 	border-radius:4px;
-	background-color: yellow;
+	background-color: #baba2d;
 	padding: 3px 5px;
 }
 .user-details .avathar {
@@ -158,22 +158,26 @@ pre code {
 	font-size: 20px;
 }
 .sub-nav-bar {
-  background: azure;
+  background: #6172c2;
   position: relative;
   width: 100%;
   padding: 12px;
 }
 
 .sub-nav-bar-item {
-	display: table-cell;
-	margin-left: 20px;
-	float: left;
-	color: black;
+  display: table-cell;
+  margin-left: 20px;
+  margin-top: 10px;
+  float: left;
+  color: black;
   padding: 3px 5px;
   border: 1px solid white;
+  width: 141px;
+  border-radius: 4px;
+  text-align: center;
 }
 a.sub-nav-bar-item:hover {
-	color: red !important;
+	color: yellow !important;
 }
 .question.response-form {
 	background-color: #2d3d3d;
@@ -214,4 +218,11 @@ legend {
 }
 .question, .question-text, .answer-text {
   font-size: 24px;
+}
+.message {
+  text-align: center;
+  color: red;
+}
+.quick-poll-container {
+  margin-top: 8px;
 }

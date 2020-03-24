@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_121813) do
+ActiveRecord::Schema.define(version: 2020_03_23_052033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_121813) do
     t.boolean "hidden"
     t.integer "survey_id"
     t.boolean "featured", default: false
+    t.integer "quick_poll_id"
   end
 
   create_table "questions", force: :cascade do |t|

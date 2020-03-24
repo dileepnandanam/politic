@@ -6,6 +6,12 @@ class QuickPolls::QuickPollResponsesController < ApplicationController
   def new
     @quick_poll = QuickPoll.find(params[:quick_poll_id])
     @quick_poll_response = QuickPollResponse.new
+
+    if request.format.html?
+      render 'new'
+    else
+      render 'new', layout: false
+    end
   end
 
   def create

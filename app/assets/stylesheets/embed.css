@@ -1,0 +1,46 @@
+.question {
+  background-color: white;
+  border-radius: 5px;
+  padding: 12px;
+  margin: 15px 0px 0px 0px;
+  /*box-shadow: 2px 2px 3px #f2f5f9;*/
+}
+.question.response-form {
+  background-color: #aeb2f7;
+}
+.question p {
+  font-size: 21px;
+  font-weight: normal;
+  word-break: break-all;
+}
+.boolean input {
+  margin-top: 5px !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+.boolean label {
+  margin-left: 20px !important;
+  margin-top: 5px !important;
+  padding-top: 0px !important;
+}
+.radio_buttons input {
+  margin-top: 5px !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+.radio_buttons label {
+  margin-left: 20px !important;
+  margin-top: 5px !important;
+  padding-top: 0px !important;
+}
+.question, .question-text, .answer-text {
+  font-size: 24px;
+}
+.message {
+  text-align: center;
+  color: red;
+}
+.responses-container .question {
+  margin-right: 15px;
+}
+

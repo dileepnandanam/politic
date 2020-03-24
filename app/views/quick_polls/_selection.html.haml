@@ -1,0 +1,12 @@
+- if post.user == current_user
+  .pull-right
+    = link_to 'Pin a Quick poll', '#', class: 'quick-poll-select', remote: true
+    .clearfix
+    .quick-poll-select-container.d-none
+      = form_for [:select_quick_poll, post], method: :put, html: {class: 'quick-poll-select-form', remote: true} do |f|
+        = f.select :quick_poll_id, [['none', nil]] + current_user.quick_polls.map{|q| [q.name, q.id]}, html: {class: 'quick_poll-select-box'}
+        .clearfix
+        = f.submit 'pin'
+        .clearfix
+    .pin-quick-poll-ack
+    .clearfix

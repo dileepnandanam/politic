@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
+    %title
+      = 'say it'
+    = csrf_meta_tags
+    = csp_meta_tag
+  %body
+    .question.response-form
+      .pull-left
+        %h3= @survey.name
+        %p= @survey.description
+      .clearfix
+      - if @survey.questions.count > 0
+        = render partial: 'form'
+      - else
+        %h3.message
+          This survey is not ready to answer
+= stylesheet_link_tag('embed.css')

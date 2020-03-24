@@ -88,6 +88,22 @@ class PostsController < PostBaseController
     }
   end
 
+  def select_quick_poll
+    if params[:post][:quick_poll_id].blank?
+      current_user.posts.find(params[:id]).update(quick_poll_id: nil)
+      render json: {
+        ack: "No quick poll has got pinned to this post",
+        id: nil
+      } and return
+    end
+    @quick_poll = current_user.quick_polls.find(params[:post][:quick_poll_id])
+    current_user.posts.find(params[:id]).update(quick_poll_id: @quick_poll.id)
+    render json: {
+      ack: "Pinning quick poll #{@quick_poll.name}",
+      id: @quick_poll.id
+    }
+  end
+
   def pin
     if current_user.admin?
       @post = current_user.posts.find(params[:id])

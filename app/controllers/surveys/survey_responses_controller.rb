@@ -1,7 +1,8 @@
 class Surveys::SurveyResponsesController < SurveysController
   before_action :check_user, only: [:create, :accept]
   before_action :find_survey
-  
+  protect_from_forgery with: :exception
+
   def new
     @survey_response = SurveyResponse.new
     @survey.questions.each do |q|
@@ -11,8 +12,10 @@ class Surveys::SurveyResponsesController < SurveysController
         answer.choices << Choice.new(option_id: opt.id)
       end
     end
-
-    if request.format.html?
+    
+    if params[:embed].present?
+      render 'embed', layout: false
+    elsif request.format.html?
       render 'new'
     else
       render 'new', layout: false

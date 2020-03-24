@@ -51,7 +51,7 @@ a.edit-option, a.delete-option, a.edit-question, a.delete-question, a.new-option
   font-weight: normal;
 }
 
-.edit-question, .delete-question, .dashboard, .delete-option, .edit-option, .new-option, .add-question, .feature {
+.edit-question, .delete-question, .dashboard, .delete-option, .edit-option, .new-option, .add-question, .feature, .quick-poll-select, .survey-select {
   padding: 5px 6px;
   border-radius: 5px;
   border: 1px solid #3d3d3f;
@@ -63,4 +63,11 @@ input[name=commit], .cancel-form {
   margin-right: 12px !important;
   margin-bottom: 12px;
   margin-top: 12px;
+}
+.boolean-selector {
+  background: blue;
+  margin-top: 8px;
+}
+.quick-poll-container, .survey-container {
+  clear: both;
 }
