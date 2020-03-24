@@ -1,0 +1,12 @@
+- if post.user == current_user
+  .pull-right
+    = link_to 'Pin a Project', '#', class: 'project-select', remote: true
+    .clearfix
+    .project-select-container.d-none
+      = form_for [:select_project, post], method: :put, html: {class: 'project-select-form', remote: true} do |f|
+        = f.select :project_id, [['none', nil]] + current_user.groups.map{|q| [q.name, q.id]}, html: {class: 'project-select-box'}
+        .clearfix
+        = f.submit 'pin'
+        .clearfix
+    .pin-project-ack
+    .clearfix

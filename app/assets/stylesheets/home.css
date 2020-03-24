@@ -226,3 +226,8 @@ legend {
 .quick-poll-container {
   margin-top: 8px;
 }
+.survey-select, .quick-poll-select, .project-select {
+  float: right;
+  width: 200px;
+  text-align: center;
+}

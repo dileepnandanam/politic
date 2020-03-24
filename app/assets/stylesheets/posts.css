@@ -1,9 +1,9 @@
-#post_survey_id, #post_quick_poll_id {
+#post_survey_id, #post_quick_poll_id, #post_project_id {
   width: 200px;
   height: 40px;
   margin-top: 12px !important;
 }
-.pin-survey-ack, .pin-quick-poll-ack {
+.pin-survey-ack, .pin-quick-poll-ack, .pin-project-ack {
   margin-top: 12px;
 }
 .post-actions a {

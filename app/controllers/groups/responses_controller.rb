@@ -7,6 +7,12 @@ class Groups::ResponsesController < ApplicationController
   	@group.questions.each do |q|
       @response.answers << Answer.new(question_id: q.id)
   	end
+
+    if request.format.html?
+      render 'new'
+    else
+      render 'new', layout: false
+    end
   end
 
   def create

@@ -28,6 +28,21 @@ present_quick_poll = function() {
   })
 }
 
+present_project = function() {
+  $.each($('.project-container'), function(i, elem) {
+    id = $(elem).data('id')
+    if(id == null)
+      $(elem).html('')
+    url = '/groups/' + id + '/responses/new'
+    $.ajax({
+      url: url,
+      success: function(data) {
+        $(elem).html(data)
+      }
+    })
+  })
+}
+
 bind_survey_pin = function() {
   $('.survey-select').click(function(e) {
     $(this).siblings('.survey-select-container').removeClass('d-none')
@@ -41,6 +56,12 @@ bind_quick_poll_pin = function() {
   })
 }
 
+bind_project_pin = function() {
+  $('.project-select').click(function(e) {
+    $(this).siblings('.project-select-container').removeClass('d-none')
+  })
+}
+
 bind_post = function() {
   $(document).on('ajax:success', '.group-post-form, .post-form', function(e, data, status, xhr) {
     $(document).off('ajax:success', '.group-post-form, .post-form')
@@ -49,6 +70,7 @@ bind_post = function() {
     bind_post()
     bind_survey_pin()
     bind_quick_poll_pin()
+    bind_project_pin()
   }).on('ajax:error', function(e, data, status, xhr) {
     $('.group-post-form, .post-form').replaceWith(e.detail[2].response)
   })
@@ -58,6 +80,7 @@ $(document).on('turbolinks:load', function() {
   
 bind_survey_pin()
 bind_quick_poll_pin()
+bind_project_pin()
 
 	$('.new-group-post').on('ajax:success', function(e) {
 		new_post = $('.new-post')
@@ -126,6 +149,19 @@ bind_quick_poll_pin()
     $(document).on('ajax:success', '.quick-poll-select-form', function(e) {
       $(this).closest('.post-body').find('.quick-poll-select-container').data(id, e.detail[0].id)
       present_quick_poll()
+    })
+
+    $(document).on('ajax:success', '.project-select-form', function(e) {
+      $(this).closest('.project-select-container').siblings('.pin-project-ack').html(e.detail[0]['ack'])
+      $(this).closest('.post-body').find('.project-container').data('id', e.detail[0]['id'])
+      $(this).closest('.project-select-container').addClass('d-none')
+      present_project()
+    })
+
+    present_project()
+    $(document).on('ajax:success', '.project-select-form', function(e) {
+      $(this).closest('.post-body').find('.project-select-container').data(id, e.detail[0].id)
+      present_project()
     })
 
     $(document).on('ajax:success', '.feature', function(e) {
