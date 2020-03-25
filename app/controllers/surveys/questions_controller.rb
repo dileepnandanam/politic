@@ -2,6 +2,7 @@ class Surveys::QuestionsController < SurveysController
   before_action :check_user
   before_action :find_survey
   before_action :set_flag
+  protect_from_forgery with: :null_session
   def index
     @questions = @survey.questions
   end

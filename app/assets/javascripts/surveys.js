@@ -41,4 +41,17 @@ $(document).on('turbolinks:load', function() {
     $('.hide-options').removeClass('d-none')
     $('.option').show()
   })
+  
+  $('.questions-container.reorderable-survey-questions').sortable({
+    handle: '.survey-question-handle',
+    stop: function() {
+      $.ajax({
+        data: $('.questions-container').sortable('serialize'),
+        url: $(this).data('url'),
+        method: 'PUT'
+      })
+    }
+  })
+
+
 })

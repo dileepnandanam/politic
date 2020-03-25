@@ -20,7 +20,7 @@
     .question.help-text
       %p
         You haven't created any questions. Ask something that seeks the viewpoint of the person you want to add to this group.
-  .questions-container.reorderable
+  .questions-container.reorderable-group-questions{data:{url: reorder_group_questions_path(@group)}} 
     - @questions.each do |question|
       = render partial: 'groups/questions/question', locals: {question: question}
   .new-question

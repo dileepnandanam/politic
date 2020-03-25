@@ -1,6 +1,8 @@
 class Groups::QuestionsController < ApplicationController
   before_action :check_user
   before_action :find_group
+  protect_from_forgery with: :null_session
+
   def index
     @questions = @group.questions
   end

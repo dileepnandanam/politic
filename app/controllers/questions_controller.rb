@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :check_user, only: [:create, :update, :reorder, :destroy]
+  protect_from_forgery with: :null_session
+
   def new
     @question = Question.new
     render 'new', layout: false, status: 200

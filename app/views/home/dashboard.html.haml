@@ -17,7 +17,7 @@
     .question.help-text
       %p
         You haven't created any questions. Ask something that seeks the viewpoint of the person you want to connect.
-  .questions-container.reorderable
+  .questions-container.reorderable-user-questions
     - @questions.each do |question|
       = render partial: 'questions/question', locals: {question: question}
   .new-question

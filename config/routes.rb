@@ -72,6 +72,7 @@ Rails.application.routes.draw do
     get :dashboard, on: :member
     get :responses, on: :member
     resources :questions, controller: 'surveys/questions' do
+      put :reorder, on: :collection
       resources :options, controller: 'surveys/questions/options'
     end
     resources :survey_responses, controller: 'surveys/survey_responses'

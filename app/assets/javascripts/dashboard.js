@@ -32,8 +32,9 @@ $(document).on('turbolinks:load', function() {
 		$(this).closest('.question').remove()
 	})
 
-	$('.questions-container.reorderable').sortable({
+	$('.questions-container.reorderable-user-questions').sortable({
 		stop: function() {
+			handle: '.user-question-handle',
 			$.ajax({
 				data: $('.questions-container').sortable('serialize'),
 				url: '/questions/reorder',
