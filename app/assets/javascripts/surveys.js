@@ -30,4 +30,15 @@ $(document).on('turbolinks:load', function() {
   $(document).on('change', 'input[name="question[answer_type]"]', function(e) {
     $(this).closest('form').find('input[type="submit"]').removeClass('d-none')
   })
+
+  $('.hide-options').click(function() {
+    $(this).addClass('d-none')
+    $('.show-options').removeClass('d-none')
+    $('.option').hide()
+  })
+  $('.show-options').click(function() {
+    $(this).addClass('d-none')
+    $('.hide-options').removeClass('d-none')
+    $('.option').show()
+  })
 })

@@ -1,6 +1,12 @@
 .my-space.col-lg-4.col-md-6.col-sm-6.col-xs-12col-12.pull-left
   %h3
     Survey Questions
+  .show-options.clickable.d-none
+    %h4
+      Show options
+  .hide-options.clickable
+    %h4
+      Hide options  
   - if @questions.count == 0
     .question.help-text
       %p
