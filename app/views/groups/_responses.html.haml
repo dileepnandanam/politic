@@ -30,13 +30,13 @@
           - elsif a.question.answer_type == 'checkbox'
             = a.question.text
             .clearfix
-            - if a.choices.present?
-              - a.choices.each do |choice|
-                .question.answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+            .question.answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+              - if a.choices.present?
+                - a.choices.each do |choice|
                   = choice.option.name
-              .clearfix
-            - else
-              = 'User has skipped this question'
+                .clearfix
+              - else
+                = 'User has skipped this question'
             .clearfix
 
     .answer-action
