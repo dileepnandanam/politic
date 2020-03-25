@@ -56,6 +56,12 @@ class QuickPollsController < ApplicationController
     render json: {message: 'quick_poll deleted'}
   end
 
+  def reorder
+    params[:sequence].each_with_index do |id, i|
+      Question.find(id).update(sequence: i)
+    end
+  end
+
   protected
 
   def find_quick_poll

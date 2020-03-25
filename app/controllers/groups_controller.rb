@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :check_user, only: [:index, :dashboard, :responses, :new, :edit, :create, :update, :destroy]
   before_action :find_group, only: [:dashboard, :responses]
+  protect_from_forgery with: :null_session
   def index
     @groups = current_user.groups
     @other_groups = Group.find_by_sql(
@@ -72,6 +73,12 @@ class GroupsController < ApplicationController
     @group = current_user.groups.find(params[:id])
     @group.destroy
     render json: {message: 'group deleted'}
+  end
+
+  def reorder_options
+    params[:sequence].each_with_index do |id, i|
+      Option.find(id).update(sequence: i)
+    end
   end
 
   protected

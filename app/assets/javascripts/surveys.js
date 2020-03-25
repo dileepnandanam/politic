@@ -53,5 +53,27 @@ $(document).on('turbolinks:load', function() {
     }
   })
 
+  $('.options').sortable({
+    handle: '.option-handle',
+    stop: function() {
+      $.ajax({
+        data: $('.options').sortable('serialize'),
+        url: '/groups/reorder_options',
+        method: 'PUT'
+      })
+    }
+  })
+
+  $('.reorder-quick-poll-question').sortable({
+    handle: '.quick-poll-question-handle',
+    stop: function() {
+      $.ajax({
+        data: $('.options').sortable('serialize'),
+        url: '/groups/reorder_options',
+        method: 'PUT'
+      })
+    }
+  })
+
 
 })

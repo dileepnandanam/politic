@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
+    put :reorder_options, on: :collection
     get :dashboard, on: :member
     get :responses, on: :member
     get :search, on: :collection

@@ -5,7 +5,7 @@
     .question.help-text
       %p
         You haven't created any options.
-  .questions-container.reorderable
+  .questions-container.reorder-quick-poll-question
     - @questions.each do |question|
       = render partial: 'quick_polls/questions/question', locals: {question: question}
   .new-question
