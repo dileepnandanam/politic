@@ -1,41 +1,42 @@
 - @responses.each do |r|
-  = render partial: 'users/user_details', locals: {user: r.user}
-  .clearfix
-  .answers
-    - r.answers.each do |a|
-      .answer  
-        - if a.question.answer_type == 'text'
-          .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
+  .question
+    = render partial: 'users/user_details', locals: {user: r.user}
+    .clearfix
+    .answers
+      - r.answers.each do |a|
+        .answer  
+          - if a.question.answer_type == 'text'
+            .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
+              = a.question.text
+              .clearfix
+            .question.answer-text.pull-right.col-lg-6.col-sm-6.col-xs-12
+              - if a.text.present?
+                = a.text
+              - else
+                = 'User has skipped this question'
+            .clearfix
+          - elsif a.question.answer_type == 'radio'
+            .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
+              = a.question.text
+            .clearfix
+            .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+              .clearfix
+              - if a.choices.present?
+                = a.choices.first.option.name
+              - else
+                = 'User has skipped this question'
+            .clearfix
+          - elsif a.question.answer_type == 'checkbox'
             = a.question.text
             .clearfix
-          .answer-text.pull-right.col-lg-6.col-sm-6.col-xs-12
-            - if a.text.present?
-              = a.text
-            - else
-              = 'User has skipped this question'
-          .clearfix
-        - elsif a.question.answer_type == 'radio'
-          .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
-            = a.question.text
-          .clearfix
-          .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+            .question.answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+              - if a.choices.present?
+                - a.choices.each do |choice|
+                  = choice.option.name
+                .clearfix
+              - else
+                = 'User has skipped this question'
             .clearfix
-            - if a.choices.present?
-              = a.choices.first.option.name
-            - else
-              = 'User has skipped this question'
-          .clearfix
-        - elsif a.question.answer_type == 'checkbox'
-          = a.question.text
-          .clearfix
-          - if a.choices.present?
-            - a.choices.each do |choice|
-              .question.answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
-                = choice.option.name
-            .clearfix
-          - else
-            = 'User has skipped this question'
-          .clearfix
 - if @responses.next_page
   .more-responses
     = link_to 'View more', responses_survey_path(@survey, page: params[:page].present? ? params[:page].to_i + 1 : 2), remote: true, class: 'view-more'
