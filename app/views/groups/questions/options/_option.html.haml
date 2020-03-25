@@ -1,0 +1,6 @@
+.option.question
+  = option.name
+  .clearfix
+  .option-edit-form-container
+  = link_to 'edit', edit_group_question_option_path(@group, question, option), remote: true, class: 'edit-option'
+  = link_to 'delete', group_question_option_path(@group, question, option), method: :delete, remote: true, class: 'delete-option'

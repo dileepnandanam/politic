@@ -8,3 +8,16 @@
       = link_to 'delete', group_question_path(@group, question), method: 'delete', remote: true, class: 'delete-question'
     .clearfix
   .question-edit-form-container
+  .options-area
+    .answer-type-form-container
+      = simple_form_for [@group, question], html: {class: 'answer-type-form', remote: true} do |q|
+        = q.input :answer_type, as: :radio_buttons, collection: [['text'], ['radio'], ['checkbox']], label_method: :first, value_method: :first, :class => 'question-type'
+        = q.submit 'Change', class: 'd-none btn-primary'
+        .clearfix
+
+    .options{class: (question.answer_type == 'text' ? 'd-none' : '')}
+      - question.options.each do |option|
+        = render partial: 'groups/questions/options/option', locals: { option: option, question: question }
+    .new-option-form
+    = link_to 'New option', new_group_question_option_path(@group, question), remote: true, class: 'new-option pull-left ' + (question.answer_type == 'text' ? 'd-none' : '')
+    .clearfix

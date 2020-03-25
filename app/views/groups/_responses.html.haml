@@ -4,12 +4,41 @@
     .clearfix
     .answers
       - r.answers.joins(:question).each do |a|
+        
         .answer  
-          .question-text.pull-left.col-lg-5.col-sm-5.col-xs-12
+          - if a.question.answer_type == 'text'
+            .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
+              = a.question.text
+              .clearfix
+            .answer-text.pull-right.col-lg-6.col-sm-6.col-xs-12
+              - if a.text.present?
+                = a.text
+              - else
+                = 'User has skipped this question'
+            .clearfix
+          - elsif a.question.answer_type == 'radio'
+            .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
+              = a.question.text
+            .clearfix
+            .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+              .clearfix
+              - if a.choices.present?
+                = a.choices.first.option.name
+              - else
+                = 'User has skipped this question'
+            .clearfix
+          - elsif a.question.answer_type == 'checkbox'
             = a.question.text
-          .answer-text.pull-right.col-lg-5.col-sm-5.col-xs-12
-            = a.text
-          .clearfix
+            .clearfix
+            - if a.choices.present?
+              - a.choices.each do |choice|
+                .question.answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+                  = choice.option.name
+              .clearfix
+            - else
+              = 'User has skipped this question'
+            .clearfix
+
     .answer-action
       - if r.accepted
         = render partial: 'groups/responses/accept', locals: {user: r.responce_user}

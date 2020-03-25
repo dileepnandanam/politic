@@ -4,11 +4,17 @@ class Groups::ResponsesController < ApplicationController
   before_action :find_group
   def new
     @response = Response.new
-  	@group.questions.each do |q|
-      @response.answers << Answer.new(question_id: q.id)
-  	end
-
-    if request.format.html?
+    @group.questions.each do |q|
+      answer = Answer.new(question_id: q.id)
+      @response.answers << answer
+      q.options.each do |opt|
+        answer.choices << Choice.new(option_id: opt.id)
+      end
+    end
+    
+    if params[:embed].present?
+      render 'embed', layout: false
+    elsif request.format.html?
       render 'new'
     else
       render 'new', layout: false
@@ -41,6 +47,6 @@ class Groups::ResponsesController < ApplicationController
   end
 
   def response_params
-    params.require(:response).permit(:user_id, :answers_attributes => [:question_id, :text])
+    params.require(:response).permit(answers_attributes: [:text, :question_id, choices_attributes: [:option_id, option_id: []]])
   end
 end

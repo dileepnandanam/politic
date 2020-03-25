@@ -51,6 +51,6 @@ class Groups::QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:text)
+    params.require(:question).permit(:text, :answer_type)
   end
 end

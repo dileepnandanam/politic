@@ -1,0 +1,5 @@
+= simple_form_for([@group, @question, @option], html:{class: 'option-form', remote: true}) do |f|
+  = f.input :name
+  = f.submit 'submit', class: 'btn-primary'
+  = link_to 'cancel', '#', class: 'cancel-form btn-primary pull-left', remote: true
+  .clearfix
