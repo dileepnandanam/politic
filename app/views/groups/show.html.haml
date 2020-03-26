@@ -1,10 +1,10 @@
 .my-space
   .questions-container
+    .group-action
+      = link_to 'New post', new_group_post_path(@group), remote: true, class: 'new-group-post'
     .featured-posts
       - Post.where(featured: true).order('updated_at DESC').each do |p|
         = render partial: 'groups/posts/post', locals: {post: p}
-    .group-action
-      = link_to 'New post', new_group_post_path(@group), remote: true, class: 'new-group-post'
     .new-post
     .posts-container
       = render partial: 'groups/posts/posts', locals: {posts: @posts}

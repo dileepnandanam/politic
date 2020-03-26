@@ -112,7 +112,7 @@ class PostsController < PostBaseController
     if params[:post][:project_id].blank?
       current_user.posts.find(params[:id]).update(project_id: nil)
       render json: {
-        ack: "No quick poll has got pinned to this post",
+        ack: "No project has got pinned to this post",
         id: nil
       } and return
     end

@@ -27,8 +27,9 @@ class Groups::ResponsesController < ApplicationController
     if @response.responce_user_id == @response.group.user_id
       @response.delete
       flash[:notice] = "your request to your own project will be discarded"
+    else
+      render 'thanks', layout: false
     end
-    redirect_to root_path
   end
 
   def accept

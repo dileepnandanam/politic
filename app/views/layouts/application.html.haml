@@ -6,20 +6,20 @@
     %meta{ :name=>"google-site-verification", :content=>"LbppSvRcx4L5w9qSvaMXR_UEv7SybzS4dVcqtkZFb6I"}
     %meta{ :name=>"Description", :content=> "Starter tutorials for neive programmers"}
     %title
-      = @group.try(:name) || 'say it'
+      = @group.try(:name) || 'listen'
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     - if @group.present?
-      .banner{style: "background-image: url(#{@group.present? ? @group.image.url : 'https://indiasudar.files.wordpress.com/2008/11/dsc05802.jpg'})"}
+      .banner
         .banner-heading
           = @group.name
           .banner-site-description
             = @group.description
     .page.col-lg-12.col-sm-12.col-12
-      - if Rails.env.development?
+      - if Rails.env.development? && false
         .acc-switcher
           - User.all.each do |u|
             = link_to u.name, switch_user_path(u), class: 'user-switch pull-left'
@@ -48,4 +48,6 @@
           .flash
             = flash[:notice]
         = yield
+        .pull-right
+          Powered by We Do Good
 

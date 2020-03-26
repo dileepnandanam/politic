@@ -108,6 +108,12 @@ bind_project_pin()
 		})
 	})
 
+  $(".new-group-post").click(function() {
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $(".post-form, .group-post-form").offset().top
+    }, 500);
+  });
+
 	$(document).on('ajax:success', '.delete-post', function(e) {
 		$(this).closest('.group-post, .comment').remove()
 	})
