@@ -26,6 +26,7 @@ class Groups::ResponsesController < ApplicationController
     flash[:notice] = "Requested to join #{AppConst::GroupType} #{@response.group.name}"
     if @response.responce_user_id == @response.group.user_id
       @response.delete
+      flash[:notice] = "your request to your own project will be discarded"
     end
     redirect_to root_path
   end

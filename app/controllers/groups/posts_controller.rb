@@ -71,6 +71,26 @@ class Groups::PostsController < PostBaseController
     render 'votes', layout: false
   end
 
+  def pin
+    if current_user.admin?
+      @post = current_user.posts.find(params[:id])
+      @post.update(featured: true)
+      render 'posts/_unpin', layout: false, locals: { post: @post }
+    else
+      render json: {ack: 'unauthorized'}
+    end
+  end
+
+  def unpin
+    if current_user.admin?
+      @post = current_user.posts.find(params[:id])
+      @post.update(featured: false)
+      render 'posts/_pin', layout: false, locals: { post: @post }
+    else
+      render json: {ack: 'unauthorized'}
+    end
+  end
+
   protected
 
   def check_membership
@@ -83,5 +103,9 @@ class Groups::PostsController < PostBaseController
   def post_params
     @group = Group.find(params[:group_id])
     params.require(:post).permit(:text, :image, :title)
+  end
+
+  def set_flag
+    @flag = 'project'
   end
 end

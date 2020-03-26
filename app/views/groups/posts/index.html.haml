@@ -1,5 +1,8 @@
 .questions-container
   .group-action
     = link_to 'New post', new_group_post_path(@group), remote: true, class: 'new-group-post'
+  .featured-posts
+    - Post.where(featured: true).order('updated_at DESC').each do |p|
+      = render partial: 'post', locals: {post: p}
   .new-post
   = render partial: 'groups/posts/posts', locals: {posts: @posts}

@@ -62,6 +62,8 @@ Rails.application.routes.draw do
     resources :posts, controller: 'groups/posts' do
       put :upvote, on: :member
       put :downvote, on: :member
+      put :pin, on: :member
+      put :unpin, on: :member
       resources :comments, controller: 'groups/posts/comments' do
         put :upvote, on: :member
         put :downvote, on: :member

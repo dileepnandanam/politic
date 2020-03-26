@@ -110,14 +110,14 @@ class PostsController < PostBaseController
 
   def select_project
     if params[:post][:project_id].blank?
-      current_user.posts.where(group_id: nil).find(params[:id]).update(project_id: nil)
+      current_user.posts.find(params[:id]).update(project_id: nil)
       render json: {
         ack: "No quick poll has got pinned to this post",
         id: nil
       } and return
     end
     @project = current_user.groups.find(params[:post][:project_id])
-    current_user.posts.where(group_id: nil).find(params[:id]).update(project_id: @project.id)
+    current_user.posts.find(params[:id]).update(project_id: @project.id)
     render json: {
       ack: "Pinning project #{@project.name}",
       id: @project.id
