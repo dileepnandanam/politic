@@ -64,24 +64,24 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "swayamvaram_#{Rails.env}"
 
-  config.action_mailer.default_url_options = { :host => "faqfacebook.com" }
-  config.action_mailer.perform_caching = false
-
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.raise_delivery_errors = true
+  #config.action_mailer.default_url_options = { :host => "faqfacebook.com" }
+  #config.action_mailer.perform_caching = false
+#
+  config.action_mailer.perform_deliveries = false
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.raise_delivery_errors = true
   
-  config.action_mailer.smtp_settings  = {            
-    :address              => "smtp.gmail.com", 
-    :port                 => 465,
-    :domain               => 'lototribe.com',               
-    :user_name            => 'openstalk.notification@gmail.com',
-    :password             => ENV['GMAIL_PASSWORD'],         
-    :authentication       => 'plain',
-    :ssl                  => true,
-    :tls                  => true,
-    :enable_starttls_auto => true,
-  }
+  #config.action_mailer.smtp_settings  = {            
+  #  :address              => "smtp.gmail.com", 
+  #  :port                 => 465,
+  #  :domain               => 'lototribe.com',               
+  #  :user_name            => 'openstalk.notification@gmail.com',
+  #  :password             => ENV['GMAIL_PASSWORD'],         
+  #  :authentication       => 'plain',
+  #  :ssl                  => true,
+  #  :tls                  => true,
+  #  :enable_starttls_auto => true,
+  #}
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -110,14 +110,14 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :bucket => 'swayamvaram',
-    :s3_host_name => 's3.ap-south-1.amazonaws.com',
-    :s3_region => 'ap-south-1',
-    s3_credentials: {
-      access_key_id: ENV.fetch('AKI'),
-      secret_access_key: ENV.fetch('SAK')
-    }
-  }
+  #config.paperclip_defaults = {
+  #  :storage => :s3,
+  #  :bucket => 'swayamvaram',
+  #  :s3_host_name => 's3.ap-south-1.amazonaws.com',
+  #  :s3_region => 'ap-south-1',
+  #  s3_credentials: {
+  #    access_key_id: ENV.fetch('AKI'),
+  #    secret_access_key: ENV.fetch('SAK')
+  #  }
+  #}
 end
