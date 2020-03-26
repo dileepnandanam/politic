@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function() {
     }
   })
 
-  $(document).on('ajax:success', '.project-form' function(e) {
+  $(document).on('ajax:success', '.project-form', function(e) {
     $(this).replaceWith(e.detail[2].responseText)
   })
 })
