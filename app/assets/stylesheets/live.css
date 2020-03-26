@@ -106,9 +106,12 @@ input[name=commit] {
     margin-top: 0px !important;
 }
 form input, form textarea {
-    border: 1px black !important;
     border-radius: 4px !important;
     font-size: 20px !important;
+}
+textarea {
+    height: 240px;
+    border: 1px solid blue !important;
 }
 .common-bg form {
     background: transparent !important;

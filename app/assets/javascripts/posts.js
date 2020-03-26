@@ -9,6 +9,7 @@ present_survey = function() {
         url: url,
         success: function(data) {
           $(elem).html(data)
+          fix_checkbox_label()
         }
       })
     }
@@ -81,6 +82,16 @@ bind_post = function() {
     $('.group-post-form, .post-form').replaceWith(e.detail[2].response)
   })
 }
+
+fix_checkbox_label = function() {
+  $.each($('input[type="checkbox"]'), function(i, elem) {
+    $($(elem).next()).attr('for', $(elem).attr('id'))
+  })
+  $.each($('input[type="radio"]'), function(i, elem) {
+    $($(elem).next()).attr('for', $(elem).attr('id'))
+  })
+}
+
 bind_post()
 $(document).on('turbolinks:load', function() {
   

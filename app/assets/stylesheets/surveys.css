@@ -34,7 +34,7 @@
   font-size: 24px;
   margin-bottom: 12px;
 }
-.response-form, .response-form .question, .response-form.question, .response-form.question label {
+.response-form, .response-form .question, .response-form.question {
   background-color: white !important;
   color: black !important;
 }
@@ -64,6 +64,9 @@ input[name=commit], .cancel-form {
   margin-bottom: 12px;
   margin-top: 12px;
 }
+input[name=commit]:hover {
+  color: yellow !important;
+}
 .boolean-selector {
   background: blue;
   margin-top: 8px;
@@ -76,4 +79,10 @@ input[name=commit], .cancel-form {
   height: 20px;
   border-radius: 25%;
   background-color: yellow;
+}
+.response-form .question {
+  background-color: #eedede !important
+}
+.response-form .survey-label {
+  background-color: #eedede !important
 }

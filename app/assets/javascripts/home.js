@@ -37,4 +37,6 @@ $(document).on('turbolinks:load', function() {
 	$(document).on('click', '.close-cancel', function() {
 		$(this).closest('.preview').addClass('d-none')
 	})
+
+   
 })
