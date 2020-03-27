@@ -19,3 +19,9 @@
 .pin-select {
   width: 200px;
 }
+.user-details {
+  font-size: 24px;
+}
+.group-post.important {
+  background: darkorange;
+}

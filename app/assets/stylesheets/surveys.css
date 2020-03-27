@@ -37,6 +37,9 @@
 .response-form, .response-form .question, .response-form.question {
   background-color: white !important;
   color: black !important;
+  background-color: #859ede !important;
+  color: black !important;
+  border: #8d8dd8;
 }
 .new-option {
   font-size: 20px;
@@ -81,7 +84,8 @@ input[name=commit]:hover {
   background-color: yellow;
 }
 .response-form .question {
-  background-color: #eedede !important
+  background-color: #eedede !important;
+  border: #eedede;
 }
 .response-form .survey-label {
   background-color: #eedede !important

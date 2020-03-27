@@ -1,7 +1,6 @@
 - @accepted_responses.each do |r|
   .question
     .pull-left.user-details
-      = image_tag r.responce_user.image.url(:thumb)
       = "#{r.responce_user.name} accepted your response."
       = link_to 'leave a chat', connections_users_path(user_id: r.responce_user_id), class: 'leave-chat pull-right'
     .clearfix

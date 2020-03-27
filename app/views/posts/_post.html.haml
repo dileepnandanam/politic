@@ -1,4 +1,4 @@
-.group-post.post
+.group-post.post{class: post.user.admin? ? 'important' : ''}
   .post-actions.pull-right
   .pull-left.user-avathar= render partial: 'users/user_details', locals: {user: post.user}
   .post-actions

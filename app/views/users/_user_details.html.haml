@@ -1,4 +1,3 @@
-= link_to new_user_response_path(user) do
-  .pull-left.user-details
-    .user-name.pull-left
-      = "#{user.name.to_s.split(' ').first} #{user.admin? ? ' (admin)' : ''}"
+.pull-left.user-details
+  .user-name.pull-left
+    = "#{user.name.to_s.split(' ').first} #{user.admin? ? ' (admin)' : ''}"

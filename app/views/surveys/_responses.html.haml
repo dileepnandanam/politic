@@ -8,8 +8,8 @@
           - if a.question.answer_type == 'text'
             .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
               = a.question.text
-              .clearfix
-            .question.answer-text.pull-right.col-lg-6.col-sm-6.col-xs-12
+            .clearfix
+            .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
               - if a.text.present?
                 = a.text
               - else

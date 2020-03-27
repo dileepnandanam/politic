@@ -19,7 +19,7 @@
           .banner-site-description
             = @group.description
     .page.col-lg-12.col-sm-12.col-12
-      - if Rails.env.development? && false
+      - if Rails.env.development?
         .acc-switcher
           - User.all.each do |u|
             = link_to u.name, switch_user_path(u), class: 'user-switch pull-left'
@@ -27,7 +27,6 @@
       .nav-bar
         - if current_user
           = link_to "Log Out", destroy_session_path(current_user), method: :delete, class: 'pull-right'
-          = link_to current_user.name || current_user.email, connections_users_path, class: 'pull-right my-connections' + (current_user.has_unread_chats ? ' has-new-chats' : '')
           = link_to "dashboard", '/dashboard', class: 'pull-right'
           
         - else
@@ -49,6 +48,6 @@
           .flash
             = flash[:notice]
         = yield
-        .pull-right
+        .pull-right.manufacturer
           Powered by We Do Good
 

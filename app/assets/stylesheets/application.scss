@@ -20,11 +20,15 @@
  *= require 'masonry/infinitescroll'
  *= require 'masonry/right-to-left'
  *= require 'masonry/transitions'
+ *= stub 'embed'
  */
 @import "bootstrap";
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700,900&display=swap');
 
+.manufacturer {
+  font-size: 24px;
+}
 h1 {
   font-size: 30px;
 }
@@ -135,7 +139,7 @@ body {
 	overflow: hidden;
 }
 .page {
-	background: #7e75f7d4;
+	background: #30298bd4;
 	color: white;
 	margin: auto;
 	padding: 0px 0px 20px 0px;
@@ -192,9 +196,9 @@ a, a:hover {
 	font-weight: 600;
 }
 input, textarea {
-	border: 3px solid #bbb824;
+	border: white !important;
 	border-radius: 12px !important;
-	background: #dbdcf5 !important;
+	background: white !important;
 	font-size: 3vw !important;
 }
 .btn-primary {

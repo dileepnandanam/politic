@@ -1,7 +1,7 @@
 class Surveys::SurveyResponsesController < SurveysController
   before_action :check_user, only: [:create, :accept]
   before_action :find_survey
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
 
   def new
     @survey_response = SurveyResponse.new
@@ -23,7 +23,7 @@ class Surveys::SurveyResponsesController < SurveysController
   end
 
   def create
-    @response = SurveyResponse.create response_params.merge(user_id: current_user.id, survey_id: @survey.id)
+    @response = SurveyResponse.create response_params.merge(user_id: (current_user.try(:id) || anonymous_user.id), survey_id: @survey.id)
     flash[:notice] = "Successfully answered survey"
     render 'thanks', layout: false
   end
@@ -35,10 +35,14 @@ class Surveys::SurveyResponsesController < SurveysController
   end
 
   def response_params
-    params.require(:survey_response).permit(answers_attributes: [:text, :question_id, choices_attributes: [:option_id, option_id: []]])
+    params.require(:survey_response).permit(:user_id, answers_attributes: [:text, :question_id, choices_attributes: [:option_id, option_id: []]])
   end
 
   def set_flag
     @flag = 'survey'
+  end
+
+  def anonymous_user
+    User.yield_anonymous_user
   end
 end
