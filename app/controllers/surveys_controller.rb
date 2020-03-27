@@ -16,6 +16,12 @@ class SurveysController < ApplicationController
     @survey = current_user.surveys.find(params[:id])
     @questions = @survey.questions
     @responses = get_responses.paginate(page: 1, per_page: 2)
+    @option_count = Choice.select('choices.option_id').
+      joins(:answer).
+      joins('inner join survey_responses on answers.survey_response_id = survey_responses.id').
+      where('survey_responses.survey_id = ?', @survey.id).
+      group('choices.option_id').
+      count('choices.id')
   end
 
   def responses

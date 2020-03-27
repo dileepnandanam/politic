@@ -1,6 +1,7 @@
 .option.question{id: "sequence_#{option.id}"}
   .option-handle
-  = option.name
+  - option_secelted = (@option_count || {})[option.id].to_i
+  = "#{option.name} (#{option_secelted})"
   .clearfix
   .option-edit-form-container
   = link_to 'edit', edit_survey_question_option_path(@survey, question, option), remote: true, class: 'edit-option'

@@ -90,3 +90,8 @@ input[name=commit]:hover {
 .response-form .survey-label {
   background-color: #eedede !important
 }
+.hide-options, .show-options {
+  width: 70% !important;
+  text-align: center;
+  margin: auto;
+}

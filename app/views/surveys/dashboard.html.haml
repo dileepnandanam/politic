@@ -20,7 +20,7 @@
     = link_to 'Preview', new_survey_survey_response_path(@survey)
 .my-space.col-lg-8.col-md-6.col-sm-6.col-xs-12.col-12.pull-left
   %h3
-    Survey Responses
+    = "Survey Responses(#{@responses.count})"
   - if @responses.count == 0
     .question.help-text
       %p
