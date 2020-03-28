@@ -4,7 +4,9 @@
       .survey-question-text
         = af.object.question.text
       .clearfix
-      - if af.object.question.answer_type == 'text'
+      - if af.object.question.answer_type == 'line'
+        = af.input :line, label: false
+      - elsif af.object.question.answer_type == 'text'
         = af.input :text, label: false
       - elsif af.object.question.answer_type == 'radio'
         = af.fields_for :choices do |afc|

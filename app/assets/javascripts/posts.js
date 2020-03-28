@@ -1,3 +1,7 @@
+disable_for_unauthorized = function() {
+  if(!$('.current-user-data').data('signed-in'))
+    $('input, textarea').prop('disabled', 'disabled')
+}
 present_survey = function() {
   $.each($('.survey-container'), function(i, elem) {
     id = $(elem).data('id')
@@ -10,6 +14,7 @@ present_survey = function() {
         success: function(data) {
           $(elem).html(data)
           fix_checkbox_label()
+          disable_for_unauthorized()
         }
       })
     }
@@ -27,6 +32,8 @@ present_quick_poll = function() {
         url: url,
         success: function(data) {
           $(elem).html(data)
+          fix_checkbox_label()
+          disable_for_unauthorized()
         }
       })
     }
@@ -39,11 +46,13 @@ present_project = function() {
     if(id == null)
       $(elem).html('')
     else {
-      url = '/groups/' + id + '/responses/new'
+      url = '/groups/' + id + '/responses/new?pinned=true'
       $.ajax({
         url: url,
         success: function(data) {
           $(elem).html(data)
+          fix_checkbox_label()
+          disable_for_unauthorized()
         }
       })
     }

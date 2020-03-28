@@ -1,6 +1,5 @@
 class Groups::ResponsesController < ApplicationController
   before_action :check_user, only: [:create, :accept]
-  before_action :authenticate_user!, only: [:new]
   before_action :find_group
   def new
     @response = Response.new

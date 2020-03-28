@@ -1,3 +1,5 @@
+- unless current_user
+  = render template: 'home/access_restricted'
 .question.response-form
   .pull-left
     %h3= @survey.name

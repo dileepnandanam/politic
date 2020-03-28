@@ -1,6 +1,5 @@
 class QuickPolls::QuickPollResponsesController < ApplicationController
   before_action :check_user, only: [:create, :accept]
-  before_action :authenticate_user!, only: [:new]
   before_action :find_quick_poll
   
   def new
