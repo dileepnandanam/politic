@@ -207,9 +207,9 @@ legend {
   padding-top: 0px !important;
 }
 .radio_buttons input {
-  margin-top: 5px !important;
-  width: 30px !important;
-  height: 30px !important;
+  margin-top: 0px !important;
+  width: 16px !important;
+  height: 16px !important;
 }
 .radio_buttons label {
   margin-left: 20px !important;

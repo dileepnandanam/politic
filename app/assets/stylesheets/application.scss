@@ -139,7 +139,7 @@ body {
 	overflow: hidden;
 }
 .page {
-	background: #30298bd4;
+	background: #7c76cfd4;
 	color: white;
 	margin: auto;
 	padding: 0px 0px 20px 0px;
@@ -243,6 +243,10 @@ input[type='radio'] {
   position: relative;
   -webkit-transform: scale(1);
   transform: scale(1)
+}
+.question_answer_type label {
+  color: #11120b;
+  margin: 0px !important;
 }
 label {
   color: #11120b;

@@ -49,6 +49,6 @@ class Groups::ResponsesController < ApplicationController
   end
 
   def response_params
-    params.require(:response).permit(answers_attributes: [:text, :question_id, choices_attributes: [:option_id, option_id: []]])
+    params.require(:response).permit(answers_attributes: [:text, :question_id, :line, choices_attributes: [:option_id, option_id: []]])
   end
 end

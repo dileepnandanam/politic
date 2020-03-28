@@ -5,7 +5,7 @@
   .group-action
     = link_to 'New post', new_post_path, remote: true, class: 'new-group-post'
   .featured-posts
-    - Post.where(featured: true).order('updated_at DESC').each do |p|
+    - Post.where(featured: true, group_id: nil).order('updated_at DESC').each do |p|
       = render partial: 'post', locals: {post: p}
   .new-post
   .posts-container

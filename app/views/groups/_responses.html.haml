@@ -5,7 +5,7 @@
     .answers
       - r.answers.joins(:question).each do |a|
         
-        .answer  
+        .answer
           - if a.question.answer_type == 'text'
             .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
               = a.question.text
@@ -13,6 +13,16 @@
             .question.answer-text.col-lg-12.col-sm-12.col-xs-12.col-12
               - if a.text.present?
                 = a.text
+              - else
+                = 'User has skipped this question'
+            .clearfix
+          - elsif a.question.answer_type == 'line'
+            .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
+              = a.question.text
+            .clearfix
+            .question.answer-text.col-lg-12.col-sm-12.col-xs-12.col-12
+              - if a.line.present?
+                = a.line
               - else
                 = 'User has skipped this question'
             .clearfix
