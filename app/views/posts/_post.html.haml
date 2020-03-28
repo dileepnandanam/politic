@@ -1,4 +1,4 @@
-.group-post.post{class: post.user.admin? ? 'important' : ''}
+.group-post.post{style: "#{SiteSetting['admin_post'].value}"}
   .post-actions.pull-right
   .pull-left.user-avathar= render partial: 'users/user_details', locals: {user: post.user}
   .post-actions

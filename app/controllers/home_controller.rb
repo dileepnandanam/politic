@@ -1,13 +1,5 @@
 class HomeController < ApplicationController
   before_action :check_user, only: [:dashboard, :responses, :accepted_responses]
-  def show
-  	@questions = get_questions.paginate(page: 1, per_page: 8)
-    if current_user
-      @connections = [current_user] + connections_for(current_user)
-    else
-      @connections = []
-    end
-  end
 
   def questions
     @questions = get_questions.paginate(page: params[:page], per_page: 8)
@@ -45,6 +37,15 @@ class HomeController < ApplicationController
   def access_restricted
   end
 
+  def configuration
+
+  end
+
+  def update_configuration
+    SiteSetting[config_params[:name]] = config_params[:value]
+    redirect_to configuration_path
+  end
+
   protected
 
   def gender_params
@@ -71,5 +72,9 @@ class HomeController < ApplicationController
       "LOWER(questions.text) like LOWER('%#{params[:query]}%') or LOWER(users.name) like LOWER('%#{params[:query]}%')"
     end
     questions
+  end
+
+  def config_params
+    params.require(:site_setting).permit(:value, :name)
   end
 end
