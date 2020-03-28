@@ -26,9 +26,7 @@
           .clearfix
       .nav-bar
         - if current_user
-          = link_to "Log Out", destroy_session_path(current_user), method: :delete, class: 'pull-right'
-          = link_to "dashboard", '/dashboard', class: 'pull-right'
-          
+          = link_to "Log Out", destroy_session_path(current_user), method: :delete, class: 'pull-right'          
         - else
           
           = link_to "Sign in", new_user_session_path, class: 'pull-right'
