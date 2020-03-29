@@ -25,3 +25,9 @@
 .group-post.important {
   background: darkorange;
 }
+.session-links {
+  margin-right: 12px;
+}
+.new-response {
+  margin-top: 30px;
+}

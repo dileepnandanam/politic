@@ -1,5 +1,5 @@
 - unless current_user
-  = render template: 'home/access_restricted'
+  = render partial: 'authorize'
 .question.response-form
   .pull-left
     %h3= @group.name
