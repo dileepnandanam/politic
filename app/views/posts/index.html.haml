@@ -9,5 +9,5 @@
     - Post.where(featured: true, group_id: nil).order('updated_at DESC').each do |p|
       = render partial: 'post', locals: {post: p}
   .new-post
-  .posts-container
+  .posts-container.posts
     = render partial: 'posts', locals: {posts: @posts.reject{|p| p.featured?}}
