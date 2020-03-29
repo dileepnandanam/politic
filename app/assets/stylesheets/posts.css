@@ -31,3 +31,6 @@
 .new-response {
   margin-top: 30px;
 }
+.new-response .actions {
+  margin-bottom: 12px;
+}

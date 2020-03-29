@@ -1,6 +1,7 @@
 = simple_form_for @group, remote: true do |f|
   = f.input :name
   = f.input :description
+  = f.input :visible, label: 'visible to public'
   .clearfix
   = f.submit 'Submit', class: 'btn-primary pull-left'
   = link_to 'cancel', '#', class: 'cancel-form btn-primary pull-left', remote: true

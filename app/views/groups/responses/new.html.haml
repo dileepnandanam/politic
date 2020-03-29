@@ -5,4 +5,8 @@
     %h3= @group.name
     %p= @group.description
   .clearfix
-  = render partial: 'form'
+  - if @group.questions.count == 0
+    %h3.message
+      This project is not ready yet
+  - else
+    = render partial: 'form'

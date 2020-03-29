@@ -1,13 +1,10 @@
-.current-user-data.d-none{data:{signed_in: current_user.present?.to_s}}
 .questions-container
   .search-panel.search
     = text_field_tag 'search',nil, placeholder: 'search', data: {url: posts_path(page: 1)}
   .clearfix
   .group-action
-    = link_to 'New post', new_post_path, remote: true, class: 'new-group-post'
-  .featured-posts
-    - Post.where(featured: true, group_id: nil).order('updated_at DESC').each do |p|
-      = render partial: 'post', locals: {post: p}
+    = link_to 'New post', new_post_path, remote: true, class: 'new-group-post'    
   .new-post
   .posts-container.posts
+    = render partial: 'posts', locals: {posts: @posts.select{|p| p.featured?}.sort_by(&:updated_at).reverse}
     = render partial: 'posts', locals: {posts: @posts.reject{|p| p.featured?}}

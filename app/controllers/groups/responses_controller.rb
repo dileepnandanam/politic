@@ -50,4 +50,8 @@ class Groups::ResponsesController < ApplicationController
   def response_params
     params.require(:response).permit(answers_attributes: [:text, :question_id, :line, choices_attributes: [:option_id, option_id: []]])
   end
+
+  def set_flag
+    @flag = 'project'
+  end
 end

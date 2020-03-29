@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     if current_user
-      unless @group.user == current_user || current_user.is_a_member_of(@group)
+      unless @group.user == current_user || current_user.is_a_member_of(@group) || @group.visible?
         redirect_to new_group_response_path(@group) and return
       end
     end
@@ -97,7 +97,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:description, :name, :image)
+    params.require(:group).permit(:description, :name, :image, :visible)
   end
 
   def set_flag
