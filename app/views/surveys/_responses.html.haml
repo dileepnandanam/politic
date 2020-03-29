@@ -3,7 +3,7 @@
     = render partial: 'users/user_details', locals: {user: r.user}
     .clearfix
     .answers
-      - r.answers.each do |a|
+      - r.answers.join(:question).each do |a|
         .answer
           - if a.question.answer_type == 'line'
             .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
