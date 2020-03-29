@@ -73,7 +73,7 @@ class Groups::PostsController < PostBaseController
 
   def pin
     if current_user.admin?
-      @post = current_user.posts.find(params[:id])
+      @post = Post.find(params[:id])
       @post.update(featured: true)
       render 'posts/_unpin', layout: false, locals: { post: @post }
     else
@@ -83,7 +83,7 @@ class Groups::PostsController < PostBaseController
 
   def unpin
     if current_user.admin?
-      @post = current_user.posts.find(params[:id])
+      @post = Post.find(params[:id])
       @post.update(featured: false)
       render 'posts/_pin', layout: false, locals: { post: @post }
     else

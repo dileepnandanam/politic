@@ -42,8 +42,12 @@ class HomeController < ApplicationController
   end
 
   def update_configuration
-    SiteSetting[config_params[:name]] = config_params[:value]
-    redirect_to configuration_path
+    if current_user.admin? && current_user == User.first
+      SiteSetting[config_params[:name]] = config_params[:value]
+      redirect_to configuration_path
+    else
+      redirect_to root_path
+    end
   end
 
   protected

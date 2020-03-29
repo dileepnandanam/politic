@@ -1,4 +1,4 @@
-- ["admin_post", "banner_heading", "site-description"].each do |name|
+- ["admin_post", "banner_heading", "site_description", "group_banner_style", "banner_style"].each do |name|
   .question
     = simple_form_for(SiteSetting[name], url: update_configuration_path , html: {method: :put}) do |f|
       = f.input :value, label: f.object.name.camelize

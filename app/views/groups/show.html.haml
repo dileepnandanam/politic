@@ -2,9 +2,7 @@
   .questions-container
     .group-action
       = link_to 'New post', new_group_post_path(@group), remote: true, class: 'new-group-post'
-    .featured-posts
-      - Post.where(featured: true, group_id: @group.id).order('updated_at DESC').each do |p|
-        = render partial: 'groups/posts/post', locals: {post: p}
     .new-post
     .posts-container
+      = render partial: 'groups/posts/posts', locals: {posts: @posts.select{|p| p.featured?}.sort_by(&:updated_at).reverse}
       = render partial: 'groups/posts/posts', locals: {posts: @posts.reject{|p| p.featured?}}

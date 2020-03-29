@@ -14,17 +14,17 @@
   %body
     .current-user-data.d-none{data:{signed_in: current_user.present?.to_s}}
     - if @group.present?
-      .banner
+      .banner{style: SiteSetting['group_banner_style'].value}
         .banner-heading
           = @group.name
           .banner-site-description
             = @group.description
     -else
-      .banner
+      .banner{style: SiteSetting['banner_style'].value}
         .banner-heading
           = SiteSetting['banner_heading'].value
           .banner-site-description
-            = SiteSetting['site-description'].value
+            = SiteSetting['site_description'].value
     .page.col-lg-12.col-sm-12.col-12
       - if Rails.env.development?
         .acc-switcher
