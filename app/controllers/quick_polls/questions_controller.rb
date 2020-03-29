@@ -1,6 +1,7 @@
 class QuickPolls::QuestionsController < ApplicationController
   before_action :check_user
   before_action :find_quick_poll
+  protect_from_forgery with: :null_session
   def index
     @questions = @quick_poll.questions
   end

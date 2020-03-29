@@ -68,8 +68,8 @@ $(document).on('turbolinks:load', function() {
     handle: '.quick-poll-question-handle',
     stop: function() {
       $.ajax({
-        data: $('.options').sortable('serialize'),
-        url: '/groups/reorder_options',
+        data: $('.reorder-quick-poll-question').sortable('serialize'),
+        url: '/quick_polls/reorder',
         method: 'PUT'
       })
     }

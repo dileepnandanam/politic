@@ -1,6 +1,8 @@
 class QuickPollsController < ApplicationController
   before_action :check_user, only: [:index, :dashboard, :responses, :new, :edit, :create, :update, :destroy]
   before_action :find_quick_poll, only: [:dashboard, :responses]
+  protect_from_forgery with: :null_session
+
   def index
     @quick_polls = current_user.quick_polls
     @other_quick_polls = QuickPoll.joins(:user).where("quick_polls.user_id <> #{current_user.id}").all
