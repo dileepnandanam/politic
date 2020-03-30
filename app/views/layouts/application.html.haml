@@ -22,9 +22,9 @@
     -else
       .banner{style: SiteSetting['banner_style'].value}
         .banner-heading
-          = SiteSetting['banner_heading'].value
+          = raw SiteSetting['banner_heading'].value
           .banner-site-description
-            = SiteSetting['site_description'].value
+            = raw SiteSetting['site_description'].value
     .page.col-lg-12.col-sm-12.col-12
       - if Rails.env.development?
         .acc-switcher

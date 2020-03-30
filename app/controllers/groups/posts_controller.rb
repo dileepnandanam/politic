@@ -1,8 +1,19 @@
 class Groups::PostsController < PostBaseController
-  before_action :check_user
+  before_action :check_user, only:[:new, :create, :destroy, :upvote, :downvote, :pin, :unpin]
   before_action :check_membership
   def show
+    @group = Group.find(params[:group_id])
     @post = Post.find(params[:id])
+    if current_user
+      unless @group.user == current_user || current_user.is_a_member_of(@group) || @group.visible?
+        redirect_to new_group_response_path(@group) and return
+      end
+    end
+    if request.format.html?
+      render 'show'
+    else
+      render 'groups/posts/post', layout: false
+    end
   end
 
   def index
@@ -95,8 +106,16 @@ class Groups::PostsController < PostBaseController
 
   def check_membership
     group = Group.find params[:group_id]
-    unless group.responses.where(responce_user_id: current_user.id).first || group.user_id == current_user.id
+    if group.visible?
+      true
+    elsif current_user.blank?
       redirect_to access_restricted_path
+    elsif group.responses.where(responce_user_id: current_user.id).first.present?
+      true
+    elsif group.user_id == current_user.id
+      true
+    else
+      redirect_to new_group_response_path(group)
     end
   end  
 
