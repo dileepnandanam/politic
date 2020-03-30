@@ -1,12 +1,3 @@
-.my-space.my-responses.col-lg-8.col-sm-6.col-xs-12.pull-left
-  %h3
-    Responses
-  .response-filters
-    = link_to 'new responses', responses_group_path(state: 'new'), class: 'filter-response-link', remote: true
-    = link_to 'accepted responses', responses_group_path(state: 'accepted'), class: 'filter-response-link', remote: true
-  .responses-container
-    = render partial: 'responses', locals: {state: 'new'}
-
 .my-space.col-lg-4.col-sm-6.col-xs-12.pull-left
   %h3
     Entrance Questions
@@ -27,3 +18,13 @@
   .questions-actions
     = link_to 'Add question', new_group_question_path(@group), class: 'add-question', remote: true
     = link_to 'Preview', new_group_response_path(@group)
+
+.my-space.my-responses.col-lg-8.col-sm-6.col-xs-12.pull-left
+  %h3
+    Responses
+  .response-filters
+    = link_to 'view new responses', responses_group_path(state: 'new'), class: 'filter-response-link', remote: true
+    = link_to 'view accepted responses', responses_group_path(state: 'accepted'), class: 'filter-response-link d-none', remote: true
+  .responses-container
+    = render partial: 'responses', locals: {state: 'new'}
+

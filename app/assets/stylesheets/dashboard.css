@@ -58,12 +58,16 @@
   overflow: auto
 }
 .response-filters a {
-    background: transparent !important;
-    color: white !important;
-    font-size: 25px !important;
-    font-weight: 100;
-    padding: 20px 20px 20px 0px !important;
-    margin:  0px !important;
+  background: #4d4ac8 !important;
+  color: white !important;
+  font-size: 25px !important;
+  font-weight: 100;
+  padding: 5px 10px 5px 5px !important;
+  margin: 4px !important;
+  display: inline-block;
+  float: left;
+  border: 1px solid blue;
+  border-radius: 8px;
 }
 .my-responses > a {
     margin: 0px 30px 20px 0px !important;

@@ -34,3 +34,9 @@
 .new-response .actions {
   margin-bottom: 12px;
 }
+.post-text {
+  padding: 0 2% 0 2%;
+}
+.user-avathar {
+  margin-left: 2%;
+}
