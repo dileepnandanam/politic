@@ -25,6 +25,15 @@ class Surveys::SurveyResponsesController < SurveysController
   def create
     @response = SurveyResponse.create response_params.merge(user_id: (current_user.try(:id) || anonymous_user.id), survey_id: @survey.id)
     flash[:notice] = "Successfully answered survey"
+    
+    ApplicationCable::SurveyNotificationsChannel.broadcast_to(
+      @survey.user,
+      survey_id: @survey.id,
+      survey_name: @survey.name,
+      sender_name: current_user.name,
+      ack_url: ''
+    )
+
     render 'thanks', layout: false
   end
 
