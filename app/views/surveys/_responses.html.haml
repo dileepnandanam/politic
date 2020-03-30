@@ -39,10 +39,11 @@
           - elsif a.question.answer_type == 'checkbox'
             = a.question.text
             .clearfix
-            .question.answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+            .answer-text
               - if a.choices.present?
                 - a.choices.each do |choice|
-                  = choice.option.name
+                  .question.col-lg-12.col-sm-12.col-xs-12.col-12
+                    = choice.option.name
                 .clearfix
               - else
                 = 'User has skipped this question'
