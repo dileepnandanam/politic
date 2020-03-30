@@ -15,9 +15,9 @@
     .current-user-data.d-none{data:{signed_in: current_user.present?.to_s}}
     - if @group.present?
       .banner{style: SiteSetting['group_banner_style'].value}
-        .banner-heading
+        .banner-heading{style: SiteSetting['group_banner_heading_style'].value}
           = @group.name
-          .banner-site-description
+          .banner-site-description{style: SiteSetting['group_banner_description_style'].value}
             = @group.description
     -else
       .banner{style: SiteSetting['banner_style'].value}
@@ -26,11 +26,6 @@
           .banner-site-description
             = raw SiteSetting['site_description'].value
     .page.col-lg-12.col-sm-12.col-12
-      - if Rails.env.development?
-        .acc-switcher
-          - User.all.each do |u|
-            = link_to u.name, switch_user_path(u), class: 'user-switch pull-left'
-          .clearfix
       .nav-bar
         - if current_user
           = link_to "Log Out", destroy_session_path(current_user), method: :delete, class: 'pull-right'          
@@ -55,4 +50,8 @@
         = yield
         .pull-right.manufacturer
           Powered by We Do Good
-
+    - if Rails.env.development?
+      .acc-switcher
+        - User.all.each do |u|
+          = link_to u.name, switch_user_path(u), class: 'user-switch pull-left'
+        .clearfix

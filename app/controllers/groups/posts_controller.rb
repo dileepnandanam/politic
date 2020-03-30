@@ -69,7 +69,7 @@ class Groups::PostsController < PostBaseController
       current_vote.delete      
     end
     Vote.create(user_id: current_user.id, post_id: params[:id], weight: 1)
-    render 'votes', layout: false
+    render 'comment_actions', layout: false
   end
 
   def downvote
@@ -79,7 +79,7 @@ class Groups::PostsController < PostBaseController
       current_vote.delete
     end
     Vote.create(user_id: current_user.id, post_id: params[:id], weight: -1)
-    render 'votes', layout: false
+    render 'comment_actions', layout: false
   end
 
   def pin
