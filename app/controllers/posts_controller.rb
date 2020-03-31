@@ -88,7 +88,6 @@ class PostsController < PostBaseController
     @post = current_user.posts.find(params[:id])
     @post.update(survey_id: @survey.id)
     tag_survey(@survey, @post)
-
     render json: {
       ack: "Pinning survey #{@survey.name}",
       id: @survey.id
