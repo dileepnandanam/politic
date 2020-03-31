@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_115314) do
+ActiveRecord::Schema.define(version: 2020_03_31_084111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(version: 2020_03_29_115314) do
     t.integer "survey_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state", default: "new"
   end
 
   create_table "surveys", force: :cascade do |t|
@@ -211,6 +212,17 @@ ActiveRecord::Schema.define(version: 2020_03_29_115314) do
     t.string "usertype"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "v2_notifications", force: :cascade do |t|
+    t.integer "target_id"
+    t.integer "sender_id"
+    t.string "item_type"
+    t.integer "item_id"
+    t.string "action"
+    t.text "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "votes", force: :cascade do |t|

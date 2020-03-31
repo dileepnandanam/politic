@@ -49,6 +49,8 @@
           .flash
             = flash[:notice]
         .model-response-viewer
+          - V2::Notification.where(target_id: current_user.id).each do |notif|
+            = render partial: 'surveys/survey_responses/message', locals: {notif: notif}
         = yield
         .pull-right.manufacturer
           Powered by We Do Good

@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function() {
   App.cable.subscriptions.create("ApplicationCable::SurveyNotificationsChannel", {
     received(data) {
       audio.play()
-      $('.model-response-viewer').append(data.link)
+      $('.model-response-viewer').append(data.message)
     }
   })
 })

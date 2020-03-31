@@ -1,0 +1,54 @@
+.question
+  = render partial: 'users/user_details', locals: {user: @response.user}
+  .clearfix
+  .answers
+    - @response.answers.joins(:question).each do |a|
+      .answer
+        - if a.question.answer_type == 'line'
+          .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
+            = a.question.text
+          .clearfix
+          .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+            - if a.line.present?
+              = a.line
+            - else
+              = 'User has skipped this question'
+          .clearfix  
+        - elsif a.question.answer_type == 'text'
+          .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.col-12
+            = a.question.text
+          .clearfix
+          .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+            - if a.text.present?
+              = a.text
+            - else
+              = 'User has skipped this question'
+          .clearfix
+        - elsif a.question.answer_type == 'radio'
+          .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.col-12
+            = a.question.text
+          .clearfix
+          .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+            .clearfix
+            - if a.choices.present?
+              = a.choices.first.option.name
+            - else
+              = 'User has skipped this question'
+          .clearfix
+        - elsif a.question.answer_type == 'checkbox'
+          .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
+            = a.question.text
+          .clearfix
+          - if a.choices.present?
+            - a.choices.each do |choice|
+              .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+                = choice.option.name
+            .clearfix
+          - else
+            .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+              = 'User has skipped this question'
+          .clearfix
+- if @previous.present?
+  = link_to "previous", survey_survey_response_path(@survey, @previous), class: 'response-navigate'
+- if @next.present?
+  = link_to "Next", survey_survey_response_path(@survey, @next), class: 'response-navigate'

@@ -3,6 +3,23 @@ class Surveys::SurveyResponsesController < SurveysController
   before_action :find_survey
   protect_from_forgery with: :null_session
 
+
+  def show
+    @response = @survey.survey_responses.find(params[:id])
+    @next = @survey.survey_responses.where("survey_responses.id < #{@response.id}").last
+    @previous = @survey.survey_responses.where("survey_responses.id > #{@response.id}").first
+    V2::Notification.where(target_id: current_user.id, sender_id: @response.user.id, item_id: @response.id).first.try :destroy
+
+  end
+
+  def accept
+    @survey.survey_responses.find(params[:id]).update(state: 'accepted')
+  end
+
+  def reject
+    @survey.survey_responses.find(params[:id]).update(state: 'rejected')
+  end
+
   def new
     @survey_response = SurveyResponse.new
     @survey.questions.each do |q|
@@ -24,13 +41,22 @@ class Surveys::SurveyResponsesController < SurveysController
 
   def create
     @response = SurveyResponse.create response_params.merge(user_id: (current_user.try(:id) || anonymous_user.id), survey_id: @survey.id)
-    flash[:notice] = "Successfully answered survey"
+    @notif = V2::Notification.create(
+      sender_id: current_user.id,
+      item_id: @response.id,
+      item_type: 'SurveyResponse',
+      target_id: @survey.user.id,
+      link: survey_survey_response_path(@survey, @response),
+      action: "#{current_user.name} took #{@survey.name}"
+    )
+
+    message = ApplicationController.render(
+      partial: 'surveys/survey_responses/message',
+      locals: { notif: @notif }
+    )
     ApplicationCable::SurveyNotificationsChannel.broadcast_to(
       @survey.user,
-      survey_id: @survey.id,
-      survey_name: @survey.name,
-      sender_name: current_user.name,
-      link: "<a class='notif' href='#{dashboard_survey_path(@survey)}'>#{current_user.name} responded. check!</a>"
+      message: message
     )
 
     render 'thanks', layout: false

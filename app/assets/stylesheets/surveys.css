@@ -98,3 +98,10 @@ input[name=commit]:hover {
 label {
   text-align: left !important;
 }
+.response-navigate {
+  margin-right: 30%;
+  border: 1px solid yellow;
+  padding: 6px;
+  border-radius: 6px;
+  margin-top: 12px;
+}

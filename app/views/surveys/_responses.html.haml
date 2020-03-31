@@ -6,7 +6,7 @@
       - r.answers.joins(:question).each do |a|
         .answer
           - if a.question.answer_type == 'line'
-            .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
+            .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
               = a.question.text
             .clearfix
             .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
@@ -16,7 +16,7 @@
                 = 'User has skipped this question'
             .clearfix  
           - elsif a.question.answer_type == 'text'
-            .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
+            .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.col-12
               = a.question.text
             .clearfix
             .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
@@ -26,7 +26,7 @@
                 = 'User has skipped this question'
             .clearfix
           - elsif a.question.answer_type == 'radio'
-            .question-text.pull-left.col-lg-6.col-sm-6.col-xs-12
+            .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.col-12
               = a.question.text
             .clearfix
             .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
@@ -37,15 +37,16 @@
                 = 'User has skipped this question'
             .clearfix
           - elsif a.question.answer_type == 'checkbox'
-            = a.question.text
+            .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
+              = a.question.text
             .clearfix
-            .answer-text
-              - if a.choices.present?
-                - a.choices.each do |choice|
-                  .question.col-lg-12.col-sm-12.col-xs-12.col-12
-                    = choice.option.name
-                .clearfix
-              - else
+            - if a.choices.present?
+              - a.choices.each do |choice|
+                .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+                  = choice.option.name
+              .clearfix
+            - else
+              .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
                 = 'User has skipped this question'
             .clearfix
 - if @responses.next_page
