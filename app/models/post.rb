@@ -32,7 +32,7 @@ class Post < ApplicationRecord
     else
       Post.with_orientation(orientation).with_group_id(group_id)
         .select("#{Post.new.attributes.keys.join(', ')}")
-        .where(['title', 'text'].map{|att| "#{match_stmt(q, att)[0]} >= #{match_stmt(q, att)[1]}"}.join(' OR '))
+        .where(['title', 'text', 'survey_tags'].map{|att| "#{match_stmt(q, att)[0]} >= #{match_stmt(q, att)[1]}"}.join(' OR '))
         .order("updated_at #{order}")
     end
   end

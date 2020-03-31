@@ -77,7 +77,15 @@ bind_project_pin = function() {
     $(this).siblings('.project-select-container').removeClass('d-none')
   })
 }
-
+prepare_asinc_reload = function() {
+  disable_for_unauthorized()
+  present_survey()
+  present_quick_poll()
+  present_project()
+  bind_survey_pin()
+  bind_quick_poll_pin()
+  bind_project_pin()
+}
 bind_post = function() {
   $(document).on('ajax:success', '.group-post-form, .post-form', function(e, data, status, xhr) {
     $(document).off('ajax:success', '.group-post-form, .post-form')

@@ -17,8 +17,7 @@ $(document).on('turbolinks:load', function() {
 			},
 			success: function(data) {
 				$('.questions, .posts').html(data)
-				$('#masonry-container').masonry('destroy')
-				initMasonry()
+				prepare_asinc_reload()
 			}
 		})
 	}

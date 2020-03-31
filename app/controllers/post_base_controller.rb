@@ -31,6 +31,13 @@ class PostBaseController < ApplicationController
   
   protected
 
+  def tag_survey(survey, post)
+    survey_tags = "#{survey.name} #{survey.description}"
+    question_tags = survey.questions.map{|q| q.text}.join(' ')
+    option_tags = survey.questions.map{|q| q.options.map(&:name)}.flatten.join(' ')
+    post.update(survey_tags: "#{survey_tags} #{question_tags} #{option_tags}")
+  end
+
   def preview(text)
     MarkdownRenderer.render(text)
   end

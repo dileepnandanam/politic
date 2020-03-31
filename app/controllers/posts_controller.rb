@@ -85,7 +85,10 @@ class PostsController < PostBaseController
       } and return
     end
     @survey = current_user.surveys.find(params[:post][:survey_id])
-    current_user.posts.find(params[:id]).update(survey_id: @survey.id)
+    @post = current_user.posts.find(params[:id])
+    @post.update(survey_id: @survey.id)
+    tag_survey(@survey, @post)
+
     render json: {
       ack: "Pinning survey #{@survey.name}",
       id: @survey.id
