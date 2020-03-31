@@ -95,3 +95,6 @@ input[name=commit]:hover {
   text-align: center;
   margin: auto;
 }
+label {
+  text-align: left !important;
+}
