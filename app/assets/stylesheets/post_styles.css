@@ -19,3 +19,12 @@
 .search-panel.search {
   display: none;
 }
+.user-avathar {
+  display: none;
+}
+.new-response {
+  padding: 5px;
+  border: 2px solid blue;
+  margin-bottom: 12px;
+  background: darkgray;
+}
