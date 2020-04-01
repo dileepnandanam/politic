@@ -53,8 +53,6 @@
             - V2::Notification.where(target_id: current_user.id).each do |notif|
               = render partial: 'surveys/survey_responses/message', locals: {notif: notif}
         = yield
-        .pull-right.manufacturer
-          Powered by We Do Good
     - if Rails.env.development?
       .acc-switcher
         - User.all.each do |u|

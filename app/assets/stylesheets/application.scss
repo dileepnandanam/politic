@@ -21,6 +21,7 @@
  *= require 'masonry/right-to-left'
  *= require 'masonry/transitions'
  *= stub 'embed'
+ *= stub 'post_styles'
  */
 @import "bootstrap";
 @import "font-awesome";
@@ -143,7 +144,7 @@ body {
 	background: #7c76cfd4;
 	color: white;
 	margin: auto;
-	padding: 0px 0px 20px 0px;
+	padding: 0px 0px 0px 0px;
 	position: relative;
 }
 a, a:hover {

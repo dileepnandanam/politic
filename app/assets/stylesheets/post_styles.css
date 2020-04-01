@@ -1,0 +1,21 @@
+.common-bg {
+  padding: 0px;
+}
+.post {
+  border-radius: 0px;
+  border: 0px;
+  margin: 0px;
+}
+.group-post:first-child {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+.banner {
+  display: none;
+}
+.sub-nav-bar {
+  display: none;
+}
+.search-panel.search {
+  display: none;
+}
