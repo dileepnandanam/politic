@@ -17,7 +17,7 @@
   .new-question
   .questions-actions
     = link_to 'Add question', new_survey_question_path(@survey), class: 'add-question', remote: true
-    = link_to 'Preview', new_survey_survey_response_path(@survey)
+    = link_to 'Preview', survey_survey_response_path(@survey, @responses.last)
 .my-space.col-lg-8.col-md-6.col-sm-6.col-xs-12.col-12.pull-left
   %h3
     = "Survey Responses(#{@responses.count})"

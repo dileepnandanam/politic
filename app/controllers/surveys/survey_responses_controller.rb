@@ -6,18 +6,59 @@ class Surveys::SurveyResponsesController < SurveysController
 
   def show
     @response = @survey.survey_responses.find(params[:id])
-    @next = @survey.survey_responses.where("survey_responses.id < #{@response.id}").last
-    @previous = @survey.survey_responses.where("survey_responses.id > #{@response.id}").first
-    V2::Notification.where(target_id: current_user.id, sender_id: @response.user.id, item_id: @response.id).first.try :destroy
-
+    if @response.user == current_user || @survey.user == current_user
+      V2::Notification.where(target_id: current_user.id, sender_id: @response.user.id, item_id: @response.id).first.try :destroy if @survey.user == current_user
+      @next = @survey.survey_responses.where("survey_responses.id < #{@response.id}").last
+      @previous = @survey.survey_responses.where("survey_responses.id > #{@response.id}").first
+    else
+      redirect_to root_path and return
+    end
   end
 
   def accept
-    @survey.survey_responses.find(params[:id]).update(state: 'accepted')
+    @response = @survey.survey_responses.find(params[:id])
+    @response.update(state: 'accepted')
+    @notif = V2::Notification.create(
+      sender_id: current_user.id,
+      item_id: @response.id,
+      item_type: 'SurveyResponse',
+      target_id: @response.user.id,
+      link: survey_survey_response_path(@survey, @response),
+      action: "your query to #{@survey.name} has been accepted"
+    )
+
+    message = ApplicationController.render(
+      partial: 'surveys/survey_responses/message',
+      locals: { notif: @notif }
+    )
+    ApplicationCable::SurveyNotificationsChannel.broadcast_to(
+      @response.user,
+      message: message
+    )
+    render plain: 'ack', status: 200
   end
 
   def reject
-    @survey.survey_responses.find(params[:id]).update(state: 'rejected')
+    @response = @survey.survey_responses.find(params[:id])
+    @response.update(state: 'rejected')
+    @notif = V2::Notification.create(
+      sender_id: current_user.id,
+      item_id: @response.id,
+      item_type: 'SurveyResponse',
+      target_id: @response.user.id,
+      link: survey_survey_response_path(@survey, @response),
+      action: "sorry, your query to #{@survey.name} has been rejected"
+    )
+
+    message = ApplicationController.render(
+      partial: 'surveys/survey_responses/message',
+      locals: { notif: @notif }
+    )
+    ApplicationCable::SurveyNotificationsChannel.broadcast_to(
+      @response.user,
+      message: message
+    )
+    render plain: 'ack', status: 200
   end
 
   def new
@@ -47,7 +88,7 @@ class Surveys::SurveyResponsesController < SurveysController
       item_type: 'SurveyResponse',
       target_id: @survey.user.id,
       link: survey_survey_response_path(@survey, @response),
-      action: "#{current_user.name} took #{@survey.name}"
+      action: "#{current_user.name} responded to #{@survey.name}"
     )
 
     message = ApplicationController.render(

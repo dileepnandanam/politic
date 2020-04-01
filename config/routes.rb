@@ -80,7 +80,10 @@ Rails.application.routes.draw do
       put :reorder, on: :collection
       resources :options, controller: 'surveys/questions/options'
     end
-    resources :survey_responses, controller: 'surveys/survey_responses'
+    resources :survey_responses, controller: 'surveys/survey_responses' do
+      put :accept, on: :member
+      put :reject, on: :member
+    end
   end
 
   resources :quick_polls do
