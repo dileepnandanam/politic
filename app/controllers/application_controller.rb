@@ -3,6 +3,16 @@ class ApplicationController < ActionController::Base
   #before_action :redirect_to_affiliated_site
   before_action :set_flag
 
+  before_action :set_https
+
+  def set_https
+    if Rails.env != "development"
+      unless request.url.starts_with?('https')
+        redirect_to request.url.gsub('http', 'https') and return
+      end
+    end
+  end
+
   def connections_for(user)
   	connections = (
       user.responses.where(accepted: true).map(&:responce_user) +
