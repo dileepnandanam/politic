@@ -109,3 +109,13 @@ label {
 .handle-response {
   margin-right: 30%;
 }
+.survey-question-text-line, .survey_response_answers_line {
+  font-size: 24px;
+  margin-bottom: 12px;
+  display: inline-block;
+  max-width: 99%;
+}
+.survey_response_answers_line {
+  width: 34%;
+  float: right;
+}

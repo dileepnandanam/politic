@@ -1,19 +1,29 @@
 = simple_form_for([@survey, @survey_response], html:{remote: true, class: 'survey_response_form' }) do |f|
   = f.fields_for :answers do |af|
     .question
-      .survey-question-text
-        = af.object.question.text
-      .clearfix
+      
       - if af.object.question.answer_type == 'line'
+        .survey-question-text-line
+          = af.object.question.text
         = af.input :line, label: false
+        .clearfix
       - elsif af.object.question.answer_type == 'text'
+        .survey-question-text
+          = af.object.question.text
+        .clearfix
         = af.input :text, label: false
       - elsif af.object.question.answer_type == 'radio'
+        .survey-question-text
+          = af.object.question.text
+        .clearfix
         = af.fields_for :choices do |afc|
           = afc.radio_button :option_id, afc.object.option.id, checked: false, class: 'survey-radio pull-left'
           = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-11 col-md-10 col-xs-11 col-10'
           .clearfix
       - elsif af.object.question.answer_type == 'checkbox'
+        .survey-question-text
+          = af.object.question.text
+        .clearfix
         = af.fields_for :choices do |afc|
           = afc.check_box :option_id, {checked: false, class: 'pull-left'}, afc.object.option.id, nil
           = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-11 col-md-10 col-xs-11 col-10'
