@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     end
   end
   resources :users do
+    put :locate, on: :collection
+    put :vanish, on: :collection
     post :signin, on: :collection
     get :switch, on: :member
     get :posts, on: :member

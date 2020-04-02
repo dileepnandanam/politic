@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :check_user, only: [:show, :edit, :notifications, :connections, :update, :posts, :disconnect]
   after_action :mark_as_seen, only: [:show]
+  protect_from_forgery with: :null_session
+
   def show
   	@chats = get_chats(params[:id])
   	@user = User.find(params[:id])
@@ -64,6 +66,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     current_user.connections.where(to_user_id: @user.id).delete_all
     redirect_to root_path
+  end
+
+  def locate
+    current_user.update(lat: params[:lat], lngt: params[:lngt])
+  end
+
+  def vanish
+    current_user.update(lat: nil, lngt: nil)
   end
 
   protected
