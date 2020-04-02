@@ -67,3 +67,6 @@
 .post-title h1 a {
   font-size: 40px;
 }
+.post {
+  background-image: none !important;
+}
