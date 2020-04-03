@@ -27,20 +27,23 @@ class Post < ApplicationRecord
   scope :with_group_id, -> (group_id) { where(group_id: group_id) }
 
 
-  def self.text_search(q, group_id, orientation = nil, order= 'DESC')
+  def self.text_search(q, group_id, orientation = nil)
     if match_stmt(q, '')[0].blank?
       Post.where('1 = 2')
     else
       Post.with_orientation(orientation).with_group_id(group_id)
         .select("#{Post.new.attributes.keys.join(', ')}")
         .where(['title', 'text', 'survey_tags'].map{|att| "#{match_stmt(q, att)[0]} >= #{match_stmt(q, att)[1]}"}.join(' OR '))
-        .order("updated_at #{order}")
     end
   end
 
-  def self.search(q, group_id, orientation = nil, order= 'DESC', location = nil)
-    posts = text_search(q, group_id, orientation, order)
-    posts
+  def self.search(q, group_id, orientation = nil, location = nil)
+    posts = text_search(q, group_id, orientation)
+    if location.to_a.all?(&:present?)
+      posts.near(location, 50)
+    else
+      posts.order('created_at DESC')
+    end
   end
 
   
