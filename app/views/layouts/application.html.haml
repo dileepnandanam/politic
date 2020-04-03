@@ -32,7 +32,11 @@
       .nav-bar
         - if current_user
           = link_to "Log Out", destroy_session_path(current_user), method: :delete, class: 'pull-right'          
-          = link_to 'I am Here', '#', class: 'i-am-here pull-right'
+          - if current_user.posts.count == 0
+            = link_to 'I am Here', '#', class: 'i-am-here pull-right'
+          - else
+            - current_user.posts.each do |post|
+              = link_to post.title, "/#{post.id}", class: 'pull-right'
         - else
           
           = link_to "Sign in", new_user_session_path, class: 'pull-right'

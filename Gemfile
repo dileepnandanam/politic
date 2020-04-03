@@ -57,7 +57,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'rollbar'
 gem 'unicorn'
 gem 'pry'
 gem 'pg', '~> 0.20'
@@ -78,4 +77,4 @@ gem 'yui-compressor'
 gem 'light_imogee'
 gem 'redcarpet'
 gem 'markdown-rails'
-
+gem 'geocoder', '~> 1.6', '>= 1.6.2'

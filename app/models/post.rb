@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  reverse_geocoded_by :lat, :lngt
   belongs_to :post_user, class_name: 'User', optional: true
   belongs_to :user
   belongs_to :group, optional: true
@@ -26,7 +27,7 @@ class Post < ApplicationRecord
   scope :with_group_id, -> (group_id) { where(group_id: group_id) }
 
 
-  def self.search(q, group_id, orientation = nil, order= 'DESC')
+  def self.text_search(q, group_id, orientation = nil, order= 'DESC')
     if match_stmt(q, '')[0].blank?
       Post.where('1 = 2')
     else
@@ -35,6 +36,11 @@ class Post < ApplicationRecord
         .where(['title', 'text', 'survey_tags'].map{|att| "#{match_stmt(q, att)[0]} >= #{match_stmt(q, att)[1]}"}.join(' OR '))
         .order("updated_at #{order}")
     end
+  end
+
+  def self.search(q, group_id, orientation = nil, order= 'DESC', location = nil)
+    posts = text_search(q, group_id, orientation, order)
+    posts
   end
 
   

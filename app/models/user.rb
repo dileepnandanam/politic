@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+  reverse_geocoded_by :lat, :lngt
   has_many :connections
   has_many :questions
   has_many :responses

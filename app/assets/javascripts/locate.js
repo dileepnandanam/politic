@@ -11,6 +11,9 @@ $(document).on('turbolinks:load', function() {
   })
   
   $('.i-am-here').click(function(e) {
+    $(this).css('background-color', 'red')
+    var that = this
+    setTimeout(function() {$(that).css('background-color', 'transparent')}, 1000)
     locate_me()
     e.preventDefault()
   })

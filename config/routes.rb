@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'signin-facebook', to: 'users/omniauth_callbacks#facebook'
   get 'access_restricted', to: 'home#access_restricted'
 
-  resources :posts, controller: 'posts' do
+  resources :posts, controller: 'posts', scope: '/' do
     put :locate, on: :member
     put :vanish, on: :member
     get :preview, on: :member
@@ -99,6 +99,6 @@ Rails.application.routes.draw do
   end
 
   resources :affiliations
-  get '/:permalink', to: 'home#show'
+  get '/:id', to: 'posts#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
