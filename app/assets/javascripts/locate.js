@@ -1,25 +1,34 @@
 $(document).on('turbolinks:load', function() {
-  locate_me()
 
   $('.free').click(function(e) {
-    locate_me()
+    locate_post()
     e.preventDefault()
   })
 
   $('.busy').click(function(e) {
-    vanish()
+    vanish_post_location()
     e.preventDefault()
   })
-
+  
+  $('.i-am-here').click(function(e) {
+    locate_me()
+    e.preventDefault()
+  })
 })
 
+
 locate_me = function() {
-  navigator.geolocation.getCurrentPosition(locate_user);
+  navigator.geolocation.getCurrentPosition(send_user_location);
 }
 
-locate_user = function(position) {
+locate_post = function() {
+  navigator.geolocation.getCurrentPosition(send_post_location);
+}
+
+send_post_location = function(position) {
+  var id = $('.post').data('id')
   $.ajax({
-    url: '/users/locate',
+    url: '/posts/' + id + '/locate',
     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
     method: 'PUT',
     data: {
@@ -34,15 +43,28 @@ locate_user = function(position) {
   })
 }
 
-vanish = function() {
+vanish_post_location = function() {
+  var id = $('.post').data('id')
   $.ajax({
-    url: '/users/vanish',
+    url: '/posts/' + id + '/vanish',
     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
     method: 'PUT',
     success: function() {
       $('.free').toggleClass('d-none')
       $('.busy').toggleClass('d-none')
 
+    }
+  })
+}
+
+send_user_location = function(position) {
+  $.ajax({
+    url: '/users/locate',
+    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+    method: 'PUT',
+    data: {
+      lat: position.coords.latitude,
+      lngt: position.coords.longitude
     }
   })
 }

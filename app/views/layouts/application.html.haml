@@ -14,6 +14,8 @@
   %body
     = audio_tag 'inflicted.mp3', class: 'response-notif'
     .current-user-data.d-none{data:{signed_in: current_user.present?.to_s}}
+    .current-user-location-data.d-none{data:{lat: current_user.present? ? current_user.lat.present?.to_s : 'true'}}
+    
     - if @group.present?
       .banner{style: SiteSetting['group_banner_style'].value}
         .banner-heading{style: SiteSetting['group_banner_heading_style'].value}
@@ -30,6 +32,7 @@
       .nav-bar
         - if current_user
           = link_to "Log Out", destroy_session_path(current_user), method: :delete, class: 'pull-right'          
+          = link_to 'I am Here', '#', class: 'i-am-here pull-right'
         - else
           
           = link_to "Sign in", new_user_session_path, class: 'pull-right'

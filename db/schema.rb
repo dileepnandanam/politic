@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_110459) do
+ActiveRecord::Schema.define(version: 2020_04_03_051841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,9 @@ ActiveRecord::Schema.define(version: 2020_04_02_110459) do
     t.integer "quick_poll_id"
     t.integer "project_id"
     t.text "survey_tags", default: ""
+    t.boolean "free"
+    t.float "lat"
+    t.float "lngt"
   end
 
   create_table "questions", force: :cascade do |t|

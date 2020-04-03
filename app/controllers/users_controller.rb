@@ -72,10 +72,6 @@ class UsersController < ApplicationController
     current_user.update(lat: params[:lat], lngt: params[:lngt])
   end
 
-  def vanish
-    current_user.update(lat: nil, lngt: nil)
-  end
-
   protected
 
   def mark_as_seen
