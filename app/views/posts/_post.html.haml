@@ -5,8 +5,9 @@
   .post-actions
     - if post.user == current_user || (current_user.try :admin?)
       = link_to 'delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right delete-question'
-      = link_to 'free', '#', class: "feature free pull-right #{current_user.lat.present? ? 'd-none' : ''}"
-      = link_to 'busy', '#', class: "feature busy pull-right #{current_user.lat.present? ? '' : 'd-none'}"
+    - if post.user == current_user && action_name == 'show'
+      = link_to 'free', '#', class: "feature free pull-right #{current_user.lat.present? ? '' : 'd-none'}"
+      = link_to 'busy', '#', class: "feature busy pull-right #{current_user.lat.present? ? 'd-none' : ''}"
     - if (current_user.try :admin?)
       - if post.featured?
         = render partial: 'unpin', locals: {post: post}

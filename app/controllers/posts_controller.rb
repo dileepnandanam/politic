@@ -147,11 +147,11 @@ class PostsController < PostBaseController
   end
 
   def locate
-    Post.find(params[:id]).update(lat: params[:lat], lngt: params[:lngt])
+    current_user.posts.find(params[:id]).update(lat: params[:lat], lngt: params[:lngt])
   end
 
   def vanish
-    Post.find(params[:id]).update(lat: nil, lngt: nil)
+    current_user.posts.find(params[:id]).update(lat: nil, lngt: nil)
   end
 
 
