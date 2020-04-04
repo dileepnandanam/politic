@@ -5,7 +5,8 @@
     .form-inputs
       = f.input :name,
         required: true
-      = f.input :email,                      
+      = f.input :email,
+        label: 'email (no confirmation needed)',                    
         required: true,                      
         autofocus: true,                     
         input_html: { autocomplete: "email" }
@@ -13,9 +14,6 @@
         required: true,                                                                      
         hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
         input_html: { autocomplete: "new-password" }                                         
-      = f.input :password_confirmation,             
-        required: true,                             
-        input_html: { autocomplete: "new-password" }
     .form-actions
       = f.button :submit, "Sign up"
       .clearfix

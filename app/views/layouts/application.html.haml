@@ -22,12 +22,6 @@
           = @group.name
           .banner-site-description{style: SiteSetting['group_banner_description_style'].value}
             = @group.description
-    -else
-      .banner{style: SiteSetting['banner_style'].value}
-        .banner-heading
-          = raw SiteSetting['banner_heading'].value
-          .banner-site-description
-            = raw SiteSetting['site_description'].value
     .page.col-lg-12.col-sm-12.col-12
       .nav-bar
         - if current_user

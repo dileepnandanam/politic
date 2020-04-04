@@ -6,7 +6,7 @@ class PostsController < PostBaseController
 
   def index
     if params[:query].present?
-      @posts = Post.search(params[:query], nil, orientation, [current_user.lat, current_user.lngt])
+      @posts = Post.search(params[:query], nil, orientation, [current_user.try(:lat), current_user.try(:lngt)])
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       mark_seen(@posts)
     else
