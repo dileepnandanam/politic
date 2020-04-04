@@ -48,6 +48,9 @@
             .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
               = 'User has skipped this question'
           .clearfix
+    - if @response.user.lat.present?
+      .map-link{data:{addr: "#{@response.user.lat},#{@response.user.lngt}"}}
+        = image_tag('map.png', class: 'map-ico')
   - if @survey.user == current_user
     = link_to 'accept', accept_survey_survey_response_path(@survey, @response), remote: true, class: 'handle-response', method: :put
     = link_to 'reject', reject_survey_survey_response_path(@survey, @response), remote: true, class: 'handle-response', method: :put
