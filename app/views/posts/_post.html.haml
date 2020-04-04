@@ -3,11 +3,10 @@
   -if false
     .pull-left.user-avathar= render partial: 'users/user_details', locals: {user: post.user}
   .post-actions
-    - if post.user == current_user || (current_user.try :admin?)
-      = link_to 'delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right delete-question'
-    - if post.user == current_user && action_name == 'show'
-      = link_to 'free', '#', class: "feature free pull-right #{current_user.lat.present? ? '' : 'd-none'}"
-      = link_to 'busy', '#', class: "feature busy pull-right #{current_user.lat.present? ? 'd-none' : ''}"
+    = link_to 'delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right delete-question'
+    = link_to 'free', '#', class: "feature free pull-right #{current_user.lat.present? ? '' : 'd-none'}"
+    = link_to 'busy', '#', class: "feature busy pull-right #{current_user.lat.present? ? 'd-none' : ''}"
+    = link_to 'edit', edit_post_path(post), remote: true, class: 'edit-post-link'
     - if (current_user.try :admin?)
       - if post.featured?
         = render partial: 'unpin', locals: {post: post}
@@ -20,14 +19,15 @@
     .clearfix 
     .post-text  
       = auto_link MarkdownRenderer.render(post.text), html: {target: '_blank'}
-    - if action_name == 'show'  
-      = render partial: 'surveys/selection', locals: {post: post}
-      .survey-container{data: {id: post.survey_id}}
-      = render partial: 'quick_polls/selection', locals: {post: post}
-      .quick-poll-container{data: {id: post.quick_poll_id}}
-      = render partial: 'groups/selection', locals: {post: post}
-      .project-container{data: {id: post.project_id}}
+    .edit-container  
+    = render partial: 'surveys/selection', locals: {post: post}
+    .survey-container{data: {id: post.survey_id}}
+    = render partial: 'quick_polls/selection', locals: {post: post}
+    .quick-poll-container{data: {id: post.quick_poll_id}}
+    = render partial: 'groups/selection', locals: {post: post}
+    .project-container{data: {id: post.project_id}}
     .clearfix
+  
   = render partial: 'posts/comment_actions', locals: {post: post}
   .clearfix
   .new-comment

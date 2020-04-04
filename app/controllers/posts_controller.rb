@@ -1,5 +1,5 @@
 class PostsController < PostBaseController
-  before_action :check_user, only: [:downvote, :upvote, :destroy, :create, :new]
+  before_action :check_user, only: [:new, :downvote, :upvote, :destroy, :create, :new]
   def show
     @post = Post.find(params[:id])
   end
@@ -21,6 +21,11 @@ class PostsController < PostBaseController
     else
       render 'posts', layout: false
     end
+  end
+
+  def my_posts
+    @posts = current_user.posts
+    render 'my_posts'
   end
 
   def new
@@ -45,6 +50,15 @@ class PostsController < PostBaseController
   def edit
     @post = Post.find params[:id]
     render 'new', layout: false
+  end
+
+  def update
+    @post = current_user.posts.find(params[:id])
+    if @post.update(post_params)
+      render 'post', layout: false
+    else 
+      render 'new', layout: false, status: 422
+    end
   end
 
   def destroy

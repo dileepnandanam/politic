@@ -125,6 +125,17 @@ bind_project_pin()
 		})
 	})
 
+  $(document).on('ajax:success', '.edit-post-link', function(e) {
+    $('.edit-container').html(e.detail[2].responseText)
+  })
+
+  $(document).on('ajax:success', '.edit-container', function(e) {
+    $('.post').replaceWith(e.detail[2].responseText)
+    prepare_asinc_reload()
+  }).on('ajax:error', '.edit-container', function(e) {
+    $('.edit-container').html(e.detail[2].responseText)
+  })
+
   $(".new-group-post").click(function() {
     $([document.documentElement, document.body]).animate({
         scrollTop: $(".post-form, .group-post-form").offset().top
@@ -213,4 +224,5 @@ bind_project_pin()
     $(document).on('ajax:success', '.feature', function(e) {
       $(this).replaceWith(e.detail[2].responseText)
     })
+
 })

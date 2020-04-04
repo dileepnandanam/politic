@@ -26,11 +26,10 @@
       .nav-bar
         - if current_user
           = link_to "Log Out", destroy_session_path(current_user), method: :delete, class: 'pull-right'          
-          - if current_user.posts.count == 0
-            = link_to 'I am Here', '#', class: 'i-am-here pull-right'
-          - else
-            - current_user.posts.each do |post|
-              = link_to post.title, "/#{post.id}", class: 'pull-right'
+          
+          = link_to 'I am Here', '#', class: 'i-am-here pull-right'
+          = link_to 'my posts', my_posts_posts_path, class: 'pull-right'
+          
         - else
           
           = link_to "Sign in", new_user_session_path, class: 'pull-right'
@@ -40,10 +39,11 @@
         .clearfix
       - if current_user.present?  
         .sub-nav-bar
-          = link_to 'Posts', posts_path, class: 'sub-nav-bar-item ' + (@flag == 'post' ? 'active-tab' : '')
-          = link_to 'Projects', groups_path, class: 'sub-nav-bar-item ' + (@flag == 'project' ? 'active-tab' : '')
-          = link_to 'Surveys', surveys_path, class: 'sub-nav-bar-item ' + (@flag == 'survey' ? 'active-tab' : '')
-          = link_to 'quick polls', quick_polls_path, class: 'sub-nav-bar-item ' + (@flag == 'quick_poll' ? 'active-tab' : '')
+          - if current_user && current_user.posts.present?
+            = link_to 'Posts', posts_path, class: 'sub-nav-bar-item ' + (@flag == 'post' ? 'active-tab' : '')
+            = link_to 'Projects', groups_path, class: 'sub-nav-bar-item ' + (@flag == 'project' ? 'active-tab' : '')
+            = link_to 'Surveys', surveys_path, class: 'sub-nav-bar-item ' + (@flag == 'survey' ? 'active-tab' : '')
+            = link_to 'quick polls', quick_polls_path, class: 'sub-nav-bar-item ' + (@flag == 'quick_poll' ? 'active-tab' : '')
           .clearfix
       .common-bg{class: "#{controller_name}-#{action_name}"}
         - if flash[:notice].present?

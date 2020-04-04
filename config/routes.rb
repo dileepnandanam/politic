@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'access_restricted', to: 'home#access_restricted'
 
   resources :posts, controller: 'posts', scope: '/' do
+    get :my_posts, on: :collection
     put :locate, on: :member
     put :vanish, on: :member
     get :preview, on: :member

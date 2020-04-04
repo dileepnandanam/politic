@@ -1,0 +1,8 @@
+.group-post.post{data: {id: post.id}}
+  .post-actions.pull-right
+  .post-title
+    %h1= link_to post.title, "/#{post.id}"
+  .post-body
+    .clearfix 
+    .post-text  
+      = auto_link MarkdownRenderer.render(post.text), html: {target: '_blank'}
