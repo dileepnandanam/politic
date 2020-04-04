@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+  fix_radio()
   $(document).on('ajax:success', '.new-option', function(e) {
     $(this).siblings('.new-option-form').html(e.detail[2].responseText)
   })
@@ -77,3 +78,10 @@ $(document).on('turbolinks:load', function() {
 
 
 })
+
+fix_radio = function() {
+  $.each($('.form-check-input'), function(i, elem){
+    $(elem).attr('id', i)
+    $(elem).next('label').attr('for', i)
+  })
+}

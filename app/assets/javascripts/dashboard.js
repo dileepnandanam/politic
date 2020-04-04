@@ -1,6 +1,7 @@
 $(document).on('turbolinks:load', function() {
 	$('.add-question').on('ajax:success', function(e){
 		$('.new-question').html(e.detail[2].responseText)
+		fix_radio()
 	})
 	$('.new-question').on('click', '.cancel-form', function() {
 		$(this).closest('form').remove()
