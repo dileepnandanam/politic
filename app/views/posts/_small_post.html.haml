@@ -1,8 +1,12 @@
 .group-post.post{data: {id: post.id}}
   .post-actions.pull-right
   .post-title
-    %h1= link_to post.title, "/#{post.id}"
+    %h2= link_to post.title, "/#{post.id}"
   .post-body
     .clearfix 
     .post-text  
-      = auto_link MarkdownRenderer.render(post.text), html: {target: '_blank'}
+      - display_text = post.text[0..160]
+      - if post.text.length > 160
+        = "#{display_text}....."
+      - else
+        = post.text

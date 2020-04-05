@@ -119,6 +119,9 @@ bind_project_pin()
 	$('.new-group-post').on('ajax:success', function(e) {
 		new_post = $('.new-post')
 		$('.new-post').html(e.detail[2].responseText)
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $(".post-form, .group-post-form").offset().top
+    }, 500);
 		$(new_post).find('.open-image-upload').on('click', function(e) {
 			e.preventDefault()
 			$(this).siblings('.image-upload').removeClass('d-none')
@@ -135,12 +138,6 @@ bind_project_pin()
   }).on('ajax:error', '.edit-container', function(e) {
     $('.edit-container').html(e.detail[2].responseText)
   })
-
-  $(".new-group-post").click(function() {
-    $([document.documentElement, document.body]).animate({
-        scrollTop: $(".post-form, .group-post-form").offset().top
-    }, 500);
-  });
 
 	$(document).on('ajax:success', '.delete-post', function(e) {
 		$(this).closest('.group-post, .comment').remove()
