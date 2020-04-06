@@ -7,6 +7,7 @@ $(document).on('turbolinks:load', function() {
   })
 
   $('.busy').click(function(e) {
+    $(this).css('background-color', 'red')
     vanish_post_location()
     e.preventDefault()
   })
@@ -36,6 +37,7 @@ locate_me = function() {
 }
 
 locate_post = function() {
+  $('.free').css('background-color','red')
   navigator.geolocation.getCurrentPosition(send_post_location);
 }
 
@@ -50,6 +52,7 @@ send_post_location = function(position) {
       lngt: position.coords.longitude
     },
     success: function() {
+      $('.free').css('background-color','blue')
       $('.free').toggleClass('d-none')
       $('.busy').toggleClass('d-none')
 
@@ -64,6 +67,7 @@ vanish_post_location = function() {
     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
     method: 'PUT',
     success: function() {
+      $('.busy').css('background-color','blue')
       $('.free').toggleClass('d-none')
       $('.busy').toggleClass('d-none')
 

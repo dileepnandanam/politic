@@ -232,3 +232,8 @@ legend {
   width: 200px;
   text-align: center;
 }
+.access-restricted {
+  background-color: yellow;
+  color: black;
+  padding: 8px;
+}

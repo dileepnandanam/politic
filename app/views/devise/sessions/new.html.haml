@@ -2,7 +2,8 @@
   %h2 Already have an account? sign in
   = simple_form_for(User.new, url: signin_users_path) do |f|
     .form-inputs
-      = f.input :email,                      
+      = f.input :email,
+        label: 'phone no',                     
         required: false,                     
         autofocus: true,                     
         input_html: { autocomplete: "email" }
