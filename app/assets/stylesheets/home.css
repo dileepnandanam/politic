@@ -235,5 +235,6 @@ legend {
 .access-restricted {
   background-color: yellow;
   color: black;
-  padding: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
 }
