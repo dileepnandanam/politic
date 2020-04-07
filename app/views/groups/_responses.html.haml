@@ -1,6 +1,6 @@
 - @responses.each do |r|
   .question
-    = render partial: 'users/user_details', locals: {user: r.responce_user}
+    = render partial: 'users/user_details', locals: {user: r.user}
     .clearfix
     .answers
       - r.answers.joins(:question).each do |a|
@@ -51,10 +51,10 @@
             .clearfix
 
     .answer-action
-      - if r.accepted
-        = render partial: 'groups/responses/accept', locals: {user: r.responce_user}
+      - if r.state == 'accepted'
+        = render partial: 'groups/responses/accept', locals: {user: r.user}
       - else
-        = link_to 'Accept', accept_group_response_path(@group, r), remote: true, class: 'accept-response', method: 'put'
+        = link_to 'Accept', accept_group_group_response_path(@group, r), remote: true, class: 'accept-response', method: 'put'
 - if @responses.next_page
   .more-responses
     = link_to 'View more', responses_group_path(@group, state: state, page: params[:page].present? ? params[:page].to_i + 1 : 2), remote: true, class: 'view-more'

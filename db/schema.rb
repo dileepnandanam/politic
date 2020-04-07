@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_051841) do
+ActiveRecord::Schema.define(version: 2020_04_07_131302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_051841) do
     t.integer "survey_response_id"
     t.integer "option_id"
     t.string "line"
+    t.integer "group_response_id"
   end
 
   create_table "chats", force: :cascade do |t|
@@ -66,6 +67,14 @@ ActiveRecord::Schema.define(version: 2020_04_03_051841) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "group_responses", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "groups", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
@@ -77,6 +86,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_051841) do
     t.bigint "image_file_size"
     t.datetime "image_updated_at"
     t.boolean "visible", default: false
+    t.boolean "allow_immediate_access", default: false
   end
 
   create_table "notifications", force: :cascade do |t|

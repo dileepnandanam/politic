@@ -1,8 +1,8 @@
-class Groups::ResponsesController < ApplicationController
+class Groups::GroupResponsesController < ApplicationController
   before_action :check_user, only: [:create, :accept]
   before_action :find_group
   def new
-    @response = Response.new
+    @response = GroupResponse.new
     @group.questions.each do |q|
       answer = Answer.new(question_id: q.id)
       @response.answers << answer
@@ -21,9 +21,9 @@ class Groups::ResponsesController < ApplicationController
   end
 
   def create
-  	@response = Response.create response_params.merge(responce_user_id: current_user.id, group_id: @group.id)
+  	@response = GroupResponse.create response_params.merge(user_id: current_user.id, group_id: @group.id, state: (@group.allow_immediate_access? ? 'accepted' : 'new'))
     flash[:notice] = "Requested to join Site #{@response.group.name}"
-    if @response.responce_user_id == @response.group.user_id
+    if @response.user_id == @response.group.user_id
       @response.delete
       render 'error', layout: false
     else
@@ -35,10 +35,9 @@ class Groups::ResponsesController < ApplicationController
     unless @group.user == current_user
       redirect_to access_restricted_path
     end
-    @response = @group.responses.find(params[:id])
-    @response.update(accepted: true)
+    @response = @group.group_responses.find(params[:id])
+    @response.update(state: 'accepted')
     render 'accept', layout: false
-    ResponseMailer.with(group: @group, response_user: @response.responce_user).response_to_group_accepted.deliver_later
   end
 
   protected
@@ -48,7 +47,7 @@ class Groups::ResponsesController < ApplicationController
   end
 
   def response_params
-    params.require(:response).permit(answers_attributes: [:text, :question_id, :line, choices_attributes: [:option_id, option_id: []]])
+    params.require(:group_response).permit(answers_attributes: [:text, :question_id, :line, choices_attributes: [:option_id, option_id: []]])
   end
 
   def set_flag

@@ -35,7 +35,7 @@ class Groups::Questions::OptionsController < ApplicationController
   protected
 
   def find_parents
-    @group = current_user.groups.find(params[:group_id])
+    @group = current_user.owned_groups.find(params[:group_id])
     @question = @group.questions.find(params[:question_id])
   end
 

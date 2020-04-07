@@ -17,7 +17,7 @@
   .new-question
   .questions-actions
     = link_to 'Add question', new_group_question_path(@group), class: 'add-question', remote: true
-    = link_to 'Preview', new_group_response_path(@group)
+    = link_to 'Preview', new_group_group_response_path(@group)
 
 .my-space.my-responses.col-lg-8.col-sm-6.col-xs-12.pull-left
   %h3

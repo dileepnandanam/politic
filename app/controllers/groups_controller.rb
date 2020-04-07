@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     if current_user
       unless @group.user == current_user || current_user.is_a_member_of(@group) || @group.visible?
-        redirect_to new_group_response_path(@group) and return
+        redirect_to new_group_group_response_path(@group) and return
       end
     end
     @posts = @group.posts.order('created_at DESC').paginate(page: params[:page], per_page: 12)
@@ -31,7 +31,6 @@ class GroupsController < ApplicationController
   end
 
   def dashboard
-    @group = current_user.groups.find(params[:id])
     @questions = @group.questions
     @responses = get_responses.paginate(page: 1, per_page: 2)
   end
@@ -84,20 +83,15 @@ class GroupsController < ApplicationController
   protected
 
   def find_group
-    @group = current_user.groups.find(params[:id])
+    @group = current_user.owned_groups.find(params[:id])
   end
 
   def get_responses
-    responses = @group.responses.order('id DESC')
-    if params[:state] == 'accepted'
-      responses.where(accepted: true)
-    else
-      responses.where(accepted: false)
-    end
+    responses = @group.group_responses.order('id DESC').where(state: params[:state])
   end
 
   def group_params
-    params.require(:group).permit(:description, :name, :image, :visible)
+    params.require(:group).permit(:description, :name, :image, :visible, :allow_immediate_access)
   end
 
   def set_flag

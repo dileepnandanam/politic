@@ -13,6 +13,13 @@ class User < ApplicationRecord
   has_many :notifications
   has_many :surveys
   has_many :quick_polls
+  has_many :group_responses
+  has_many :groups, through: :group_responses
+  has_many :owned_groups, class_name: 'Group', foreign_key: :user_id
+
+  def groupes
+    Group.joins(:responses).where(user_id: id, responses: {accepted: true})
+  end
 
   validates :name, presence: true
   # Include default devise modules. Others available are:

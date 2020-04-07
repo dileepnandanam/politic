@@ -5,8 +5,8 @@ class Groups::PostsController < PostBaseController
     @group = Group.find(params[:group_id])
     @post = Post.find(params[:id])
     if current_user
-      unless @group.user == current_user || current_user.is_a_member_of(@group) || @group.visible?
-        redirect_to new_group_response_path(@group) and return
+      unless @group.user == current_user || current_user.groups.include?(@group) || @group.visible?
+        redirect_to new_group_group_response_path(@group) and return
       end
     end
     if request.format.html?
@@ -110,12 +110,12 @@ class Groups::PostsController < PostBaseController
       true
     elsif current_user.blank?
       redirect_to access_restricted_path
-    elsif group.responses.where(responce_user_id: current_user.id).first.present?
+    elsif group.group_responses.where(user_id: current_user.id).first.present?
       true
     elsif group.user_id == current_user.id
       true
     else
-      redirect_to new_group_response_path(group)
+      redirect_to new_group_group_response_path(group)
     end
   end  
 

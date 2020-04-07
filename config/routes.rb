@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     get :dashboard, on: :member
     get :responses, on: :member
     get :search, on: :collection
-    resources :responses, controller: 'groups/responses' do
+    resources :group_responses, controller: 'groups/group_responses' do
       put :accept, on: :member
     end
     resources :questions, controller: 'groups/questions' do

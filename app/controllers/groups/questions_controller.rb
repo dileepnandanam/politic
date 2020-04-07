@@ -49,7 +49,7 @@ class Groups::QuestionsController < ApplicationController
   protected
 
   def find_group
-    @group = current_user.groups.find(params[:group_id])
+    @group = current_user.owned_groups.find(params[:group_id])
   end
 
   def question_params
