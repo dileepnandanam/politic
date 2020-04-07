@@ -91,6 +91,10 @@ bind_post = function() {
     $(document).off('ajax:success', '.group-post-form, .post-form')
     $(this).remove()
     $('.posts-container').prepend(e.detail[2].responseText)
+    $('.sub-nav-bar').removeClass('d-none')
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $(".sub-nav-bar").offset().top
+    }, 500);
     bind_post()
     bind_survey_pin()
     bind_quick_poll_pin()
