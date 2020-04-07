@@ -22,7 +22,7 @@ class Groups::ResponsesController < ApplicationController
 
   def create
   	@response = Response.create response_params.merge(responce_user_id: current_user.id, group_id: @group.id)
-    flash[:notice] = "Requested to join #{AppConst::GroupType} #{@response.group.name}"
+    flash[:notice] = "Requested to join Site #{@response.group.name}"
     if @response.responce_user_id == @response.group.user_id
       @response.delete
       render 'error', layout: false
