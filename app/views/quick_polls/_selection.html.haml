@@ -1,6 +1,9 @@
 - if post.user == current_user
   .pin-select.pull-right
-    = link_to 'Pin a Quick poll', '#', class: 'quick-poll-select', remote: true
+    - if current_user.quick_polls.count == 0
+      = link_to 'Pin a Quick poll', quick_polls_path, class: 'fbt-select-nil'
+    - else
+      = link_to 'Pin a Quick poll', '#', class: 'quick-poll-select', remote: true
     .clearfix
     .quick-poll-select-container.d-none
       = form_for [:select_quick_poll, post], method: :put, html: {class: 'quick-poll-select-form', remote: true} do |f|

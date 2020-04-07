@@ -1,6 +1,10 @@
 .my-space.col-lg-4.col-sm-6.col-12.pull-left
   .responses-container.questions-container
     %h3= "My QuickPolls"
+    - if @quick_polls.length == 0
+      .question.help-text
+        %p
+          You dont have any quick polls. create one and pin it to your page!
     - @quick_polls.each do |quick_poll|
       = render partial: 'quick_poll', locals: {quick_poll: quick_poll, actions: true}
   .new-question

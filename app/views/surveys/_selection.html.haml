@@ -1,6 +1,9 @@
 - if post.user == current_user
   .pin-select.pull-right
-    = link_to 'Pin a survey', '#', class: 'survey-select', remote: true
+    - if current_user.surveys.count == 0
+      = link_to 'Pin a survey', surveys_path, class: 'fbt-select-nil'
+    - else
+      = link_to 'Pin a survey', '#', class: 'survey-select', remote: true
     .clearfix
     .survey-select-container.d-none
       = form_for [:select_survey, post], method: :put, html: {class: 'survey-select-form', remote: true} do |f|

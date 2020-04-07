@@ -40,7 +40,10 @@ class PostsController < PostBaseController
   def create
     @post = current_user.posts.create post_params
     if @post.save
-      render 'post', layout: false, status: 200
+      render partial: 'posts/small_post', layout: false, status: 200, 
+      locals: {
+        post: @post
+      }
     else
       @post.valid?
       render 'new', layout: false, status: 422
@@ -128,14 +131,14 @@ class PostsController < PostBaseController
     if params[:post][:project_id].blank?
       current_user.posts.find(params[:id]).update(project_id: nil)
       render json: {
-        ack: "No project has got pinned to this post",
+        ack: "No site has got pinned to this post",
         id: nil
       } and return
     end
     @project = current_user.groups.find(params[:post][:project_id])
     current_user.posts.find(params[:id]).update(project_id: @project.id)
     render json: {
-      ack: "Pinning project #{@project.name}",
+      ack: "Pinning site #{@project.name}",
       id: @project.id
     }
   end

@@ -1,6 +1,9 @@
 - if post.user == current_user
   .pin-select.pull-right
-    = link_to 'Pin a Project', '#', class: 'project-select', remote: true
+    - if current_user.groups.count == 0
+      = link_to 'Pin a site', groups_path, class: 'fbt-select-nil'
+    - else
+      = link_to 'Pin a site', '#', class: 'project-select', remote: true
     .clearfix
     .project-select-container.d-none
       = form_for [:select_project, post], method: :put, html: {class: 'project-select-form', remote: true} do |f|

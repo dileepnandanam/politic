@@ -1,6 +1,10 @@
 .my-space.col-lg-4.col-sm-6.col-12.pull-left
   .responses-container.questions-container
     %h3= "My Surveys"
+    - if @surveys.length == 0
+      .question.help-text
+        %p
+          You dont have any surveys. create one and pin it to your page!
     - @surveys.each do |survey|
       = render partial: 'survey', locals: {survey: survey, actions: true}
   .new-question
