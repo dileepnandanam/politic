@@ -54,7 +54,7 @@
             - V2::Notification.where(target_id: current_user.id).each do |notif|
               = render partial: 'surveys/survey_responses/message', locals: {notif: notif}
         = yield
-    - if Rails.env.development? && false
+    - if Rails.env.development?
       .acc-switcher
         - User.all.each do |u|
           = link_to u.name, switch_user_path(u), class: 'user-switch pull-left'

@@ -8,6 +8,7 @@ class Surveys::SurveyResponsesController < SurveysController
     @response = @survey.survey_responses.find(params[:id])
     if @response.user == current_user || @survey.user == current_user
       V2::Notification.where(target_id: current_user.id, sender_id: @response.user.id, item_id: @response.id).first.try :destroy if @survey.user == current_user
+      V2::Notification.where(target_id: current_user.id, sender_id: @survey.user.id, item_id: @response.id).first.try :destroy if @response.user == current_user
       @next = @survey.survey_responses.where("survey_responses.id < #{@response.id}").last
       @previous = @survey.survey_responses.where("survey_responses.id > #{@response.id}").first
     else
