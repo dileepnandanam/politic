@@ -19,7 +19,8 @@ class User < ApplicationRecord
 
 
   validates_uniqueness_of :email
-  
+  validates :encrypted_password, presence: true
+
   def group_count
     owned_groups.count + groups.count
   end
