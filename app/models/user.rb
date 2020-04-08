@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_many :groups, through: :group_responses
   has_many :owned_groups, class_name: 'Group', foreign_key: :user_id
 
+
+  validates_uniqueness_of :email
+  
   def group_count
     owned_groups.count + groups.count
   end
