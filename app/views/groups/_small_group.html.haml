@@ -1,0 +1,12 @@
+.group-post.post{data: {id: post.id}}
+  .post-actions.pull-right
+  .post-title
+    %h2= link_to post.name, group_path(post)
+  .post-body
+    .clearfix 
+    .post-text  
+      - display_text = post.description[0..160]
+      - if post.description.length > 160
+        = "#{display_text}....."
+      - else
+        = post.description

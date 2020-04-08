@@ -1,0 +1,3 @@
+.questions-container
+  - current_user.owned_groups.each do |post|
+    = render partial: 'groups/small_group', locals: {post: post}

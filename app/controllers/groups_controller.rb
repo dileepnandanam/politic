@@ -7,6 +7,10 @@ class GroupsController < ApplicationController
     @other_groups = current_user.groups
   end
 
+  def my_groups
+    @my_groups = current_user.owned_groups + current_user.groups
+  end
+
   def search
     @groups = Group.where("name ~* '#{params[:query]}' or description ~* '#{params[:query]}'").paginate(page: params[:page], per_page: 5)
     render 'groups', layout: false
@@ -44,7 +48,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = current_user.groups.find(params[:id])
+    @group = current_user.owned_groups.find(params[:id])
     render 'edit', layout: false, status: 200
   end
 
@@ -58,7 +62,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group = current_user.groups.find(params[:id])
+    @group = current_user.owned_groups.find(params[:id])
     if @group.update(group_params)
       render 'group', layout: false, status: 200
     else
@@ -67,7 +71,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = current_user.groups.find(params[:id])
+    @group = current_user.owned_groups.find(params[:id])
     @group.destroy
     render json: {message: 'group deleted'}
   end

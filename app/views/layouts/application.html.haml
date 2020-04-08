@@ -31,6 +31,8 @@
           
           = link_to 'my pages', my_posts_posts_path, class: "pull-right my-pages #{current_user && current_user.posts.count == 0 ? 'd-none' : ''}"
           
+          = link_to 'my sites', my_groups_groups_path, class: "pull-right my-sites #{current_user && current_user.group_count == 0 ? 'd-none' : ''}"
+          
         - else
           
           = link_to "Sign in", new_user_session_path, class: 'pull-right'

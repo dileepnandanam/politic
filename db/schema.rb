@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_131302) do
     t.bigint "image_file_size"
     t.datetime "image_updated_at"
     t.boolean "visible", default: false
-    t.boolean "allow_immediate_access", default: false
+    t.boolean "allow_immediate_access", default: true
   end
 
   create_table "notifications", force: :cascade do |t|

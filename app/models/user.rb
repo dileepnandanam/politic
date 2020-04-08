@@ -17,6 +17,10 @@ class User < ApplicationRecord
   has_many :groups, through: :group_responses
   has_many :owned_groups, class_name: 'Group', foreign_key: :user_id
 
+  def group_count
+    owned_groups.count + groups.count
+  end
+
   def groupes
     Group.joins(:responses).where(user_id: id, responses: {accepted: true})
   end
@@ -43,7 +47,7 @@ class User < ApplicationRecord
   end
 
   def is_a_member_of(group)
-    posted_responses.where(group_id: group.id).count > 0
+    groups.where('group_responses.state = ?', 'accepted').include?(group) || owned_groups.include?(group)
   end
 
   def joined_groups

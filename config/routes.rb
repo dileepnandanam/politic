@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
+    get :my_groups, on: :collection
     put :reorder_options, on: :collection
     get :dashboard, on: :member
     get :responses, on: :member
