@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
   end
 
   def my_groups
-    @my_groups = current_user.owned_groups + current_user.groups
+    @my_groups = current_user.owned_groups + current_user.groups.where('group_responses.state = ?', 'accepted')
   end
 
   def search

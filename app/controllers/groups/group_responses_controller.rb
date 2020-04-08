@@ -1,5 +1,5 @@
 class Groups::GroupResponsesController < ApplicationController
-  before_action :check_user, only: [:create, :accept]
+  before_action :check_user, only: [:accept]
   before_action :find_group
   def new
     @response = GroupResponse.new
@@ -10,6 +10,7 @@ class Groups::GroupResponsesController < ApplicationController
         answer.choices << Choice.new(option_id: opt.id)
       end
     end
+    @response.user = User.new
     
     if params[:embed].present?
       render 'embed', layout: false
@@ -21,8 +22,15 @@ class Groups::GroupResponsesController < ApplicationController
   end
 
   def create
-  	@response = GroupResponse.create response_params.merge(user_id: current_user.id, group_id: @group.id, state: (@group.allow_immediate_access? ? 'accepted' : 'new'))
-    flash[:notice] = "Requested to join Site #{@response.group.name}"
+    params_with_user = response_params
+    if current_user.present?
+      params_with_user = response_params.merge(user_id: current_user.id)
+    end
+  	@response = GroupResponse.create params_with_user.merge(group_id: @group.id, state: (@group.allow_immediate_access? ? 'accepted' : 'new'))
+    
+    unless current_user
+      sign_in(:user, @response.user)
+    end
     if @response.user_id == @response.group.user_id
       @response.delete
       render 'error', layout: false
@@ -47,7 +55,7 @@ class Groups::GroupResponsesController < ApplicationController
   end
 
   def response_params
-    params.require(:group_response).permit(answers_attributes: [:text, :question_id, :line, choices_attributes: [:option_id, option_id: []]])
+    params.require(:group_response).permit(user_attributes: [:name, :email, :password], answers_attributes: [:text, :question_id, :line, choices_attributes: [:option_id, option_id: []]])
   end
 
   def set_flag

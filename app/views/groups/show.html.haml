@@ -1,7 +1,8 @@
 .my-space
   .questions-container
-    .group-action
-      = link_to 'New post', new_group_post_path(@group), remote: true, class: 'new-group-post'
+    - if current_user && current_user == @group.user  
+      .group-action
+        = link_to 'New post', new_group_post_path(@group), remote: true, class: 'new-group-post'
     .new-post
     .posts-container
       = render partial: 'groups/posts/posts', locals: {posts: @posts.select{|p| p.featured?}.sort_by(&:updated_at).reverse}
