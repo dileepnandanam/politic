@@ -46,7 +46,7 @@ present_project = function() {
     if(id == null)
       $(elem).html('')
     else {
-      url = '/groups/' + id + '/responses/new?pinned=true'
+      url = '/groups/' + id + '/group_responses/new?pinned=true'
       $.ajax({
         url: url,
         success: function(data) {
@@ -93,8 +93,9 @@ bind_post = function() {
     $('.posts-container').prepend(e.detail[2].responseText)
     $('.sub-nav-bar').removeClass('d-none')
     $([document.documentElement, document.body]).animate({
-        scrollTop: $(".sub-nav-bar").offset().top
+        scrollTop: $(".nav-bar").offset().top
     }, 500);
+    $('.my-pages').removeClass('d-none')
     bind_post()
     bind_survey_pin()
     bind_quick_poll_pin()

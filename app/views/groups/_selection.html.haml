@@ -1,13 +1,13 @@
 - if post.user == current_user
   .pin-select.pull-right
-    - if current_user.groups.count == 0
+    - if current_user.owned_groups.count == 0
       = link_to 'Pin a site', groups_path, class: 'fbt-select-nil'
     - else
       = link_to 'Pin a site', '#', class: 'project-select', remote: true
     .clearfix
     .project-select-container.d-none
       = form_for [:select_project, post], method: :put, html: {class: 'project-select-form', remote: true} do |f|
-        = f.select :project_id, [['none', nil]] + current_user.groups.map{|q| [q.name, q.id]}, html: {class: 'project-select-box'}
+        = f.select :project_id, [['none', nil]] + current_user.owned_groups.map{|q| [q.name, q.id]}, html: {class: 'project-select-box'}
         .clearfix
         = f.submit 'pin'
         .clearfix

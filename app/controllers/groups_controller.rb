@@ -3,10 +3,8 @@ class GroupsController < ApplicationController
   before_action :find_group, only: [:dashboard, :responses]
   protect_from_forgery with: :null_session
   def index
-    @groups = current_user.groups
-    @other_groups = Group.find_by_sql(
-      current_user.posted_responses.where(accepted: true).joins(:group).select('groups.*').to_sql
-    )
+    @groups = current_user.owned_groups
+    @other_groups = current_user.groups
   end
 
   def search
@@ -51,7 +49,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(group_params.merge(user_id: current_user.id))
+    @group = current_user.owned_groups.new(group_params)
     if @group.save
       render 'group', layout: false, status: 200
     else

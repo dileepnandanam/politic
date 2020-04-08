@@ -28,7 +28,8 @@
           = link_to "Log Out", destroy_session_path(current_user), method: :delete, class: 'pull-right'          
           
           = link_to 'I am Here', '#', class: 'i-am-here pull-right'
-          = link_to 'my pages', my_posts_posts_path, class: 'pull-right'
+          
+          = link_to 'my pages', my_posts_posts_path, class: "pull-right my-pages #{current_user && current_user.posts.count == 0 ? 'd-none' : ''}"
           
         - else
           
@@ -56,5 +57,5 @@
     - if Rails.env.development?
       .acc-switcher
         - User.all.each do |u|
-          = link_to u.name, switch_user_path(u), class: 'user-switch pull-left'
+          = link_to u.name, switch_user_path(u), class: "user-switch pull-left #{(current_user==u ? 'clickable' : '')}"
         .clearfix
