@@ -52,7 +52,7 @@ class PostsController < PostBaseController
 
   def edit
     @post = Post.find params[:id]
-    render 'new', layout: false
+    render 'edit', layout: false
   end
 
   def update

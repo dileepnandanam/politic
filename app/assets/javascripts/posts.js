@@ -90,8 +90,8 @@ prepare_asinc_reload = function() {
   bind_project_pin()
 }
 bind_post = function() {
-  $(document).on('ajax:success', '.group-post-form, .post-form', function(e, data, status, xhr) {
-    $(document).off('ajax:success', '.group-post-form, .post-form')
+  $(document).on('ajax:success', '.new-post-form', function(e, data, status, xhr) {
+    $(document).off('ajax:success', '.new-post-form')
     $(this).remove()
     $('.posts-container').prepend(e.detail[2].responseText)
     $('.sub-nav-bar').removeClass('d-none')
@@ -129,19 +129,15 @@ bind_project_pin()
 		$('.new-post').html(e.detail[2].responseText)
     $([document.documentElement, document.body]).animate({
         scrollTop: $(".post-form, .group-post-form").offset().top
-    }, 500);
-		$(new_post).find('.open-image-upload').on('click', function(e) {
-			e.preventDefault()
-			$(this).siblings('.image-upload').removeClass('d-none')
-		})
+    }, 500)
 	})
 
   $(document).on('ajax:success', '.edit-post-link', function(e) {
-    $('.edit-container').html(e.detail[2].responseText)
+    $(this).closest('.post').find('.edit-container').html(e.detail[2].responseText)
   })
 
-  $(document).on('ajax:success', '.edit-container', function(e) {
-    $('.post').replaceWith(e.detail[2].responseText)
+  $(document).on('ajax:success', '.edit-post-form', function(e) {
+    $(this).closest('.post').replaceWith(e.detail[2].responseText)
     prepare_asinc_reload()
   }).on('ajax:error', '.edit-container', function(e) {
     $('.edit-container').html(e.detail[2].responseText)

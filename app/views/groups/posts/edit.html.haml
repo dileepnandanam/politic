@@ -1,2 +1,2 @@
-= simple_form_for([@group, @post], url: group_posts_path(@group), method: :put, remote: true, html: { class: 'group-post-form' }) do |f|
+= simple_form_for([@group, @post], remote: true, html: { class: 'edit-post-form' }) do |f|
   = render partial: 'groups/posts/form', locals: {f: f}
