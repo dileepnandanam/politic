@@ -5,8 +5,8 @@
   .post-actions
     - if current_user == post.user
       = link_to 'delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right delete-question'
-      = link_to 'i am free', '#', class: "feature free pull-right #{post.lat.nil? ? '' : 'd-none'}"
-      = link_to 'i am busy', '#', class: "feature busy pull-right #{post.lat.present? ? '' : 'd-none'}"
+      = link_to 'we are free', '#', class: "feature free pull-right #{post.lat.nil? ? '' : 'd-none'}"
+      = link_to 'we are busy', '#', class: "feature busy pull-right #{post.lat.present? ? '' : 'd-none'}"
       = link_to 'edit', edit_post_path(post), remote: true, class: 'edit-post-link'
     - if (current_user.try :admin?)
       - if post.featured?
