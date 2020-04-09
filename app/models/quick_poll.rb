@@ -8,4 +8,8 @@ class QuickPoll < ApplicationRecord
   #validates :name, presence: true
   #validates :description, presence: true
   has_many :quick_poll_responses
+
+  def display_name
+    name.present? ? name : 'Untitled'
+  end
 end

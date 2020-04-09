@@ -1,7 +1,7 @@
 .group-post.post{data: {id: post.id}}
   .post-actions.pull-right
   .post-title
-    %h2= link_to post.title, "/#{post.id}"
+    %h2= link_to post.display_title, "/#{post.id}"
   .post-body
     .clearfix 
     .post-text  

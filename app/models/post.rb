@@ -93,4 +93,8 @@ class Post < ApplicationRecord
       Notifier.perform_now_or_later user, 'create', self
     end
   end
+
+  def display_title
+    title.present? ? title : 'Untitled'
+  end
 end

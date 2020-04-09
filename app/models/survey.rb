@@ -7,4 +7,9 @@ class Survey < ApplicationRecord
   has_many :survey_responses
   #validates :name, presence: true
   #validates :description, presence: true
+
+  def display_name
+    name.present? ? name : 'Untitled'
+  end
+
 end
