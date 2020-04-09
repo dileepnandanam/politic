@@ -37,5 +37,4 @@ $(document).on('turbolinks:load', function() {
 		$(this).closest('.preview').addClass('d-none')
 	})
 
-   
 })
