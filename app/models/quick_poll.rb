@@ -5,7 +5,7 @@ class QuickPoll < ApplicationRecord
   belongs_to :user
   has_many :questions
   has_many :responses
-  validates :name, presence: true
-  validates :description, presence: true
+  #validates :name, presence: true
+  #validates :description, presence: true
   has_many :quick_poll_responses
 end
