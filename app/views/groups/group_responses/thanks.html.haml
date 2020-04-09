@@ -1,6 +1,7 @@
 %h3.message
   = "Thanks for interest in #{@group.name}"
   - if @group.allow_immediate_access?
+    .clearfix
     = link_to "Visit #{@group.name}", group_path(@group)
   - else
     Your request will be processed by us soon.

@@ -78,3 +78,5 @@ gem 'light_imogee'
 gem 'redcarpet'
 gem 'markdown-rails'
 gem 'geocoder', '~> 1.6', '>= 1.6.2'
+gem "html_truncator", "~>0.2"
+

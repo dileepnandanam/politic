@@ -38,6 +38,13 @@ class PostBaseController < ApplicationController
     post.update(survey_tags: "#{survey_tags} #{question_tags} #{option_tags}")
   end
 
+  def tag_site(site, post)
+    site_title_tags = site.posts.map(&:title).join(' ')
+    site_text_tags = site.posts.map(&:text).join(' ')
+    site_tags = "#{site.name} #{site.description}"
+    post.update(site_tags: "#{site_title_tags} #{site_text_tags} #{site_tags}")
+  end
+
   def preview(text)
     MarkdownRenderer.render(text)
   end

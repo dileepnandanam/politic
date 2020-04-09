@@ -1,7 +1,2 @@
 = simple_form_for([@group, @post], remote: true, html: { class: 'group-post-form' }) do |f|
-  = f.input :title
-  = f.input :text
-  .clearfix
-  = f.submit :post, class: 'btn-primary pull-left'
-  = link_to 'cancel', '#', class: 'cancel-form pull-left', remote: true
-  .clearfix
+  = render partial: 'groups/posts/form', locals: { f: f }

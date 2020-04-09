@@ -136,7 +136,9 @@ class PostsController < PostBaseController
       } and return
     end
     @project = current_user.owned_groups.find(params[:post][:project_id])
-    current_user.posts.find(params[:id]).update(project_id: @project.id)
+    @post = current_user.posts.find(params[:id])
+    @post.update(project_id: @project.id)
+    tag_site(@project, @post)
     render json: {
       ack: "Pinning site #{@project.name}",
       id: @project.id

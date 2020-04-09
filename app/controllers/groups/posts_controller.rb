@@ -47,11 +47,29 @@ class Groups::PostsController < PostBaseController
 
   def create
     @post = current_user.posts.new post_params.merge(group_id: @group.id)
-    @post.valid?
     if @post.save
+      tag_site(@group, current_user.posts.where(project_id: @group.id))
       render 'groups/posts/post', layout: false, status: 200
     else
       @post.valid?
+      render 'groups/posts/new', layout: false, status: 422
+    end
+  end
+
+  def edit
+    @group = Group.find(params[:group_id])
+    @post = Post.find params[:id]
+    render 'groups/posts/new', layout: false
+  end
+
+  def update
+    @group = Group.find(params[:group_id])
+    @post = current_user.posts.find(params[:id])
+    if @post.update(post_params)
+      binding.pry
+      tag_site(@group, current_user.posts.where(project_id: @group.id))
+      render 'groups/posts/post', layout: false
+    else 
       render 'groups/posts/new', layout: false, status: 422
     end
   end

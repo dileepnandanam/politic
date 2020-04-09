@@ -1,17 +1,19 @@
-.group-post.post{style: "#{SiteSetting['post_color'].value}"}
-  .post-actions.pull-right
-  .pull-left.user-avathar= render partial: 'users/user_details', locals: {user: post.user}
+.group-post.post
   .post-actions
     - if post.user == current_user || (current_user.try :admin?)
       = link_to 'delete', group_post_path(@group, post), remote: true, method: :delete, class: 'delete-post pull-right delete-question'
+      = link_to 'edit', edit_group_post_path(@group, post), remote: true, class: 'edit-post-link'
     - if (current_user.try :admin?)
       - if post.featured?
         = render partial: 'groups/posts/unpin', locals: {post: post}
       - else
         = render partial: 'groups/posts/pin', locals: {post: post}
   .clearfix
+  .clearfix
+  .edit-container
   .post-title
     %h1= link_to post.title, group_post_path(post.group, post)
+  .clearfix
   .post-body
     .post-text
       = raw(post.text)
