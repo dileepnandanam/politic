@@ -7,4 +7,8 @@
     %p
       = @quick_poll.description
   .clearfix
-  = render partial: 'form'
+  - if @quick_poll.questions.count > 0
+    = render partial: 'form'
+  - else
+    %h3.message
+      This quick poll is not ready to vote
