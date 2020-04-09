@@ -139,7 +139,7 @@ class Groups::PostsController < PostBaseController
 
   def post_params
     @group = Group.find(params[:group_id])
-    params.require(:post).permit(:text, :image, :title)
+    params.require(:post).permit(:text, :image, :title, :enable_comment_vote)
   end
 
   def set_flag

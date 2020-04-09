@@ -201,7 +201,7 @@ class PostsController < PostBaseController
   end
 
   def post_params
-    params.require(:post).permit(:text, :image, :title)
+    params.require(:post).permit(:text, :image, :title, :enable_comment_vote)
   end
 
   def set_flag
