@@ -125,7 +125,6 @@ bind_quick_poll_pin()
 bind_project_pin()
 
 	$('.new-group-post').on('ajax:success', function(e) {
-		new_post = $('.new-post')
 		$('.new-post').html(e.detail[2].responseText)
     $([document.documentElement, document.body]).animate({
         scrollTop: $(".post-form, .group-post-form").offset().top

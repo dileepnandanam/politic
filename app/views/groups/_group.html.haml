@@ -1,7 +1,7 @@
 .question
   = link_to group_path(group) do
     %h3.clickable
-      = group.name
+      = group.display_name
   %p
     = group.description
   - if actions
