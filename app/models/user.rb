@@ -14,7 +14,11 @@ class User < ApplicationRecord
   has_many :surveys
   has_many :quick_polls
   has_many :group_responses
-  has_many :groups, through: :group_responses
+  has_many :groups, through: :group_responses do 
+    def visible
+      where('group_responses.state = ?', 'accepted')
+    end
+  end
   has_many :owned_groups, class_name: 'Group', foreign_key: :user_id
 
 
