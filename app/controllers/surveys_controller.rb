@@ -8,7 +8,7 @@ class SurveysController < ApplicationController
   end
 
   def search
-    @surveys = Survey.where("name ~* '#{params[:query]}' or description ~* '#{params[:query]}'").paginate(page: params[:page], per_page: 5)
+    @surveys = current_user.surveys.where("name ~* '#{params[:query]}' or description ~* '#{params[:query]}'").paginate(page: params[:page], per_page: 5)
     render 'surveys', layout: false
   end
 

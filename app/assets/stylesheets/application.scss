@@ -41,6 +41,9 @@ a {
 .flash {
   font-size: 24px !important;
 }
+.black {
+  color: black;
+}
 .session-links {
   color: white !important;
   padding: 4px;
@@ -127,9 +130,11 @@ a.view-more {
   border: 1px solid #3d3d40;
 }
 .new-post form {
-  background-color: white;
-  padding: 2%;
-  border-radius: 12px;
+  background-color: #afb8f2 !important;
+  padding: 9px;
+  border-radius: 7px;
+  border: 2px solid black;
+  margin: 5px;
 }
 .new-post input {
   color: black;

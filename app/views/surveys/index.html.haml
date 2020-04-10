@@ -24,4 +24,3 @@
     = text_field_tag 'search', nil, placeholder: 'search', data: {url: search_surveys_path(page: 1)}
   .clearfix
   .questions
-    = render partial: 'surveys/surveys', locals: {surveys: Survey.order('created_at DESC').paginate(page: 1, per_page: 5)}

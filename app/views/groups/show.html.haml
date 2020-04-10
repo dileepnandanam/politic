@@ -6,6 +6,6 @@
     .new-post
     .posts-container
       = render partial: 'groups/posts/posts', locals: {posts: @posts.select{|p| p.featured?}.sort_by(&:updated_at).reverse}
-      = render partial: 'groups/posts/posts', locals: {posts: @posts.reject{|p| p.featured?}}
+      = render partial: 'groups/posts/posts', locals: {posts: @posts.reject{|p| p.featured?}.sort_by(&:sequence)}
 
 = stylesheet_link_tag('site_styles.css')

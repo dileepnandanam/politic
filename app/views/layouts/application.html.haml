@@ -26,6 +26,8 @@
       .nav-bar
         - if current_user
           = link_to "Log Out", destroy_session_path(current_user), method: :delete, class: 'pull-right'          
+          - if Rails.env.development? 
+            %a= current_user.name
           
           = link_to 'I am Here', '#', class: 'i-am-here pull-right'
           
@@ -42,10 +44,10 @@
         .clearfix
       - if current_user.present?  
         .sub-nav-bar{class: (current_user && current_user.posts.present? ? '' : 'd-none')}
-          = link_to 'Posts', posts_path, class: 'sub-nav-bar-item ' + (@flag == 'post' ? 'active-tab' : '')
-          = link_to 'sites', groups_path, class: 'sub-nav-bar-item ' + (@flag == 'project' ? 'active-tab' : '')
+          = link_to 'Pages', posts_path, class: 'sub-nav-bar-item ' + (@flag == 'post' ? 'active-tab' : '')
+          = link_to 'Sites', groups_path, class: 'sub-nav-bar-item ' + (@flag == 'project' ? 'active-tab' : '')
           = link_to 'Surveys', surveys_path, class: 'sub-nav-bar-item ' + (@flag == 'survey' ? 'active-tab' : '')
-          = link_to 'quick polls', quick_polls_path, class: 'sub-nav-bar-item ' + (@flag == 'quick_poll' ? 'active-tab' : '')
+          = link_to 'Quick polls', quick_polls_path, class: 'sub-nav-bar-item ' + (@flag == 'quick_poll' ? 'active-tab' : '')
           .clearfix
       .common-bg{class: "#{controller_name}-#{action_name}"}
         - if flash[:notice].present?
@@ -59,5 +61,5 @@
     - if Rails.env.development?
       .acc-switcher
         - User.all.each do |u|
-          = link_to u.name, switch_user_path(u), class: "user-switch pull-left #{(current_user==u ? 'clickable' : '')}"
+          = link_to u.name, switch_user_path(u), class: "user-switch pull-left #{(current_user== u ? 'black' : '')}"
         .clearfix

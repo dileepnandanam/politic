@@ -9,7 +9,7 @@ class QuickPollsController < ApplicationController
   end
 
   def search
-    @quick_polls = QuickPoll.where("name ~* '#{params[:query]}' or description ~* '#{params[:query]}'").paginate(page: params[:page], per_page: 5)
+    @quick_polls = current_user.quick_polls.where("name ~* '#{params[:query]}' or description ~* '#{params[:query]}'").paginate(page: params[:page], per_page: 5)
     render 'quick_polls', layout: false
   end
 

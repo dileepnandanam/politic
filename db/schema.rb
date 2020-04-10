@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_095419) do
+ActiveRecord::Schema.define(version: 2020_04_10_123339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_095419) do
     t.float "lngt"
     t.text "site_tags", default: ""
     t.boolean "enable_comment_vote", default: false
+    t.integer "sequence", default: 0
   end
 
   create_table "questions", force: :cascade do |t|

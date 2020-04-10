@@ -3,7 +3,18 @@ $(document).on('turbolinks:load', function() {
     handle: '.group-question-handle',
     stop: function() {
       $.ajax({
-        data: $('.questions-container').sortable('serialize'),
+        data: $(this).sortable('serialize'),
+        url: $(this).data('url'),
+        method: 'PUT'
+      })
+    }
+  })
+
+  $('.reorderable-group-post').sortable({
+    handle: '.group-question-handle',
+    stop: function() {
+      $.ajax({
+        data: $(this).sortable('serialize'),
         url: $(this).data('url'),
         method: 'PUT'
       })
@@ -18,3 +29,5 @@ $(document).on('turbolinks:load', function() {
     $('.filter-response-link').toggleClass('d-none', 500)
   })
 })
+
+

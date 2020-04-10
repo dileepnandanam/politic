@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
   end
 
   def search
-    @groups = Group.where("name ~* '#{params[:query]}' or description ~* '#{params[:query]}'").paginate(page: params[:page], per_page: 5)
+    @groups = current_user.owned_groups.where("name ~* '#{params[:query]}' or description ~* '#{params[:query]}'").paginate(page: params[:page], per_page: 5)
     render 'groups', layout: false
   end
 

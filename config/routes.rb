@@ -68,6 +68,7 @@ Rails.application.routes.draw do
       resources :options, controller: 'groups/questions/options'
     end
     resources :posts, controller: 'groups/posts' do
+      put :reorder, on: :collection
       put :upvote, on: :member
       put :downvote, on: :member
       put :pin, on: :member

@@ -1,6 +1,7 @@
 class Groups::PostsController < PostBaseController
   before_action :check_user, only:[:new, :create, :destroy, :upvote, :downvote, :pin, :unpin]
   before_action :check_membership
+  protect_from_forgery with: :null_session
   def show
     @group = Group.find(params[:group_id])
     @post = Post.find(params[:id])
@@ -77,6 +78,13 @@ class Groups::PostsController < PostBaseController
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy
+  end
+
+  def reorder
+    @group = Group.find(params[:group_id])
+    params[:sequence].each_with_index do |id, i|
+      @group.posts.find(id).update(sequence: i)
+    end
   end
 
   def upvote
