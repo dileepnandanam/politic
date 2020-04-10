@@ -95,9 +95,6 @@ bind_post = function() {
     $(this).remove()
     $('.posts-container').prepend(e.detail[2].responseText)
     $('.sub-nav-bar').removeClass('d-none')
-    $([document.documentElement, document.body]).animate({
-        scrollTop: $(".nav-bar").offset().top
-    }, 500);
     $('.my-pages').removeClass('d-none')
     bind_post()
     bind_survey_pin()
