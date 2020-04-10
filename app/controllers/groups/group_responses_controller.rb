@@ -19,20 +19,18 @@ class Groups::GroupResponsesController < ApplicationController
       params_with_user = response_params.merge(user_id: current_user.id)
     end
 
-    if params_with_user[:user_attributes].to_h.any?{|k,v| v.blank?}
-      prepare_response_form_placeholder
-      render('_form', layout: false) and return
-    end
-  	@response = GroupResponse.create params_with_user.merge(group_id: @group.id, state: (@group.allow_immediate_access? ? 'accepted' : 'new'))
+  	@response = GroupResponse.new params_with_user.merge(group_id: @group.id, state: (@group.allow_immediate_access? ? 'accepted' : 'new'))
     
-    unless current_user
-      sign_in(:user, @response.user)
-    end
-    if @response.user_id == @response.group.user_id
-      @response.delete
-      render 'error', layout: false
+    if @response.valid?
+      if @response.user_id == @response.group.user_id
+        render 'error', layout: false
+      else
+        @response.save
+        sign_in(:user, @response.user)
+        render 'thanks', layout: false
+      end
     else
-      render 'thanks', layout: false
+      render '_form', layout: false
     end
   end
 

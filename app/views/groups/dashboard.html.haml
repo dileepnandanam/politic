@@ -28,8 +28,7 @@
   %h3
     Responses
   .response-filters
-    = link_to 'view new responses', responses_group_path(state: 'new'), class: 'filter-response-link', remote: true
-    = link_to 'view accepted responses', responses_group_path(state: 'accepted'), class: 'filter-response-link d-none', remote: true
+    = link_to 'view responses', responses_group_path(state: 'accepted'), class: 'filter-response-link', remote: true
   .responses-container
     = render partial: 'responses', locals: {state: 'new'}
 

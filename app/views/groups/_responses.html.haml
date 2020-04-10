@@ -3,6 +3,13 @@
     = render partial: 'users/user_details', locals: {user: r.user}
     .clearfix
     .answers
+      .answer
+        .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
+          phone no
+        .clearfix
+        .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+          = r.user.email
+        .clearfix 
       - r.answers.joins(:question).each do |a|
         .answer
           - if a.question.answer_type == 'line'
@@ -51,7 +58,7 @@
             .clearfix
 
     .answer-action
-      - unless @group.allow_immediate_access
+      - unless @group.allow_immediate_access || true
         - if r.state == 'accepted'
           = render partial: 'groups/responses/accept', locals: {user: r.user}
         - else
