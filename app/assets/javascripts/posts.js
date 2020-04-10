@@ -126,9 +126,6 @@ bind_project_pin()
 
 	$('.new-group-post').on('ajax:success', function(e) {
 		$('.new-post').html(e.detail[2].responseText)
-    $([document.documentElement, document.body]).animate({
-        scrollTop: $(".post-form, .group-post-form").offset().top
-    }, 500)
 	})
 
   $(document).on('ajax:success', '.edit-post-link', function(e) {
