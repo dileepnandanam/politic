@@ -2,6 +2,13 @@
   = render partial: 'users/user_details', locals: {user: @response.user}
   .clearfix
   .answers
+    .answer
+      .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
+        phone no
+      .clearfix
+      .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+        = @response.user.email
+      .clearfix 
     - @response.answers.joins(:question).each do |a|
       .answer
         - if a.question.answer_type == 'line'
