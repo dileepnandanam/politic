@@ -32,7 +32,7 @@ class User < ApplicationRecord
   def groupes
     Group.joins(:responses).where(user_id: id, responses: {accepted: true})
   end
-
+  validates :email, presence: true
   validates :name, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

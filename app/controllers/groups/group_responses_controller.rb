@@ -2,15 +2,7 @@ class Groups::GroupResponsesController < ApplicationController
   before_action :check_user, only: [:accept]
   before_action :find_group
   def new
-    @response = GroupResponse.new
-    @group.questions.each do |q|
-      answer = Answer.new(question_id: q.id)
-      @response.answers << answer
-      q.options.each do |opt|
-        answer.choices << Choice.new(option_id: opt.id)
-      end
-    end
-    @response.user = User.new
+    prepare_response_form_placeholder
     
     if params[:embed].present?
       render 'embed', layout: false
@@ -25,6 +17,11 @@ class Groups::GroupResponsesController < ApplicationController
     params_with_user = response_params
     if current_user.present?
       params_with_user = response_params.merge(user_id: current_user.id)
+    end
+
+    if params_with_user[:user_attributes].to_h.any?{|k,v| v.blank?}
+      prepare_response_form_placeholder
+      render('_form', layout: false) and return
     end
   	@response = GroupResponse.create params_with_user.merge(group_id: @group.id, state: (@group.allow_immediate_access? ? 'accepted' : 'new'))
     
@@ -61,4 +58,17 @@ class Groups::GroupResponsesController < ApplicationController
   def set_flag
     @flag = 'project'
   end
+
+  def prepare_response_form_placeholder
+    @response = GroupResponse.new
+    @group.questions.each do |q|
+      answer = Answer.new(question_id: q.id)
+      @response.answers << answer
+      q.options.each do |opt|
+        answer.choices << Choice.new(option_id: opt.id)
+      end
+    end
+    @response.user = User.new
+  end
+
 end
