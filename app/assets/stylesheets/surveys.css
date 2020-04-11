@@ -125,3 +125,9 @@ img.map-ico {
 .new-response h3 {
   color: blue;
 }
+.highlight {
+  border: 2px solid yellow !important;
+}
+.highlight .answer-text {
+  background-color: black !important;
+}
