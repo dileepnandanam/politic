@@ -1,6 +1,6 @@
 - @responses.each do |r|
   .question
-    = render partial: 'users/user_details', locals: {user: r.user}
+    = link_to r.user.name, survey_survey_response_path(@survey, r)
     .clearfix
     .answers
       .answer
