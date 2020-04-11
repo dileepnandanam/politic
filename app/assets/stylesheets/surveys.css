@@ -2,7 +2,7 @@
   margin: 12px 10px 0px 0px;
 }
 .question-text {
-  margin-bottom: 12px;
+/*  margin-bottom: 12px; */
 }
 .question textarea {
   margin-top: 12px;
@@ -127,6 +127,7 @@ img.map-ico {
 }
 .highlight {
   border: 2px solid yellow !important;
+  background-color: brown;
 }
 .highlight .answer-text {
   background-color: black !important;

@@ -5,6 +5,7 @@ class Survey < ApplicationRecord
   belongs_to :user
   has_many :questions
   has_many :survey_responses
+  has_many :posts
   #validates :name, presence: true
   #validates :description, presence: true
 
