@@ -2,10 +2,9 @@ class PostsController < PostBaseController
   before_action :check_user, only: [:new, :downvote, :upvote, :destroy, :create, :new]
   def show
     @post = Post.find(params[:id])
-    if @post.project.present? && current_user.groups.include?(@post.project)
+    if @post.project.present? && current_user && current_user.groups.include?(@post.project)
       redirect_to group_path(@post.project)
     end
-    
   end
 
   def index

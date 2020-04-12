@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
   before_action :check_user, only: [:dashboard, :responses, :accepted_responses]
 
+  def how_to_use
+
+  end
+  
   def questions
     @questions = get_questions.paginate(page: params[:page], per_page: 8)
     render 'questions', layout: false

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   
   root to: "posts#index"
+  get 'how_to_use', to: 'home#how_to_use'
   get 'configuration', to: 'home#configuration'
   put 'update_configuration', to: 'home#update_configuration'
   get 'dashboard', to: 'home#dashboard'

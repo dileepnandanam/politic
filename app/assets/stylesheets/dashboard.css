@@ -5,11 +5,11 @@
 	margin: 15px 0px 0px 0px;
 	/*box-shadow: 2px 2px 3px #f2f5f9;*/
 }
+.answer-text.question {
+  margin-top: 2px;
+}
 .question a {
   color: white;
-}
-.question:last-child {
-	margin-bottom: 8px;
 }
 .question-actions {
 	margin-top: 20px;

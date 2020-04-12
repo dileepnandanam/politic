@@ -1,3 +1,7 @@
+p a {
+  color: blue !important;
+  font-size: 26px
+}
 .search-panel {
   width: 100% !important;
 }
@@ -183,7 +187,7 @@ a.sub-nav-bar-item:hover {
 	background-color: #2d3d3d;
 }
 .post a, .post a:hover {
-	color: black !important;
+	color: black;
 }
 .user-avathar, .delete-post {
 	display: inline-block;

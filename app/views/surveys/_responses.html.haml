@@ -56,9 +56,12 @@
               .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
                 = 'User has skipped this question'
     - if r.user.lat.present?
-      .map-link{data:{addr: "#{r.user.lat},#{r.user.lngt}"}}
+      .map-link-pull-left{data:{addr: "#{r.user.lat},#{r.user.lngt}"}}
         = image_tag('map.png', class: 'map-ico')
-
+    - if r.state == 'accepted'
+      .pull-right
+        accepted
+      .clearfix
 - if @responses.next_page
   .more-responses
     = link_to 'View more', responses_survey_path(@survey, page: params[:page].present? ? params[:page].to_i + 1 : 2), remote: true, class: 'view-more'

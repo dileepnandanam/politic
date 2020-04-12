@@ -28,6 +28,13 @@
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700,900&display=swap');
 
+p {
+  font-size: 24px;
+}
+.whitespace {
+  overflow: auto;
+  margin-top: 12px;
+}
 .manufacturer {
   font-size: 24px;
 }
@@ -125,8 +132,6 @@ a.view-more {
   color: white;
 }
 .question, .group-post {
-  background-color: white;
-  color: white;
   border: 1px solid #3d3d40;
 }
 .new-post form {
