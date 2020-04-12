@@ -75,7 +75,11 @@ $(document).on('turbolinks:load', function() {
       })
     }
   })
-
+  
+  $('.handle-response').click(function(e) {
+    $('.handle-response').removeClass('d-none')
+    $(this).addClass('d-none')
+  })
 
 })
 

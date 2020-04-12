@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :surve_responses
   has_many :posted_posts, foreign_key: :post_user_id, class_name: 'Post'
   has_many :posts
-  has_many :groups
   has_many :comments
   has_many :votes
   has_many :notifications
