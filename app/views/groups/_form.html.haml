@@ -1,6 +1,8 @@
 = simple_form_for @group, remote: true do |f|
-  = f.input :name
-  = f.input :description
+  = f.input :banner_title, label: 'banner header'
+  = f.input :banner_description, label: 'banner description'
+  = f.input :name, label: 'signup_form name'
+  = f.input :description, label: 'Signup form description'
   = f.input :visible, label: 'visible to public'
   = f.submit 'Submit', class: 'btn-primary pull-left'
   = link_to 'cancel', '#', class: 'cancel-form btn-primary pull-left', remote: true

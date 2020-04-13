@@ -107,7 +107,11 @@ class PostsController < PostBaseController
     @survey = current_user.surveys.find(params[:post][:survey_id])
     @post = current_user.posts.find(params[:id])
     @post.update(survey_id: @survey.id)
-    tag_survey(@survey, @post)
+    if @post.group.present?
+      tag_survey(@survey, @post.group.welcome_posts.first)
+    else
+      tag_survey(@survey, @post)
+    end
     render json: {
       ack: "Pinning survey #{@survey.name}",
       id: @survey.id

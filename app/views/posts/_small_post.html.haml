@@ -1,12 +1,10 @@
-.group-post.post{data: {id: post.id}}
-  .post-actions.pull-right
+.group-post.post.small-post
   .post-title
     %h2.pull-left= link_to post.display_title, "/#{post.id}"
   - if Rails.env == 'development'
     %h5.pull-right.black
       = post.user.name
-  .clearfix
+    .clearfix
   .post-body
-    .clearfix 
     .post-text  
       = raw(HTML_Truncator.truncate(post.text, 10))

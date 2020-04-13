@@ -35,6 +35,7 @@
 }
 .post-text {
   padding: 0 2% 0 2%;
+  margin: 12px 12px 20px 12px;
 }
 .user-avathar {
   margin-left: 2%;
@@ -66,4 +67,22 @@
 }
 .post {
   background-color: white;
+}
+.project-container, .quick-poll-container, .survey-container {
+  margin-bottom: 20px;
+}
+.small-post {
+  padding-bottom: 0px;
+}
+.small-post h2 {
+  margin-bottom: 0px;
+  line-height: 28px;
+}
+.small-post .post-text {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 12px;
+}
+.small-post .post-body {
+  margin-bottom: 12px;
 }

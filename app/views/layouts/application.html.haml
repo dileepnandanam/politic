@@ -6,7 +6,7 @@
     %meta{ :name=>"google-site-verification", :content=> "aTgG8DN02IEd5qlsvX5mnWq3sHtS11bEZ5Ipb5zkIXk" }
     %meta{ :name=>"Description", :content=> "Starter tutorials for neive programmers"}
     %title
-      = @group.try(:name) || 'listen'
+      = @group.try(:banner_title) || 'listen'
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -19,9 +19,11 @@
     - if @group.present? && @group.welcome_posts.first.present?
       .banner
         .banner-heading
-          = @group.welcome_posts.first.title
-          .banner-site-description{style: SiteSetting['group_banner_description_style'].value}
-            = @group.welcome_posts.first.text
+          - if @group.banner_title.present?
+            %h1.black.text-center= @group.banner_title
+            - if @group.banner_description.present?
+              .banner-site-description
+                %p.black= raw @group.banner_description
     .page.col-lg-12.col-sm-12.col-12
       .nav-bar
         - if current_user
@@ -42,12 +44,15 @@
           = link_to "Sign up", new_user_registration_path, class: 'pull-right'
         = link_to 'home', '/', class: 'pull-right'
         .clearfix
-      - if current_user.present?  && params[:preview].blank?
+      - if current_user.present? && params[:preview].blank?
         .sub-nav-bar{class: (current_user && current_user.posts.present? ? '' : 'd-none')}
           = link_to 'Pages', posts_path, class: 'sub-nav-bar-item ' + (@flag == 'post' ? 'active-tab' : '')
           = link_to 'Sites', groups_path, class: 'sub-nav-bar-item ' + (@flag == 'project' ? 'active-tab' : '')
           = link_to 'Surveys', surveys_path, class: 'sub-nav-bar-item ' + (@flag == 'survey' ? 'active-tab' : '')
           = link_to 'Quick polls', quick_polls_path, class: 'sub-nav-bar-item ' + (@flag == 'quick_poll' ? 'active-tab' : '')
+          - if @group.present?
+            = link_to 'preview', group_path(@group.id, preview: true), target: '_blank', class: 'sub-nav-bar-item'
+              
           .clearfix
       .common-bg{class: "#{controller_name}-#{action_name}"}
         - if flash[:notice].present?

@@ -35,7 +35,9 @@ class PostBaseController < ApplicationController
     survey_tags = "#{survey.name} #{survey.description}"
     question_tags = survey.questions.map{|q| q.text}.join(' ')
     option_tags = survey.questions.map{|q| q.options.map(&:name)}.flatten.join(' ')
-    post.update(survey_tags: "#{survey_tags} #{question_tags} #{option_tags}")
+    new_tags = "#{survey_tags} #{question_tags} #{option_tags}"
+    total_tags = "#{post.survey_tags} #{new_tags}".split(' ').uniq.join(' ')
+    post.update(survey_tags: total_tags)
   end
 
   def tag_site(site, post)
