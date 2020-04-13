@@ -4,7 +4,7 @@
   - if Rails.env == 'development'
     %h5.pull-right.black
       = post.user.name
-    .clearfix
+  .clearfix
   .post-body
     .post-text  
       = raw(HTML_Truncator.truncate(post.text, 10))
