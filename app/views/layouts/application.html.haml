@@ -16,12 +16,12 @@
     .current-user-data.d-none{data:{signed_in: current_user.present?.to_s}}
     .current-user-location-data.d-none{data:{lat: current_user.present? ? current_user.lat.present?.to_s : 'true'}}
     
-    - if @group.present?
-      .banner{style: SiteSetting['group_banner_style'].value}
-        .banner-heading{style: SiteSetting['group_banner_heading_style'].value}
-          = @group.name
+    - if @group.present? && @group.welcome_posts.first.present?
+      .banner
+        .banner-heading
+          = @group.welcome_posts.first.title
           .banner-site-description{style: SiteSetting['group_banner_description_style'].value}
-            = @group.description
+            = @group.welcome_posts.first.text
     .page.col-lg-12.col-sm-12.col-12
       .nav-bar
         - if current_user
@@ -42,7 +42,7 @@
           = link_to "Sign up", new_user_registration_path, class: 'pull-right'
         = link_to 'home', '/', class: 'pull-right'
         .clearfix
-      - if current_user.present?  
+      - if current_user.present?  && params[:preview].blank?
         .sub-nav-bar{class: (current_user && current_user.posts.present? ? '' : 'd-none')}
           = link_to 'Pages', posts_path, class: 'sub-nav-bar-item ' + (@flag == 'post' ? 'active-tab' : '')
           = link_to 'Sites', groups_path, class: 'sub-nav-bar-item ' + (@flag == 'project' ? 'active-tab' : '')
