@@ -86,3 +86,6 @@
 .small-post .post-body {
   margin-bottom: 12px;
 }
+.post-title h1 a:hover {
+  color: blue !important;
+}
