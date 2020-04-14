@@ -38,3 +38,12 @@ img {
   border-radius: 14px;
   padding: 7px;
 }
+.post {
+  background: #391957;
+}
+.post p {
+  color: white;
+}
+.post h1, .post h2, .post h3 {
+  color: yellow;
+}
