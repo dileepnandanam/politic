@@ -3,6 +3,10 @@
     %h3= @group.name
     %p= @group.description
   .clearfix
+  - unless current_user
+    .login-suggest
+      Already have an account,
+      = link_to 'try log in', new_user_session_path, class: 'message'
   - if @group.questions.count == 0
     %h3.message
       This site is not ready yet
