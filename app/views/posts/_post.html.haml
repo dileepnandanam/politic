@@ -26,13 +26,13 @@
     .clearfix 
     .post-text  
       = raw(post.text)
-    - unless current_user.try(:groups).to_a.include?(post.project)
-      - unless params[:preview]  
-        = render partial: 'groups/selection', locals: {post: post}
-      .project-container{data: {id: post.project_id}} 
+    - unless params[:preview]  
+      = render partial: 'groups/selection', locals: {post: post}
+    - unless current_user && current_user.groups.map(&:id).include?(post.project_id)
+      .project-container{data: {id: post.project_id}}
     - unless params[:preview]
       = render partial: 'surveys/selection', locals: {post: post}
-    .survey-container{data: {id: post.survey_id}}
+    .survey-container{data: {id: post.survey_id, anonymous: post.survey.try(:anonymous).present?.to_s}}
     - unless params[:preview]
       = render partial: 'quick_polls/selection', locals: {post: post}
     .quick-poll-container{data: {id: post.quick_poll_id}}

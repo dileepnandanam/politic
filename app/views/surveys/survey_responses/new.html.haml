@@ -1,4 +1,4 @@
-- unless current_user
+- if current_user.blank? && !@survey.anonymous?
   = render partial: 'authorize'
 .question.response-form
   .pull-left

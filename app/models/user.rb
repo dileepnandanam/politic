@@ -66,7 +66,7 @@ class User < ApplicationRecord
   def self.yield_anonymous_user
     seed = "--#{rand(10000)}--#{Time.now}--"
     randum_str = Digest::SHA1.hexdigest(seed)[0,8]
-    user = User.create(name: 'anonymous', email: "#{randum_str}@engageonline.com", password: randum_str, password_confirmation: randum_str)
+    user = User.create(name: 'anonymous', email: "#{randum_str}@palkad.com", password: randum_str, password_confirmation: randum_str)
     user
   end
 end

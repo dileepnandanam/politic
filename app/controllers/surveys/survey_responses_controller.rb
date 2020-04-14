@@ -1,5 +1,5 @@
 class Surveys::SurveyResponsesController < SurveysController
-  before_action :check_user, only: [:create, :accept]
+  before_action :check_user, only: [:accept]
   before_action :find_survey
   protect_from_forgery with: :null_session
 
@@ -82,14 +82,15 @@ class Surveys::SurveyResponsesController < SurveysController
   end
 
   def create
-    @response = SurveyResponse.create response_params.merge(user_id: (current_user.try(:id) || anonymous_user.id), survey_id: @survey.id)
+    user = (current_user || anonymous_user)
+    @response = SurveyResponse.create response_params.merge(user_id: user.id, survey_id: @survey.id)
     @notif = V2::Notification.create(
-      sender_id: current_user.id,
+      sender_id: user.id,
       item_id: @response.id,
       item_type: 'SurveyResponse',
       target_id: @survey.user.id,
       link: survey_survey_response_path(@survey, @response),
-      action: "#{current_user.name} responded to #{@survey.name}"
+      action: "#{user.name} responded to #{@survey.name}"
     )
 
     message = ApplicationController.render(

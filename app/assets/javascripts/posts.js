@@ -1,6 +1,7 @@
 disable_for_unauthorized = function() {
   if(!$('.current-user-data').data('signed-in')) {
     $('.quick-poll-container').find('input, textarea').prop('disabled', 'disabled')
+  if(!$('.survey-container').data('anonymous') && !$('.current-user-data').data('signed-in'))
     $('.survey-container').find('input, textarea').prop('disabled', 'disabled')
   }
 
