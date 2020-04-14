@@ -30,7 +30,7 @@ class Groups::GroupResponsesController < ApplicationController
         render 'thanks', layout: false
       end
     else
-      render '_form', layout: false
+      render '_form', layout: false, status: 422
     end
   end
 

@@ -116,11 +116,26 @@ fix_checkbox_label = function() {
 }
 
 bind_post()
+
+
+
+
+
+
+
+
+
 $(document).on('turbolinks:load', function() {
   
 bind_survey_pin()
 bind_quick_poll_pin()
 bind_project_pin()
+  
+
+  $(document).on('ajax:success', '.project-form', function() {
+    $('.nav-bar.unsigned').addClass('d-none')
+    $('.nav-bar.signed').removeClass('d-none')
+  })
 
 	$('.new-group-post').on('ajax:success', function(e) {
 		$('.new-post').html(e.detail[2].responseText)

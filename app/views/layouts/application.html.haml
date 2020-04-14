@@ -25,23 +25,21 @@
               .banner-site-description
                 %p.black= raw @group.banner_description
     .page.col-lg-12.col-sm-12.col-12
-      .nav-bar
-        - if current_user
-          = link_to "Log Out", destroy_session_path(current_user), method: :delete, class: 'pull-right'          
-          - if Rails.env.development? 
-            %a= current_user.name
-          
-          = link_to 'I am Here', '#', class: 'i-am-here pull-right'
-          
+      .nav-bar.signed{class: current_user ? '' : 'd-none'}
+        = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'pull-right'
+        
+        = link_to 'I am Here', '#', class: 'i-am-here pull-right'
+        - if current_user.try(:pages).to_a.select{|p| p.group_id == nil}.count != 0
           = link_to 'my pages', my_posts_posts_path, class: "pull-right my-pages #{current_user && current_user.posts.count == 0 ? 'd-none' : ''}"
+        
+        = link_to 'my sites', my_groups_groups_path, class: "pull-right my-sites #{current_user && current_user.group_count == 0 ? 'd-none' : ''}"
+        = link_to 'home', '/', class: 'pull-right'
+        .clearfix
+      .nav-bar.unsigned{class: current_user ? 'd-none' : ''}
           
-          = link_to 'my sites', my_groups_groups_path, class: "pull-right my-sites #{current_user && current_user.group_count == 0 ? 'd-none' : ''}"
-          
-        - else
-          
-          = link_to "Sign in", new_user_session_path, class: 'pull-right'
-          
-          = link_to "Sign up", new_user_registration_path, class: 'pull-right'
+        = link_to "Sign in", new_user_session_path, class: 'pull-right'
+        
+        = link_to "Sign up", new_user_registration_path, class: 'pull-right'
         = link_to 'home', '/', class: 'pull-right'
         .clearfix
       - if current_user.present? && params[:preview].blank?
