@@ -218,9 +218,6 @@ input, textarea {
 .unfollow {
   color: white;
 }
-.new_user label, .new_user .form-text {
-  color: white !important;
-}
 .response-form {
   background-color: #513bbb !important;
   padding: 2% !important;
@@ -272,4 +269,13 @@ label {
 }
 .invalid-feedback {
   color: red;
+}
+.common-bg.sessions-new {
+  background: white;
+}
+.common-bg.registrations-new {
+  background: white;
+}
+.new_user label {
+  color: black;
 }

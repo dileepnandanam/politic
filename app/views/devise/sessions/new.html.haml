@@ -1,15 +1,17 @@
-.response-form
+.question.response-form
   %h2 Already have an account? sign in
   = simple_form_for(User.new, url: signin_users_path) do |f|
     .form-inputs
-      = f.input :email,
-        label: 'phone no',                     
-        required: false,                     
-        autofocus: true,                     
-        input_html: { autocomplete: "email" }
-      = f.input :password,                              
-        required: false,                                
-        input_html: { autocomplete: "current-password" }
+      .question
+        = f.input :email,
+          label: 'phone no',                     
+          required: false,                     
+          autofocus: true,                     
+          input_html: { autocomplete: "email" }
+      .question
+        = f.input :password,                              
+          required: false,                                
+          input_html: { autocomplete: "current-password" }
       = f.input :remember_me, as: :boolean
     .form-actions
       = f.button :submit, "Log in"
