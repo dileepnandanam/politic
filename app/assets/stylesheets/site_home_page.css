@@ -27,3 +27,6 @@
   font-size: 100%;
   display: inline;
 }
+p.black {
+  font-weight: normal;
+}
