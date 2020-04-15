@@ -15,12 +15,12 @@
 .header-text-container {
   position: absolute;
   width: 70%;
-  left: 30%;
-  top: 50%;
+  left: 46%;
+  top: 62%;
 }
 .header-text {
   position: relative;
-  font-size: 150%;
+  font-size: 200%;
 }
 .header-description {
   position: relative;
@@ -39,7 +39,7 @@ img {
   padding: 7px;
 }
 .post {
-  background: #391957;
+  background-image: linear-gradient(#1e0c0b, #0b0d55, #182f02, #3c0318);
 }
 .post p {
   color: white;
