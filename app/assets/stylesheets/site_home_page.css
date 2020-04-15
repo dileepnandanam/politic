@@ -15,12 +15,12 @@
 .header-text-container {
   position: absolute;
   width: 70%;
-  left: 46%;
+  left: 40%;
   top: 62%;
 }
 .header-text {
   position: relative;
-  font-size: 200%;
+  font-size: 180%;
 }
 .header-description {
   position: relative;
