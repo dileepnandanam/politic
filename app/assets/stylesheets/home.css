@@ -198,7 +198,6 @@ legend {
 .question p {
   font-size: 21px;
   font-weight: normal;
-  word-break: break-all;
 }
 .boolean input {
   margin-top: 5px !important;
