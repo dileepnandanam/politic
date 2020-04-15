@@ -2,6 +2,9 @@
 	max-width: 500px;
 	margin: auto;
 }
+.response-form h3 {
+  text-align: center;
+}
 .responses-container .question {
 	margin-right: 15px;
 }
