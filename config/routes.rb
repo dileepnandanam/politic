@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   root to: "posts#index"
   get 'how_to_use', to: 'home#how_to_use'
+  get 'example', to: 'home#example'
   get 'configuration', to: 'home#configuration'
   put 'update_configuration', to: 'home#update_configuration'
   get 'dashboard', to: 'home#dashboard'

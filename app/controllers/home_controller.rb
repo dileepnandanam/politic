@@ -4,6 +4,10 @@ class HomeController < ApplicationController
   def how_to_use
 
   end
+
+  def example
+
+  end
   
   def questions
     @questions = get_questions.paginate(page: params[:page], per_page: 8)
