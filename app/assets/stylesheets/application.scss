@@ -106,6 +106,7 @@ form a {
 .common-bg {
 	padding: 8px;
 	overflow: auto;
+  overflow-x: hidden;
 }
 .common-bg.home-show {
 	padding-right: 0px;
