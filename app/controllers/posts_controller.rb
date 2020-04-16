@@ -2,6 +2,9 @@ class PostsController < PostBaseController
   before_action :check_user, only: [:new, :downvote, :upvote, :destroy, :create, :new]
   def show
     @post = Post.find(params[:id])
+    if @post.project && @post.project.allow_immediate_access?
+      redirect_to group_path(@post.project) and return
+    end
   end
 
   def index
