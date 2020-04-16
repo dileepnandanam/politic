@@ -67,7 +67,7 @@
 .post {
   background-color: white;
 }
-.project-container, .quick-poll-container, .survey-container {
+.project-container, .quick-poll-container, .survey-container, .galery-container {
   margin-bottom: 20px;
 }
 .small-post {
@@ -87,4 +87,28 @@
 }
 .post-title h1 a:hover {
   color: blue !important;
+}
+
+.galery {
+  border: 1px solid black;
+  width: 100%;
+}
+.upload-picture {
+  margin: 12px;
+}
+.galery .form-group.picture_img {
+  float: left;
+  width: 50%;
+  min-width: 260px;
+  margin: 0px 0px 12px 12px;
+}
+.galery .inline-input {
+  margin: 0px 0px 0px 12px;
+  height: 40px;
+  padding: 4px 4px 4px 4px !important;
+}
+.picture {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 300px;
 }

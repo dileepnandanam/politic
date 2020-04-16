@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   belongs_to :project, class_name: 'Group', optional: true
   belongs_to :survey, optional: true
   before_destroy :cancel_notifications
+  has_many :galeries
 
   after_create :notify_connections
 

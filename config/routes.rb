@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get 'signin-facebook', to: 'users/omniauth_callbacks#facebook'
   get 'access_restricted', to: 'home#access_restricted'
 
+  resources :galeries
+  resources :pictures
+  
   resources :posts, controller: 'posts', scope: '/' do
     get :my_posts, on: :collection
     put :locate, on: :member
