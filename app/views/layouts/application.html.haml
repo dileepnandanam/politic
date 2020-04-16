@@ -29,7 +29,7 @@
         = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'pull-right'
         
         = link_to 'I am Here', '#', class: 'i-am-here pull-right'
-        - if current_user.try(:pages).to_a.select{|p| p.group_id == nil}.count != 0
+        - if current_user.try(:welcome_posts).to_a.count !=0
           = link_to 'my pages', my_posts_posts_path, class: "pull-right my-pages #{current_user && current_user.posts.count == 0 ? 'd-none' : ''}"
         
         = link_to 'my sites', my_groups_groups_path, class: "pull-right my-sites #{current_user && current_user.group_count == 0 ? 'd-none' : ''}"

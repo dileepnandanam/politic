@@ -2,7 +2,7 @@ class PostsController < PostBaseController
   before_action :check_user, only: [:new, :downvote, :upvote, :destroy, :create, :new]
   def show
     @post = Post.find(params[:id])
-    if @post.project && @post.project.allow_immediate_access?
+    if @post.project && @post.project.allow_immediate_access? and @post.user != current_user
       redirect_to group_path(@post.project) and return
     end
   end
@@ -27,7 +27,7 @@ class PostsController < PostBaseController
   end
 
   def my_posts
-    @posts = current_user.posts
+    @posts = current_user.welcome_posts
     render 'my_posts'
   end
 

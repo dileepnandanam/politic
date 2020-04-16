@@ -47,7 +47,7 @@ class Groups::PostsController < PostBaseController
   end
 
   def create
-    @post = current_user.posts.new post_params.merge(group_id: @group.id)
+    @post = current_user.posts.new post_params.merge(group_id: @group.id, user_id: current_user.id)
     if @post.save
       tag_site(@group, current_user.posts.where(project_id: @group.id))
       render 'groups/posts/post', layout: false, status: 200
