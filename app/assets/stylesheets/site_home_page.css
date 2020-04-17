@@ -28,7 +28,8 @@
   display: inline;
 }
 p.black {
-  font-weight: normal;
+  font-weight: 400;
+  font-size: 20px !important;
   text-align: left;
 }
 p {

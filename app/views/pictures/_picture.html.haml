@@ -1,6 +1,6 @@
 - class_name = "col-sm-#{12/picture.galery.column}"
 .picture.pull-left{class: class_name}
-  - if current_user.galeries.include? picture.galery 
+  - if current_user && current_user.galeries.include?(picture.galery) 
     - unless params[:preview]
       = link_to '❎', picture_path(picture), remote: true, class: 'remove-picture', method: :delete
   = image_tag(picture.img)
