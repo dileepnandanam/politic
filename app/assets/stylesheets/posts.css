@@ -90,7 +90,9 @@
 }
 
 .galery {
-  border: 1px solid black;
+  width: 100%;
+}
+.galery h1 {
   width: 100%;
 }
 .upload-picture {
@@ -110,5 +112,19 @@
 .picture {
   display: inline-block;
   box-sizing: border-box;
-  height: 300px;
+  padding: 5px !important;
+}
+.edit-button {
+  margin: 12px;
+}
+.galery .edit-container {
+  margin: 12px;
+}
+.galery p {
+  margin: 12px;
+}
+.remove-picture {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

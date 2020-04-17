@@ -1,12 +1,20 @@
 .galery
   %h2.text-center= galery.name
+  %p.black.text-center
+    = galery.description
   - unless params[:preview]
-    .upload-picture
-      = simple_form_for(Picture.new, html: {class: 'add-picture', remote: true}) do |f|
-        = f.input :img, label: false, class: 'inline-input'
-        = f.submit 'upload image', class: 'inline-input'
-        = f.hidden_field :galery_id, value: galery.id
+    - if current_user == galery.user
+      = link_to 'edit', edit_galery_path(galery), class: 'edit-button edit-galery', remote: true
+      = link_to 'delete', galery_path(galery), class: 'edit-button delete-galery pull-right', method: :delete, remote: true
       .clearfix
-  .pictures.container
-    - galery.pictures.each do |picture|
+      .edit-container
+      .upload-picture
+        = simple_form_for(Picture.new, html: {class: 'add-picture', remote: true}) do |f|
+          = f.input :img, label: false, class: 'inline-input'
+          = f.submit 'upload image', class: 'inline-input'
+          = f.hidden_field :galery_id, value: galery.id
+        .clearfix
+  .pictures
+    - galery.pictures.select{|p| p.img.attachment.present? }.each do |picture|
       = render partial: 'pictures/picture', locals: {picture: picture}
+  .clearfix

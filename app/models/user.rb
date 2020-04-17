@@ -18,6 +18,7 @@ class User < ApplicationRecord
       where('group_responses.state = ?', 'accepted')
     end
   end
+  has_many :galeries
 
   has_many :welcome_posts, class_name: 'Post', foreign_key: :user_id do
     def visible
