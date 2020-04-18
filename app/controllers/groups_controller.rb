@@ -94,7 +94,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:description, :name, :image, :visible, :allow_immediate_access, :banner_title, :banner_description)
+    params.require(:group).permit(:description, :name, :image, :visible, :allow_immediate_access, :banner_title, :banner_description, :background)
   end
 
   def set_flag

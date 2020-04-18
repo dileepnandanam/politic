@@ -15,15 +15,17 @@
     = audio_tag 'inflicted.mp3', class: 'response-notif'
     .current-user-data.d-none{data:{signed_in: current_user.present?.to_s}}
     .current-user-location-data.d-none{data:{lat: current_user.present? ? current_user.lat.present?.to_s : 'true'}}
-    
-    - if @group.present?
-      .banner
-        .banner-heading
-          - if @group.banner_title.present?
-            %h1.black.text-center= @group.banner_title
-            - if @group.banner_description.present?
-              .banner-site-description
-                %p.black= raw @group.banner_description
+    - group = @group || @post.try(:project)
+    - if group.present?
+      .banner{style: "background-image=url('#{asset_url(group.background.try(:filename))}')" }
+        .banner-overlay
+          .header-text-container
+            .banner-heading
+              - if group.banner_title.present?
+                %h1.black.text-center= group.banner_title
+                - if group.banner_description.present?
+                  .banner-site-description
+                    %p.black= raw group.banner_description
     .page.col-lg-12.col-sm-12.col-12
       .nav-bar.signed{class: current_user ? '' : 'd-none'}
         = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'pull-right'
@@ -49,7 +51,9 @@
           = link_to 'Surveys', surveys_path, class: 'sub-nav-bar-item ' + (@flag == 'survey' ? 'active-tab' : '')
           = link_to 'Quick polls', quick_polls_path, class: 'sub-nav-bar-item ' + (@flag == 'quick_poll' ? 'active-tab' : '')
           - if @group.present?
-            = link_to 'preview', group_path(@group.id, preview: true), target: '_blank', class: 'sub-nav-bar-item'
+            = link_to 'preview', group_path(@group, preview: true), target: '_blank', class: 'sub-nav-bar-item'
+          - if @post.present?
+            = link_to 'preview', post_path(@post, preview: true), target: '_blank', class: 'sub-nav-bar-item'
               
           .clearfix
       .common-bg{class: "#{controller_name}-#{action_name}"}

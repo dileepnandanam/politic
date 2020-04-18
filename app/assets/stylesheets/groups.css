@@ -143,3 +143,52 @@ a.user-switch.pull-left {
 .new-galery {
   margin-bottom: 30px;
 }
+
+.banner p {
+  margin: 12px 12px;
+}
+.banner {
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  background-position: center;
+}
+.banner.posts_page {
+  display: block;
+}
+.banner-overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0px;
+  color: white;
+}
+.banner-top {
+  height: 28%;
+}
+.banner-heading {
+  margin: auto;
+  width: 70%;
+  text-align: center;
+  color: black;
+  width: 100%;
+}
+.banner-site-description {
+  margin: auto;
+  margin-top: 12px;
+  width: fit-content;
+  color: black;
+  width: 100%;
+  text-align: center;
+}
+.banner {
+  padding-top: 40%;
+}
+.banner-heading {
+  position: absolute;
+  top: 20%;
+}
+.banner-heading h1 {
+  font-size: 6vw !important;
+}

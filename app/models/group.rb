@@ -9,6 +9,7 @@ class Group < ApplicationRecord
   has_many :users, through: :group_responses
   has_many :welcome_posts, foreign_key: :project_id, class_name: 'Post'
 
+  has_one_attached :background
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
