@@ -17,15 +17,15 @@
     .current-user-location-data.d-none{data:{lat: current_user.present? ? current_user.lat.present?.to_s : 'true'}}
     - group = @group || @post.try(:project)
     - if group.present?
-      .banner{style: "background-image: url('#{asset_url(group.background.try(:filename))}')" }
+      .banner{style: group.background.try(:filename) ? "background-image: url('#{asset_url(group.background.try(:filename))}')" : '' }
         .banner-overlay
           .header-text-container
             .banner-heading
               - if group.banner_title.present?
-                %h1.black.text-center= group.banner_title
+                .white.text-center= group.banner_title
                 - if group.banner_description.present?
-                  .banner-site-description
-                    %p.black= raw group.banner_description
+                  .banner-site-description.white
+                    %p.white= raw group.banner_description
     .page.col-lg-12.col-sm-12.col-12
       .nav-bar.signed{class: current_user ? '' : 'd-none'}
         = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'pull-right'
