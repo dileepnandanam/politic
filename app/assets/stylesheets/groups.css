@@ -189,12 +189,15 @@ a.user-switch.pull-left {
   position: absolute;
   top: 20%;
 }
-.banner-heading .white {
+.banner-heading {
   font-size: 6vw;
 }
+.banner-site-description {
+  font-size: 5vw;
+}
 @media(max-width: 370px) {
-  .banner-heading .white {
-    font-size: 24px !important;
+  .banner-heading {
+    font-size: 28px !important;
   }
   .banner-site-description {
     font-size: 22px;

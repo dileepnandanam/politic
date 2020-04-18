@@ -25,7 +25,7 @@
                 .white.text-center= group.banner_title
                 - if group.banner_description.present?
                   .banner-site-description.white
-                    %p.white= raw group.banner_description
+                    .white= raw group.banner_description
     .page.col-lg-12.col-sm-12.col-12
       .nav-bar.signed{class: current_user ? '' : 'd-none'}
         = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'pull-right'
