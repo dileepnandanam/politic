@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_061041) do
+ActiveRecord::Schema.define(version: 2020_04_18_144446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_061041) do
     t.boolean "allow_immediate_access", default: true
     t.string "banner_title", default: ""
     t.text "banner_description", default: ""
+    t.boolean "bypass_welcome_page", default: false
   end
 
   create_table "notifications", force: :cascade do |t|
