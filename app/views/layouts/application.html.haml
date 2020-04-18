@@ -16,7 +16,7 @@
     .current-user-data.d-none{data:{signed_in: current_user.present?.to_s}}
     .current-user-location-data.d-none{data:{lat: current_user.present? ? current_user.lat.present?.to_s : 'true'}}
     - group = @group || @post.try(:project)
-    - if group.present?
+    - if group.present? && group.banner_title.present?
       .banner{style: group.background.try(:filename) ? "background-image: url('#{asset_url(group.background.try(:filename))}')" : '' }
         .banner-overlay
           .header-text-container
