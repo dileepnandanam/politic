@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.new-galery', function(e) {
-    $('.galery-form-container').html(e.detail[2].responseText)
+    $(this).closest('.post').find('.galery-form-container').html(e.detail[2].responseText)
     $('.cancel').click(function(e) {
       e.preventDefault()
       $(this).closest('form').remove()
@@ -8,6 +8,7 @@ $(document).on('turbolinks:load', function() {
   })
 
   $(document).on('ajax:success', '.galery-form', function(e) {
+    $(document).off('ajax:success', '.galery-form')
     $('.galeries-container').prepend(e.detail[2].responseText)
     %(this).remove()
   })
@@ -26,6 +27,7 @@ $(document).on('turbolinks:load', function() {
   })
 
   $(document).on('ajax:success', '.add-picture', function(e) {
+    $(document).off('ajax:success', '.add-picture')
     $(this).closest('.galery').find('.pictures').append(e.detail[2].responseText)
   })
 

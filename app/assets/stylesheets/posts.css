@@ -103,10 +103,8 @@
   float: left;
   width: 50%;
   min-width: 260px;
-  margin: 0px 0px 12px 12px;
 }
 .galery .inline-input {
-  margin: 0px 0px 0px 12px;
   height: 40px;
   padding: 4px 4px 4px 4px !important;
 }
@@ -128,4 +126,13 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+.picture_caption {
+  width: 260px;
+}
+.form-control-file.file {
+  width: 260px;
+}
+.galery {
+  border: 1px solid black;
 }

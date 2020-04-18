@@ -4,3 +4,4 @@
     - unless params[:preview]
       = link_to '❎', picture_path(picture), remote: true, class: 'remove-picture', method: :delete
   = image_tag(picture.img)
+  %p.black= picture.caption

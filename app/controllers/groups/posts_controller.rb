@@ -145,7 +145,7 @@ class Groups::PostsController < PostBaseController
   end  
 
   def post_params
-    @group = current_user.owner_groups.find(params[:group_id])
+    @group = current_user.owned_groups.find(params[:group_id])
     params.require(:post).permit(:text, :image, :title, :enable_comment_vote)
   end
 

@@ -66,7 +66,7 @@ gem 'devise'
 gem "nested_form"
 gem 'simple_form'
 gem 'will_paginate', '~> 3.1.0'
-gem 'aws-sdk'
+gem "aws-sdk-s3", require: false
 gem 'font-awesome-rails'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'certified'
