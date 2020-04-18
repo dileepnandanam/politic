@@ -196,4 +196,7 @@ a.user-switch.pull-left {
   .banner-heading .white {
     font-size: 24px !important;
   }
+  .banner-site-description {
+    font-size: 22px;
+  }
 }
