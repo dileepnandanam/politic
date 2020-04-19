@@ -1,0 +1,14 @@
+.pin-select.pull-right
+  - if current_user.surveys.count == 0
+    = link_to 'Pin a survey', surveys_path, class: 'fbt-select-nil'
+  - else
+    = link_to 'Pin a survey', '#', class: 'survey-select', remote: true
+  .clearfix
+  .survey-select-container.d-none
+    = form_for [:select_survey, picture], method: :put, html: {class: 'survey-select-form', remote: true} do |f|
+      = f.select :survey_id, [['none', nil]] + current_user.surveys.map{|s| [s.name, s.id]}, html: {class: 'survey-select-box'}
+      .clearfix
+      = f.submit 'pin'
+      .clearfix
+  .pin-survey-ack
+  .clearfix

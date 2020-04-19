@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   get 'access_restricted', to: 'home#access_restricted'
 
   resources :galeries
-  resources :pictures
+  resources :pictures do
+    put :select_survey, on: :member
+  end
   
   resources :posts, controller: 'posts', scope: '/' do
     get :my_posts, on: :collection

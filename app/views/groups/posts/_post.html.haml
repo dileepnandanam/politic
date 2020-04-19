@@ -25,7 +25,7 @@
         .galery-form-container
     .galeries-container
       - post.galeries.order('updated_at desc').each do |g|
-        = render partial: 'galeries/galery', locals: {galery: g}
+        = render partial: 'galeries/galery', locals: {galery: g, post: post}
 
     - unless params[:preview]
       = render partial: 'groups/selection', locals: {post: post}

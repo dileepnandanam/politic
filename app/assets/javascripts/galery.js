@@ -9,8 +9,9 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('ajax:success', '.galery-form', function(e) {
     $(document).off('ajax:success', '.galery-form')
-    $('.galeries-container').prepend(e.detail[2].responseText)
     %(this).remove()
+    $('.galeries-container').prepend(e.detail[2].responseText)
+    
   })
 
   $(document).on('ajax:success', '.edit-galery-form', function(e) {

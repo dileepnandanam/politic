@@ -192,7 +192,7 @@ bind_project_pin()
     
     $(document).on('ajax:success', '.survey-select-form', function(e) {
       $(this).closest('.survey-select-container').siblings('.pin-survey-ack').html(e.detail[0]['ack'])
-      $(this).closest('.post-body').find('.survey-container').data('id', e.detail[0]['id'])
+      $(this).closest('.pin-select').siblings('.survey-container').data('id', e.detail[0]['id'])
       $(this).closest('.survey-select-container').addClass('d-none')
       present_survey()
     })
