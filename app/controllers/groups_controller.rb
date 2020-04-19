@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
         redirect_to new_group_group_response_path(@group) and return
       end
     end
-    @posts = @group.posts.order('created_at DESC').paginate(page: params[:page], per_page: 12)
+    @posts = @group.posts.order('created_at ASC').paginate(page: params[:page], per_page: 12)
     @next_path = group_path(@group, page: (params[:page].present? ? params[:page].to_i + 1 : 2))
     if request.format.html?
       render 'show'
