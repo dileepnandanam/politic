@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :galeries
   resources :pictures do
     put :select_survey, on: :member
+    put :select_post, on: :member
   end
   
   resources :posts, controller: 'posts', scope: '/' do

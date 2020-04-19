@@ -36,4 +36,9 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.remove-picture', function(e) {
     $(this).closest('.picture').remove()
   })
+
+  $(document).on('ajax:success', '.post-select-form', function(e) {
+    $(this).closest('.picture').replaceWith(e.detail[2].responseText)
+    prepare_asinc_reload()
+  })
 })

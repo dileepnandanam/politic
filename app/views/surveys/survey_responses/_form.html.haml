@@ -30,5 +30,5 @@
           .clearfix
       = af.hidden_field :question_id, value: af.object.question.id
     .clearfix
-  = f.submit 'Submit', class: 'btn-primary'
+  = f.button :submit, @survey.button_name, class: 'btn btn-primary'
   .clearfix

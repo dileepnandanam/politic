@@ -33,9 +33,27 @@ class PicturesController < ApplicationController
     }
   end
 
+  def select_post
+    @picture = Picture.find(params[:id])
+    if params[:picture][:linked_post_id].blank?
+      @picture.update(linked_post_id: nil)
+      render json: {
+        ack: "No button has got pinned to this post",
+        id: nil
+      } and return
+    end
+    @post = current_user.posts.find(params[:picture][:linked_post_id])
+    
+    @picture.update linked_post_id: @post.id
+    @picture.update linked_post_name: params[:picture][:linked_post_name]
+
+    render partial: 'picture', locals: {picture: @picture}, status: 200 and return
+    
+  end
+
   protected
 
     def picture_params
-      params.require(:picture).permit(:img, :galery_id, :caption)
+      params.require(:picture).permit(:img, :galery_id, :caption, :linked_post_id, :linked_post_name)
     end
 end

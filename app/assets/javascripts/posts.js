@@ -69,6 +69,12 @@ bind_survey_pin = function() {
   })
 }
 
+bind_button_pin = function() {
+  $('.button-select').click(function(e) {
+    $(this).siblings('.button-select-container').removeClass('d-none')
+  })
+}
+
 
 bind_quick_poll_pin = function() {
   $('.quick-poll-select').click(function(e) {
@@ -89,6 +95,7 @@ prepare_asinc_reload = function() {
   bind_survey_pin()
   bind_quick_poll_pin()
   bind_project_pin()
+  bind_button_pin()
 }
 bind_post = function() {
   $(document).on('ajax:success', '.new-post-form', function(e, data, status, xhr) {
@@ -130,6 +137,7 @@ $(document).on('turbolinks:load', function() {
 bind_survey_pin()
 bind_quick_poll_pin()
 bind_project_pin()
+bind_button_pin()
   
 
   $(document).on('ajax:success', '.project-form', function() {
@@ -203,7 +211,9 @@ bind_project_pin()
       present_survey()
     })
 
-
+    $(document).on('ajax:success', '.post-select-form', function(e) {
+      $(this).closest('.picture').replaceWith(e.detail[0].responseText)
+    })
 
     $(document).on('ajax:success', '.quick-poll-select-form', function(e) {
       $(this).closest('.quick-poll-select-container').siblings('.pin-quick-poll-ack').html(e.detail[0]['ack'])

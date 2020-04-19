@@ -66,7 +66,6 @@ class GroupsController < ApplicationController
     if @group.update(group_params)
       render 'group', layout: false, status: 200
     else
-      binding.pry
       render 'edit', layout: false, status: 422
     end
   end

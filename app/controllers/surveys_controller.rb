@@ -74,7 +74,7 @@ class SurveysController < ApplicationController
   end
 
   def survey_params
-    params.require(:survey).permit(:description, :name, :image, :anonymous)
+    params.require(:survey).permit(:description, :name, :image, :anonymous, :button_name)
   end
 
   def set_flag

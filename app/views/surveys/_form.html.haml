@@ -2,6 +2,7 @@
   = f.input :name
   = f.input :description
   = f.input :anonymous, label: 'allow anonymous submission'
+  = f.input :button_name, label: 'submit button label'
   .clearfix
   = f.submit 'Submit', class: 'btn-primary pull-left'
   = link_to 'cancel', '#', class: 'cancel-form btn-primary pull-left', remote: true

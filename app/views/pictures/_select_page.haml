@@ -1,0 +1,14 @@
+.pin-select.pull-right
+  = link_to 'Pin a button', '#', class: 'button-select', remote: true
+  .clearfix
+  .button-select-container.d-none
+    = form_for [:select_post, picture], method: :put, html: {class: 'post-select-form', remote: true} do |f|
+      = f.label 'linking page'
+      = f.select :linked_post_id, [['none', nil]] + current_user.posts.map{|s| [s.title, s.id]}, html: {class: 'survey-select-box'}
+      .clearfix
+      = f.label 'button name'
+      = f.text_field :linked_post_name
+      = f.submit 'pin'
+      .clearfix
+  .pin-survey-ack
+  .clearfix
