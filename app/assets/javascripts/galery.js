@@ -11,12 +11,12 @@ $(document).on('turbolinks:load', function() {
     $(document).off('ajax:success', '.galery-form')
     %(this).remove()
     $('.galeries-container').prepend(e.detail[2].responseText)
-    
+    prepare_asinc_reload()    
   })
 
   $(document).on('ajax:success', '.edit-galery-form', function(e) {
     $(this).closest('.galery').replaceWith(e.detail[2].responseText)
-    
+    prepare_asinc_reload()
   })
 
   $(document).on('ajax:success', '.edit-galery', function(e) {
@@ -30,6 +30,7 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.add-picture', function(e) {
     $(document).off('ajax:success', '.add-picture')
     $(this).closest('.galery').find('.pictures').append(e.detail[2].responseText)
+    prepare_asinc_reload()
   })
 
   $(document).on('ajax:success', '.remove-picture', function(e) {

@@ -4,7 +4,7 @@
     - unless params[:preview]
       = link_to '❎', picture_path(picture), remote: true, class: 'remove-picture', method: :delete
   = image_tag(picture.img)
-  %p.black= picture.caption
+  %p.black.text-center= picture.caption
   - unless params[:preview] || current_user != (@group || @post).user
     = render partial: 'pictures/selection', locals: {picture: picture}
   .survey-container{data: {id: picture.survey_id, anonymous: picture.survey.try(:anonymous).present?.to_s}}

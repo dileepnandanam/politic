@@ -10,6 +10,8 @@
       .edit-container
       .upload-picture
         = simple_form_for(Picture.new, html: {class: 'add-picture', remote: true}) do |f|
+          = f.label 'Add Picture'
+          .clearfix
           = f.input :img, label: false, class: 'inline-input'
           .clearfix
           = f.input :caption, label: 'caption', class: 'inline-input'

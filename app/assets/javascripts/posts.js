@@ -94,7 +94,7 @@ bind_post = function() {
   $(document).on('ajax:success', '.new-post-form', function(e, data, status, xhr) {
     $(document).off('ajax:success', '.new-post-form')
     $(this).remove()
-    $('.posts-container').prepend(e.detail[2].responseText)
+    $('.posts-container').append(e.detail[2].responseText)
     $('.sub-nav-bar').removeClass('d-none')
     $('.my-pages').removeClass('d-none')
     bind_post()

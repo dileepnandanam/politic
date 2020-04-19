@@ -12,6 +12,7 @@ class GaleriesController < ApplicationController
 
   def update
     @galery = current_user.galeries.find(params[:id])
+    @post = @galery.post
     if @galery.update(galery_params)
       render partial: 'galery', locals: {galery: @galery}, layout: false;
     else
@@ -20,7 +21,9 @@ class GaleriesController < ApplicationController
   end
 
   def create
+
     @galery = current_user.posts.find(galery_params[:post_id]).galeries.new galery_params.merge(user_id: current_user.id)
+    @post = @galery.post
     if @galery.save
       render partial: 'galery', locals: {galery: @galery} , layout: false
     else

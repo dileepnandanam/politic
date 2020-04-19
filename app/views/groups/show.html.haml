@@ -1,14 +1,16 @@
 .my-space
   .questions-container
+    
+    .posts-container
+      = render partial: 'groups/posts/posts', locals: {posts: @posts.select{|p| p.featured?}.sort_by(&:updated_at).reverse}
+      = render partial: 'groups/posts/posts', locals: {posts: @posts.reject{|p| p.featured?}.sort_by(&:sequence)}
+    
     - if current_user && current_user == @group.user  
       .group-action
         - unless params[:preview] 
           = link_to 'New page', new_group_post_path(@group), remote: true, class: 'new-group-post'
     .new-post
-    .posts-container
-      = render partial: 'groups/posts/posts', locals: {posts: @posts.select{|p| p.featured?}.sort_by(&:updated_at).reverse}
-      = render partial: 'groups/posts/posts', locals: {posts: @posts.reject{|p| p.featured?}.sort_by(&:sequence)}
-
+    
 - if current_user != @group.user || params[:preview].present?
   = stylesheet_link_tag('post_styles.css')
   = stylesheet_link_tag('site_styles.css')

@@ -136,3 +136,8 @@
 .galery {
   border: 1px solid black;
 }
+.add-picture {
+  border: 1px solid;
+  padding: 5px;
+  display: inline-block;
+}
