@@ -30,19 +30,19 @@
       .nav-bar.signed{class: current_user ? '' : 'd-none'}
         = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'pull-right'
         
-        = link_to 'I am Here', '#', class: 'i-am-here pull-right'
+        = link_to 'I am Here', '#', class: 'i-am-here pull-right', rel: :nofollow
         - if current_user.try(:welcome_posts).to_a.count !=0
-          = link_to 'my pages', my_posts_posts_path, class: "pull-right my-pages #{current_user && current_user.posts.count == 0 ? 'd-none' : ''}"
+          = link_to 'my pages', my_posts_posts_path, class: "pull-right my-pages #{current_user && current_user.posts.count == 0 ? 'd-none' : ''}", rel: :nofollow
         
-        = link_to 'my sites', my_groups_groups_path, class: "pull-right my-sites #{current_user && current_user.group_count == 0 ? 'd-none' : ''}"
-        = link_to 'home', '/', class: 'pull-right'
+        = link_to 'my sites', my_groups_groups_path, class: "pull-right my-sites #{current_user && current_user.group_count == 0 ? 'd-none' : ''}", rel: :nofollow
+        = link_to 'home', '/', class: 'pull-right', rel: :nofollow
         .clearfix
       .nav-bar.unsigned{class: current_user ? 'd-none' : ''}
           
-        = link_to "Sign in", new_user_session_path, class: 'pull-right'
+        = link_to "Sign in", new_user_session_path, class: 'pull-right', rel: :nofollow
         
-        = link_to "Sign up", new_user_registration_path, class: 'pull-right'
-        = link_to 'home', '/', class: 'pull-right'
+        = link_to "Sign up", new_user_registration_path, class: 'pull-right', rel: :nofollow
+        = link_to 'home', '/', class: 'pull-right', rel: :nofollow
         .clearfix
       - if current_user.present? && params[:preview].blank?
         .sub-nav-bar{class: (current_user && current_user.posts.present? ? '' : 'd-none')}
