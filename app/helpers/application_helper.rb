@@ -13,4 +13,10 @@ module ApplicationHelper
   def default_background
     'https://komonews.com/resources/media/46ac9d95-54a7-4cea-829d-8834c73f293b-large16x9_190207_loz_snowfall_sunset_1940.jpg?1549572251633'
   end
+
+  def image_tag_with_fallback(obj, handle)
+    if obj.send(handle).attachment.present?
+      image_tag(obj.send(handle))
+    end
+  end
 end

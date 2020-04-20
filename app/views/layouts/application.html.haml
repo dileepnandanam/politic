@@ -67,6 +67,6 @@
         = yield
     - if Rails.env.development?
       .acc-switcher
-        - User.all.each do |u|
+        - User.all.sort_by(&:name).each do |u|
           = link_to u.name, switch_user_path(u), class: "user-switch pull-left #{(current_user== u ? 'black' : '')}"
         .clearfix
