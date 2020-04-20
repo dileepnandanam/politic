@@ -22,6 +22,6 @@
           = f.hidden_field :galery_id, value: galery.id
         .clearfix
   .pictures
-    - galery.pictures.select{|p| p.img.attachment.present? }.each do |picture|
+    - galery.pictures.each do |picture|
       = render partial: 'pictures/picture', locals: {picture: picture}
   .clearfix

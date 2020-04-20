@@ -134,6 +134,7 @@ img.map-ico {
 }
 .question img {
   width: 100%;
+  margin-bottom: 12px;
 }
 .question .map-ico {
   width: 20%;
