@@ -31,7 +31,7 @@ a.add-question {
 .search input {
     font-size: 20px !important;
     border: none !important;
-    border-radius: 3px !important;
+    border-radius: 10px !important;
     color: black !important;
     margin-top: 12px;
 }

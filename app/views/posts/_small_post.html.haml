@@ -1,9 +1,8 @@
 .group-post.post.small-post
   .post-title
-    %h2.pull-left= link_to post.display_title, "/#{post.id}"
-  - if Rails.env == 'development'
-    %h5.pull-right.black
-      = post.user.name
+    %h2.pull-left= link_to "#{post.display_title} #{post.lat.present? ? '' : '(closed)'} ", "/#{post.id}"
+  %h5.pull-right.black
+    = post.user.name
   .clearfix
   .post-body
     .post-text  

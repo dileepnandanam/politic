@@ -1,6 +1,6 @@
 .questions-container
   .search-panel.search
-    = text_field_tag 'search',nil, placeholder: 'search', data: {url: posts_path(page: 1)}
+    = text_field_tag 'search',nil, placeholder: 'search', data: {url: posts_path(page: 1)},class: 'search-field'
   .clearfix
   - if current_user
     .group-action
