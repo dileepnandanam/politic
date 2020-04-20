@@ -102,7 +102,6 @@
 .galery .form-group.picture_img {
   float: left;
   width: 50%;
-  min-width: 260px;
 }
 .galery .inline-input {
   height: 40px;
@@ -127,17 +126,21 @@
   top: 0;
   left: 0;
 }
-.picture_caption {
-  width: 260px;
+.simple_form.add-picture {
+  width: 100%;
+  margin-top: 12px;
 }
-.form-control-file.file {
-  width: 260px;
+.picture_caption {
+  width: 100%;
 }
 .galery {
   border: 1px solid black;
 }
 .add-picture {
   border: 1px solid;
-  padding: 5px;
+  padding: 12px;
   display: inline-block;
+}
+#picture_img {
+  width: 118px;
 }

@@ -1,4 +1,14 @@
+bind_picture_add = function() {
+  $('.add-galery-picture').on('click', function(e) {
+    $(this).siblings('form').removeClass('d-none')
+  })
+  $('.picture-submit').on('click', function() {
+    $(this).closest('form').addClass('d-none')
+  })
+}
+
 $(document).on('turbolinks:load', function() {
+  bind_picture_add()
   $(document).on('ajax:success', '.new-galery', function(e) {
     $(this).closest('.post').find('.galery-form-container').html(e.detail[2].responseText)
     $('.cancel').click(function(e) {
@@ -10,8 +20,9 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.galery-form', function(e) {
     $(document).off('ajax:success', '.galery-form')
     %(this).remove()
-    $('.galeries-container').prepend(e.detail[2].responseText)
-    prepare_asinc_reload()    
+    $('.galeries-container').append(e.detail[2].responseText)
+    prepare_asinc_reload()
+    bind_picture_add()   
   })
 
   $(document).on('ajax:success', '.edit-galery-form', function(e) {
