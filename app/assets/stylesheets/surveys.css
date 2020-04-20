@@ -132,3 +132,9 @@ img.map-ico {
 .highlight .answer-text {
   background-color: black !important;
 }
+.question img {
+  width: 100%;
+}
+.question .map-ico {
+  width: 20%;
+}

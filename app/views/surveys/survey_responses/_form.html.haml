@@ -1,7 +1,7 @@
 = simple_form_for([@survey, @survey_response], html:{remote: true, class: 'survey_response_form' }) do |f|
   = f.fields_for :answers do |af|
     .question
-      
+      = image_tag(af.object.question.img)
       - if af.object.question.answer_type == 'line'
         .survey-question-text-line
           = af.object.question.text

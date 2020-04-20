@@ -1,5 +1,6 @@
 = simple_form_for [@survey, @question], {remote: true, class: 'option-form'} do |f|
   = f.input :text, label: false
+  = f.input :img
   .clearfix
   = f.submit 'Submit', class: 'btn-primary float-left'
   = link_to 'cancel', '#', class: 'cancel-form btn-primary float-left', remote: true

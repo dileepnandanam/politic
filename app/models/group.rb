@@ -14,6 +14,6 @@ class Group < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   def display_name
-    name.present? ? name : 'Untitled'
+    [banner_title, name, 'Untitled'].select(&:present?).first
   end
 end

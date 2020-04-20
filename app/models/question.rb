@@ -6,4 +6,6 @@ class Question < ApplicationRecord
   belongs_to :quick_poll, optional: true
   has_many :answers
   has_many :options
+
+  has_one_attached :img
 end
