@@ -25,7 +25,7 @@ class Surveys::SurveyResponsesController < SurveysController
       item_type: 'SurveyResponse',
       target_id: @response.user.id,
       link: survey_survey_response_path(@survey, @response),
-      action: "your query to \"#{@survey.name}\" has been accepted"
+      action: "your query to \"#{@survey.name}\" has been accepted on \"#{title}\""
     )
 
     message = ApplicationController.render(
@@ -48,7 +48,7 @@ class Surveys::SurveyResponsesController < SurveysController
       item_type: 'SurveyResponse',
       target_id: @response.user.id,
       link: survey_survey_response_path(@survey, @response),
-      action: "sorry, your query to \"#{@survey.name}\" has been rejected"
+      action: "sorry, your query to \"#{@survey.name}\" has been rejected on \"#{title}\""
     )
 
     message = ApplicationController.render(
@@ -84,13 +84,14 @@ class Surveys::SurveyResponsesController < SurveysController
   def create
     user = (current_user || anonymous_user)
     @response = SurveyResponse.create response_params.merge(user_id: user.id, survey_id: @survey.id)
+
     @notif = V2::Notification.create(
       sender_id: user.id,
       item_id: @response.id,
       item_type: 'SurveyResponse',
       target_id: @survey.user.id,
       link: survey_survey_response_path(@survey, @response),
-      action: "#{user.name} responded to \"#{@survey.name}\""
+      action: "#{user.name} responded to \"#{@survey.name}\" in \"#{title}\""
     )
 
     message = ApplicationController.render(
@@ -106,6 +107,13 @@ class Surveys::SurveyResponsesController < SurveysController
   end
 
   protected
+
+  def title
+    @survey.posts.map(&:group).compact.first.try(:welcome_posts).first.try(:title) ||
+    @survey.posts.map(&:group).compact.first.try(:banner_title) ||
+    @survey.posts.map(&:group).compact.first.try(:name) ||
+    @survey.posts.where(group_id: nil).try(:title)
+  end
 
   def find_survey
     @survey = Survey.find(params[:survey_id])
