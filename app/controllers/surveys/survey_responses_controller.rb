@@ -25,7 +25,7 @@ class Surveys::SurveyResponsesController < SurveysController
       item_type: 'SurveyResponse',
       target_id: @response.user.id,
       link: survey_survey_response_path(@survey, @response),
-      action: "your query to #{@survey.name} has been accepted"
+      action: "your query to \"#{@survey.name}\" has been accepted"
     )
 
     message = ApplicationController.render(
@@ -48,7 +48,7 @@ class Surveys::SurveyResponsesController < SurveysController
       item_type: 'SurveyResponse',
       target_id: @response.user.id,
       link: survey_survey_response_path(@survey, @response),
-      action: "sorry, your query to #{@survey.name} has been rejected"
+      action: "sorry, your query to \"#{@survey.name}\" has been rejected"
     )
 
     message = ApplicationController.render(
@@ -90,7 +90,7 @@ class Surveys::SurveyResponsesController < SurveysController
       item_type: 'SurveyResponse',
       target_id: @survey.user.id,
       link: survey_survey_response_path(@survey, @response),
-      action: "#{user.name} responded to #{@survey.name}"
+      action: "#{user.name} responded to \"#{@survey.name}\""
     )
 
     message = ApplicationController.render(
