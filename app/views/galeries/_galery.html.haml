@@ -13,8 +13,10 @@
     - galery.pictures.each do |picture|
       = render partial: 'pictures/picture', locals: {picture: picture}
   .clearfix
-  .upload-picture
-    = link_to 'add item', new_picture_path(galery_id: galery.id), class: 'add-galery-picture', remote: true
-    .picture-form-container
-    .clearfix
-  .clearfix
+  - if current_user == galery.user
+    - unless params[:preview]
+      .upload-picture
+        = link_to 'add item', new_picture_path(galery_id: galery.id), class: 'add-galery-picture', remote: true
+        .picture-form-container
+        .clearfix
+      .clearfix
