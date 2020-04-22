@@ -41,6 +41,7 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.add-picture', function(e) {
     $(document).off('ajax:success', '.add-picture')
     $(this).closest('.galery').find('.pictures').append(e.detail[2].responseText)
+    %(this).remove()
     prepare_asinc_reload()
   })
 
@@ -51,5 +52,16 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.post-select-form', function(e) {
     $(this).closest('.picture').replaceWith(e.detail[2].responseText)
     prepare_asinc_reload()
+  })
+
+  $(document).on('ajax:success', '.add-galery-picture', function(e) {
+    $('.picture-form-container').html(e.detail[2].responseText)
+  })
+  $(document).on('ajax:success', '.edit-galery-picture', function(e) {
+    $(this).siblings('.edit-form-container').html(e.detail[2].responseText)
+  })
+
+  $(document).on('ajax:success', '.edit-form-container form', function(e) {
+    $(this).closest('.picture').replaceWith(e.detail[2].responseText)
   })
 })

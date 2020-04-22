@@ -1,18 +1,31 @@
 class PicturesController < ApplicationController
+  def new
+    @galery = current_user.galeries.find(params[:galery_id])
+    @picture = @galery.pictures.new
+    render partial: 'form', layout: false
+  end
+
+  def edit
+    @galery = current_user.galeries.find(params[:galery_id])
+    @picture = @galery.pictures.find(params[:id])
+    render partial: 'form', layout: false
+  end
+
   def create
     @picture = current_user.galeries.find(picture_params[:galery_id]).pictures.create picture_params
     @post = @picture.galery.post
     render partial: 'picture', locals: {picture: @picture}
   end
-
+  
+  def update
+    @picture = current_user.galeries.find(picture_params[:galery_id]).pictures.find(params[:id])
+    @picture.update(picture_params)
+    @post = @picture.galery.post
+    render partial: 'picture', locals: {picture: @picture}
+  end
+  
   def destroy
-    @picture = Picture.find(params[:id])
-    if current_user.galeries.include? @picture.galery
-      @picture.delete
-      render plain: 'deleted', status: 200 and return
-    else
-      render plain: 'access_restricted', status: 404
-    end
+    @picture = current_user.galeries.find(params[:galery_id]).pictures.find(params[:id]).delete
   end
 
   def select_survey

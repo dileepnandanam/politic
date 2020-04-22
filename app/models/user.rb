@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :surveys
   has_many :quick_polls
   has_many :group_responses
+  has_many :galeries
   has_many :groups, through: :group_responses do 
     def visible
       where('group_responses.state = ?', 'accepted')

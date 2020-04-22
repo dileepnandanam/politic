@@ -1,0 +1,11 @@
+= simple_form_for(@picture, html: {class: 'add-picture', remote: true}) do |f|
+  = f.label 'Add Picture (optional)'
+  .clearfix
+  = f.input :img, label: false, class: 'inline-input'
+  .clearfix
+  = f.input :caption, label: 'caption', class: 'inline-input'
+  .clearfix
+  = f.submit 'Submit', class: 'picture-submit'
+  .clearfix
+  = f.hidden_field :galery_id, value: @galery.id
+  = link_to 'cancel', '#', class: 'cancel-form', remote: true

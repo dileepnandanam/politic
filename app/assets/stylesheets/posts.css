@@ -121,11 +121,6 @@
 .galery p {
   margin: 12px;
 }
-.remove-picture {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 .simple_form.add-picture {
   width: 100%;
   margin-top: 12px;
@@ -146,4 +141,7 @@
 }
 .picture .button-container {
   text-align: center;
+}
+.pictures {
+  border-top: 1px solid;
 }
