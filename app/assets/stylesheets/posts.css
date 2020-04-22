@@ -144,3 +144,6 @@
 #picture_img {
   width: 118px;
 }
+.picture .button-container {
+  text-align: center;
+}

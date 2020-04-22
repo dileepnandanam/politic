@@ -1,6 +1,7 @@
-- unless current_user
-  = render partial: 'authorize'
+
 .question.response-form
+  - unless current_user
+    = render partial: 'authorize'
   .pull-left
     %h2
       = @quick_poll.name

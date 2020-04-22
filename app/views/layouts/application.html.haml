@@ -30,7 +30,7 @@
       .nav-bar.signed{class: current_user ? '' : 'd-none'}
         = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'pull-right'
         
-        = link_to 'I am Here', '#', class: 'i-am-here pull-right', rel: :nofollow
+        = link_to 'send location', '#', class: 'i-am-here pull-right', rel: :nofollow
         - if current_user.try(:welcome_posts).to_a.count !=0
           = link_to 'my pages', my_posts_posts_path, class: "pull-right my-pages #{current_user && current_user.posts.count == 0 ? 'd-none' : ''}", rel: :nofollow
         

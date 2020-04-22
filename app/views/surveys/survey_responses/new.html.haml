@@ -1,6 +1,6 @@
-- if current_user.blank? && !@survey.anonymous?
-  = render partial: 'authorize'
 .question.response-form
+  - if current_user.blank? && !@survey.anonymous?
+    = render partial: 'authorize'
   .pull-left
     %h3= @survey.name
     %p= @survey.description
