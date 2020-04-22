@@ -4,5 +4,5 @@
   = f.input :column, as: :radio_buttons, collection: [['1 column', 1],['2 column', 2],['3 column', 3]], label_method: :first, value_method: :last
   = f.submit
   = f.hidden_field :post_id, value: params[:post_id]
-  = link_to 'cancel', '#', class: 'cancel-form'
+  = link_to 'cancel', '#', class: 'cancel-form', remote: true
   .clearfix

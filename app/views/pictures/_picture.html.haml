@@ -2,9 +2,9 @@
 .picture.pull-left{class: class_name}
   - if current_user && current_user.galeries.include?(picture.galery) 
     - unless params[:preview]
-      = link_to 'edit', edit_picture_path(picture, galery_id: picture.galery_id), class: 'edit-galery-picture pull-right', remote: true
+      = link_to 'edit', edit_picture_path(picture, galery_id: picture.galery_id), class: 'edit-galery-picture pull-left', remote: true
       .edit-form-container
-      = link_to 'delete', picture_path(picture, galery_id: picture.galery_id), remote: true, class: 'remove-picture', method: :delete
+      = link_to 'delete', picture_path(picture, galery_id: picture.galery_id), remote: true, class: 'remove-picture pull-right', method: :delete
   = image_tag_with_fallback(picture, :img)
   %p.black.text-center= picture.caption
   - unless params[:preview] || current_user != (@group || @post).user
@@ -15,4 +15,4 @@
     = render partial: 'pictures/select_page', locals: {picture: picture}
   .button-container
     - if picture.linked_post.present?
-      = link_to picture.linked_post_name, post_path(picture.linked_post), class: 'link-button edit-button'
+      = link_to picture.linked_post_name, post_path(picture.linked_post, preview: params[:preview]), class: 'link-button edit-button'

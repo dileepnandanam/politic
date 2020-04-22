@@ -148,3 +148,13 @@
 .remove-picture, .remove-picture {
   margin-bottom: 12px;
 }
+#picture_survey_id {
+  width: 200px;
+  margin-top: 12px;
+}
+#picture_linked_post_name {
+  width: 156px;
+}
+#picture_linked_post_id {
+  width: 156px;
+}
