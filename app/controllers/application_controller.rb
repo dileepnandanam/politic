@@ -78,19 +78,19 @@ class ApplicationController < ActionController::Base
 
   def tag_galery(galery, post)
     if @post.group_id.nil?
-      parent = post
+      parents = [post]
     else
-      parent = post.group.welcome_post
+      parents = post.group.welcome_posts
     end
-    parent.update galery_tags: "#{post.galery_tags} #{galery.name} #{galery.description}".split(' ').uniq.join(' ')
+    parents.update_all galery_tags: "#{post.galery_tags} #{galery.name} #{galery.description}".split(' ').uniq.join(' ')
   end
 
   def tag_picture(picture, post)
     if post.group_id.nil?
-      parent = post
+      parent = [post]
     else
-      parent = post.group.welcome_post
+      parent = post.group.welcome_posts
     end
-    parent.update picture_tags: "#{post.picture_tags} #{picture.caption} #{survey_tags(picture.survey)}".split(' ').uniq.join(' ')
+    parent.update_all picture_tags: "#{post.picture_tags} #{picture.caption} #{survey_tags(picture.survey)}".split(' ').uniq.join(' ')
   end
 end
