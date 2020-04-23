@@ -23,6 +23,12 @@ class PicturesController < ApplicationController
     @post = @picture.galery.post
     render partial: 'picture', locals: {picture: @picture}
   end
+
+  def delete_image
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge
+    render plain: 'img deleted', status: 200
+  end
   
   def destroy
     @picture = current_user.galeries.find(params[:galery_id]).pictures.find(params[:id]).delete

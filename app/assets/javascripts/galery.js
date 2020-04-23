@@ -16,8 +16,8 @@ $(document).on('turbolinks:load', function() {
   bind_galery_create = function() {
     $(document).on('ajax:success', '.galery-form', function(e) {
       $(document).off('ajax:success', '.galery-form')
+      $(this).closest('.post').find('.galeries-container').append(e.detail[2].responseText)
       %(this).remove()
-      $('.galeries-container').append(e.detail[2].responseText)
       prepare_asinc_reload()
       bind_picture_add()
       bind_galery_create()
@@ -68,5 +68,10 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('ajax:success', '.edit-form-container form', function(e) {
     $(this).closest('.picture').replaceWith(e.detail[2].responseText)
+  })
+
+  $(document).on('ajax:success', '.remove-image', function() {
+    $(this).closest('.picture').find('img').remove()
+    $('.remove-image').addClass('d-none')
   })
 })

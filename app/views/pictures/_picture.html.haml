@@ -6,6 +6,7 @@
       .edit-form-container
       = link_to 'delete', picture_path(picture, galery_id: picture.galery_id), remote: true, class: 'remove-picture pull-right', method: :delete
   = image_tag_with_fallback(picture, :img)
+  = remove_tag_with_fallback(picture, :img)
   %p.black.text-center= picture.caption
   - unless params[:preview] || current_user != (@group || @post).user
     = render partial: 'pictures/selection', locals: {picture: picture}

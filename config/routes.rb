@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :pictures, controller: 'pictures' do
     put :select_survey, on: :member
     put :select_post, on: :member
+    delete :delete_image, on: :member
   end
   
   resources :posts, controller: 'posts', scope: '/' do

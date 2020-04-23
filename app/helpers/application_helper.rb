@@ -19,4 +19,10 @@ module ApplicationHelper
       image_tag(obj.send(handle))
     end
   end
+
+  def remove_tag_with_fallback(obj, handle)
+    if obj.send(handle).attachment.present?
+      link_to 'Remove picture', delete_image_picture_url(obj.send(handle).id), method: :delete, remote: true, class: 'remove-image'
+    end
+  end
 end
