@@ -14,6 +14,7 @@ class PicturesController < ApplicationController
   def create
     @picture = current_user.galeries.find(picture_params[:galery_id]).pictures.create picture_params
     @post = @picture.galery.post
+    tag_picture(@picture, @post)
     render partial: 'picture', locals: {picture: @picture}
   end
   
@@ -21,6 +22,7 @@ class PicturesController < ApplicationController
     @picture = current_user.galeries.find(picture_params[:galery_id]).pictures.find(params[:id])
     @picture.update(picture_params)
     @post = @picture.galery.post
+    tag_picture(@picture, @post)
     render partial: 'picture', locals: {picture: @picture}
   end
 
@@ -45,7 +47,8 @@ class PicturesController < ApplicationController
     end
     @survey = current_user.surveys.find(params[:picture][:survey_id])
     @picture.update survey_id: @survey.id
-
+    @post = @picture.galery.post
+    tag_picture(@picture, @post)
     render json: {
       ack: "Pinning survey #{@survey.name}",
       id: @survey.id

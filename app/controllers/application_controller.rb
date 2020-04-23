@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
     ).uniq
   end
 
+
+
   protected
     def redirect_to_affiliated_site
       affiliation = Affiliation.where(name: params[:permalink]).first
@@ -53,4 +55,42 @@ class ApplicationController < ActionController::Base
     def set_flag
       @flag = 'active'
     end
+
+  def survey_tags(survey)
+    return '' if survey.nil?
+    survey_tags = "#{survey.name} #{survey.description}"
+    question_tags = survey.questions.map{|q| q.text}.join(' ')
+    option_tags = survey.questions.map{|q| q.options.map(&:name)}.flatten.join(' ')
+    "#{survey_tags} #{question_tags} #{option_tags}"
+  end
+
+  def tag_survey(survey, post)
+    total_tags = "#{post.survey_tags} #{survey_tags(survey)}".split(' ').uniq.join(' ')
+    post.update(survey_tags: total_tags)
+  end
+
+  def tag_site(site, post)
+    site_title_tags = site.posts.map(&:title).join(' ')
+    site_text_tags = site.posts.map(&:text).join(' ')
+    site_tags = "#{site.name} #{site.description}"
+    post.update(site_tags: "#{site_title_tags} #{site_text_tags} #{site_tags}")
+  end
+
+  def tag_galery(galery, post)
+    if @post.group_id.nil?
+      parent = post
+    else
+      parent = post.group.welcome_post
+    end
+    parent.update galery_tags: "#{post.galery_tags} #{galery.name} #{galery.description}".split(' ').uniq.join(' ')
+  end
+
+  def tag_picture(picture, post)
+    if post.group_id.nil?
+      parent = post
+    else
+      parent = post.group.welcome_post
+    end
+    parent.update picture_tags: "#{post.picture_tags} #{picture.caption} #{survey_tags(picture.survey)}".split(' ').uniq.join(' ')
+  end
 end

@@ -35,7 +35,7 @@ class Post < ApplicationRecord
     else
       Post.with_orientation(orientation).with_group_id(group_id)
         .select("#{Post.new.attributes.keys.join(', ')}")
-        .where(['title', 'text', 'survey_tags', 'site_tags'].map{|att| "#{match_stmt(q, att)[0]} >= #{match_stmt(q, att)[1]}"}.join(' OR '))
+        .where(['title', 'text', 'survey_tags', 'site_tags', 'galery_tags', 'picture_tags'].map{|att| "#{match_stmt(q, att)[0]} >= #{match_stmt(q, att)[1]}"}.join(' OR '))
     end
   end
 
