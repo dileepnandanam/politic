@@ -31,7 +31,7 @@ $(document).on('turbolinks:load', function() {
   })
 
   $(document).on('ajax:success', '.edit-galery', function(e) {
-    $(this).siblings('.edit-container').html(e.detail[2].responseText)
+    $(this).siblings('.edit-galery-container').html(e.detail[2].responseText)
   })
 
   $(document).on('ajax:success', '.delete-galery', function(e) {
