@@ -50,7 +50,7 @@ class Post < ApplicationRecord
 
   
   def self.match_stmt(q, column)
-    stop_words.each{|sw| q.gsub!(Regexp.new("[$\s]#{sw}[\s^]", 'i'), '')}
+    stop_words.each{|sw| q.gsub!(Regexp.new("[$\s]#{sw}[\s^]", 'i'), ' ')}
     keys = q.split(/[\s,:;\-\(\)\.\/]/).select{|w| w.length > 1}
     match_stmt_str = keys.map{|w| "COALESCE((LOWER(#{column}) LIKE '%#{w.downcase}%'), FALSE)::int"}.join(' + ')
     match_stmt_str.present? ? [match_stmt_str, keys.count] : "id"

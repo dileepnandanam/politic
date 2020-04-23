@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', function() {
 			}
 		})
 	}
-	$('.search input').keyup($.debounce(250, search))
+	$('.search input').keyup($.debounce(1250, search))
 	initMasonry()
 
 	$('.questions').on('ajax:success', '.view-more-questions', function() {
