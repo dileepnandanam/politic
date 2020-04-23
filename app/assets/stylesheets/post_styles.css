@@ -31,3 +31,6 @@
 .pictures {
   border-top: none;
 }
+.picture {
+  border: none;
+}
