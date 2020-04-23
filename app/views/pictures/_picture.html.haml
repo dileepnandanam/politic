@@ -7,10 +7,10 @@
       = link_to 'delete', picture_path(picture, galery_id: picture.galery_id), remote: true, class: 'remove-picture pull-right', method: :delete
       .clearfix
   = image_tag_with_fallback(picture, :img)
+  %p.black.text-center= picture.caption
   - if current_user && current_user.galeries.include?(picture.galery)  
     - unless params[:preview]
       = remove_tag_with_fallback(picture, :img)
-  %p.black.text-center= picture.caption
   - unless params[:preview] || current_user != (@group || @post).user
     = render partial: 'pictures/selection', locals: {picture: picture}
   .survey-container{data: {id: picture.survey_id, anonymous: picture.survey.try(:anonymous).present?.to_s}}

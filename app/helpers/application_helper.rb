@@ -6,6 +6,16 @@ module ApplicationHelper
   	end
   end
 
+  def display_name(obj, handle)
+    if obj.name.present?
+      obj.name
+    else
+      if current_user == (@group||@post).user && !params[:preview]
+        "Untitled #{obj.class.name.camelize}"
+      end
+    end
+  end
+
   def default_banner
     %{https://media2.giphy.com/media/A06UFEx8jxEwU/source.gif}
   end

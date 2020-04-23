@@ -3,4 +3,8 @@ class Galery < ApplicationRecord
   belongs_to :user
   belongs_to :post
   default_scope -> {order('id ASC')}
+
+  def display_name
+    name.present? ? name : 'Untitled galery'
+  end
 end

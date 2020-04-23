@@ -139,3 +139,6 @@ img.map-ico {
 .question .map-ico {
   width: 20%;
 }
+.question {
+  text-align: left;
+}

@@ -82,7 +82,7 @@ class ApplicationController < ActionController::Base
     else
       parents = post.group.welcome_posts
     end
-    parents.update_all galery_tags: "#{post.galery_tags} #{galery.name} #{galery.description}".split(' ').uniq.join(' ')
+    parents.map{|p| p.update galery_tags: "#{post.galery_tags} #{galery.name} #{galery.description}".split(' ').uniq.join(' ')}
   end
 
   def tag_picture(picture, post)
@@ -91,6 +91,6 @@ class ApplicationController < ActionController::Base
     else
       parent = post.group.welcome_posts
     end
-    parent.update_all picture_tags: "#{post.picture_tags} #{picture.caption} #{survey_tags(picture.survey)}".split(' ').uniq.join(' ')
+    parent.map{ |p| p.update picture_tags: "#{post.picture_tags} #{picture.caption} #{survey_tags(picture.survey)}".split(' ').uniq.join(' ') }
   end
 end

@@ -1,5 +1,5 @@
 .galery
-  %h2.text-center= galery.name
+  %h2.text-center= display_name(galery, :name)
   .post-text.text-center
     = galery.description
   - unless params[:preview]
