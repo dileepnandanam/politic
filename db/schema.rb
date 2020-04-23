@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_091415) do
+ActiveRecord::Schema.define(version: 2020_04_23_115128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 2020_04_23_091415) do
     t.integer "sequence", default: 0
     t.text "galery_tags", default: ""
     t.text "picture_tags", default: ""
+    t.boolean "visible", default: true
   end
 
   create_table "questions", force: :cascade do |t|

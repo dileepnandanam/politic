@@ -11,9 +11,8 @@ class PostsController < PostBaseController
     if params[:query].present?
       @posts = Post.search(params[:query], nil, orientation, [current_user.try(:lat), current_user.try(:lngt)])
       @posts = @posts.paginate(per_page: 12, page: params[:page])
-      mark_seen(@posts)
     else
-      @posts = Post.where(group_id: nil).all
+      @posts = Post.where(group_id: nil, visible: true).all
       @posts = @posts.paginate(per_page: 12, page: params[:page])
     end
 

@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
     unless @group.user == current_user || (current_user && current_user.is_a_member_of(@group)) || @group.visible?
       redirect_to new_group_group_response_path(@group) and return
     end
-    @posts = @group.posts
+    @posts = @group.posts.where(visible: true)
     if request.format.html?
       render 'show'
     else

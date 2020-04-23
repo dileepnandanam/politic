@@ -12,7 +12,8 @@ class Post < ApplicationRecord
 
   after_create :notify_connections
 
-  default_scope -> {order('created_at ASC')}
+
+  default_scope -> {order('created_at ASC').where(hidden: [true, false])}
 
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
@@ -42,7 +43,7 @@ class Post < ApplicationRecord
   def self.search(q, group_id, orientation = nil, location = nil)
     posts = text_search(q, group_id, orientation)
     if location.to_a.all?(&:present?)
-      (posts.near(location, 50) + posts).uniq
+      (posts.near(location, 50) + posts).uniq.select(&:visible?)
     else
       posts.order('created_at DESC')
     end
