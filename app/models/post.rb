@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   after_create :notify_connections
 
 
-  default_scope -> {order('created_at ASC').where(hidden: [true, false])}
+  default_scope -> {order('created_at ASC')}
 
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
@@ -52,7 +52,7 @@ class Post < ApplicationRecord
   
   def self.match_stmt(q, column)
     stop_words.each{|sw| q.gsub!(Regexp.new("[$\s]#{sw}[\s^]", 'i'), ' ')}
-    keys = q.split(/[\s,:;\-\(\)\.\/]/).select{|w| w.length > 1}
+    keys = q.split(/[\s,:;\-\(\)\.\/']/).select{|w| w.length > 1}
     match_stmt_str = keys.map{|w| "COALESCE((LOWER(#{column}) LIKE '%#{w.downcase}%'), FALSE)::int"}.join(' + ')
     match_stmt_str.present? ? [match_stmt_str, keys.count] : "id"
   end
