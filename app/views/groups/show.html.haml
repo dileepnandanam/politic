@@ -2,7 +2,7 @@
   .questions-container
     
     .posts-container
-      = render partial: 'groups/posts/posts', locals: {posts: @posts.reject{|p| p.featured?}.sort_by(&:sequence)}
+      = render partial: 'groups/posts/posts', locals: {posts: @posts.sort_by(&:sequence)}
     
     - if current_user && current_user == @group.user  
       .group-action

@@ -18,10 +18,17 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    unless @group.user == current_user || (current_user && current_user.is_a_member_of(@group)) || @group.visible?
-      redirect_to new_group_group_response_path(@group) and return
+    @posts = @group.posts
+    unless @group.visible
+      if current_user.nil?
+        render 'home/access_restricted'
+      elsif current_user.is_a_member_of(@group)
+        render 'show' and return
+      else
+        redirect_to new_group_group_response_path(@group) and return
+      end
     end
-    @posts = @group.posts.where(visible: true)
+
     if request.format.html?
       render 'show'
     else

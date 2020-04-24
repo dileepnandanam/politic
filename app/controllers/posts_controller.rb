@@ -2,8 +2,22 @@ class PostsController < PostBaseController
   before_action :check_user, only: [:new, :downvote, :upvote, :destroy, :create, :new]
   def show
     @post = Post.find(params[:id])
-    if @post.project && @post.project.bypass_welcome_page? and @post.user != current_user
-      redirect_to group_path(@post.project) and return
+    @group = @post.project
+ 
+    if @group.nil?
+      render 'show' and return
+    end
+
+    if current_user == @group.try(:user)
+      render 'show' and return
+    end
+
+    if @group.bypass_welcome_page?
+      redirect_to group_path(@group) and return
+    end
+
+    if @group.questions.count == 0
+      redirect_to group_path(@group) and return
     end
   end
 
@@ -12,7 +26,7 @@ class PostsController < PostBaseController
       @posts = Post.search(params[:query], nil, orientation, [current_user.try(:lat), current_user.try(:lngt)])
       @posts = @posts.paginate(per_page: 12, page: params[:page])
     else
-      @posts = Post.where(group_id: nil, visible: true).all
+      @posts = Post.where(group_id: nil).all
       @posts = @posts.paginate(per_page: 12, page: params[:page])
     end
 
