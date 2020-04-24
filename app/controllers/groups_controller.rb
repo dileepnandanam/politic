@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
     unless @group.visible
       if current_user.nil?
         render 'home/access_restricted'
-      elsif current_user.is_a_member_of(@group)
+      elsif current_user.is_a_member_of(@group) || current_user == @group.user
         render 'show' and return
       else
         redirect_to new_group_group_response_path(@group) and return
