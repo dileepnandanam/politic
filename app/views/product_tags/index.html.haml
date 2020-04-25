@@ -1,0 +1,4 @@
+.post
+  = text_field_tag 'search', nil, placeholder: 'search', class: 'search-tags'
+  .prodict-tags-container
+    = render partial: 'product_tags', locals: { parent: @parent, product_tags: @product_tags}
