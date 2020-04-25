@@ -1,3 +1,4 @@
 .product-tags
   - product_tags.each do |t|
     = link_to t.name, product_tags_path(parent_id: t.id), remote: true, class: 'product-tag'
+  = text_field_tag 'tag', nil, class: 'add-tag tag', data: {parant_id: params[:parent_id]}
