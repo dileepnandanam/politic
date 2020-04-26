@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
     })
   }
 
-
+  $('.search-tags').keyup($.debounce(1250, search))
 
   $(document).on('keypress', '.add-tag', function(e){
     if(e.which == 13) {

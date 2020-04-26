@@ -12,7 +12,7 @@
 }
 .product-tags {
   border: 1px solid black;
-  margin: 12px;
+  margin:  0px 12px;
   padding: 12px;
   min-width: 100px;
   min-height: 72px;
@@ -23,4 +23,9 @@
 }
 .add-tag {
   margin: 12px;
+  height: 44px;
+  font-size: 22px !important;
+}
+.selected {
+  background-color: white;
 }
