@@ -114,5 +114,10 @@ Rails.application.routes.draw do
 
   resources :affiliations
   get '/:id', to: 'posts#show'
+
+  namespace :b2b do
+    resources :product_tags
+    resources :products
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

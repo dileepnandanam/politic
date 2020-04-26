@@ -1,0 +1,10 @@
+.col-sm-4.pull-left.product
+  .question
+    - if current_user.try(:admin?)
+      = link_to 'edit', edit_b2b_product_path(product), remote: true, class: 'edit-product-link pull-left'
+      = link_to 'delete', b2b_product_path(product), method: :delete, class: 'delete-product-link pull-right'
+    .edit-product
+    %h3.text-center= product.name
+    - if product.img.attachment.present?
+      = image_tag(product.img)
+    %h3.text-center= "RS #{product.price}"

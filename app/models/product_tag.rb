@@ -4,14 +4,6 @@ class ProductTag < ApplicationRecord
   has_many :products
 
   def children
-    ProductTag.where(parent_id: self.id) + Product.where(product_tag_id: self.id)
-  end
-
-  def all_children
-    if children.all == [] 
-      return self
-    else
-      children.map{|c| c.all_children}
-    end
+    ProductTag.where(parent_id: self.id)
   end
 end

@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
   search = function() {
     query = $('.search-tags').val()
     $.ajax({
-      url: '/product_tags',
+      url: '/b2b/product_tags',
       data: {
         query: query
       },
@@ -27,7 +27,7 @@ $(document).on('turbolinks:load', function() {
       that = $(this)
       parent_id = $(this).data().parantId
       $.ajax({
-        url: '/product_tags',
+        url: '/b2b/product_tags',
         method: 'POST',
         data: {
           product_tag: {
@@ -44,5 +44,36 @@ $(document).on('turbolinks:load', function() {
     }
   })
 
+
+  $(document).on('ajax:success', '.new-product-link', function(e) {
+    $(this).siblings('.new-product-form').html(e.detail[2].responseText)
+  })
+  $(document).on('ajax:success', 'form.new_product', function(e) {
+    $(this).closest('.new-product-form').siblings('.products').append(e.detail[2].responseText)
+    $(this).remove()
+  })
+  $(document).on('ajax:error','form.new_product', function(e) {
+    $(this).replaceWith(e.detail[2].responseText)
+  })
+
+
+  $(document).on('ajax:success', '.product', function(e) {
+    $('.product-container').html(e.detail[2].responseText)
+  })
+
+  $(document).on('ajax:success', '.edit-product-link', function(e) {
+    $(this).siblings('.edit-product').html(e.detail[2].responseText)
+  })
+
+  $(document).on('ajax:success', 'form.edit_product', function(e) {
+    $(this).closest('.product').replaceWith(e.detail[2].responseText)
+  })
+  $(document).on('ajax:error', 'form.edit_product', function(e) {
+    $(this).replaceWith(e.detail[2].responseText)
+  })
+
+  $(document).on('ajax:success', '.delete-product-link', function(e) {
+    $(this).closest('.product').remove()
+  })
 
 })

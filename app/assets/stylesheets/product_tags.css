@@ -10,6 +10,9 @@
   margin: 12px;
   border-radius: 9px;
 }
+.product-tag:hover {
+  color: red;
+}
 .product-tags {
   border: 1px solid black;
   margin:  0px 12px;
@@ -21,11 +24,22 @@
 .search-tags {
   margin: 12px;
 }
+.product-tag.product {
+  background-color: green;
+}
 .add-tag {
   margin: 12px;
   height: 44px;
   font-size: 22px !important;
+  width: 150px;
 }
 .selected {
   background-color: white;
+}
+.product {
+  border: 2px solid red;
+  background-color: white;
+}
+.product img {
+  margin-top: 12px;
 }

@@ -1,5 +1,0 @@
-.product-tags
-  - product_tags.each do |product_tag|
-    = render partial: 'product_tag', locals: {product_tag: product_tag, parent: product_tag.parent}
-  - if current_user && current_user.admin?
-    = text_field_tag 'tag', nil, class: 'add-tag tag', data: {parant_id: params[:parent_id]}

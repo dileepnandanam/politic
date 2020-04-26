@@ -1,8 +1,16 @@
-class ProductTagsController < ApplicationController
+class B2b::ProductTagsController < ApplicationController
   def index
     if params[:query].present?
       @product_tags = ProductTag.where("name like '%#{params[:query]}%'").all.map(&:children).flatten
     else
+      if params[:parent_id].present?
+        @parent = ProductTag.find(params[:parent_id])
+        @products = []
+        iterate(@parent)
+        @products = @products.flatten
+        @first_list = @products[0..10]
+        @second_list = @products[11..-1]
+      end
       @product_tags = ProductTag.where(parent_id: params[:parent_id])
     end  
 
@@ -22,6 +30,19 @@ class ProductTagsController < ApplicationController
 
   def destroy
     ProductTag.find(params[:id]).delete
+  end
+
+  protected
+
+  def iterate(tag)
+    @products << tag.products
+    if tag.children.all == []
+      return
+    else
+      tag.children.each do |t|
+        iterate(t)
+      end
+    end
   end
 
   def product_tag_params
