@@ -58,7 +58,7 @@ $(document).on('turbolinks:load', function() {
       bind_new_product()
     })
   }
-  bind_new_product
+  bind_new_product()
 
   $(document).on('ajax:success', 'form.new_product', function(e) {
     $(this).closest('.new-product-form').siblings('.products').append(e.detail[2].responseText)

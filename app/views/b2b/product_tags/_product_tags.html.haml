@@ -1,7 +1,7 @@
 .product-tags
   - product_tags.each do |product_tag|
     = render partial: 'product_tag', locals: {product_tag: product_tag, parent: product_tag.parent}
-  - if current_user && current_user.admin? && params[:parent_id].present?
+  - if current_user && current_user.admin?
     = text_field_tag 'tag', nil, class: 'add-tag tag', data: {parant_id: params[:parent_id]}
   .clearfix
 .products
@@ -11,5 +11,5 @@
     - if @second_list.present?
       = link_to 'see all products', b2b_products_path(parent_id: @parent.id), class: 'product-tag product see-all'
   - if current_user && current_user.admin? && params[:parent_id].present?
-    = link_to '+ add product', new_b2b_product_path(parent_id: params[:parent_id]), class: 'new-product-link product-tag product', remote: true
+    = link_to '+ add product', new_b2b_product_path(parent_id: params[:parent_id]), class: 'new-product-link', remote: true
     .new-product-form
