@@ -5,5 +5,5 @@
   = f.input :img
   = f.hidden_field :product_tag_id, :value => params[:parent_id]
   = f.submit
-  = link_to 'Cancel','#', class: 'cancel-form', remote: true
-  .clearfix
+  = f.button :button, 'Cancel', type: :reset, class: 'cancel-product-form btn btn-none cancel-form'
+.clearfix

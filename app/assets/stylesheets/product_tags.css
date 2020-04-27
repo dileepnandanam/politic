@@ -54,10 +54,15 @@
 .new-product-link {
   border: 3px solid black !important;
   background-color: #c98888 !important;
+  margin: 12px;
 }
 .new_product {
   margin: 0px 12px;
 }
 .see-all {
   color: azure !important;
+}
+.cancel-product-form {
+  font-size: 20px;
+  font-weight: normal;
 }

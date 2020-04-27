@@ -55,6 +55,7 @@ $(document).on('turbolinks:load', function() {
     $(document).on('ajax:success', '.new-product-link', function(e) {
       $(document).off('ajax:success', '.new-product-link')
       $(this).siblings('.new-product-form').html(e.detail[2].responseText)
+      bind_cancel()
       bind_new_product()
     })
   }
@@ -79,6 +80,7 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('ajax:success', '.edit-product-link', function(e) {
     $(this).siblings('.edit-product').html(e.detail[2].responseText)
+    bind_cancel()
   })
 
   $(document).on('ajax:success', 'form.edit_product', function(e) {
@@ -100,4 +102,11 @@ $(document).on('turbolinks:load', function() {
   }
   bind_highlighting()
 
+  bind_cancel = function() {
+    $('.cancel-product-form').click(function(e) {
+      e.preventDefault()
+      $(this).closest('form').remove()
+    })
+  }
+  bind_cancel()
 })
