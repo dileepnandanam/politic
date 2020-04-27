@@ -4,6 +4,7 @@ $(document).on('turbolinks:load', function() {
     $(this).closest('.product-tags').nextAll().remove()
     $(this).closest('.prodict-tags-container').append(e.detail[2].responseText)
     $(this).siblings('.products').remove()  
+    bind_highlighting()
   })
 
 
@@ -49,10 +50,16 @@ $(document).on('turbolinks:load', function() {
     })
   }
   bind_add_tag()
+  
+  bind_new_product = function() {
+    $(document).on('ajax:success', '.new-product-link', function(e) {
+      $(document).off('ajax:success', '.new-product-link')
+      $(this).siblings('.new-product-form').html(e.detail[2].responseText)
+      bind_new_product()
+    })
+  }
+  bind_new_product
 
-  $(document).on('ajax:success', '.new-product-link', function(e) {
-    $(this).siblings('.new-product-form').html(e.detail[2].responseText)
-  })
   $(document).on('ajax:success', 'form.new_product', function(e) {
     $(this).closest('.new-product-form').siblings('.products').append(e.detail[2].responseText)
     $(this).remove()
@@ -61,10 +68,14 @@ $(document).on('turbolinks:load', function() {
     $(this).replaceWith(e.detail[2].responseText)
   })
 
-
-  $(document).on('ajax:success', '.product', function(e) {
-    $('.product-container').html(e.detail[2].responseText)
-  })
+  bind_product_preview = function() {
+    $(document).on('ajax:success', '.product', function(e) {
+      $(document).off('ajax:success', '.product')
+      $('.product-container').html(e.detail[2].responseText)
+      bind_product_preview()
+    })  
+  }
+  bind_product_preview()
 
   $(document).on('ajax:success', '.edit-product-link', function(e) {
     $(this).siblings('.edit-product').html(e.detail[2].responseText)
@@ -80,5 +91,13 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.delete-product-link', function(e) {
     $(this).closest('.product').remove()
   })
+
+  bind_highlighting = function() {
+    $('.product-tag').click(function(e) {
+      $(this).siblings('.product-tag').css('background-color', 'blue')
+      $(this).css('background-color', 'red')
+    })
+  }
+  bind_highlighting()
 
 })

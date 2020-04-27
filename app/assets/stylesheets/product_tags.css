@@ -37,9 +37,27 @@
   background-color: white;
 }
 .product {
+  padding: 3px 6px;
+  font-size: 24px;
+  color: black;
+  display: inline-block;
+  float: left;
+  width: fit-content;
+  margin: 12px;
+  border-radius: 9px;
   border: 2px solid red;
-  background-color: white;
+  background-color: green;
 }
 .product img {
   margin-top: 12px;
+}
+.new-product-link {
+  border: 3px solid black !important;
+  background-color: #c98888 !important;
+}
+.new_product {
+  margin: 0px 12px;
+}
+.see-all {
+  color: azure !important;
 }

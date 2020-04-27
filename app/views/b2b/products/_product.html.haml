@@ -1,4 +1,4 @@
-.col-sm-4.pull-left.product
+.col-sm-4.pull-left
   .question
     - if current_user.try(:admin?)
       = link_to 'edit', edit_b2b_product_path(product), remote: true, class: 'edit-product-link pull-left'
