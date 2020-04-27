@@ -1,0 +1,50 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
+    %meta{ :name=>"google-site-verification", :content=> "aTgG8DN02IEd5qlsvX5mnWq3sHtS11bEZ5Ipb5zkIXk" }
+    %meta{ :name=>"Description", :content=> "Create a website in few steps with palkad.com with feedback tools fit for your business"}
+    %title
+      = @group.try(:banner_title) || 'Create website for business | create website for shop'
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = audio_tag 'inflicted.mp3', class: 'response-notif'
+    .current-user-data.d-none{data:{signed_in: current_user.present?.to_s}}
+    .current-user-location-data.d-none{data:{lat: current_user.present? ? current_user.lat.present?.to_s : 'true'}}
+
+    .page.col-lg-12.col-sm-12.col-12
+      .nav-bar.signed{class: current_user ? '' : 'd-none'}
+        = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'pull-right'
+        
+        = link_to 'send location', '#', class: 'i-am-here pull-right', rel: :nofollow
+        - if current_user.try(:welcome_posts).to_a.count !=0
+          = link_to 'my pages', my_posts_posts_path, class: "pull-right my-pages #{current_user && current_user.posts.count == 0 ? 'd-none' : ''}", rel: :nofollow
+        
+        = link_to 'my sites', my_groups_groups_path, class: "pull-right my-sites #{current_user && current_user.group_count == 0 ? 'd-none' : ''}", rel: :nofollow
+        = link_to 'home', '/', class: 'pull-right', rel: :nofollow
+        .clearfix
+      .nav-bar.unsigned{class: current_user ? 'd-none' : ''}
+          
+        = link_to "Sign in", new_user_session_path, class: 'pull-right', rel: :nofollow
+        
+        = link_to "Sign up", new_user_registration_path, class: 'pull-right', rel: :nofollow
+        = link_to 'home', '/', class: 'pull-right', rel: :nofollow
+        .clearfix
+      .common-bg{class: "#{controller_name}-#{action_name}"}
+        - if flash[:notice].present?
+          .flash
+            = flash[:notice]
+        - if current_user.present?
+          .model-response-viewer
+            - V2::Notification.where(target_id: current_user.id).each do |notif|
+              = render partial: 'surveys/survey_responses/message', locals: {notif: notif}
+        = yield
+    - if Rails.env.development?
+      .acc-switcher
+        - User.all.sort_by(&:name).each do |u|
+          = link_to u.name, switch_user_path(u), class: "user-switch pull-left #{(current_user== u ? 'black' : '')}"
+        .clearfix

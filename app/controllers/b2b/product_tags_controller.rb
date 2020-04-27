@@ -34,6 +34,8 @@ class B2b::ProductTagsController < ApplicationController
 
   protected
 
+  layout 'b2b'
+
   def iterate(tag)
     @products << tag.products
     if tag.children.all == []
