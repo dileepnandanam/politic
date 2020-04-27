@@ -84,7 +84,7 @@ $(document).on('turbolinks:load', function() {
   })
 
   $(document).on('ajax:success', 'form.edit_product', function(e) {
-    $(this).closest('.product').replaceWith(e.detail[2].responseText)
+    $(this).closest('.product-view').replaceWith(e.detail[2].responseText)
   })
   $(document).on('ajax:error', 'form.edit_product', function(e) {
     $(this).replaceWith(e.detail[2].responseText)

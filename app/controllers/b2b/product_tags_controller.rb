@@ -8,8 +8,7 @@ class B2b::ProductTagsController < ApplicationController
         @products = []
         iterate(@parent)
         @products = @products.flatten.sort_by(&:price)
-        @first_list = @products[0..10]
-        @second_list = @products[11..-1]
+        @products = @products.paginate(per_page: 9, page: params[:page])
       end
       @product_tags = ProductTag.where(parent_id: params[:parent_id])
     end  

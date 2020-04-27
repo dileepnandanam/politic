@@ -63,6 +63,10 @@
   color: azure !important;
 }
 .cancel-product-form {
-  font-size: 20px;
+  font-size: 20px !important;
   font-weight: normal;
+}
+.pagination {
+  margin-top: 12px;
+  justify-content: center;
 }

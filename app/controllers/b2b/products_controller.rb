@@ -15,7 +15,7 @@ class B2b::ProductsController < ApplicationController
   def create
     @product = Product.new product_params
     if @product.save  
-      render partial: 'small_product', locals: {product: @product}, layout: false
+      render partial: 'product', locals: {product: @product}, layout: false
     else
       render 'new', layout: false, status: 422
     end
@@ -68,6 +68,6 @@ class B2b::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :img, :product_tag_id)
+    params.require(:product).permit(:name, :price, :img, :product_tag_id, :quantity)
   end
 end

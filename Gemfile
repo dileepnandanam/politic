@@ -79,4 +79,4 @@ gem 'redcarpet'
 gem 'markdown-rails'
 gem 'geocoder', '~> 1.6', '>= 1.6.2'
 gem "html_truncator", "~>0.2"
-
+gem 'bootstrap-will_paginate', '~> 1.0'
