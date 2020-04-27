@@ -8,8 +8,8 @@
     - if @parent.present?
       - @first_list.each do |product|
         = render partial: 'b2b/products/small_product', locals: {product: product}
-      - if @second_list.present?
-        = link_to 'see all products', b2b_products_path(parent_id: @parent.id), class: 'product-tag product'
+  - if @second_list.present?
+    = link_to 'see all products', b2b_products_path(parent_id: @parent.id), class: 'product-tag product'
   - if current_user && current_user.admin? && params[:parent_id].present?
     = link_to '+ add product', new_b2b_product_path(parent_id: params[:parent_id]), class: 'new-product-link', remote: true
     .new-product-form

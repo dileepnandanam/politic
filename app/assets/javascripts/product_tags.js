@@ -3,6 +3,7 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.product-tag', function(e) {
     $(this).closest('.product-tags').nextAll().remove()
     $(this).closest('.prodict-tags-container').append(e.detail[2].responseText)
+    $(this).siblings('.products').remove()  
   })
 
 
@@ -21,29 +22,33 @@ $(document).on('turbolinks:load', function() {
 
   $('.search-tags').keyup($.debounce(1250, search))
 
-  $(document).on('keypress', '.add-tag', function(e){
-    if(e.which == 13) {
-      tag = $(this).val()
-      that = $(this)
-      parent_id = $(this).data().parantId
-      $.ajax({
-        url: '/b2b/product_tags',
-        method: 'POST',
-        data: {
-          product_tag: {
-            name: tag,
-            parent_id: parent_id
+  bind_add_tag = function() {
+    $(document).on('keypress', '.add-tag', function(e){
+      $(document).off('keypress', '.add-tag')
+      if(e.which == 13) {
+        tag = $(this).val()
+        that = $(this)
+        parent_id = $(this).data().parantId
+        $.ajax({
+          url: '/b2b/product_tags',
+          method: 'POST',
+          data: {
+            product_tag: {
+              name: tag,
+              parent_id: parent_id
+            }
+          },
+          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+          success: function(e) {
+            $('input').val('')
+            $(that).closest('.product-tags').append(e)
           }
-        },
-        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-        success: function(e) {
-          $('input').val('')
-          $(that).closest('.product-tags').append(e)
-        }
-      })
-    }
-  })
-
+        })
+      }
+      bind_add_tag()
+    })
+  }
+  bind_add_tag()
 
   $(document).on('ajax:success', '.new-product-link', function(e) {
     $(this).siblings('.new-product-form').html(e.detail[2].responseText)

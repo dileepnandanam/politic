@@ -7,7 +7,7 @@ class B2b::ProductTagsController < ApplicationController
         @parent = ProductTag.find(params[:parent_id])
         @products = []
         iterate(@parent)
-        @products = @products.flatten
+        @products = @products.flatten.sort_by(&:price)
         @first_list = @products[0..10]
         @second_list = @products[11..-1]
       end
