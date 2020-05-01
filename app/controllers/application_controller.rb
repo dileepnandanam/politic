@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   #before_action :redirect_to_affiliated_site
   before_action :set_flag
 
-  before_action :set_https
+  #before_action :set_https
 
   def set_https
     if Rails.env != "development" && false
