@@ -56,6 +56,7 @@ class PostsController < PostBaseController
   def create
     @post = current_user.posts.create post_params
     if @post.save
+      @post.update_tag_set
       render partial: 'posts/small_post', layout: false, status: 200, 
       locals: {
         post: @post
@@ -120,11 +121,7 @@ class PostsController < PostBaseController
     @survey = current_user.surveys.find(params[:post][:survey_id])
     @post = current_user.posts.find(params[:id])
     @post.update(survey_id: @survey.id)
-    if @post.group.present?
-      tag_survey(@survey, @post.group.welcome_posts.first)
-    else
-      tag_survey(@survey, @post)
-    end
+    @post.update_tag_set
     render json: {
       ack: "Pinning survey #{@survey.name}",
       id: @survey.id
@@ -132,15 +129,18 @@ class PostsController < PostBaseController
   end
 
   def select_quick_poll
+    @post = current_user.posts.find(params[:id])
     if params[:post][:quick_poll_id].blank?
-      current_user.posts.find(params[:id]).update(quick_poll_id: nil)
+      @post.update(quick_poll_id: nil)
       render json: {
         ack: "No quick poll has got pinned to this post",
         id: nil
       } and return
     end
+
     @quick_poll = current_user.quick_polls.find(params[:post][:quick_poll_id])
-    current_user.posts.find(params[:id]).update(quick_poll_id: @quick_poll.id)
+    @post.update(quick_poll_id: @quick_poll.id)
+    @post.update_tag_set
     render json: {
       ack: "Pinning quick poll #{@quick_poll.name}",
       id: @quick_poll.id
@@ -158,7 +158,7 @@ class PostsController < PostBaseController
     @project = current_user.owned_groups.find(params[:post][:project_id])
     @post = current_user.posts.find(params[:id])
     @post.update(project_id: @project.id)
-    tag_site(@project, @post)
+    @post.update_tag_set
     render json: {
       ack: "Pinning site #{@project.name}",
       id: @project.id

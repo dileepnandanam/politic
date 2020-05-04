@@ -8,6 +8,7 @@ class Groups::Questions::OptionsController < ApplicationController
   def create
     @option = @question.options.new(option_params)
     if @option.save
+      @group.welcome_posts.map{|p| p.update_tag_set}
       render 'option', layout: false, status: 200
     else
       render 'new', layout: false, status: 422
@@ -22,6 +23,7 @@ class Groups::Questions::OptionsController < ApplicationController
   def update
     @option = @question.options.find(params[:id])
     if @option.update(option_params)
+      @group.welcome_posts.map{|p| p.update_tag_set}
       render 'option', layout: false, status: 200
     else
       render 'edit', layout: false, status: 422
@@ -30,6 +32,7 @@ class Groups::Questions::OptionsController < ApplicationController
 
   def destroy
     @question.options.find(params[:id]).delete
+    @group.welcome_posts.map{|p| p.update_tag_set}
   end
 
   protected

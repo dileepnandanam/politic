@@ -31,21 +31,20 @@ class Post < ApplicationRecord
   scope :with_group_id, -> (group_id) { where(group_id: group_id) }
 
   def tags
-    "#{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{text} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(:tags)}"
+    "#{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{text} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}".split(' ').uniq.join(' ')
   end
-  #def self.text_search(q, group_id, orientation = nil)
-  #  if match_stmt(q, '')[0].blank?
-  #    Post.where('1 = 2')
-  #  else
-  #    Post.with_orientation(orientation).with_group_id(group_id)#
-  #      .select("#{Post.new.attributes.keys.join(', ')}")
-  #      .where(['title', 'text', 'survey_tags', 'site_tags', 'galery_tags', 'picture_tags'].map{|att| "#{match_stmt(q, att)[0]} >= #{match_stmt(q, att)[1]}"}.join(' OR '))
-  #  end
-  #end
+
+  def update_tag_set
+    if group_id == nil
+      update_column :tag_set, tags
+    elsif group.welcome_posts.present?
+      group.welcome_posts.map{|w| w.update_column :tag_set, tags}
+    end
+  end
 
   def self.text_search(q, g, o)
     queries = q.split(' ')
-    compount_query = queries.map{|query| "tag_set like '%#{query}%'"}.join(' AND ')
+    compount_query = queries.map{|query| "LOWER(tag_set) like '%#{query.downcase}%'"}.join(' AND ')
     Post.where(compount_query)
   end
 

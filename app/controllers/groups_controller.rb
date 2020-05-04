@@ -68,6 +68,7 @@ class GroupsController < ApplicationController
   def update
     @group = current_user.owned_groups.find(params[:id])
     if @group.update(group_params)
+      @group.welcome_post.update_tag_set
       render 'group', layout: false, status: 200
     else
       render 'edit', layout: false, status: 422

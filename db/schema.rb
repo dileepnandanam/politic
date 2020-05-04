@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_115128) do
+ActiveRecord::Schema.define(version: 2020_05_04_073340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,6 +185,24 @@ ActiveRecord::Schema.define(version: 2020_04_23_115128) do
     t.text "galery_tags", default: ""
     t.text "picture_tags", default: ""
     t.boolean "visible", default: true
+    t.text "tag_set", default: ""
+  end
+
+  create_table "product_tags", force: :cascade do |t|
+    t.integer "parent_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.integer "picture_id"
+    t.integer "product_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "price"
+    t.float "quantity", default: 0.0
   end
 
   create_table "questions", force: :cascade do |t|

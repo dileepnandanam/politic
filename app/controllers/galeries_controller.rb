@@ -14,7 +14,7 @@ class GaleriesController < ApplicationController
     @galery = current_user.galeries.find(params[:id])
     @post = @galery.post
     if @galery.update(galery_params)
-      tag_galery(@galery, @post)
+      @post.update_tag_set
       render partial: 'galery', locals: {galery: @galery}, layout: false;
     else
       render 'new'
@@ -26,7 +26,7 @@ class GaleriesController < ApplicationController
     @galery = current_user.posts.find(galery_params[:post_id]).galeries.new galery_params.merge(user_id: current_user.id)
     @post = @galery.post
     if @galery.save
-      tag_galery(@galery, @post)
+      @post.update_tag_set
       render partial: 'galery', locals: {galery: @galery} , layout: false
     else
       render 'new', layout: false
@@ -34,7 +34,11 @@ class GaleriesController < ApplicationController
   end
 
   def destroy
-    current_user.galeries.find(params[:id]).delete
+
+    @galery = current_user.galeries.find(params[:id])
+    @post = @galery.post
+    @galery.delete
+    @post.update_tag_set
   end
 
   protected

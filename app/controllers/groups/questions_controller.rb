@@ -20,6 +20,7 @@ class Groups::QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params.merge(group_id: @group.id, sequence: @group.questions.count))
     if @question.save
+      @question.group.welcome_posts.map{|p| p.update_tag_set}
       render 'question', layout: false, status: 200
     else
       render 'new', layout: false, status: 422
@@ -29,6 +30,7 @@ class Groups::QuestionsController < ApplicationController
   def update
     @question = @group.questions.find(params[:id])
     if @question.update(question_params)
+      @question.group.welcome_posts.map{|p| p.update_tag_set}
       render 'question', layout: false, status: 200
     else
       render 'edit', layout: false, status: 422
@@ -44,6 +46,7 @@ class Groups::QuestionsController < ApplicationController
   def destroy
     @question = @group.questions.find(params[:id])
     @question.destroy
+    @group.welcome_posts.map{|p| p.update_tag_set}
   end
 
   protected

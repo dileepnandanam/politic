@@ -37,6 +37,7 @@ class QuickPollsController < ApplicationController
   def create
     @quick_poll = QuickPoll.new(quick_poll_params.merge(user_id: current_user.id))
     if @quick_poll.save
+      @quick_poll.posts.map{|p| p.update_tag_set}
       render 'quick_poll', layout: false, status: 200
     else
       render 'new', layout: false, status: 422
@@ -46,6 +47,7 @@ class QuickPollsController < ApplicationController
   def update
     @quick_poll = current_user.quick_polls.find(params[:id])
     if @quick_poll.update(quick_poll_params)
+      @quick_poll.posts.map{|p| p.update_tag_set}
       render 'quick_poll', layout: false, status: 200
     else
       render 'edit', layout: false, status: 422
@@ -54,7 +56,9 @@ class QuickPollsController < ApplicationController
 
   def destroy
     @quick_poll = current_user.quick_polls.find(params[:id])
+    @posts = @quick_poll.posts
     @quick_poll.destroy
+    @posts.map{|p| p.update_tag_set}
     render json: {message: 'quick_poll deleted'}
   end
 

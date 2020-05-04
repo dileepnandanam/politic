@@ -20,6 +20,7 @@ class Surveys::QuestionsController < SurveysController
   def create
     @question = Question.new(question_params.merge(survey_id: @survey.id, sequence: @survey.questions.count))
     if @question.save
+      @question.survey.posts.map{|p| p.update_tag_set}
       render 'question', layout: false, status: 200
     else
       render 'new', layout: false, status: 422
@@ -29,6 +30,7 @@ class Surveys::QuestionsController < SurveysController
   def update
     @question = @survey.questions.find(params[:id])
     if @question.update(question_params)
+      @question.survey.posts.map{|p| p.update_tag_set}
       render 'question', layout: false, status: 200
     else
       render 'edit', layout: false, status: 422
@@ -44,6 +46,7 @@ class Surveys::QuestionsController < SurveysController
   def destroy
     @question = @survey.questions.find(params[:id])
     @question.destroy
+    @survey.posts.map{|p| p.update_tag_set}
   end
 
   protected

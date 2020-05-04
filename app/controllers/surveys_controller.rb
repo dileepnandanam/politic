@@ -51,6 +51,7 @@ class SurveysController < ApplicationController
   def update
     @survey = current_user.surveys.find(params[:id])
     if @survey.update(survey_params)
+      @survey.posts.map{|p| p.update_tag_set}
       render 'survey', layout: false, status: 200
     else
       render 'edit', layout: false, status: 422
@@ -59,7 +60,9 @@ class SurveysController < ApplicationController
 
   def destroy
     @survey = current_user.surveys.find(params[:id])
+    @posts = survey.posts
     @survey.destroy
+    @posts.map{|p| p.update_tag_set}
     render json: {message: 'survey deleted'}
   end
 
