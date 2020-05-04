@@ -7,4 +7,8 @@ class Galery < ApplicationRecord
   def display_name
     name.present? ? name : 'Untitled galery'
   end
+
+  def tags
+    "#{name} #{description} #{pictures.map(&:tags).flatten.join(' ')}"
+  end
 end

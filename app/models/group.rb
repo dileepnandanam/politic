@@ -16,4 +16,14 @@ class Group < ApplicationRecord
   def display_name
     [banner_title, name, 'Untitled'].select(&:present?).first
   end
+  
+  def signup_form_tags
+    survey_tags = "#{name} #{description}"
+    question_tags = questions.map{|q| q.text}.join(' ')
+    option_tags = questions.map{|q| q.options.map(&:name)}.flatten.join(' ')
+    "#{survey_tags} #{question_tags} #{option_tags}"
+  end
+  def tags
+    "#{signup_form_tags} #{posts.map(&:tags).map(&:to_s).join(' ')}"
+  end
 end

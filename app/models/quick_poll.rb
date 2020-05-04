@@ -12,4 +12,8 @@ class QuickPoll < ApplicationRecord
   def display_name
     name.present? ? name : 'Untitled'
   end
+  
+  def tags
+    questions.map(&:text).map(&:to_s).join(' ')
+  end
 end

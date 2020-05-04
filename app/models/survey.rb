@@ -13,4 +13,11 @@ class Survey < ApplicationRecord
     name.present? ? name : 'Untitled'
   end
 
+  def tags
+    survey_tags = "#{name} #{description}"
+    question_tags = questions.map{|q| q.text}.join(' ')
+    option_tags = questions.map{|q| q.options.map(&:name)}.flatten.join(' ')
+    "#{survey_tags} #{question_tags} #{option_tags}"
+  end
+
 end

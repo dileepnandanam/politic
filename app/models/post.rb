@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_many :comments
   belongs_to :project, class_name: 'Group', optional: true
   belongs_to :survey, optional: true
+  belongs_to :quick_poll, optional: true
   before_destroy :cancel_notifications
   has_many :galeries
 
@@ -29,15 +30,23 @@ class Post < ApplicationRecord
   }
   scope :with_group_id, -> (group_id) { where(group_id: group_id) }
 
+  def tags
+    "#{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{text} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(:tags)}"
+  end
+  #def self.text_search(q, group_id, orientation = nil)
+  #  if match_stmt(q, '')[0].blank?
+  #    Post.where('1 = 2')
+  #  else
+  #    Post.with_orientation(orientation).with_group_id(group_id)#
+  #      .select("#{Post.new.attributes.keys.join(', ')}")
+  #      .where(['title', 'text', 'survey_tags', 'site_tags', 'galery_tags', 'picture_tags'].map{|att| "#{match_stmt(q, att)[0]} >= #{match_stmt(q, att)[1]}"}.join(' OR '))
+  #  end
+  #end
 
-  def self.text_search(q, group_id, orientation = nil)
-    if match_stmt(q, '')[0].blank?
-      Post.where('1 = 2')
-    else
-      Post.with_orientation(orientation).with_group_id(group_id)
-        .select("#{Post.new.attributes.keys.join(', ')}")
-        .where(['title', 'text', 'survey_tags', 'site_tags', 'galery_tags', 'picture_tags'].map{|att| "#{match_stmt(q, att)[0]} >= #{match_stmt(q, att)[1]}"}.join(' OR '))
-    end
+  def self.text_search(q, g, o)
+    queries = q.split(' ')
+    compount_query = queries.map{|query| "tag_set like '%#{query}%'"}.join(' AND ')
+    Post.where(compount_query)
   end
 
   def self.search(q, group_id, orientation = nil, location = nil)
