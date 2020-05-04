@@ -1,7 +1,7 @@
 .group-post.post.small-post
   .post-title
-    %h2.pull-left= link_to "#{post.display_title}", "/#{post.id}"
+    %h2.text-left.pull-left= link_to "#{post.display_title}", "/#{post.id}"
   .clearfix
   .post-body
-    .post-text  
+    .post-text.text-left  
       = raw(HTML_Truncator.truncate(post.text, 10))
