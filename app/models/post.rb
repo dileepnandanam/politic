@@ -49,7 +49,7 @@ class Post < ApplicationRecord
   end
 
   def self.search(q, group_id, orientation = nil, location = nil)
-    posts = text_search(q, group_id, orientation)
+    posts = text_search(q, nil, nil)
     if location.to_a.all?(&:present?)
       (posts.near(location, 50) + posts).uniq.select(&:visible?)
     else

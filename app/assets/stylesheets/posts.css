@@ -72,6 +72,9 @@
 }
 .small-post {
   padding-bottom: 0px;
+  border: none !important;
+  padding-bottom: 0px;
+  box-shadow: 1px 1px 4px #6172c2, -1px -1px 4px #6172c2;
 }
 .small-post h2 {
   margin-bottom: 0px;
