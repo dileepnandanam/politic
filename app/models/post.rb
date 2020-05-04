@@ -38,7 +38,7 @@ class Post < ApplicationRecord
     if group_id == nil
       update_column :tag_set, tags
     elsif group.welcome_posts.present?
-      group.welcome_posts.map{|w| w.update_column :tag_set, tags}
+      group.welcome_posts.map(&:update_tag_set)
     end
   end
 

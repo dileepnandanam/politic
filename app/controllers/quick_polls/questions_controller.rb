@@ -28,6 +28,7 @@ class QuickPolls::QuestionsController < ApplicationController
   def update
     @question = @quick_poll.questions.find(params[:id])
     if @question.update(question_params)
+      @question.quick_poll.posts.map{|p| p.update_tag_set}
       render 'question', layout: false, status: 200
     else
       render 'edit', layout: false, status: 422
@@ -43,6 +44,7 @@ class QuickPolls::QuestionsController < ApplicationController
   def destroy
     @question = @quick_poll.questions.find(params[:id])
     @question.destroy
+    @quick_poll.posts.map{|p| p.update_tag_set}
   end
 
   protected

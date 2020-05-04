@@ -34,7 +34,7 @@ class PicturesController < ApplicationController
   
   def destroy
     @picture = current_user.galeries.find(params[:galery_id]).pictures.find(params[:id])
-    @post = @picture.galery.post.group.welcome_post
+    @post = @picture.galery.post
     @picture.delete
     @post.update_tag_set
   end

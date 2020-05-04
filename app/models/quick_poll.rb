@@ -5,6 +5,7 @@ class QuickPoll < ApplicationRecord
   belongs_to :user
   has_many :questions
   has_many :responses
+  has_many :posts
   #validates :name, presence: true
   #validates :description, presence: true
   has_many :quick_poll_responses
@@ -14,6 +15,6 @@ class QuickPoll < ApplicationRecord
   end
   
   def tags
-    questions.map(&:text).map(&:to_s).join(' ')
+    "#{questions.map(&:text).map(&:to_s).join(' ')} #{name} #{description}"
   end
 end
