@@ -75,6 +75,7 @@ class PostsController < PostBaseController
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
+      @post.update_tag_set
       render 'post', layout: false
     else 
       render 'new', layout: false, status: 422

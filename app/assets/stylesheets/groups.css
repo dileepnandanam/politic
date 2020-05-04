@@ -80,7 +80,7 @@
 }
 .new-group-post {
 	display: none;
-  color: yellow;
+  color: black;
 }
 .new-group-post:hover {
   color: red;

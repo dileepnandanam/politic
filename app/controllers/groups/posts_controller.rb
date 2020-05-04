@@ -49,7 +49,7 @@ class Groups::PostsController < PostBaseController
   def create
     @post = current_user.posts.new post_params.merge(group_id: @group.id, user_id: current_user.id)
     if @post.save
-      tag_site(@group, current_user.posts.where(project_id: @group.id))
+      @post.update_tag_set
       render 'groups/posts/post', layout: false, status: 200
     else
       @post.valid?
@@ -67,7 +67,7 @@ class Groups::PostsController < PostBaseController
     @group = Group.find(params[:group_id])
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
-      tag_site(@group, current_user.posts.where(project_id: @group.id))
+      @post.update_tag_set
       render 'groups/posts/post', layout: false
     else 
       render 'groups/posts/new', layout: false, status: 422
@@ -78,6 +78,8 @@ class Groups::PostsController < PostBaseController
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy
+    @group.welcome_post.update_tag_set
+
   end
 
   def reorder
