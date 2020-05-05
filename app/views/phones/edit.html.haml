@@ -1,0 +1,6 @@
+= simple_form_for(@phone, html: {remote: true, class: 'edit-phone-form'}) do |f|
+  = f.input :name
+  = f.input :number
+  = f.hidden_field :post_id, value: params[:post_id]
+  = f.submit 'change'
+  = link_to 'cancel', '#', class: 'cancel-form'

@@ -110,6 +110,8 @@ Rails.application.routes.draw do
     resources :quick_poll_responses, controller: 'quick_polls/quick_poll_responses'
   end
 
+  resources :phones
+
   resources :affiliations
   get '/:id', to: 'posts#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

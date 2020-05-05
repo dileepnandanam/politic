@@ -29,6 +29,14 @@
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700,900&display=swap');
 
+.nav-bar a:hover {
+  background-color: white;
+  padding: 8px 12px !important;
+  color: black !important;
+}
+.nav-bar a {
+  padding: 8px 12px !important;
+}
 .white {
   color: white
 }
@@ -138,7 +146,7 @@ form a {
 	margin-bottom: 10px;
 }
 a.view-more {
-  color: white;
+  color: #c16e6e;
 }
 .question, .group-post {
   border: 1px solid #3d3d40;
@@ -230,9 +238,14 @@ label {
 .btn-primary {
   border: 2px solid black !important;
 }
-.clickable {
+.clickable:hover {
   width: 100%;
   background: #4d4ac8;
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+.clickable {
+  width: 100%;
   padding: 5px 8px;
   border-radius: 5px;
 }

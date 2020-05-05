@@ -1,0 +1,7 @@
+.name, .number {
+  display: inline-block;
+}
+.phone-number {
+  display: block;
+  float: right;
+}

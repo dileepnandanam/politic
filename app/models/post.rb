@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   belongs_to :quick_poll, optional: true
   before_destroy :cancel_notifications
   has_many :galeries
+  has_many :phones
 
   after_create :notify_connections
 
@@ -31,7 +32,7 @@ class Post < ApplicationRecord
   scope :with_group_id, -> (group_id) { where(group_id: group_id) }
 
   def tags
-    "#{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{text} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}".split(' ').uniq.join(' ')
+    "#{phones.map(&:tags).map(&:to_s).join(' ')} #{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{text} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}".split(' ').uniq.join(' ')
   end
 
   def update_tag_set

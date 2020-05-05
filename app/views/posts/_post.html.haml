@@ -28,9 +28,22 @@
     .post-text  
       = raw(post.text)
     
+    .phones-container
+      - post.phones.order('updated_at desc').each do |g|
+        = render partial: 'phones/phone', locals: {phone: g}
+    
+    
+    - unless params[:preview]
+      - if post.user == current_user
+        = link_to 'add phone', new_phone_path(post_id: post.id), remote: true, class: 'new-phone'
+        .clearfix
+        .phone-form-container
+    .clearfix
+
     .galeries-container
       - post.galeries.order('updated_at desc').each do |g|
         = render partial: 'galeries/galery', locals: {galery: g}
+    
     
     - unless params[:preview]
       - if post.user == current_user

@@ -1,0 +1,13 @@
+.phone-number.phone
+  .name
+    = phone.name
+    = ":"
+  .number
+    = link_to phone.number, "tel:#{phone.number}"
+  - unless params[:preview]
+    - if current_user == phone.post.user
+      = link_to 'edit', edit_phone_path(phone, post_id: phone.post_id), class: 'edit-button edit-phone', remote: true
+      = link_to 'delete', phone_path(phone, post_id: phone.post_id), class: 'edit-button delete-phone pull-right', method: :delete, remote: true
+      .clearfix
+      .edit-phone-container
+.clearfix

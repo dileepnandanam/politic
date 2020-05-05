@@ -227,7 +227,7 @@ legend {
 .quick-poll-container {
   margin-top: 8px;
 }
-.survey-select, .quick-poll-select, .project-select, .fbt-select-nil, .new-galery {
+.survey-select, .quick-poll-select, .project-select, .fbt-select-nil, .new-galery, .new-phone {
   float: right;
   width: 200px;
   text-align: center;
