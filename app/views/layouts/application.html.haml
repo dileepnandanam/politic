@@ -6,7 +6,7 @@
     %meta{ :name=>"google-site-verification", :content=> "aTgG8DN02IEd5qlsvX5mnWq3sHtS11bEZ5Ipb5zkIXk" }
     %meta{ :name=>"Description", :content=> "make your bussines online by few steps"}
     %title
-      = @group.try(:banner_title) || 'search services online | create website for your shop'
+      = @post.try(:title) || @group.try(:banner_title) || 'search palakkad'
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
