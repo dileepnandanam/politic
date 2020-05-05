@@ -57,11 +57,10 @@ a.edit-option, a.delete-option, a.edit-question, a.delete-question, a.new-option
 .button-select, .edit-question, .delete-question, .edit-post-link, .dashboard, .delete-option, .edit-option, .new-option, .add-question, .feature, .quick-poll-select, .survey-select, .project-select, .fbt-select-nil, .new-galery, .edit-button, .add-galery-picture, .edit-galery-picture, .remove-picture, .remove-image, .new-phone, .edit-phone, .delete-phone {
   padding: 5px 6px;
   border-radius: 5px;
-  /* border: 1px solid #3d3d3f; */
   margin-top: 8px;
-  background: #1a42b0;
+  background: #89a5f1;
   display: inline-block;
-  box-shadow: 1px 1px 1px black;
+  box-shadow: 1px 1px 3px black;
 }
 input[name=commit], .cancel-form {
   margin-right: 12px !important;
