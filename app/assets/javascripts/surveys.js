@@ -1,3 +1,9 @@
+fix_radio = function() {
+  $.each($('.form-check-input'), function(i, elem){
+    $(elem).attr('id', i)
+    $(elem).next('label').attr('for', i)
+  })
+}
 $(document).on('turbolinks:load', function() {
   fix_radio()
   $(document).on('ajax:success', '.new-option', function(e) {
@@ -19,6 +25,7 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('ajax:success', '.answer-type-form', function(e) {
     $(this).closest('.question').replaceWith(e.detail[2].responseText)
+    fix_radio()
   })
 
   $(document).on('ajax:success', '.edit-option', function(e) {
@@ -83,9 +90,3 @@ $(document).on('turbolinks:load', function() {
 
 })
 
-fix_radio = function() {
-  $.each($('.form-check-input'), function(i, elem){
-    $(elem).attr('id', i)
-    $(elem).next('label').attr('for', i)
-  })
-}
