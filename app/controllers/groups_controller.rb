@@ -68,7 +68,7 @@ class GroupsController < ApplicationController
   def update
     @group = current_user.owned_groups.find(params[:id])
     if @group.update(group_params)
-      @group.welcome_post.update_tag_set
+      @group.welcome_posts.map(&:update_tag_set)
       render 'group', layout: false, status: 200
     else
       render 'edit', layout: false, status: 422
@@ -77,7 +77,9 @@ class GroupsController < ApplicationController
 
   def destroy
     @group = current_user.owned_groups.find(params[:id])
+    welcome_posts = @group.welcome_posts
     @group.destroy
+    welcome_posts.map(&:update_tag_set)
     render json: {message: 'group deleted'}
   end
 

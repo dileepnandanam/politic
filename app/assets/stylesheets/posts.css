@@ -76,6 +76,9 @@
   padding-bottom: 0px;
   box-shadow: 1px 1px 4px #f7adad, -1px -1px 4px #f7adad;
 }
+.small-post:hover {
+  box-shadow: 1px 1px 6px #f7adad, -1px -1px 6px #f7adad, 1px 1px 6px #f7adad, -1px -1px 6px #f7adad;
+}
 .small-post h2 {
   margin-bottom: 0px;
   line-height: 34px;

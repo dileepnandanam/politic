@@ -1,13 +1,14 @@
 .galery
-  %h2.text-center= display_name(galery, :name)
-  .post-text.text-center
-    = galery.description
   - unless params[:preview]
     - if current_user == galery.user
       = link_to 'edit', edit_galery_path(galery), class: 'edit-button edit-galery', remote: true
       = link_to 'delete', galery_path(galery), class: 'edit-button delete-galery pull-right', method: :delete, remote: true
       .clearfix
       .edit-galery-container
+  %h2.text-center= display_name(galery, :name)
+  .post-text.text-center
+    = galery.description
+  
       
   .pictures
     - galery.pictures.each do |picture|
