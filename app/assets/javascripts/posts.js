@@ -147,6 +147,10 @@ bind_button_pin()
 
 	$('.new-group-post').on('ajax:success', function(e) {
 		$('.new-post').html(e.detail[2].responseText)
+    $('html, body').animate({
+        scrollTop: $(".new-post").offset().top
+    }, 500);
+
 	})
 
   $(document).on('ajax:success', '.edit-post-link', function(e) {
