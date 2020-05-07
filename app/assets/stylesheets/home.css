@@ -230,7 +230,7 @@ legend {
 .quick-poll-container {
   margin-top: 8px;
 }
-.survey-select, .quick-poll-select, .project-select, .fbt-select-nil, .new-galery, .new-phone {
+.survey-select, .quick-poll-select, .project-select, .fbt-select-nil, .new-galery, .new-phone, .edit-social-link {
   float: right;
   width: 200px;
   text-align: center;
