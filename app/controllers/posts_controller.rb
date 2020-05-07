@@ -3,7 +3,8 @@ class PostsController < PostBaseController
   def show
     @post = Post.find(params[:id])
     @group = @post.project
- 
+    session[:after_sign_in_path] = @post.group.present? ? group_path(@post.group) : post_path(@post)
+
     if @group.nil?
       render 'show' and return
     end
@@ -19,7 +20,10 @@ class PostsController < PostBaseController
     if @group.questions.count == 0
       redirect_to group_path(@group) and return
     end
+    
   end
+
+
 
   def index
     if params[:query].present?

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     user = User.where(email: params[:user][:email]).first
     if user.present? && user.valid_password?(params[:user][:password])
       sign_in(user)
-      redirect_to root_path
+      redirect_to after_sign_in_path
     else
       redirect_to new_session_path(User.new)
     end
@@ -73,6 +73,14 @@ class UsersController < ApplicationController
   end
 
   protected
+
+  def after_sign_in_path
+    if session[:after_sign_in_path].present?
+      session[:after_sign_in_path]
+    else
+      root_path
+    end
+  end
 
   def mark_as_seen
   	unless action_name == 'connections' and params[:user_id].nil?
