@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
   
   resources :posts, controller: 'posts', scope: '/' do
+    put :update_urls, on: :member
     get :my_posts, on: :collection
     put :locate, on: :member
     put :vanish, on: :member

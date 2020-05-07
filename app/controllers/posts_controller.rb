@@ -20,7 +20,10 @@ class PostsController < PostBaseController
     if @group.questions.count == 0
       redirect_to group_path(@group) and return
     end
-    
+
+    if current_user.is_a_member_of(@group)
+      redirect_to group_path(@group) and return
+    end
   end
 
 
@@ -198,6 +201,12 @@ class PostsController < PostBaseController
     current_user.posts.find(params[:id]).update(lat: nil, lngt: nil)
   end
 
+  def update_urls
+    @post = current_user.posts.find(params[:id])
+    @post.update(url_params)
+    render partial: 'social_links', locals: {post: @post}, layout: false
+  end
+
 
   protected
 
@@ -227,6 +236,10 @@ class PostsController < PostBaseController
 
   def post_params
     params.require(:post).permit(:text, :image, :title, :enable_comment_vote, :visible)
+  end
+
+  def url_params
+    params.require(:post).permit(:facebook_url, :gmail, :twitter_url, :pinterest_url)
   end
 
   def set_flag

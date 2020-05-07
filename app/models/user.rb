@@ -62,7 +62,7 @@ class User < ApplicationRecord
   end
 
   def is_a_member_of(group)
-    groups.where('group_responses.state = ?', 'accepted').include?(group) || owned_groups.include?(group)
+    group_responses.where(user_id: id).present?
   end
 
   def joined_groups

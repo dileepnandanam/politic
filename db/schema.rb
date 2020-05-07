@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_165014) do
+ActiveRecord::Schema.define(version: 2020_05_07_095738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,6 +194,10 @@ ActiveRecord::Schema.define(version: 2020_05_04_165014) do
     t.text "picture_tags", default: ""
     t.boolean "visible", default: true
     t.text "tag_set", default: ""
+    t.string "facebook_url"
+    t.string "twitter_url"
+    t.string "pinterest_url"
+    t.string "gmail"
   end
 
   create_table "product_tags", force: :cascade do |t|

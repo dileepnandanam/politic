@@ -174,3 +174,10 @@
 .posts-index {
   background-color: #f5dddd !important;
 }
+.social-ico {
+  width: 50px !important;
+}
+.edit-social-link {
+  margin-bottom: 30px;
+  margin-left: 12px;
+}
