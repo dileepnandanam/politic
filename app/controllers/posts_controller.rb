@@ -21,7 +21,7 @@ class PostsController < PostBaseController
       redirect_to group_path(@group) and return
     end
 
-    if current_user.is_a_member_of(@group)
+    if current_user && current_user.is_a_member_of(@group)
       redirect_to group_path(@group) and return
     end
   end
