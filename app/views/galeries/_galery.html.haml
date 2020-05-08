@@ -5,9 +5,9 @@
       = link_to 'delete', galery_path(galery), class: 'edit-button delete-galery pull-right', method: :delete, remote: true
       .clearfix
       .edit-galery-container
-  %h2.text-center= display_name(galery, :name)
+  %h2.text-center= raw display_name(galery, :name)
   .post-text.text-center
-    = galery.description
+    = raw galery.description
   
       
   .pictures

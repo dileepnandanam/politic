@@ -7,7 +7,7 @@
       = link_to 'delete', picture_path(picture, galery_id: picture.galery_id), remote: true, class: 'remove-picture pull-right', method: :delete
       .clearfix
   = image_tag_with_fallback(picture, :img)
-  %p.black.text-center= picture.caption
+  %p.black.text-center= raw picture.caption
   - if current_user && current_user.galeries.include?(picture.galery)  
     - unless params[:preview]
       = remove_tag_with_fallback(picture, :img)
