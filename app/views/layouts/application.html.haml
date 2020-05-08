@@ -3,9 +3,9 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
-    %meta{ :name=>"Description", :content=> "make your bussines online by few steps"}
+    %meta{ :name=>"Description", :content=> @description || @post.try(:title) || @group.try(:banner_description) || @group.posts.try(:first).try(:title)}
     %title
-      = @post.try(:title) || @group.try(:banner_title) || 'search palakkad'
+      = @title || @group.try(:banner_title) || @post.try(:title) || 'search palakkad'
     %meta{ :name=>"google-site-verification", :content=> "aTgG8DN02IEd5qlsvX5mnWq3sHtS11bEZ5Ipb5zkIXk" }
     = csrf_meta_tags
     = csp_meta_tag
