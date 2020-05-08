@@ -7,6 +7,10 @@
           = af.object.question.text
         = af.input :line, label: false
         .clearfix
+      - elsif af.object.question.answer_type == 'file'
+        .survey-question-text-line
+          = af.object.question.text
+        = af.input :file, label: false
       - elsif af.object.question.answer_type == 'text'
         .survey-question-text
           = af.object.question.text

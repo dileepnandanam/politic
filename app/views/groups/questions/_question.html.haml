@@ -12,13 +12,13 @@
   .options-area
     .answer-type-form-container
       = simple_form_for [@group, question], html: {class: 'answer-type-form', remote: true} do |q|
-        = q.input :answer_type, as: :radio_buttons, collection: [['single line', 'line'], ['text', 'text'], ['radio', 'radio'], ['checkbox', 'checkbox']], label_method: :first, value_method: :last, :class => 'question-type'
+        = q.input :answer_type, as: :radio_buttons, collection: [['single line', 'line'], ['text', 'text'], ['radio', 'radio'], ['checkbox', 'checkbox'],['file', 'file']], label_method: :first, value_method: :last, :class => 'question-type'
         = q.submit 'Change', class: 'd-none btn-primary'
         .clearfix
 
-    .options{class: (['text', 'line'].include?(question.answer_type) ? 'd-none' : '')}
+    .options{class: (['text', 'line', 'file'].include?(question.answer_type) ? 'd-none' : '')}
       - question.options.each do |option|
         = render partial: 'groups/questions/options/option', locals: { option: option, question: question }
     .new-option-form
-    = link_to 'New option', new_group_question_option_path(@group, question), remote: true, class: 'new-option pull-left ' + (['text', 'line'].include?(question.answer_type) ? 'd-none' : '')
+    = link_to 'New option', new_group_question_option_path(@group, question), remote: true, class: 'new-option pull-left ' + (['text', 'line', 'file'].include?(question.answer_type) ? 'd-none' : '')
     .clearfix

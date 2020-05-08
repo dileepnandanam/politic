@@ -50,7 +50,7 @@ class Groups::GroupResponsesController < ApplicationController
   end
 
   def response_params
-    params.require(:group_response).permit(user_attributes: [:name, :email, :password], answers_attributes: [:text, :question_id, :line, choices_attributes: [:option_id, option_id: []]])
+    params.require(:group_response).permit(user_attributes: [:name, :email, :password], answers_attributes: [:file, :text, :question_id, :line, choices_attributes: [:option_id, option_id: []]])
   end
 
   def set_flag

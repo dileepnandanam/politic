@@ -113,7 +113,7 @@ class Surveys::SurveyResponsesController < SurveysController
   end
 
   def response_params
-    params.require(:survey_response).permit(:user_id, answers_attributes: [:text, :line, :question_id, choices_attributes: [:option_id, option_id: []]])
+    params.require(:survey_response).permit(:user_id, answers_attributes: [:file, :text, :line, :question_id, choices_attributes: [:option_id, option_id: []]])
   end
 
   def set_flag

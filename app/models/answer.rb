@@ -5,4 +5,5 @@ class Answer < ApplicationRecord
   has_many :options, through: :choices
   has_one :option, through: :choice
   accepts_nested_attributes_for :choices
+  has_one_attached :file
 end
