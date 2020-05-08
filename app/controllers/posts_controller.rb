@@ -1,5 +1,23 @@
 class PostsController < PostBaseController
   before_action :check_user, only: [:new, :downvote, :upvote, :destroy, :create, :new]
+  def boo
+    if params[:query].present?
+      @posts = Post.search(params[:query], nil, orientation, [current_user.try(:lat), current_user.try(:lngt)])
+      @posts = @posts.paginate(per_page: 1, page: params[:page])
+    else
+      @posts = Post.where(group_id: nil).all
+      @posts = @posts.paginate(per_page: 1, page: params[:page])
+    end
+
+    @next_path = boo_posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
+
+    if request.format.html?
+      render 'index'
+    else
+      render 'posts', layout: false
+    end
+  end
+
   def show
     @post = Post.find(params[:id])
     @group = @post.project
