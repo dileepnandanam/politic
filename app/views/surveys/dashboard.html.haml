@@ -4,9 +4,10 @@
   .show-options.clickable.d-none
     %h4
       Show options
-  .hide-options.clickable
-    %h4
-      Hide options  
+  - if @questions.length > 0
+    .hide-options.clickable
+      %h4
+        Hide options  
   - if @questions.count == 0
     .question.help-text
       %p

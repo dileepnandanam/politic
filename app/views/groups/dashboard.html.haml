@@ -4,13 +4,14 @@
   .show-options.clickable.d-none
     %h4
       Show options
-  .hide-options.clickable
-    %h4
-      Hide options
+  - if @questions.length > 0
+    .hide-options.clickable
+      %h4
+        Hide options
   - if @questions.count == 0
     .question.help-text
       %p
-        You haven't created any questions. add a signup form to let the user in.
+        You haven't created any questions. add a signup form to collect client details.
   .questions-container.reorderable-group-questions{data:{url: reorder_group_questions_path(@group)}} 
     - @questions.each do |question|
       = render partial: 'groups/questions/question', locals: {question: question}

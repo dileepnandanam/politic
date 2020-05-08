@@ -77,7 +77,7 @@
   box-shadow: 1px 1px 4px #f7adad, -1px -1px 4px #f7adad;
 }
 .small-post:hover {
-  box-shadow: 1px 1px 6px #f7adad, -1px -1px 6px #f7adad, 1px 1px 6px #f7adad, -1px -1px 6px #f7adad;
+      box-shadow: 1px 1px 4px #ac8888, -1px -1px 4px #b88d8d;
 }
 .small-post h2 {
   margin-bottom: 0px;
@@ -172,7 +172,7 @@
   margin: 12px;
 }
 .posts-index {
-  background-color: #f5dddd !important;
+  background-color: #d9d1d1 !important;
 }
 .social-ico {
   width: 50px !important;
