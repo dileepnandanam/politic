@@ -27,7 +27,7 @@ class Groups::PostsController < PostBaseController
       @posts = @posts.paginate(per_page: 12, page: params[:page])
     end
 
-    @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2))
+    @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query=params[:query])
 
     if request.format.html?
       render 'index', layout: false
