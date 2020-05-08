@@ -20,7 +20,7 @@
     - if post.project.present?
       %h1.name= link_to post.title, group_path(post.project)
     - else
-      %h1= link_to post.title, "/#{post.id}"
+      %h1.name= link_to post.title, "/#{post.id}"
   .clearfix
   .edit-container 
   .post-body
