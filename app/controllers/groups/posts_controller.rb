@@ -23,7 +23,7 @@ class Groups::PostsController < PostBaseController
       @posts = @group.posts.search(params[:query], orientation)
       @posts = @posts.paginate(per_page: 12, page: params[:page])
     else
-      @posts = @group.posts.all
+      @posts = @group.posts.order('sequence ASC').all
       @posts = @posts.paginate(per_page: 12, page: params[:page])
     end
 

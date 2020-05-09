@@ -22,7 +22,7 @@
 
   %h3= "Rearrange pages"
   .reorderable-group-post{data:{url: reorder_group_posts_path(@group)}}
-    - @group.posts.each do |post|
+    - @group.posts.order('sequence ASC').each do |post|
       = render partial: 'groups/posts/tiny_post', locals: {post: post}
 
 .my-space.my-responses.col-lg-8.col-sm-6.col-xs-12.pull-left

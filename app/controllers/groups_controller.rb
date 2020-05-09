@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @posts = @group.posts
+    @posts = @group.posts.order('sequence ASC')
     unless @group.visible
       if current_user.nil?
         render 'home/access_restricted'
