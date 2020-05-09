@@ -54,11 +54,7 @@ class PostsController < PostBaseController
 
     @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
 
-    if request.format.html?
-      render 'index'
-    else
-      render 'posts', layout: false
-    end
+    render 'index'
   end
 
   def my_posts
