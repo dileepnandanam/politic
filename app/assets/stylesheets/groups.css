@@ -129,6 +129,7 @@ a.user-switch.pull-left {
 }
 .post-title h1 {
   width: 90%;
+  display: block;
   margin: auto;
   text-align: center !important;
 }
