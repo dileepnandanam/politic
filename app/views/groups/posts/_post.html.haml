@@ -1,4 +1,4 @@
-.group-post.post{class: !post.visible? && current_user != post.user || !post.visible? && params[:preview] ? 'd-none' : ''}
+.group-post.post{class: post_class(post)}
   .post-actions
     - unless params[:preview]
       - if post.user == current_user || (current_user.try :admin?)

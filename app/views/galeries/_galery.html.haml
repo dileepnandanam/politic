@@ -1,4 +1,4 @@
-.galery
+.galery{class: galery_class(galery)}
   - unless params[:preview]
     - if current_user == galery.user
       = link_to 'edit', edit_galery_path(galery), class: 'edit-button edit-galery', remote: true

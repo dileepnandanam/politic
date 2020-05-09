@@ -35,4 +35,19 @@ module ApplicationHelper
       link_to 'Remove picture', delete_image_picture_url(obj.send(handle).id), method: :delete, remote: true, class: 'remove-image'
     end
   end
+
+  def post_class(post)
+    visibility_class = (!post.visible? && current_user != post.user || !post.visible? && params[:preview] ? 'd-none' : '')
+    post_specific_class = "post_#{post.id}"
+    "#{visibility_class} #{post_specific_class}"
+  end
+
+  def galery_class(galery)
+    "galery_#{galery.id}"
+  end
+
+  def picture_class(picture)
+    width_class = "col-sm-#{12/picture.galery.column}"
+    "picture_#{picture.id} #{width_class}"
+  end
 end

@@ -1,5 +1,4 @@
-- class_name = "col-sm-#{12/picture.galery.column}"
-.picture.pull-left{class: class_name}
+.picture.pull-left{class: picture_class(picture)}
   - if current_user && current_user.galeries.include?(picture.galery) 
     - unless params[:preview]
       = link_to 'edit', edit_picture_path(picture, galery_id: picture.galery_id), class: 'edit-galery-picture pull-left', remote: true
