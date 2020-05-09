@@ -8,8 +8,8 @@ class PostsController < PostBaseController
       @posts = Post.where(group_id: nil).all
       @posts = @posts.paginate(per_page: 1, page: params[:page])
     end
-    @title = @posts.first.title
-    @description = Nokogiri::HTML(@posts.first.text, &:noblanks)
+    @title = @posts[0].title
+    @description = Nokogiri::HTML(@posts[0].text, &:noblanks)
     @next_path = boo_posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
 
     render 'index'

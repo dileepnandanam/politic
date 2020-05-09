@@ -6,6 +6,11 @@ module ApplicationHelper
   	end
   end
 
+  def bot_request?
+    user_agent =  request.env['HTTP_USER_AGENT'].downcase
+    user_agent.index('googlebot')
+  end
+
   def display_name(obj, handle)
     if obj.name.present?
       obj.name
