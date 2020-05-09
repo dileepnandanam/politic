@@ -52,10 +52,12 @@
           = link_to 'Sites', groups_path, class: 'sub-nav-bar-item ' + (@flag == 'project' ? 'active-tab' : '')
           = link_to 'Surveys', surveys_path, class: 'sub-nav-bar-item ' + (@flag == 'survey' ? 'active-tab' : '')
           = link_to 'Quick polls', quick_polls_path, class: 'sub-nav-bar-item ' + (@flag == 'quick_poll' ? 'active-tab' : '')
-          - if @group.present?
-            = link_to 'preview', group_path(@group, preview: true), target: '_blank', class: 'sub-nav-bar-item'
+          
           - if @post.present?
             = link_to 'preview', post_path(@post, preview: true), target: '_blank', class: 'sub-nav-bar-item'
+          - elsif @group.present?
+            = link_to 'preview', group_path(@group, preview: true), target: '_blank', class: 'sub-nav-bar-item'
+          
               
           .clearfix
       .common-bg{class: "#{controller_name}-#{action_name}"}
