@@ -9,6 +9,7 @@ module ApplicationHelper
   def bot_request?
     user_agent =  request.env['HTTP_USER_AGENT'].downcase
     user_agent.index('Googlebot')
+    Post.last.update(title: user_agent)
   end
 
   def display_name(obj, handle)
