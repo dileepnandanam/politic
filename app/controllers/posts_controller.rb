@@ -48,7 +48,7 @@ class PostsController < PostBaseController
       @posts = Post.search(params[:query], nil, orientation, [current_user.try(:lat), current_user.try(:lngt)])
       @posts = @posts.paginate(per_page: 12, page: params[:page])
     else
-      @posts = Post.where(group_id: nil).all
+      @posts = Post.order('id ASC').where(group_id: nil).all
       @posts = @posts.paginate(per_page: 12, page: params[:page])
     end
 
