@@ -9,7 +9,7 @@ class PostsController < PostBaseController
       @posts = @posts.paginate(per_page: 1, page: params[:page])
     end
     @title = @posts[0].title
-    @description = Nokogiri::HTML(@posts[0].text, &:noblanks)
+    @description = Nokogiri::HTML(@posts[0].text, &:noblanks).content
     @next_path = boo_posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
 
     render 'index'
