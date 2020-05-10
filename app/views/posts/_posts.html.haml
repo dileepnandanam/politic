@@ -3,4 +3,4 @@
 - unless defined?(featured) && featured
   .more-responses
   - if @posts.next_page
-    = link_to 'View more', @next_path, class: 'view-more'
+    = link_to 'View more', @next_path, {class: 'view-more'}.merge(action_name == 'boo' ? {} : {rel: 'canonical'})

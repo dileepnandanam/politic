@@ -1,7 +1,7 @@
 .group-post.post.small-post
   .post-title
-    %h2.text-left.pull-left.name= link_to "#{post.display_title}", "/#{post.id}"
+    %h2.text-left.pull-left.name= link_to "#{post.display_title}", "/#{post.id}", {}.merge(action_name == 'boo' ? {} : {rel: 'canonical'})
   .clearfix
   .post-body
-    .post-text.text-left  
+    .post-text.text-left
       = raw(HTML_Truncator.truncate(post.text, 10))
