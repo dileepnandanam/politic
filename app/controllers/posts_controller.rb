@@ -57,7 +57,7 @@ class PostsController < PostBaseController
       if request.format.html?
         render 'index'
       else
-        render 'post', layout: false
+        render 'posts', layout: false
       end
     end
 
