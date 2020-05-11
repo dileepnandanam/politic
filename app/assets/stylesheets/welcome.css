@@ -1,0 +1,12 @@
+.welcome {
+  padding: 12px;
+  box-shadow: 1px 1px 12px black;
+  margin-top: 14px;
+  color: black;
+  border: radius;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.welcome h1 {
+
+}

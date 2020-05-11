@@ -2,8 +2,29 @@
   .search-panel.search
     = text_field_tag 'search',nil, placeholder: 'search', data: {url: posts_path(page: 1)},class: 'search-field'
   .clearfix
-  
+
+
   .posts-container.posts
+    .welcome
+      %h1.text-center
+        Everything in one hand
+      %p.text-left
+        This is a local search engin with web pages locally configured. Search nearby services or provide service to nearby people. You can contact to the opposit party directly through online
+      .welcome-block.pull-left.col-sm-4.text-center
+        Shops
+      .welcome-block.pull-left.col-sm-4.text-center
+        Traders
+      .welcome-block.pull-left.col-sm-4.text-center
+        Middle men
+      .clearfix
+      .welcome-block.pull-left.col-sm-4.text-center
+        Buyers
+      .welcome-block.pull-left.col-sm-4.text-center
+        Manufacturers
+      .welcome-block.pull-left.col-sm-4.text-center
+        Ideologists
+      .clearfix
+
     = render partial: 'posts', locals: {posts: @posts}
   - if current_user
     .group-action

@@ -1,0 +1,11 @@
+.questions-container.whitish
+  .search-panel.search
+    = text_field_tag 'search',nil, placeholder: 'search', data: {url: posts_path(page: 1)},class: 'search-field'
+  .clearfix
+  
+  .posts-container.posts
+    = render partial: 'posts', locals: {posts: @posts}
+  - if current_user
+    .group-action
+      = link_to 'New page', new_post_path, remote: true, class: 'new-group-post'    
+  .new-post

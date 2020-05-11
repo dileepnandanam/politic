@@ -12,7 +12,7 @@ class PostsController < PostBaseController
     @description = Nokogiri::HTML(@posts[0].text, &:noblanks).content
     @next_path = boo_posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
 
-    render 'index'
+    render 'boo'
   end
 
   def show
