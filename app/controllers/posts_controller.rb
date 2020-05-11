@@ -51,11 +51,14 @@ class PostsController < PostBaseController
 
       render 'posts', layout: false
     else
-      @posts = Post.order('id ASC').where(group_id: nil).all
+      @posts = Post.where('1 = 2').all
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
-
-      render 'index'
+      if request.format.html?
+        render 'index'
+      else
+        render 'post', layout: false
+      end
     end
 
     
