@@ -5,32 +5,33 @@
 
 
   .posts-container.posts
-    .welcome
-      %h1.text-center
-        Everything in one hand
-      %p.text-left
-        This is a local search engin with web pages locally configured. Search nearby services or provide service to nearby people. You can contact to the opposit party directly through online
-      .welcome-block.pull-left.col-sm-4.text-center
-        = link_to 'Shops', 'https://www.palkad.com/posts?query=mannarkkad', class: 'black'
-      .welcome-block.pull-left.col-sm-4.text-center
-        Traders
-      .welcome-block.pull-left.col-sm-4.text-center
-        Middle men
-      .clearfix
-      .welcome-block.pull-left.col-sm-4.text-center
-        Buyers
-      .welcome-block.pull-left.col-sm-4.text-center
-        Manufacturers
-      .welcome-block.pull-left.col-sm-4.text-center
-        Skilled workers
-      .clearfix
-      .welcome-block.pull-left.col-sm-4.text-center
-        Portfolios
-      .welcome-block.pull-left.col-sm-4.text-center
-        Auto-Taxi
-      .welcome-block.pull-left.col-sm-4.text-center
-        real estate
-      .clearfix
+    - if @posts.length == 0
+      .welcome
+        %h1.text-center
+          Everything in one hand
+        %p.text-left
+          This is a local search engin with web pages locally configured. Search nearby services or provide service to nearby people. You can contact to the opposit party directly through online
+        .welcome-block.pull-left.col-sm-4.text-center
+          = link_to 'Shops', 'https://www.palkad.com/posts?query=mannarkkad', class: 'black'
+        .welcome-block.pull-left.col-sm-4.text-center
+          = link_to 'Traders', 'http://google.palkad.com/40', rel: 'canonical', class: 'black'
+        .welcome-block.pull-left.col-sm-4.text-center
+          = link_to 'Middle men', 'http://palkad.com/26', rel: 'canonical', class: 'black'
+        .clearfix
+        .welcome-block.pull-left.col-sm-4.text-center
+          = link_to 'Buyers', 'http://palkad.com/26', rel: 'canonical', class: 'black'
+        .welcome-block.pull-left.col-sm-4.text-center
+          = link_to 'Manufacturers', 'http://palkad.com/38', rel: 'canonical', class: 'black'
+        .welcome-block.pull-left.col-sm-4.text-center
+          = link_to 'Skilled workers', 'http://palkad.com/50', rel: 'canonical', class: 'black'
+        .clearfix
+        .welcome-block.pull-left.col-sm-4.text-center
+          = link_to 'Portfolios', 'http://palkad.com/26', rel: 'canonical', class: 'black'
+        .welcome-block.pull-left.col-sm-4.text-center
+          = link_to "Auto-Taxi", 'http://palkad.com/53', rel: 'canonical', class: 'black'
+        .welcome-block.pull-left.col-sm-4.text-center
+          real estate
+        .clearfix
 
     = render partial: 'posts', locals: {posts: @posts}
   - if current_user

@@ -48,20 +48,18 @@ class PostsController < PostBaseController
       @posts = Post.search(params[:query], nil, orientation, [current_user.try(:lat), current_user.try(:lngt)])
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
-
-      render 'posts', layout: false
     else
       @posts = Post.where('1 = 2').all
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
-      if request.format.html?
-        render 'index'
-      else
-        render 'posts', layout: false
-      end
+      
     end
 
-    
+    if request.format.html?
+      render 'index'
+    else
+      render 'posts', layout: false
+    end
   end
 
   def my_posts
