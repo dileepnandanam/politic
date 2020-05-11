@@ -109,7 +109,10 @@ class Surveys::SurveyResponsesController < SurveysController
   protected
 
   def find_survey
-    @survey = Survey.find(params[:survey_id])
+    @survey = Survey.find_by_id(params[:survey_id])
+    if @survey.blank?
+      render body: nil and return
+    end
   end
 
   def response_params

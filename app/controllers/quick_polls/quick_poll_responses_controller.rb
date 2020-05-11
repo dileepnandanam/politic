@@ -22,7 +22,10 @@ class QuickPolls::QuickPollResponsesController < ApplicationController
   protected
 
   def find_quick_poll
-    @quick_poll = QuickPoll.find(params[:quick_poll_id])
+    @quick_poll = QuickPoll.find_by_id(params[:quick_poll_id])
+    if @quick_poll.blank?
+      render body: nil and return
+    end
   end
 
   def response_params
