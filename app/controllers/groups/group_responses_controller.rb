@@ -46,7 +46,10 @@ class Groups::GroupResponsesController < ApplicationController
   protected
 
   def find_group
-    @group = Group.find(params[:group_id])
+    @group = Group.find_by_id(params[:group_id])
+    if @group.blank?
+      render body: nil and return
+    end
   end
 
   def response_params
