@@ -43,12 +43,12 @@
         = link_to 'home', '/', class: 'pull-right', rel: :nofollow
         .clearfix
       .nav-bar.unsigned{class: current_user ? 'd-none' : ''}
+        - unless bot_request?  
+          = link_to "Sign in", new_user_session_path, class: 'pull-right', rel: :nofollow
           
-        = link_to "Sign in", new_user_session_path, class: 'pull-right', rel: :nofollow
-        
-        = link_to "Sign up", new_user_registration_path, class: 'pull-right', rel: :nofollow
-        = link_to 'home', '/', class: 'pull-right', rel: :nofollow
-        .clearfix
+          = link_to "Sign up", new_user_registration_path, class: 'pull-right', rel: :nofollow
+          = link_to 'home', '/', class: 'pull-right', rel: :nofollow
+          .clearfix
       - if current_user.present? && params[:preview].blank?
         .sub-nav-bar{class: (current_user && current_user.posts.present? ? '' : 'd-none')}
           = link_to 'Pages', my_posts_posts_path, class: 'sub-nav-bar-item ' + (@flag == 'post' ? 'active-tab' : '')
