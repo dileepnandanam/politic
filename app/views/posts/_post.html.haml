@@ -20,7 +20,7 @@
     - if post.project.present?
       %h1.name= link_to post.title, group_path(post.project)
     - else
-      %h1.name= link_to post.title, "/#{post.id}", rel: 'nofollow'
+      %h1.name= post.title
   .clearfix
   .edit-container 
   .post-body

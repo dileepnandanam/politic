@@ -55,4 +55,12 @@ module ApplicationHelper
     width_class = "col-sm-#{12/picture.galery.column}"
     "picture_#{picture.id} #{width_class}"
   end
+
+  def meta_description
+    "best " + [@description , @group.try(:banner_description), @post.try(:title), @group.try(:posts).try(:first).try(:title) , 'search palakkad for services nearby'].find(&:present?)
+  end
+
+  def meta_title
+    "Top " + [@title, @group.try(:banner_title), @post.try(:title), 'search palakkad'].find(&:present?)
+  end
 end
