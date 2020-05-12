@@ -61,6 +61,6 @@ module ApplicationHelper
   end
 
   def meta_title
-    "Top " + [@title, @group.try(:banner_title), @post.try(:title), 'search palakkad'].find(&:present?)
+    "Top " + [@title, @group.try(:banner_title), @post.try(:title), @group.try(:posts).try(:first).try(:title), 'search palakkad'].find(&:present?)
   end
 end

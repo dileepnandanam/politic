@@ -155,7 +155,13 @@ pre code {
   height: 40px;
   font-size: 21px !important;
   padding-left: 10px;
-  margin-left: 8px;
+  margin-left: 2%;
+  max-width: 96%;
+  border: 1px solid blue !important;
+  width: 400px;
+}
+#search:focus {
+  outline: none;
 }
 .validation-errors {
 	border-radius: 8px;

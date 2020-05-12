@@ -22,7 +22,7 @@ a.add-question {
     font-size: 20px;
     font-weight: 200;
 }
-.add-question:hover, a:hover {
+.add-question:hover {
     color: yellow !important;
 }
 .search {
