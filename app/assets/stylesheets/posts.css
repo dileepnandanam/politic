@@ -65,7 +65,7 @@
   font-size: 40px;
 }
 .small-post-title h1 a {
-  font-size: 40px;
+  font-size: 30px;
 }
 .post {
   background-color: white;
@@ -175,7 +175,7 @@
   margin: 12px;
 }
 .posts-index {
-  background-color: #d9d1d1 !important;
+  background-color: white !important;
 }
 .social-ico {
   width: 50px !important;
