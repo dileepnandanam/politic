@@ -5,7 +5,7 @@
     %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
     - if false
       %meta{ :name=>"Description", :content=> [@description , @group.try(:banner_description), @post.try(:title), @group.try(:posts).try(:first).try(:title) , 'search palakkad for services nearby'].find(&:present?)}
-    %meta{ :name=>"Description", :content: 'search available servives in palakkad or list services that you provide'}
+    %meta{ :name=>"Description", :content => 'search available servives in palakkad or list services that you provide'}
     
     %title
       = @title || @group.try(:banner_title) || @post.try(:title) || 'search palakkad'
