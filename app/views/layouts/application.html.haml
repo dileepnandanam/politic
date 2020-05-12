@@ -3,7 +3,10 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
-    %meta{ :name=>"Description", :content=> [@description , @group.try(:banner_description), @post.try(:title), @group.try(:posts).try(:first).try(:title) , 'search palakkad for services nearby'].find(&:present?)}
+    - if false
+      %meta{ :name=>"Description", :content=> [@description , @group.try(:banner_description), @post.try(:title), @group.try(:posts).try(:first).try(:title) , 'search palakkad for services nearby'].find(&:present?)}
+    %meta{ :name=>"Description", :content: 'search available servives in palakkad or list services that you provide'}
+    
     %title
       = @title || @group.try(:banner_title) || @post.try(:title) || 'search palakkad'
     %meta{ :name=>"google-site-verification", :content=> "aTgG8DN02IEd5qlsvX5mnWq3sHtS11bEZ5Ipb5zkIXk" }
