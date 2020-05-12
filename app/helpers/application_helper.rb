@@ -31,7 +31,7 @@ module ApplicationHelper
 
   def image_tag_with_fallback(obj, handle)
     if obj.send(handle).attachment.present?
-      image_tag(obj.send(handle))
+      image_tag(obj.send(handle), alt: obj.try(:alt_text))
     end
   end
 

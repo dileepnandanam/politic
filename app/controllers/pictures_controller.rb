@@ -79,6 +79,6 @@ class PicturesController < ApplicationController
   protected
 
     def picture_params
-      params.require(:picture).permit(:img, :galery_id, :caption, :linked_post_id, :linked_post_name)
+      params.require(:picture).permit(:img, :alt_text, :galery_id, :caption, :linked_post_id, :linked_post_name)
     end
 end
