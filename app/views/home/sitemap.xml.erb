@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+  <loc>https://www.palkad.com/</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.1</priority>
+</url>
+
+  <% Post.where(group_id: nil).each do |p| -%>
+    <url>
+      <loc>https://www.palkad.com/<%= p.id %></loc>
+      <lastmod><%= p.updated_at.to_date %></lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.8</priority>
+    </url>
+  <% end -%>
+</urlset>
