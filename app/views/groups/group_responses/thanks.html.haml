@@ -1,7 +1,1 @@
-%h3.message
-  = "Thanks for Signing up"
-  - if @group.allow_immediate_access?
-    .clearfix
-    = link_to "Visit us", group_path(@group)
-  - else
-    Your request will be processed by us soon.
+= group_path(@group)

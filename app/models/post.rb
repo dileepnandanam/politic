@@ -105,6 +105,7 @@ class Post < ApplicationRecord
   end
 
   def display_title
-    title.present? ? title : 'Untitled'
+    "#{title.present? ? title : 'Untitled'} #{lat.blank? ? '(closd/busy)' : ''}"
+ 
   end
 end

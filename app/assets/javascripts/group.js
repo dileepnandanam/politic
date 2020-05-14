@@ -22,10 +22,6 @@ $(document).on('turbolinks:load', function() {
     }
   })
 
-  $(document).on('ajax:success', '.project-form', function(e) {
-    $(this).replaceWith(e.detail[2].responseText)
-  })
-
   $('.filter-response-link').click(function(e) {
     $('.filter-response-link').toggleClass('d-none', 500)
   })

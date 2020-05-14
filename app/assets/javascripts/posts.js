@@ -140,9 +140,10 @@ bind_project_pin()
 bind_button_pin()
   
 
-  $(document).on('ajax:success', '.project-form', function() {
+  $(document).on('ajax:success', '.project-form', function(e) {
     $('.nav-bar.unsigned').addClass('d-none')
     $('.nav-bar.signed').removeClass('d-none')
+    window.location.href = e.detail[2].responseText
   })
 
 	$('.new-group-post').on('ajax:success', function(e) {

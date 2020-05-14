@@ -1,4 +1,4 @@
-= simple_form_for([@group, @response], html:{remote: true, class: 'project-form survey_response_form'}) do |f|
+= simple_form_for([@group, @response], html:{remote: true, class: 'project-form'}) do |f|
   - unless current_user
     = f.fields_for :user do |uf|
       .question

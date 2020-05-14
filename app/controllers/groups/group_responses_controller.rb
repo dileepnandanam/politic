@@ -23,7 +23,7 @@ class Groups::GroupResponsesController < ApplicationController
     
     if @response.valid?
       if @response.user_id == @response.group.user_id
-        render 'error', layout: false
+        render 'thanks', layout: false
       else
         @response.save
         sign_in(:user, @response.user)
