@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   patch 'set_gender', to: 'home#set_gender'
   get 'signin-facebook', to: 'users/omniauth_callbacks#facebook'
   get 'access_restricted', to: 'home#access_restricted'
+  get 'sitemap', to: 'home#sitemap'
 
   resources :galeries
   resources :pictures, controller: 'pictures' do

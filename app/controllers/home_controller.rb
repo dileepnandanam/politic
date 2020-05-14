@@ -58,6 +58,10 @@ class HomeController < ApplicationController
     end
   end
 
+  def sitemap
+    render 'sitemap.xml', layout: false, content_type: 'application/xml'
+  end
+
   protected
 
   def gender_params
