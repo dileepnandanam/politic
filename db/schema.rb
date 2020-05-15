@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_15_032757) do
+ActiveRecord::Schema.define(version: 2020_05_15_035745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -316,6 +316,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_032757) do
     t.string "request_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_agent"
   end
 
   create_table "votes", force: :cascade do |t|

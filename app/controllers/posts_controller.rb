@@ -49,7 +49,7 @@ class PostsController < PostBaseController
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
     else
-      @posts = Post.where(group_id: nil).all
+      @posts = Post.where(group_id: nil).order('id asc')
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
       
