@@ -1,5 +1,5 @@
 - posts.each do |p|
-  = render partial: 'posts/small_post', locals: {post: p}
+  = render partial: 'posts/small_post', locals: {post: p, rel: 'canonical'}
 - unless defined?(featured) && featured
   .more-responses
   - if @posts.next_page
