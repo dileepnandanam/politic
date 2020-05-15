@@ -48,6 +48,7 @@ class PostsController < PostBaseController
       @posts = Post.search(params[:query], nil, orientation, [current_user.try(:lat), current_user.try(:lngt)])
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
+      render 'posts', layout: false and return
     else
       @posts = Post.where(group_id: nil).order('id asc')
       @posts = @posts.paginate(per_page: 12, page: params[:page])
@@ -55,7 +56,8 @@ class PostsController < PostBaseController
       
     end
 
-    if request.format.html?
+    render 'index' and return
+    if request.format.html? || bot_request?
       render 'index'
     else
       render 'posts', layout: false

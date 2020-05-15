@@ -10,6 +10,8 @@ $(document).on('turbolinks:load', function() {
 
 	search = function() {
 		query = $('.search input').val()
+		if(!query)
+			return
 		$.ajax({
 			url: $(this).data('url'),
 			data: {
