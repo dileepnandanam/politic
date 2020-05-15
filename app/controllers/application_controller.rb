@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   #before_action :redirect_to_affiliated_site
   before_action :set_flag
+  after_action :log_visit
 
   #before_action :set_https
 
@@ -23,6 +24,10 @@ class ApplicationController < ActionController::Base
 
 
   protected
+    def log_visit
+      Visit.create(request_url: request.url, group_id: @group.try(:id), post_id: @post.try(:id))
+    end
+
     def redirect_to_affiliated_site
       affiliation = Affiliation.where(name: params[:permalink]).first
       if affiliation.present?
