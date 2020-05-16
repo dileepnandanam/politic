@@ -13,9 +13,10 @@ class UsersController < ApplicationController
   end
 
   def signin
+    binding.pry
     user = User.where(email: params[:user][:email]).first
     if user.present? && user.valid_password?(params[:user][:password])
-      sign_in(user)
+      sign_in(:user, user)
       redirect_to after_sign_in_path
     else
       redirect_to new_session_path(User.new)
