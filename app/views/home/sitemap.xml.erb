@@ -11,7 +11,7 @@
   <% Post.where(group_id: nil).each do |p| -%>
     <url>
       <loc>https://www.palkad.com/<%= p.id %></loc>
-      <lastmod><%= p.updated_at.to_date %></lastmod>
+      <lastmod><%= p.updated_at %></lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
