@@ -25,14 +25,14 @@
     - group = @group || @post.try(:project)
     - if group.present? && group.banner_title.present?
       .banner{style: group.background.attachment ? "background-image: url('#{group.background.attachment.service_url}')" : '' }
-        .banner-overlay
-          .header-text-container
-            .banner-heading
-              - if group.banner_title.present?
-                .white.text-center= group.banner_title
-                - if group.banner_description.present?
-                  .banner-site-description.white
-                    .white= raw group.banner_description
+      .banner-overlay
+        .header-text-container
+          .banner-heading
+            - if group.banner_title.present?
+              .white.text-center= group.banner_title
+              - if group.banner_description.present?
+                .banner-site-description.white
+                  .white= raw group.banner_description
     .page.col-lg-12.col-sm-12.col-12
       .nav-bar.signed{class: current_user ? '' : 'd-none'}
         = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'pull-right'
