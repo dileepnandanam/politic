@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     end
 
     def log_visit
-      Visit.create(request_url: request.url, group_id: @group.try(:id), post_id: @post.try(:id), user_agent: request.env['HTTP_USER_AGENT'].downcase)
+      #Visit.create(request_url: request.url, group_id: @group.try(:id), post_id: @post.try(:id), user_agent: request.env['HTTP_USER_AGENT'].downcase)
     end
 
     def redirect_to_affiliated_site

@@ -1,6 +1,13 @@
 .questions-container.whitish
   .search-panel.search
     = text_field_tag 'search',nil, placeholder: 'search', data: {url: posts_path(page: 1)},class: 'search-field'
+  
+  .text-center.new-bussiness-lik
+    - if current_user
+      .group-action
+        = link_to 'add your business', new_post_path, remote: true, class: 'new-group-post'   
+    - else
+      = link_to 'add your business', new_user_registration_path
   .clearfix
 
 
@@ -11,31 +18,7 @@
           Everything in one hand
         %p.text-left
           This is a local search engin with web pages locally configured. Search nearby services or provide service to nearby people. You can contact to the other party directly through our tools.
-        - if false
-          .welcome-block.pull-left.col-sm-4.text-center
-            = link_to 'Shops', '/posts?query=mannarkkad', rel: 'canonical', class: 'black'
-          .welcome-block.pull-left.col-sm-4.text-center
-            = link_to 'Traders', '/40', rel: 'canonical', class: 'black'
-          .welcome-block.pull-left.col-sm-4.text-center
-            = link_to 'Middle men', '/26', rel: 'canonical', class: 'black'
-          .clearfix
-          .welcome-block.pull-left.col-sm-4.text-center
-            = link_to 'Buyers', '/26', rel: 'canonical', class: 'black'
-          .welcome-block.pull-left.col-sm-4.text-center
-            = link_to 'Manufacturers', '/38', rel: 'canonical', class: 'black'
-          .welcome-block.pull-left.col-sm-4.text-center
-            = link_to 'Skilled workers', '/50', rel: 'canonical', class: 'black'
-          .clearfix
-          .welcome-block.pull-left.col-sm-4.text-center
-            = link_to 'Portfolios', '/26', rel: 'canonical', class: 'black'
-          .welcome-block.pull-left.col-sm-4.text-center
-            = link_to "Auto-Taxi", '/53', rel: 'canonical', class: 'black'
-          .welcome-block.pull-left.col-sm-4.text-center
-            real estate
           .clearfix
 
-    = render partial: 'posts', locals: {posts: @posts}
-  - if current_user
-    .group-action
-      = link_to 'New page', new_post_path, remote: true, class: 'new-group-post'    
+    = render partial: 'posts', locals: {posts: @posts}    
   .new-post

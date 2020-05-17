@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   end
 
   def signin
-    binding.pry
     user = User.where(email: params[:user][:email]).first
     if user.present? && user.valid_password?(params[:user][:password])
       sign_in(:user, user)
