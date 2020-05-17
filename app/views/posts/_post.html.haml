@@ -24,6 +24,9 @@
   .clearfix
   .edit-container 
   .post-body
+    - if post.lat.present?
+      .map-link{data:{addr: "#{post.lat},#{post.lngt}"}}
+        = image_tag('map.png', class: 'map-ico')
     .clearfix 
     .post-text  
       = raw(post.text)
