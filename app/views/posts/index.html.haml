@@ -3,11 +3,11 @@
     = text_field_tag 'search',nil, placeholder: 'search', data: {url: posts_path(page: 1)},class: 'search-field'
   
   .text-center.new-bussiness-lik
-    - if current_user
-      .group-action
+    .group-action
+      - if current_user
         = link_to 'add your business', new_post_path, remote: true, class: 'new-group-post'   
-    - else
-      = link_to 'add your business', new_user_registration_path
+      - else
+        = link_to 'add your business', new_user_registration_path
   .clearfix
 
 
