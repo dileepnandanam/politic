@@ -1,3 +1,6 @@
+- if params[:start]
+  %p.black.text-center
+    you need to sign up or sign in to add business
 .question.response-form
   %h2 Sign Up
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|

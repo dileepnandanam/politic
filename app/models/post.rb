@@ -44,7 +44,7 @@ class Post < ApplicationRecord
   def self.text_search(q, g, o)
     queries = q.split(' ')
     compount_query = queries.map{|query| "LOWER(tag_set) like '%#{query.downcase}%'"}.join(' AND ')
-    Post.where(compount_query)
+    Post.where(compount_query).where(group_id: g)
   end
 
   def self.search(q, group_id, orientation = nil, location = nil)
