@@ -17,14 +17,12 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    - if bot_request? && params[:page].blank?
-      = link_to 'services', boo_posts_path(page: 1), class: 'name'
     = audio_tag 'inflicted.mp3', class: 'response-notif'
     .current-user-data.d-none{data:{signed_in: current_user.present?.to_s}}
     .current-user-location-data.d-none{data:{lat: current_user.present? ? current_user.lat.present?.to_s : 'true'}}
     - group = @group || @post.try(:project)
     - if group.present? && group.banner_title.present?
-      .banner{style: group.background.attachment ? "background-image: url('#{group.background.attachment.service_url}')" : '' }
+      .banner{style: (group.background.attachment ? "background-image: url('#{group.background.attachment.service_url}');" : '') + (group.blur_banner? ? "filter: blur(5px)" : '') }
       .banner-overlay
         .header-text-container
           .banner-heading

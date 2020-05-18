@@ -146,3 +146,6 @@ img.map-ico {
   margin-top: 12px;
   display: block;
 }
+.clickable h3:hover {
+  color: blue;
+}
