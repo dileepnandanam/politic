@@ -211,3 +211,14 @@ a.user-switch.pull-left {
   margin: auto;
   margin-top: 20px;
 }
+.edit-galery-picture {
+  margin-left: 12px;
+  display: inline-block;
+}
+.remove-picture {
+  margin-right: 12px;
+  display: inline-block;
+}
+.picture .remove-image, .picture .select-survey, .picture .pin-select {
+  margin-right: 12px; 
+}

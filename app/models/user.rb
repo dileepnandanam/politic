@@ -30,6 +30,7 @@ class User < ApplicationRecord
 
 
   validates_uniqueness_of :email
+  validates :name, presence: true
   validates :encrypted_password, presence: true
 
   def group_count
