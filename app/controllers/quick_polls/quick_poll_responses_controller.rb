@@ -14,6 +14,7 @@ class QuickPolls::QuickPollResponsesController < ApplicationController
   end
 
   def create
+    @quick_poll.quick_poll_responses.where(user_id: current_user.id).first.try(:delete)
     @quick_poll.quick_poll_responses.create(response_params.merge(user_id: current_user.id))
     flash[:notice] = "Successfully polled"
     render 'thanks', layout: false
