@@ -9,9 +9,6 @@ class UsersController < ApplicationController
   	render 'show', layout: false
   end
 
-  def edit
-  end
-
   def signin
     user = User.where(email: params[:user][:email]).first
     if user.present? && user.valid_password?(params[:user][:password])

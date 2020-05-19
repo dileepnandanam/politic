@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def authenticate_user!
+    def authenticate_user(user=nil)!
       unless current_user.present?
         session[:after_sign_in_path] = request.url
         redirect_to new_user_session_path

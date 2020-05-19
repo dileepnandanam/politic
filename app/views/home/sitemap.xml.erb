@@ -11,9 +11,10 @@
   <% Post.where(group_id: nil).each do |p| -%>
     <url>
       <loc>https://www.palkad.com/<%= p.id %></loc>
-      <lastmod><%= p.updated_at %></lastmod>
+      <% t = p.updated_at.to_s.split %>
+      <lastmod><%= "#{t[0]}T#{t[1]}+00:00" %></lastmod>
       <changefreq>daily</changefreq>
-      <priority>0.8</priority>
+      <priority>0.5</priority>
     </url>
   <% end -%>
 
@@ -21,7 +22,7 @@
     <url>
       <loc>https://www.palkad.com/posts/boo?page=<%= p %></loc>
       <changefreq>daily</changefreq>
-      <priority>0.8</priority>
+      <priority>0.5</priority>
     </url>
   <% end -%>
 </urlset>
