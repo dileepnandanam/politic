@@ -108,4 +108,12 @@ class Post < ApplicationRecord
     "#{title.present? ? title : 'Untitled'} #{lat.blank? ? '(closd/busy)' : ''}"
  
   end
+
+  def updated
+    if group_id.nil?
+      touch and return
+    else
+      project.try(:updated) and return
+    end
+  end
 end

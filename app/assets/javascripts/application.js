@@ -12,9 +12,11 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require popper
 //= require turbolinks
 //= require jquery
 //= require jquery-ui
 //= require jquery.form.min
 //= require_tree .
 //= require masonry/jquery.masonry
+//= require bootstrap

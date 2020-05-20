@@ -253,7 +253,22 @@ legend {
   width: 100%;
   border-radius: 10px !important;
 }
-
 .banner {
   background-size: cover;
+}
+.dropdown-menu {
+  background-color: #421f26 !important;
+}
+.account-action {
+  background-color: #421f26 !important;
+  color: white !important;
+  font-size: 20px !important;
+}
+.account-action:hover {
+  background-color: white !important;
+  font-size: 20px !important;
+  color: #421f26 !important;
+}
+.registrations-edit, .registrations-update {
+  background-color: white;
 }

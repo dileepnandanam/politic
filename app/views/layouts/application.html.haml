@@ -33,7 +33,12 @@
                   .white= raw group.banner_description
     .page.col-lg-12.col-sm-12.col-12
       .nav-bar.signed{class: current_user ? '' : 'd-none'}
-        = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'pull-right'
+        .dropdown
+          %a.pull-right.btn.btn-secondary.dropdown-toggle{data: {toggle: 'dropdown'}}
+            account
+          .dropdown-menu
+            = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'dropdown-item account-action', rel: 'nofollow'
+            = link_to "Edit Profile", edit_registration_path(:user), class: 'dropdown-item account-action', rel: 'nofollow'
         
         = link_to 'send location', '#', class: 'i-am-here pull-right', rel: :nofollow
         - if current_user.try(:welcome_posts).to_a.count !=0
