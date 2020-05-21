@@ -1,4 +1,6 @@
 .question.response-form
+  = link_to 'configure', dashboard_survey_path(@survey), class: 'pull-right configure'
+  .clearfix
   - if current_user.blank? && !@survey.anonymous?
     = render partial: 'authorize'
   .pull-left

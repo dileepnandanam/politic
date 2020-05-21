@@ -37,14 +37,17 @@
           %a.pull-right.btn.btn-secondary.dropdown-toggle{data: {toggle: 'dropdown'}}
             account
           .dropdown-menu
-            = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'dropdown-item account-action', rel: 'nofollow'
+            = link_to 'my sites', my_groups_groups_path, class: "dropdown-item account-action #{current_user && current_user.group_count == 0 ? 'd-none' : ''}", rel: :nofollow
+            - if current_user.try(:welcome_posts).to_a.count !=0
+              = link_to 'my pages', my_posts_posts_path, class: "dropdown-item account-action  #{current_user && current_user.posts.count == 0 ? 'd-none' : ''}", rel: :nofollow
             = link_to "Edit Profile", edit_registration_path(:user), class: 'dropdown-item account-action', rel: 'nofollow'
+            = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'dropdown-item account-action', rel: 'nofollow'
+            
         
         = link_to 'send location', '#', class: 'i-am-here pull-right', rel: :nofollow
-        - if current_user.try(:welcome_posts).to_a.count !=0
-          = link_to 'my pages', my_posts_posts_path, class: "pull-right my-pages #{current_user && current_user.posts.count == 0 ? 'd-none' : ''}", rel: :nofollow
         
-        = link_to 'my sites', my_groups_groups_path, class: "pull-right my-sites #{current_user && current_user.group_count == 0 ? 'd-none' : ''}", rel: :nofollow
+        
+        
         = link_to 'home', '/', class: 'pull-right', rel: :nofollow
         .clearfix
       .nav-bar.unsigned{class: current_user ? 'd-none' : ''}

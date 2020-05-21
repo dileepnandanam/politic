@@ -149,3 +149,6 @@ img.map-ico {
 .clickable h3:hover {
   color: blue;
 }
+.clickable:hover h4 {
+  color: blue;
+}
