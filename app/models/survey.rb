@@ -6,6 +6,8 @@ class Survey < ApplicationRecord
   has_many :questions
   has_many :survey_responses
   has_many :posts
+  has_one :picture, foreign_key: :survey_id
+  has_one :post, foreign_key: :survey_id
   #validates :name, presence: true
   #validates :description, presence: true
 
@@ -20,4 +22,7 @@ class Survey < ApplicationRecord
     "#{survey_tags} #{question_tags} #{option_tags}"
   end
 
+  def parent
+    picture || post
+  end
 end

@@ -25,7 +25,7 @@ class Surveys::SurveyResponsesController < SurveysController
       item_type: 'SurveyResponse',
       target_id: @response.user.id,
       link: survey_survey_response_path(@survey, @response),
-      action: "your query to \"#{@survey.name}\" has been accepted"
+      action: "your query to \"#{parent.title}\" has been accepted"
     )
 
     message = ApplicationController.render(
@@ -48,7 +48,7 @@ class Surveys::SurveyResponsesController < SurveysController
       item_type: 'SurveyResponse',
       target_id: @response.user.id,
       link: survey_survey_response_path(@survey, @response),
-      action: "sorry, your query to \"#{@survey.name}\" has been rejected"
+      action: "sorry, your query to \"#{parent.title}\" has been rejected"
     )
 
     message = ApplicationController.render(
@@ -125,5 +125,14 @@ class Surveys::SurveyResponsesController < SurveysController
 
   def anonymous_user
     User.yield_anonymous_user
+  end
+
+  def parent
+    parent_element = @survey
+    while parent_element.present?
+      parent_post = parent_element
+      parent_element = parent_element.parent
+    end
+    parent_post
   end
 end

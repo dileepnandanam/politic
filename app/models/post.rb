@@ -116,4 +116,8 @@ class Post < ApplicationRecord
       project.try(:updated) and return
     end
   end
+
+  def parent
+    group
+  end
 end

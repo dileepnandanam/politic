@@ -11,4 +11,8 @@ class Galery < ApplicationRecord
   def tags
     "#{name} #{description} #{pictures.map(&:tags).flatten.join(' ')}"
   end
+
+  def parent
+    post
+  end
 end
