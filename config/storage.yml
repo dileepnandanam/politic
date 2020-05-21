@@ -7,19 +7,25 @@ local:
   root: <%= Rails.root.join("storage") %>
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-amazon:
-  service: S3
-  access_key_id: <%= ENV['AKI'] %>
-  secret_access_key: <%= ENV['ACK'] %>
-  region: ap-south-1
-  bucket: palkad
+#amazon:
+#  service: S3
+#  access_key_id: <%= ENV['AKI'] %>
+#  secret_access_key: <%= ENV['ACK'] %>
+#  region: ap-south-1
+#  bucket: palkad
 
-# Remember not to checkin your GCS keyfile to a repository
-# google:
-#   service: GCS
-#   project: your_project
-#   credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
-#   bucket: your_own_bucket
+#Remember not to checkin your GCS keyfile to a repository
+google_dev:
+  service: GCS
+  project: palkad
+  credentials: <%= Rails.root.join("palkad_storage.json") %>
+  bucket: palkad_storage
+
+google:
+  service: GCS
+  project: palkad
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
+  bucket: palkad_storage
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
