@@ -34,3 +34,6 @@
 .picture {
   border: none;
 }
+.configure {
+  display: none;
+}
