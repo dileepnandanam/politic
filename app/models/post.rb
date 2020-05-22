@@ -30,7 +30,7 @@ class Post < ApplicationRecord
   scope :with_group_id, -> (group_id) { where(group_id: group_id) }
 
   def tags
-    "#{phones.map(&:tags).map(&:to_s).join(' ')} #{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{text} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}".split(' ').uniq.join(' ')
+    "#{phones.map(&:tags).map(&:to_s).join(' ')} #{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{text} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}".split(' ').uniq.select{|t| !STOP_WORDS.include?(t)}.join('')
   end
 
   def update_tag_set
@@ -58,15 +58,14 @@ class Post < ApplicationRecord
 
   
   def self.match_stmt(q, column)
-    stop_words.each{|sw| q.gsub!(Regexp.new("[$\s]#{sw}[\s^]", 'i'), ' ')}
+    STOP_WORDS.each{|sw| q.gsub!(Regexp.new("[$\s]#{sw}[\s^]", 'i'), ' ')}
     keys = q.split(/[\s,:;\-\(\)\.\/']/).select{|w| w.length > 1}
     match_stmt_str = keys.map{|w| "COALESCE((LOWER(#{column}) LIKE '%#{w.downcase}%'), FALSE)::int"}.join(' + ')
     match_stmt_str.present? ? [match_stmt_str, keys.count] : "id"
   end
 
-  def self.stop_words
-    ['ourselves', 'hers', 'between', 'yourself', 'but', 'again', 'there', 'about', 'once', 'during', 'out', 'very', 'having', 'with', 'they', 'own', 'an', 'be', 'some', 'for', 'do', 'its', 'yours', 'such', 'into', 'of', 'most', 'itself', 'other', 'off', 'is', 'am', 'or', 'who', 'as', 'from', 'him', 'each', 'the', 'themselves', 'until', 'below', 'are', 'we', 'these', 'your', 'his', 'through', 'don', 'nor', 'me', 'were', 'her', 'more', 'himself', 'this', 'down', 'should', 'our', 'their', 'while', 'above', 'both', 'up', 'to', 'ours', 'had', 'she', 'all', 'no', 'when', 'at', 'any', 'before', 'them', 'same', 'and', 'been', 'have', 'in', 'will', 'on', 'does', 'yourselves', 'then', 'that', 'because', 'what', 'over', 'why', 'so', 'can', 'did', 'not', 'now', 'under', 'he', 'you', 'herself', 'has', 'just', 'where', 'too', 'only', 'myself', 'which', 'those', 'i', 'after', 'few', 'whom', 't', 'being', 'if', 'theirs', 'my', 'against', 'a', 'by', 'doing', 'it', 'how', 'further', 'was', 'here', 'than']
-  end
+  STOP_WORDS = ['ourselves', 'hers', 'between', 'yourself', 'but', 'again', 'there', 'about', 'once', 'during', 'out', 'very', 'having', 'with', 'they', 'own', 'an', 'be', 'some', 'for', 'do', 'its', 'yours', 'such', 'into', 'of', 'most', 'itself', 'other', 'off', 'is', 'am', 'or', 'who', 'as', 'from', 'him', 'each', 'the', 'themselves', 'until', 'below', 'are', 'we', 'these', 'your', 'his', 'through', 'don', 'nor', 'me', 'were', 'her', 'more', 'himself', 'this', 'down', 'should', 'our', 'their', 'while', 'above', 'both', 'up', 'to', 'ours', 'had', 'she', 'all', 'no', 'when', 'at', 'any', 'before', 'them', 'same', 'and', 'been', 'have', 'in', 'will', 'on', 'does', 'yourselves', 'then', 'that', 'because', 'what', 'over', 'why', 'so', 'can', 'did', 'not', 'now', 'under', 'he', 'you', 'herself', 'has', 'just', 'where', 'too', 'only', 'myself', 'which', 'those', 'i', 'after', 'few', 'whom', 't', 'being', 'if', 'theirs', 'my', 'against', 'a', 'by', 'doing', 'it', 'how', 'further', 'was', 'here', 'than']
+
 
 
   def cancel_notifications
