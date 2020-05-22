@@ -18,7 +18,7 @@ local:
 google_dev:
   service: GCS
   project: palkad
-  credentials: <%= Rails.root.join("palkad_storage.json") %>
+  credentials: <%= Rails.application.credentials.palkad_gcs.to_json %>
   bucket: palkad_storage
 
 google:
