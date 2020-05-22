@@ -36,7 +36,7 @@ class Post < ApplicationRecord
     if group_id == nil
       tgs = tags
       update_column :tag_set, tgs.join('')
-      tgs.each{|t| tag_list.add(t.downcase) }
+      tgs.each{|t| search_tag_list.add(t.downcase) }
       self.save
     elsif group.welcome_posts.present?
       group.welcome_posts.map(&:update_tag_set)
