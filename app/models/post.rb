@@ -24,27 +24,42 @@ class Post < ApplicationRecord
   default_scope -> {where(hidden: false)}
   scope :favourite, -> {where('favourite = true')}
   scope :normal, -> {where("COALESCE(LOWER(text), '') NOT LIKE '%#{'dik'.reverse}%'").order('updated_at DESC')}
-  scope :with_orientation, -> (orientation) {
-    orientation == 'straight' || orientation.blank? ? where("not(COALESCE(LOWER(title), '') LIKE '%gay%') ") : where("LOWER(title) LIKE '%#{orientation}%'")
-  }
   scope :with_group_id, -> (group_id) { where(group_id: group_id) }
 
+  acts_as_taggable_on :search_tags
+ 
   def tags
-    "#{phones.map(&:tags).map(&:to_s).join(' ')} #{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{text} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}".split(' ').uniq.select{|t| !STOP_WORDS.include?(t)}.join('')
+    tgs = "#{phones.map(&:tags).map(&:to_s).join(' ')} #{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{text} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}".split(' ').uniq.select{|t| !STOP_WORDS.include?(t)}
   end
 
   def update_tag_set
     if group_id == nil
-      update_column :tag_set, tags
+      tgs = tags
+      update_column :tag_set, tgs.join('')
+      tgs.each{|t| tag_list.add(t.downcase) }
+      self.save
     elsif group.welcome_posts.present?
       group.welcome_posts.map(&:update_tag_set)
     end
   end
 
+  
+
   def self.text_search(q, g, o)
     queries = q.split(' ')
     compount_query = queries.map{|query| "LOWER(tag_set) like '%#{query.downcase}%'"}.join(' AND ')
     Post.where(compount_query).where(group_id: g)
+  end
+
+  def self.text_search(q, g, o)
+    queries = q.split(' ').map(&:downcase).select{|t| !STOP_WORDS.include?(t)}
+    compount_query = queries.map{|query| "tags.name like '%#{query}%'"}.join(' OR ')
+    sql = ActsAsTaggableOn::Tag.where(compount_query)
+                         .joins('inner join taggings on taggings.tag_id = tags.id')
+                         .joins('inner join posts on taggings.taggable_id = posts.id')
+                         .select('posts.id as post_id')
+                         
+    Post.where(id: sql.map(&:post_id))
   end
 
   def self.search(q, group_id, orientation = nil, location = nil)
