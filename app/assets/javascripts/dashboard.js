@@ -48,7 +48,7 @@ $(document).on('turbolinks:load', function() {
 		$(this).closest('.answer-action').html(e.detail[2].responseText)
 	})
 
-	$('.accepted_responses, .responses-container, .questions, .questions-container').on('ajax:success', '.view-more', function(e) {
+	$('.customers, .accepted_responses, .responses-container, .questions, .questions-container').on('ajax:success', '.view-more', function(e) {
 		$(this).closest('.more-responses').replaceWith(e.detail[2].responseText)
 		fill_map_link()
 	})

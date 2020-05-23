@@ -1,0 +1,9 @@
+.my-space.col-lg-6.col-sm-6.col-12.pull-left
+  %h3
+    = "Find Users"
+  .search
+    = text_field_tag 'search', nil, placeholder: 'search', data: {url: search_group_users_path(@group, page: 1)}
+  .clearfix
+  .questions
+.my-space.col-lg-6.col-sm-6.col-12.pull-left
+  .chats

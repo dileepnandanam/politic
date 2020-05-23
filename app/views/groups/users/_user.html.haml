@@ -1,0 +1,5 @@
+.user.question{id: user.id}
+  .name
+    = link_to user.name, show_chats_group_user_path(@group, user), class: 'select-chat', remote: true
+  .phone
+    = user.email

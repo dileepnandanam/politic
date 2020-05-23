@@ -12,6 +12,8 @@
         = link_to 'delete', group_path(group), method: 'delete', remote: true, class: 'delete-question'
       .pull-left
         = link_to 'dashboard', dashboard_group_path(group), class: 'dashboard'
+      .pull-left
+        = link_to 'users', group_users_path(group), class: 'dashboard'
       .clearfix
   - if !current_user.is_a_member_of(group) && group.user != current_user
     = link_to 'join', new_group_group_response_path(group)

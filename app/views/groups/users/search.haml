@@ -1,0 +1,6 @@
+.customers
+  - @users.each do |user|
+    = render partial: 'user', locals: {user: user}
+  - if @users.next_page
+    .more-responses
+      = link_to 'view more', search_group_users_path(@group, query: params[:query], page: (params[:page].present? ? params[:page].to_i + 1 : 2)), remote: true, class: 'view-more'

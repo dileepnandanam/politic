@@ -25,6 +25,19 @@ $(document).on('turbolinks:load', function() {
   $('.filter-response-link').click(function(e) {
     $('.filter-response-link').toggleClass('d-none', 500)
   })
+
+  $(document).on('ajax:success', '.select-chat', function(e) {
+    $('.chats').html(e.detail[2].responseText)
+  })
+
+  $.ajax({
+    url: $('.chat-container').data('url'),
+    method: 'GET',
+    success: function(data) {
+      $('.chat-container').html(data)
+      initChat()
+    }
+  })
 })
 
 

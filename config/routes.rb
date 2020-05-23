@@ -75,6 +75,10 @@ Rails.application.routes.draw do
     resources :group_responses, controller: 'groups/group_responses' do
       put :accept, on: :member
     end
+    resources :users, controller: 'groups/users' do
+      get :search, on: :collection
+      get :show_chats, on: :member
+    end
     resources :questions, controller: 'groups/questions' do
       put :reorder, on: :collection
       resources :options, controller: 'groups/questions/options'

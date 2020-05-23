@@ -4,6 +4,9 @@
     .posts-container
       = render partial: 'groups/posts/posts', locals: {posts: @posts.sort_by(&:sequence)}
     
+      .post
+        .chat-container{data: {url: show_chats_group_user_path(@group, @group.user)}}
+
     - if current_user && current_user == @group.user  
       .group-action
         - unless params[:preview] 
