@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'access_restricted', to: 'home#access_restricted'
   get 'sitemap', to: 'home#sitemap'
 
+  resources :notifications
   resources :galeries
   resources :pictures, controller: 'pictures' do
     put :select_survey, on: :member

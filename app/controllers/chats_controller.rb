@@ -10,6 +10,28 @@ class ChatsController < ApplicationController
         sender_id: current_user.id,
         ack_url: ''
       )
+      group = Group.find params[:chat][:group_id]
+      if current_user.owned_groups.include? group
+        link = group_users_path(group)
+      else
+        link = group_path(group)
+      end
+      @notif = V2::Notification.create(
+        sender_id: current_user.id,
+        item_id: @chat.id,
+        item_type: 'Chat',
+        target_id: @chat.reciver_id,
+        link: link,
+        action: "#{@chat.sender.name} sent a message"
+      )
+      message = ApplicationController.render(
+        partial: 'chats/message',
+        locals: { notif: @notif }
+      )
+      ApplicationCable::SurveyNotificationsChannel.broadcast_to(
+        @chat.reciver,
+        message: message
+      )
       render 'create', layout: false
     else
       render text: 'chat has no body', status: 422, content_type: 'text/plain'

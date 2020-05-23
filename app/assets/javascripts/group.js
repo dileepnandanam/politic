@@ -33,11 +33,27 @@ $(document).on('turbolinks:load', function() {
   $.ajax({
     url: $('.chat-container').data('url'),
     method: 'GET',
+    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
     success: function(data) {
       $('.chat-container').html(data)
       initChat()
     }
   })
+
+  bindDeleteNotification = function() {
+    $('.notification').click(function() {
+      notif = $(this)
+      $.ajax({
+        url: '/notifications/' + $(notif).data('id'),
+        method: 'DELETE',
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        success: function(data) {
+          $(notif).remove()
+        }
+      })
+    })
+  }
+  bindDeleteNotification()
 })
 
 
