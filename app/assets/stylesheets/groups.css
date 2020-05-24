@@ -222,3 +222,8 @@ a.user-switch.pull-left {
 .picture .remove-image, .picture .select-survey, .picture .pin-select {
   margin-right: 12px; 
 }
+.chats-container .chats {
+  padding: 2% !important;
+  background-color: darkgray;
+  border-radius: 6px;
+}

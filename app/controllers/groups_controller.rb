@@ -17,8 +17,8 @@ class GroupsController < ApplicationController
   end
 
   def show
-    V2::Notification.where(target_id: current_user.id, item_type: 'Chat').delete_all
     @group = Group.find(params[:id])
+    V2::Notification.where(sender_id: @group.user.id, target_id: current_user.try(:id), item_type: 'Chat').delete_all
     @posts = @group.posts.order('sequence ASC')
     unless @group.visible
       if current_user.nil?
