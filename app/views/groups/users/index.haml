@@ -5,5 +5,6 @@
     = text_field_tag 'search', nil, placeholder: 'search', data: {url: search_group_users_path(@group, page: 1)}
   .clearfix
   .questions
+    = render template: 'groups/users/search'
 .my-space.col-lg-6.col-sm-6.col-12.pull-left
   .chats

@@ -12,9 +12,9 @@ class ChatsController < ApplicationController
       )
       group = Group.find params[:chat][:group_id]
       if current_user.owned_groups.include? group
-        link = group_users_path(group)
+        link = group_path(group, target_id: @user.id, sender_id: current_user.id)
       else
-        link = group_path(group)
+        link = group_users_path(group, target_id: @user.id, sender_id: current_user.id) 
       end
       @notif = V2::Notification.create(
         sender_id: current_user.id,

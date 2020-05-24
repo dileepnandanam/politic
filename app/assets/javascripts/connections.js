@@ -1,7 +1,7 @@
 initChat = function() {
 	var BindFormSubmit = function() {
-		$('.chats').on('ajax:success', 'form', function(e) {
-			$('.chats').off('ajax:success', 'form')
+		$(document).on('ajax:success', '.chats form', function(e) {
+			$(document).off('ajax:success', '.chats form')
 			$('.chat-thread').append(e.detail[2].responseText)
 			$(this).find('textarea').val('')
 			scroll_to_bottom()
@@ -11,10 +11,11 @@ initChat = function() {
 	BindFormSubmit()
 
   BindSend = function() {
-		$('.chats').on('keypress', 'textarea', function(e) {
-			$('.chats').off('keypress', 'textarea')
-			if(e.which == 13)
-				Rails.fire($(this).closest('form')[0], 'submit')
+		$(document).on('keypress', '.chats textarea', function(e) {
+			$(document).off('keypress', '.chats textarea')
+			if(e.which == 13) {
+  			Rails.fire($(this).closest('form')[0], 'submit')
+			}
 			BindSend()
 		})
 	}
@@ -31,7 +32,7 @@ initChat = function() {
 	scroll_to_bottom()
 }
 $(document).on('turbolinks:load', function() {
-	
+
 
 	$('.chat-thread').scrollTop($('.chat-thread').prop('scrollHeight'))
 
@@ -44,5 +45,4 @@ $(document).on('turbolinks:load', function() {
 	})
 
 	
-	initChat()
 })

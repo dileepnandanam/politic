@@ -28,6 +28,7 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('ajax:success', '.select-chat', function(e) {
     $('.chats').html(e.detail[2].responseText)
+    initChat()
   })
 
   $.ajax({
@@ -53,7 +54,7 @@ $(document).on('turbolinks:load', function() {
       })
     })
   }
-  bindDeleteNotification()
+  
 })
 
 
