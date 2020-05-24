@@ -4,9 +4,13 @@ class ChatsController < ApplicationController
     @chat = Chat.new(chat_params.merge(sender_id: current_user.id))
     
     if @chat.save
+      msg = ApplicationController.render(
+        partial: 'chats/chat',
+        locals: { chat: @chat, current_user: current_user }
+      )
       ApplicationCable::ChatNotificationsChannel.broadcast_to(
         @user,
-        chat: "<div class='chat'>#{@chat.text}</div>",
+        chat: msg,
         sender_id: current_user.id,
         ack_url: ''
       )

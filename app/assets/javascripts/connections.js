@@ -1,8 +1,13 @@
 initChat = function() {
+	previous_chat_id = '0'
 	var BindFormSubmit = function() {
 		$(document).on('ajax:success', '.chats form', function(e) {
 			$(document).off('ajax:success', '.chats form')
-			$('.chat-thread').append(e.detail[2].responseText)
+			if(parseInt($(e.detail[2].responseText).attr('id')) != previous_chat_id)
+			{
+			  $('.chat-thread').append(e.detail[2].responseText)
+			  previous_chat_id = parseInt($(e.detail[2].responseText).attr('id'))
+			}
 			$(this).find('textarea').val('')
 			scroll_to_bottom()
 		  BindFormSubmit()
