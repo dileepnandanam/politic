@@ -18,6 +18,17 @@
   .post-body
     .post-text
       = raw(post.text)
+
+
+    .videos-container
+      = render partial: 'videos/videos', locals: {post: post}
+
+    - unless params[:preview]
+      - if post.user == current_user
+        = link_to 'add video', new_video_path(post_id: post.id), remote: true, class: 'add-video pull-right'
+    .clearfix
+    
+    
     
     .galeries-container
       - post.galeries.order('updated_at desc').each do |g|

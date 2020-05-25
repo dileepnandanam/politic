@@ -35,14 +35,15 @@
 
     .social_links-container
       = render partial: 'posts/social_links', locals: {post: post}
+
+    .videos-container
+      = render partial: 'videos/videos', locals: {post: post}
     
     - unless params[:preview]
       - if post.user == current_user
         = link_to 'add video', new_video_path(post_id: post.id), remote: true, class: 'add-video pull-right'
     .clearfix
     
-    .videos-container
-      = render partial: 'videos/videos', locals: {post: post}
 
     
     
