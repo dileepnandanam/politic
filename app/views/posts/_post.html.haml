@@ -46,17 +46,17 @@
     
 
     
-    
+    .galeries-container
+      - post.galeries.order('updated_at desc').each do |g|
+        = render partial: 'galeries/galery', locals: {galery: g}
+    .galery-form-container
+    .clearfix
     - unless params[:preview]
       - if post.user == current_user
         = link_to 'add galery', new_galery_path(post_id: post.id), remote: true, class: 'new-galery'
         .clearfix
-        .galery-form-container
     .clearfix
 
-    .galeries-container
-      - post.galeries.order('updated_at desc').each do |g|
-        = render partial: 'galeries/galery', locals: {galery: g}
     
 
     - unless params[:preview]  

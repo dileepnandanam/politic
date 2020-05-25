@@ -3,9 +3,13 @@ $(document).on('turbolinks:load', function() {
     $('.new-video-form-container').html(e.detail[2].responseText)
   })
 
+  previous = ''
   $(document).on('ajax:success', '.new-video-form', function(e) {
-    $('.videos').append(e.detail[2].responseText)
-    $(this).remove()
+    if (previous != e.detail[2].responseText) {
+      $('.videos').append(e.detail[2].responseText)
+      $(this).remove()
+      previous = e.detail[2].responseText
+    }
   })
   $(document).on('ajax:error', '.new-video-form', function(e) {
     $('.new-video-form-container').html(e.detail[2].responseText)

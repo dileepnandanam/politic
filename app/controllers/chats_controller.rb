@@ -2,7 +2,9 @@ class ChatsController < ApplicationController
   def create
     @user = User.find(chat_params[:reciver_id])
     @chat = Chat.new(chat_params.merge(sender_id: current_user.id))
-    
+    if @chat.sender_id == @chat.reciver_id
+      render text: 'chat has no body', status: 422, content_type: 'text/plain' and return
+    end
     if @chat.save
       msg = ApplicationController.render(
         partial: 'chats/chat',
