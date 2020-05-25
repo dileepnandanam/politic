@@ -37,3 +37,6 @@
 .configure {
   display: none;
 }
+.video {
+  margin: 12px; 
+}

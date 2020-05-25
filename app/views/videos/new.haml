@@ -1,0 +1,7 @@
+= simple_form_for @video, html: {remote: true, class: 'new-video-form'} do |f|
+  = f.input :iframe
+  = f.input :caption
+  = f.hidden_field :post_id, value: params[:post_id]
+  = f.submit
+  = link_to 'cancel', '#', class: 'cancel-form'
+  .clearfix

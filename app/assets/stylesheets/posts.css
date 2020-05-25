@@ -185,3 +185,21 @@
   margin-bottom: 30px;
   margin-left: 12px;
 }
+.video-iframe {
+  position: relative;
+  padding-bottom: 50%;
+  width: 90%;
+  margin: auto;
+}
+.video-iframe iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.video-caption {
+  margin: 12px;
+  margin: auto;
+  text-align: center;
+}

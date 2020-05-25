@@ -11,6 +11,7 @@ class Post < ApplicationRecord
   before_destroy :cancel_notifications
   has_many :galeries
   has_many :phones
+  has_many :videos
 
   after_create :notify_connections
 
