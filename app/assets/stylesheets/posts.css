@@ -83,7 +83,7 @@
   box-shadow: 1px 1px 4px #f7adad, -1px -1px 4px #f7adad;
 }
 .small-post:hover {
-      box-shadow: 1px 1px 4px #ac8888, -1px -1px 4px #b88d8d;
+  box-shadow: 1px 1px 4px #ac8888, -1px -1px 4px #b88d8d;
 }
 .small-post h2 {
   margin-bottom: 0px;
