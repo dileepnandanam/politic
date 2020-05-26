@@ -4,15 +4,15 @@
     .posts-container
       = render partial: 'groups/posts/posts', locals: {posts: @posts.sort_by(&:sequence)}
     
-      .post
-        .chat-container{data: {url: show_chats_group_user_path(@group, @group.user)}}
+      
 
     - if current_user && current_user == @group.user  
       .group-action
         - unless params[:preview] 
           = link_to 'New page', new_group_post_path(@group), remote: true, class: 'new-group-post'
     .new-post
-    
+    .post
+      .chat-container{data: {url: show_chats_group_user_path(@group, @group.user)}}
 - if current_user != @group.user || params[:preview].present?
   = stylesheet_link_tag('post_styles.css')
   = stylesheet_link_tag('site_styles.css')
