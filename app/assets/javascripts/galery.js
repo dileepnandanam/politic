@@ -68,6 +68,7 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('ajax:success', '.edit-form-container form', function(e) {
     $(this).closest('.picture').replaceWith(e.detail[2].responseText)
+    prepare_asinc_reload()
   })
 
   $(document).on('ajax:success', '.remove-image', function() {

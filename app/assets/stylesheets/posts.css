@@ -73,6 +73,9 @@
 .project-container, .quick-poll-container, .survey-container, .galery-container {
   margin-bottom: 20px;
 }
+.inner .survey-container {
+  margin-bottom: 0px !important;
+}
 .small-post {
   padding-bottom: 0px;
   border: none !important;
