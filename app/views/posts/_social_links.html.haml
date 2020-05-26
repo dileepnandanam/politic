@@ -3,13 +3,11 @@
     - if post[name].present?
       = link_to post[name] do
         = image_tag(image_path("#{name}.png"), class: 'social-ico') 
-  - if current_user == post.user && params[:preview].blank?
-    = link_to 'edit social links', '#', class: 'edit-social-link pull-right'
-    .clearfix
+  .clearfix
   .edit-social-link-form.d-none
     = simple_form_for(post, url: update_urls_post_path(post), method: :put, html: {remote: true, class: 'edit-social-links'}) do |f|
       - ['facebook_url', 'twitter_url', 'pinterest_url', 'gmail'].each do |name|
         = f.input name
-      = f.submit
-      = link_to 'cancel', '#', class: 'cancel-edit-social-link-form cancel-form'
+      = f.submit 'submit'
+    = link_to 'cancel', '#', class: 'cancel-edit-social-link-form', remote: true
 .clearfix

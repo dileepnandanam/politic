@@ -27,14 +27,25 @@
     - if post.lat.present?
       .map-link{data:{addr: "#{post.lat},#{post.lngt}"}}
         = image_tag('map.png', class: 'map-ico')
-    .clearfix 
-    .post-text  
+    .clearfix
+    .post-text
       = raw(post.text)
     
-    
+    .phones-container
+      - post.phones.each do |p|
+        = render partial: 'phones/phone', locals: {phone: p}
+
+    - unless params[:preview]
+      - if post.user == current_user
+        .phone-form-container
+        = link_to 'add phone', new_phone_path(post_id: post.id), class: 'new-phone', remote: true
+        .clearfix
 
     .social_links-container
       = render partial: 'posts/social_links', locals: {post: post}
+    - if current_user == post.user && params[:preview].blank?
+      = link_to 'edit social links', '#', class: 'edit-social-link pull-right'
+    .clearfix
 
     .videos-container
       = render partial: 'videos/videos', locals: {post: post}

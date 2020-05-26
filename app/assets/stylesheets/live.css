@@ -51,7 +51,7 @@ input, textarea {
     border: 1px solid !important;
     border-radius: 4px !important;
 }
-.cancel-form, input[name=commit] {
+.cancel-form, input[name=commit], .cancel-edit-social-link-form {
     font-size: 20px;
     font-weight: 100;
     background-color: #5565c5 !important;
@@ -61,6 +61,9 @@ input, textarea {
     text-transform: uppercase !important;
     float: left !important;
     margin-right: 12px !important;
+}
+.cancel-edit-social-link-form {
+    margin-top: 12px;
 }
 input[name=commit] {
     margin-right: 12px !important

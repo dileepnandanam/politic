@@ -256,11 +256,11 @@ bind_button_pin()
 
     $('.edit-social-link').click(function(e) {
       e.preventDefault()       
-      $(this).siblings('.edit-social-link-form').removeClass('d-none')
+      $('.edit-social-link-form').removeClass('d-none')
     })
     $('.cancel-edit-social-link-form').click(function(e) {
       e.preventDefault()
-      this.closest('.edit-social-link-form').addClass('d-none')
+      $(this).closest('.edit-social-link-form').addClass('d-none')
     })
     $(document).on('ajax:success', '.edit-social-links', function(e) {
       $(this).closest('.social-links').replaceWith(e.detail[2].responseText)

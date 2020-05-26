@@ -206,3 +206,6 @@
   margin: auto;
   text-align: center;
 }
+.new-galery, .new-phone, .add-video, .remove-image, .new-phone {
+  margin-bottom: 30px;
+}
