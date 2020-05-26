@@ -1,6 +1,7 @@
 - @responses.each do |r|
   .question
     = link_to r.user.name, survey_survey_response_path(@survey, r)
+    .pull-right= r.created_at.created_at.strftime("%Y %B %d - %T")
     .clearfix
     .answers
       .answer.highlight
@@ -8,7 +9,10 @@
           phone no
         .clearfix
         .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
-          = r.user.email
+          - if r.user.email.include?('@')
+            = r.user.email
+          - else
+            = link_to r.user.email, "tel:#{r.user.email}"
         .clearfix 
       - r.answers.joins(:question).each do |a|
         .answer

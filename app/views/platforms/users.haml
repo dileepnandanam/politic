@@ -1,0 +1,16 @@
+.users
+  - @users.each do |u|
+    .user
+      .user-name.pull-left
+        = "#{u.name}"
+        = link_to u.email, "tel:#{u.email}"
+      .site.pull-left
+        - if u.owned_groups.count > 0
+          - first = u.owned_groups.first.created_at.to_i
+          - now = Time.now.to_i
+          - duration = (now - first)/2592000
+          = "websites created #{duration} months ago"
+        - else
+          has no websites
+      .clearfix
+  = will_paginate(@users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)

@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get 'access_restricted', to: 'home#access_restricted'
   get 'sitemap', to: 'home#sitemap'
 
+  resource :platform do
+    get :users, on: :collection
+  end
   resources :videos
   resources :notifications
   resources :galeries

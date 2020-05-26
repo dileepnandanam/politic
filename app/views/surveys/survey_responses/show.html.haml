@@ -2,6 +2,7 @@
 
 .question
   = render partial: 'users/user_details', locals: {user: @response.user}
+  .pull-right= @response.created_at.strftime("%Y %B %d - %T")
   .clearfix
   .answers
     .answer{class: 'highlight'}
@@ -9,7 +10,10 @@
         phone no
       .clearfix
       .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
-        = @response.user.email
+        - if @response.user.email.include?('@')
+          = @response.user.email
+        - else
+          = link_to @response.user.email, "tel:#{@response.user.email}"
       .clearfix
     - if @survey.posts.first
       - group = @survey.posts.first.group

@@ -21,16 +21,17 @@
     .current-user-data.d-none{data:{signed_in: current_user.present?.to_s}}
     .current-user-location-data.d-none{data:{lat: current_user.present? ? current_user.lat.present?.to_s : 'true'}}
     - group = @group || @post.try(:project)
-    - if group.present? && group.banner_title.present?
-      .banner{style: (group.background.attachment ? "background-image: url('#{group.background.attachment.service_url}');" : '') + (group.blur_banner? ? "filter: blur(5px)" : '') }
-      .banner-overlay
-        .header-text-container
-          .banner-heading
-            - if group.banner_title.present?
-              .white.text-center= group.banner_title
-              - if group.banner_description.present?
-                .banner-site-description.white
-                  .white= raw group.banner_description
+    - if ['groupsshow', 'postsshow'].include?(controller_name + action_name)
+      - if group.present? && group.banner_title.present?
+        .banner{style: (group.background.attachment ? "background-image: url('#{group.background.attachment.service_url}');" : '') + (group.blur_banner? ? "filter: blur(5px)" : '') }
+        .banner-overlay
+          .header-text-container
+            .banner-heading
+              - if group.banner_title.present?
+                .white.text-center= group.banner_title
+                - if group.banner_description.present?
+                  .banner-site-description.white
+                    .white= raw group.banner_description
     .page.col-lg-12.col-sm-12.col-12
       .nav-bar.signed{class: current_user ? '' : 'd-none'}
         .dropdown
@@ -63,12 +64,14 @@
           = link_to 'Sites', groups_path, class: 'sub-nav-bar-item ' + (@flag == 'project' ? 'active-tab' : '')
           = link_to 'Surveys', surveys_path, class: 'sub-nav-bar-item ' + (@flag == 'survey' ? 'active-tab' : '')
           = link_to 'Quick polls', quick_polls_path, class: 'sub-nav-bar-item ' + (@flag == 'quick_poll' ? 'active-tab' : '')
-          
+          - if current_user.admin?
+            = link_to 'Platform', users_platform_path, class: 'sub-nav-bar-item ' + (@flag == 'platform' ? 'active-tab' : '')
+
           - if @post.present?
             = link_to 'preview', post_path(@post, preview: true), target: '_blank', class: 'sub-nav-bar-item'
           - elsif @group.present?
             = link_to 'preview', group_path(@group, preview: true), target: '_blank', class: 'sub-nav-bar-item'
-          
+
               
           .clearfix
       .common-bg{class: "#{controller_name}-#{action_name}"}
