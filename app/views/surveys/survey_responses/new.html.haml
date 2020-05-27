@@ -3,9 +3,9 @@
   .clearfix
   - if current_user.blank? && !@survey.anonymous?
     = render partial: 'authorize'
-  .pull-left
-    %h3= @survey.name
-    %p= @survey.description
+  
+  %h3= @survey.name
+  %p= @survey.description
   .clearfix
   - if @survey.questions.count > 0
     = render partial: 'form'

@@ -10,19 +10,13 @@
           = link_to 'we are free', '#', class: "feature free pull-right #{post.lat.nil? ? '' : 'd-none'}"
         = link_to 'we are busy', '#', class: "feature busy pull-right #{post.lat.present? ? '' : 'd-none'}"
         = link_to 'edit', edit_post_path(post), remote: true, class: 'edit-post-link'
-      - if (current_user.try :admin?)
-        - if post.featured?
-          = render partial: 'unpin', locals: {post: post}
-        - else
-          = render partial: 'pin', locals: {post: post}
   .clearfix
   .post-title
     - if post.project.present?
       %h1.name= link_to post.title, group_path(post.project)
     - else
       %h1.name.black= post.title
-  .clearfix
-  .edit-container 
+  .clearfix 
   .post-body
     - if post.lat.present?
       .map-link{data:{addr: "#{post.lat},#{post.lngt}"}}
@@ -30,7 +24,7 @@
     .clearfix
     .post-text
       = raw(post.text)
-    
+    .edit-container
     .phones-container
       - post.phones.each do |p|
         = render partial: 'phones/phone', locals: {phone: p}
