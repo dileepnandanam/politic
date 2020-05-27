@@ -1,7 +1,7 @@
 - @responses.each do |r|
   .question
     = link_to r.user.name, survey_survey_response_path(@survey, r)
-    .pull-right= r.created_at.created_at.strftime("%Y %B %d - %T")
+    .pull-right= r.created_at.strftime("%Y %B %d - %T")
     .clearfix
     .answers
       .answer.highlight

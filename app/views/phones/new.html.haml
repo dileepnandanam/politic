@@ -3,4 +3,4 @@
   = f.input :number
   = f.hidden_field :post_id, value: params[:post_id]
   = f.submit 'add phone'
-  = link_to 'cancel', '#', class: 'cancel-form'
+  = link_to 'cancel', '#', class: 'cancel-form', remote: true
