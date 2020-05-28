@@ -5,11 +5,11 @@
   .post-actions
     - unless params[:preview]
       - if current_user == post.user
-        = link_to 'delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right delete-question'
+        = link_to 'Delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right delete-question'
         - unless post.group
-          = link_to 'we are free', '#', class: "feature free pull-right #{post.lat.nil? ? '' : 'd-none'}"
-        = link_to 'we are busy', '#', class: "feature busy pull-right #{post.lat.present? ? '' : 'd-none'}"
-        = link_to 'edit', edit_post_path(post), remote: true, class: 'edit-post-link'
+          = link_to 'We are free', '#', class: "feature free pull-right #{post.lat.nil? ? '' : 'd-none'}"
+        = link_to 'We are busy', '#', class: "feature busy pull-right #{post.lat.present? ? '' : 'd-none'}"
+        = link_to 'Edit', edit_post_path(post), remote: true, class: 'edit-post-link'
   .clearfix
   .post-title
     - if post.project.present?
@@ -32,13 +32,13 @@
     - unless params[:preview]
       - if post.user == current_user
         .phone-form-container
-        = link_to 'add phone', new_phone_path(post_id: post.id), class: 'new-phone', remote: true
+        = link_to 'Add phone', new_phone_path(post_id: post.id), class: 'new-phone', remote: true
         .clearfix
 
     .social_links-container
       = render partial: 'posts/social_links', locals: {post: post}
     - if current_user == post.user && params[:preview].blank?
-      = link_to 'edit social links', '#', class: 'edit-social-link pull-right'
+      = link_to 'Edit social links', '#', class: 'edit-social-link pull-right'
     .clearfix
 
     .videos-container
@@ -46,7 +46,7 @@
     
     - unless params[:preview]
       - if post.user == current_user
-        = link_to 'add video', new_video_path(post_id: post.id), remote: true, class: 'add-video pull-right'
+        = link_to 'Add video', new_video_path(post_id: post.id), remote: true, class: 'add-video pull-right'
     .clearfix
     
 
@@ -58,7 +58,7 @@
     .clearfix
     - unless params[:preview]
       - if post.user == current_user
-        = link_to 'add galery', new_galery_path(post_id: post.id), remote: true, class: 'new-galery'
+        = link_to 'Add galery', new_galery_path(post_id: post.id), remote: true, class: 'new-galery'
         .clearfix
     .clearfix
 

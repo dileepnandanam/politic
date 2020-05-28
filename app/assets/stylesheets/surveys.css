@@ -152,3 +152,9 @@ img.map-ico {
 .clickable:hover h4 {
   color: blue;
 }
+.survey-radio {
+  margin-top: 4px !important;
+}
+.survey-checkbox {
+  margin-top: 4px !important;
+}

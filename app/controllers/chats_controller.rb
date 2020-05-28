@@ -1,10 +1,17 @@
 class ChatsController < ApplicationController
   def create
+    group = Group.find params[:chat][:group_id]
     @user = User.find(chat_params[:reciver_id])
     @chat = Chat.new(chat_params.merge(sender_id: current_user.id))
+    binding.pry
     if @chat.sender_id == @chat.reciver_id
       render text: 'chat has no body', status: 422, content_type: 'text/plain' and return
     end
+
+    if !current_user.is_a_member_of(group) && !current_user.owned_groups.include?(group) 
+      render text: 'chat has no body', status: 422, content_type: 'text/plain' and return
+    end
+
     if @chat.save
       msg = ApplicationController.render(
         partial: 'chats/chat',
@@ -16,7 +23,7 @@ class ChatsController < ApplicationController
         sender_id: current_user.id,
         ack_url: ''
       )
-      group = Group.find params[:chat][:group_id]
+      
       if current_user.owned_groups.include? group
         link = group_path(group, target_id: @user.id, sender_id: current_user.id)
       else

@@ -210,3 +210,6 @@
 .new-galery, .new-phone, .add-video, .remove-image, .new-phone {
   margin-bottom: 30px;
 }
+.form-check-label.boolean.optional {
+  padding-left: 12px;
+}

@@ -1,6 +1,6 @@
 = f.input :title
 = f.input :text
-= f.input :enable_comment_vote, label: 'enable comment and votes'
+= f.input :enable_comment_vote, label: 'enable comment and votes', input_html: {class: 'post-checkbox'}
 .clearfix
 = f.submit :post, class: 'btn-primary pull-left'
 = link_to 'cancel', '#', class: 'cancel-form pull-left', remote: true

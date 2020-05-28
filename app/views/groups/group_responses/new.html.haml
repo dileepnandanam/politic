@@ -1,5 +1,5 @@
 .question.response-form
-  = link_to 'configure', dashboard_group_path(@group), class: 'pull-right configure'
+  = link_to 'edit questions', dashboard_group_path(@group), class: 'pull-right configure'
   .clearfix
   %h3= @group.name
   %p.text-left= @group.description
