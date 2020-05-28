@@ -1,5 +1,5 @@
 .video
-  - if current_user != video.post.user || !params[:preview]
+  - if current_user == video.post.user && !params[:preview]
     = link_to 'edit', edit_video_path(video, post_id: video.post.id), remote: true, class: 'edit-video pull-left'
     = link_to 'delete', video_path(video, post_id: video.post.id), remote: true, class: 'delete-video pull-right', method: 'delete'
     .clearfix
