@@ -213,3 +213,20 @@
 .form-check-label.boolean.optional {
   padding-left: 12px;
 }
+.video {
+  border: 1px solid black;
+}
+.edit-video {
+  margin-left: 12px;
+}
+.delete-video {
+  margin-right: 12px;
+}
+.video-caption {
+  width: 90%;
+  margin: auto;
+  margin-top: 12px;
+}
+.form {
+  background-color: white;
+}

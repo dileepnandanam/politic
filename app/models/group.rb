@@ -25,7 +25,7 @@ class Group < ApplicationRecord
     "#{survey_tags} #{question_tags} #{option_tags}"
   end
   def tags
-    "#{banner_title} #{banner_description} #{signup_form_tags} #{posts.map(&:tags).map(&:to_s).join(' ')}"
+    "#{banner_title} #{banner_description} #{signup_form_tags} #{posts.map(&:tags).flatten.join(' ')}"
   end
 
   def parent

@@ -12,6 +12,7 @@ Rails.application.config.assets.precompile += %w( embed.css )
 Rails.application.config.assets.precompile += %w( post_styles.css )
 Rails.application.config.assets.precompile += %w( site_styles.css )
 Rails.application.config.assets.precompile += %w( site_home_page.css )
+Rails.application.config.assets.precompile += %w( post_admin_style.css )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets

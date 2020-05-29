@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include ActionView::Helpers::SanitizeHelper
+
   reverse_geocoded_by :lat, :lngt
   belongs_to :post_user, class_name: 'User', optional: true
   belongs_to :user
@@ -30,13 +32,13 @@ class Post < ApplicationRecord
   acts_as_taggable_on :search_tags
  
   def tags
-    tgs = "#{phones.map(&:tags).map(&:to_s).join(' ')} #{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{text} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}".split(' ').uniq.select{|t| !STOP_WORDS.include?(t)}
+    content = "#{phones.map(&:tags).map(&:to_s).join(' ')} #{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{strip_tags(text)} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}"
+    content.split(' ').uniq.select{|t| !STOP_WORDS.include?(t)}
   end
 
   def update_tag_set
     if group_id == nil
       tgs = tags
-      update_column :tag_set, tgs.join('')
       tgs.each{|t| search_tag_list.add(t.downcase) }
       self.save
     elsif group.welcome_posts.present?

@@ -5,19 +5,20 @@
       = link_to 'delete', galery_path(galery), class: 'edit-button delete-galery pull-right', method: :delete, remote: true
       .clearfix
       .edit-galery-container
-  %h2.text-center= raw display_name(galery, :name)
+  %h2.text-center.text= raw display_name(galery, :name)
   .post-text.text-center
-    = raw galery.description
+    .text= raw galery.description
   
       
   .pictures
     - galery.pictures.each do |picture|
       = render partial: 'pictures/picture', locals: {picture: picture}
     .clearfix
-    - if current_user == galery.user
-      - unless params[:preview]
-        .upload-picture
-          = link_to 'add item', new_picture_path(galery_id: galery.id), class: 'add-galery-picture', remote: true
-          .picture-form-container
-          .clearfix
+  - if current_user == galery.user
+    - unless params[:preview]
+      .upload-picture
+        .picture-form-container
+        = link_to 'add item', new_picture_path(galery_id: galery.id), class: 'add-galery-picture', remote: true
+        
         .clearfix
+      .clearfix

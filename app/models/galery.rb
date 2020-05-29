@@ -1,4 +1,6 @@
 class Galery < ApplicationRecord
+  include ActionView::Helpers::SanitizeHelper
+
   has_many :pictures
   belongs_to :user
   belongs_to :post
@@ -9,7 +11,7 @@ class Galery < ApplicationRecord
   end
 
   def tags
-    "#{name} #{description} #{pictures.map(&:tags).flatten.join(' ')}"
+    "#{name} #{strip_tags(description)} #{pictures.map(&:tags).flatten.join(' ')}"
   end
 
   def parent

@@ -16,3 +16,5 @@
 - if current_user != @group.user || params[:preview].present?
   = stylesheet_link_tag('post_styles.css')
   = stylesheet_link_tag('site_styles.css')
+- if current_user == @group.user && !params[:preview].present?
+  = stylesheet_link_tag('post_admin_style.css')

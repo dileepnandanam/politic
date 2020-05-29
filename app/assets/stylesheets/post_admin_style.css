@@ -1,0 +1,10 @@
+.post form {
+  background-color: white !important;
+  padding: 4px;
+}
+.post .video, .post .picture, .post .galery {
+  border: 1px solid red;
+}
+.post-text textarea {
+  height: 400px;
+}

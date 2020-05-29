@@ -3,3 +3,5 @@
     = render partial: 'posts/post', locals: {post: @post}
 - if current_user != @post.user || params[:preview].present?
   = stylesheet_link_tag('post_styles.css')
+- if current_user == @post.user && !params[:preview].present?
+  = stylesheet_link_tag('post_admin_style.css')
