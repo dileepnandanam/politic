@@ -66,7 +66,8 @@
   font-size: 40px;
 }
 .small-post-title h1 a {
-  font-size: 30px;
+  font-size: 24px;
+  font-weight: bold;
 }
 .post {
   background-color: white;
@@ -80,8 +81,11 @@
 .small-post {
   padding-bottom: 0px;
   border: none !important;
-  padding-bottom: 0px;
+  padding: 0px 12px;
   box-shadow: 1px 1px 4px #f7adad, -1px -1px 4px #f7adad;
+}
+.small-post-title .name {
+  margin-bottom: 0px;
 }
 .small-post:hover {
   box-shadow: 1px 1px 4px #ac8888, -1px -1px 4px #b88d8d;
