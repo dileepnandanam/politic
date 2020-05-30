@@ -12,5 +12,11 @@
           = "websites created #{duration} months ago"
         - else
           has no websites
+      .business-card.pull-left
+        - if u.posts.count > 0
+          = link_to u.posts.first.title, "/#{u.posts.first.id}"
+        - else
+          = 'regular user'
       .clearfix
+
   = will_paginate(@users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)

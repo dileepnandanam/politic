@@ -8,3 +8,6 @@
 .post-text textarea {
   height: 400px;
 }
+.post .response-form form {
+  background-color: transparent !important;
+}

@@ -32,7 +32,7 @@ class Post < ApplicationRecord
   acts_as_taggable_on :search_tags
  
   def tags
-    content = "#{phones.map(&:tags).map(&:to_s).join(' ')} #{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{strip_tags(text)} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}"
+    content = "#{phones.map(&:tags).join(' ')} #{videos.map(&:tags).join(' ')} #{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{strip_tags(text)} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}"
     content.split(' ').uniq.select{|t| !STOP_WORDS.include?(t)}
   end
 
