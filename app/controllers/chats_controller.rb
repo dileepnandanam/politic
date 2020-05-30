@@ -3,7 +3,6 @@ class ChatsController < ApplicationController
     group = Group.find params[:chat][:group_id]
     @user = User.find(chat_params[:reciver_id])
     @chat = Chat.new(chat_params.merge(sender_id: current_user.id))
-    binding.pry
     if @chat.sender_id == @chat.reciver_id
       render text: 'chat has no body', status: 422, content_type: 'text/plain' and return
     end

@@ -2,7 +2,7 @@
 
 .question
   = render partial: 'users/user_details', locals: {user: @response.user}
-  .pull-right= @response.created_at.strftime("%Y %B %d - %I:%M %P")
+  .pull-right= @response.created_at.in_time_zone('Mumbai').strftime("%Y %B %d - %I:%M %P")
   .clearfix
   .answers
     .answer{class: 'highlight'}

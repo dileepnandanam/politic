@@ -10,7 +10,7 @@
       .pull-left
         = link_to 'delete', survey_path(survey), method: 'delete', remote: true, class: 'delete-question'
       .pull-left
-        = link_to 'dashboard', dashboard_survey_path(survey), class: 'dashboard'
+        = link_to 'questions & answers', dashboard_survey_path(survey), class: 'dashboard'
       .clearfix
   .pull-left
     = link_to 'submit', new_survey_survey_response_path(survey), class: 'preview-submit'
