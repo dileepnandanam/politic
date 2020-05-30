@@ -1,7 +1,7 @@
 - @responses.each do |r|
   .question
     = link_to r.user.name, survey_survey_response_path(@survey, r)
-    .pull-right= r.created_at.strftime("%Y %B %d - %T")
+    .pull-right= r.created_at.strftime("%Y %B %d - %I:%M %P")
     .clearfix
     .answers
       .answer.highlight
@@ -60,12 +60,12 @@
               .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
                 = 'User has skipped this question'
     - if r.user.lat.present?
-      .map-link-pull-left{data:{addr: "#{r.user.lat},#{r.user.lngt}"}}
+      .map-link.pull-left{data:{addr: "#{r.user.lat},#{r.user.lngt}"}}
         = image_tag('map.png', class: 'map-ico')
     - if r.state == 'accepted'
       .pull-right
         accepted
-      .clearfix
+    .clearfix
 - if @responses.next_page
   .more-responses
     = link_to 'View more', responses_survey_path(@survey, page: params[:page].present? ? params[:page].to_i + 1 : 2), remote: true, class: 'view-more'
