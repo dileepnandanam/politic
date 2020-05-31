@@ -89,4 +89,10 @@ class UsersController < ApplicationController
     total = Chat.where(sender_id: current_user.id, reciver_id: from_user_id) + Chat.where(sender_id: from_user_id, reciver_id: current_user.id)
     total.sort_by(&:created_at)
   end
+
+  def reverse(chat)
+    new_chat = chat
+    new_chat.sender_id = chat.reciver_id
+    new_chat 
+  end
 end

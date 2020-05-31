@@ -7,14 +7,14 @@ class ChatsController < ApplicationController
       render text: 'chat has no body', status: 422, content_type: 'text/plain' and return
     end
 
-    if !current_user.is_a_member_of(group) && !current_user.owned_groups.include?(group) 
+    if !current_user.is_a_member_of(group) && !current_user.owned_groups.include?(group) && !group.bypass_welcome_page?
       render text: 'chat has no body', status: 422, content_type: 'text/plain' and return
     end
 
     if @chat.save
       msg = ApplicationController.render(
         partial: 'chats/chat',
-        locals: { chat: @chat, current_user: current_user }
+        locals: { chat: reverse(@chat), current_user: current_user, reverse: true }
       )
       ApplicationCable::ChatNotificationsChannel.broadcast_to(
         @user,

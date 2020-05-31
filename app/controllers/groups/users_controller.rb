@@ -2,7 +2,7 @@ class Groups::UsersController < GroupsController
   before_action :find_group
   def index
     if params[:sender_id].present?
-      @users = @group.users.where(id: params[:sender_id]).paginate(per_page: 10, page: params[:page])
+      @users = User.where(id: params[:sender_id]).paginate(per_page: 10, page: params[:page])
       V2::Notification.where(sender_id: params[:sender_id], item_type: 'Chat').delete_all
     else
       @users = @group.users.paginate(per_page: 10, page: params[:page])
