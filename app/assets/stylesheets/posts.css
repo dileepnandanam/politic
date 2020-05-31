@@ -50,10 +50,10 @@
 }
 .notification {
   background: #e1d6d6;
-  padding: 4px 8px 4px 8px;
-  margin-bottom: 4px;
+  padding: 0px 8px 0px 8px;
+  margin-bottom: -1px;
   border-radius: 4px;
-  border: 2px solid #2640a0;
+  border: 1px solid #2640a0;
   background: linear-gradient(90deg, rgba(199,193,3,1) 0%, rgba(180,237,17,1) 35%, rgba(0,212,255,1) 100%);
 }
 .notification a {
