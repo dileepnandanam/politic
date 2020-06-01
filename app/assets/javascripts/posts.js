@@ -1,10 +1,12 @@
 disable_for_unauthorized = function() {
-  if(!$('.current-user-data').data('signed-in')) {
+  if(!$('.current-user-data').data('signed-in'))
     $('.quick-poll-container').find('input, textarea').prop('disabled', 'disabled')
-  if(!$('.survey-container').data('anonymous') && !$('.current-user-data').data('signed-in'))
-    $('.survey-container').find('input, textarea').prop('disabled', 'disabled')
-  }
-
+  
+  $.each($('.question.response-form.survey'), function(i, elem){
+    if(!$(elem).data('anonymous') && !$('.current-user-data').data('signed-in')){
+      $(this).find('input, textarea').prop('disabled', 'disabled')
+    }
+  })
 }
 present_survey = function() {
   $.each($('.survey-container'), function(i, elem) {
