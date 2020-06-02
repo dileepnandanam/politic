@@ -59,6 +59,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = current_user.owned_groups.new(group_params)
+    SampleSurvey.new(@group, 'sign Up', 'be our customer (sample signup form)').prepare_signup_questions
     if @group.save
       render 'group', layout: false, status: 200
     else

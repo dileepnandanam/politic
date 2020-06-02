@@ -1,7 +1,8 @@
 class SampleSurvey
   def initialize(object, name, description)
     @object = object
-    @object.update name: name, description: description
+    @object.update name: name if @object.name.blank?
+    @object.update description: description if @object.description.blank?
   end
 
   def prepare
