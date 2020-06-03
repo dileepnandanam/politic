@@ -124,7 +124,9 @@ class Surveys::SurveyResponsesController < SurveysController
   end
 
   def anonymous_user
-    User.yield_anonymous_user
+    new_user = User.yield_anonymous_user
+    sign_in(:user, new_user)
+    new_user
   end
 
   def parent

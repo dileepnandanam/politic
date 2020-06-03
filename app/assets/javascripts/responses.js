@@ -5,6 +5,7 @@ $(document).on('turbolinks:load', function() {
     $(this).replaceWith(e.detail[2].responseText)
     $(container).css('height', height)
     $(container).animate({height: '300px'}, 1000)
+    locate_me()
   })
 
   $(document).on('ajax:error', '.quick-poll-form, .survey_response_form', function(e) {
