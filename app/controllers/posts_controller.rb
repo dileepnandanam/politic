@@ -83,7 +83,7 @@ class PostsController < PostBaseController
     if @post.save
       sample_survey = Survey.create(user_id: current_user.id)
       @post.update survey_id: sample_survey.id
-      SampleSurvey.new(sample_survey, 'Contact us', 'sample survey (edit it upon your needs)').prepare
+      SampleSurvey.new(sample_survey, 'Contact us', 'give details').prepare
       @post.update_tag_set
       render partial: 'posts/small_post', layout: false, status: 200, 
       locals: {
