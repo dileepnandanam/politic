@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
     @posts = @group.posts.order('sequence ASC')
     unless @group.visible
       if current_user.nil?
-        render 'home/access_restricted' and return
+        render 'groups/group_responses/access_restricted' and return
       elsif current_user.is_a_member_of(@group) || current_user == @group.user
         render 'show' and return
       else

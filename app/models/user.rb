@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_many :owned_groups, class_name: 'Group', foreign_key: :user_id
 
 
-  validates_uniqueness_of :email
+  validates_uniqueness_of :email, message: 'or phone number is already taken'
   validates :name, presence: true
   validates :encrypted_password, presence: true
 
