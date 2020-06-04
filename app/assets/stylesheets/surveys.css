@@ -160,3 +160,6 @@ img.map-ico {
 .survey-checkbox {
   margin-top: 4px !important;
 }
+.questions-container {
+  padding-bottom: 24px;
+}

@@ -1,13 +1,7 @@
 .my-space.col-lg-4.col-sm-6.col-xs-12.pull-left
   %h3
     Signup form Questions
-  .show-options.clickable.d-none
-    %h4
-      Show options
-  - if @questions.length > 0
-    .hide-options.clickable
-      %h4
-        Hide options
+
   - if @questions.count == 0
     .question.help-text
       %p
@@ -15,6 +9,13 @@
   .questions-container.reorderable-group-questions{data:{url: reorder_group_questions_path(@group)}} 
     - @questions.each do |question|
       = render partial: 'groups/questions/question', locals: {question: question}
+  .show-options.clickable.d-none
+    %h3
+      Show options
+  .hide-options.clickable{class: @questions.any?{|q| q.options.present?} ? '' : 'd-none'}
+    %h3
+      Hide options
+      
   .new-question
   .questions-actions
     = link_to 'Add question', new_group_question_path(@group), class: 'add-question', remote: true

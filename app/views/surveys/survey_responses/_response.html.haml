@@ -8,6 +8,16 @@
         = a.line
       - else
         = 'User has skipped this question'
+    .clearfix
+  - elsif a.question.answer_type == 'number'
+    .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
+      = a.question.text
+    .clearfix
+    .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+      - if a.number.present?
+        = a.number
+      - else
+        = 'User has skipped this question'
     .clearfix  
   - elsif a.question.answer_type == 'text'
     .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.col-12
@@ -45,7 +55,7 @@
       = a.question.text
     .clearfix
     - if a.choices.present?
-      - a.choices.each do |choice|
+      - a.choices.joins(:option).each do |choice|
         .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
           = choice.option.name
       .clearfix
