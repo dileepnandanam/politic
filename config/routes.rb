@@ -111,6 +111,8 @@ Rails.application.routes.draw do
     resources :survey_responses, controller: 'surveys/survey_responses' do
       put :accept, on: :member
       put :reject, on: :member
+      get :copy, on: :member
+      post :paste, on: :member
     end
   end
 

@@ -13,6 +13,7 @@ $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.new-option-form > form', function(e) {
     $(this).closest('.new-option-form').siblings('.options').append(e.detail[2].responseText)
     $(this).remove()
+    $('.hide-options').removeClass('d-none')
   })
 
   $(document).on('ajax:error', '.option-form', function(e) {
@@ -87,6 +88,9 @@ $(document).on('turbolinks:load', function() {
     $('.handle-response').removeClass('d-none')
     $(this).addClass('d-none')
   })
-
+  
+  $(document).on('ajax:success', '.assign-user', function(e) {
+    $(this).css('color', 'red')
+  })
 })
 

@@ -8,8 +8,4 @@
     .login-suggest.text-left
       Already have an account,
       = link_to 'try sign in', new_user_session_path, style: 'color: blue'
-  - if @group.posts.count == 0 || @group.questions.count == 0
-    %h3.message
-      This site is not ready yet
-  - else
-    = render partial: 'form'
+  = render partial: 'form'

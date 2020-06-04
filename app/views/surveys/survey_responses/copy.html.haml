@@ -1,0 +1,10 @@
+.users
+  - @users.each do |u|
+    .question
+      .site.pull-left
+        = u.name
+      .site.pull-left
+        = u.email
+      .site.pull-left
+        = link_to 'assign', paste_survey_survey_response_path(user_id: u.id), method: :post, remote: true, class: 'assign-user'
+      .clearfix

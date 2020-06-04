@@ -234,3 +234,8 @@
 .form {
   background-color: white;
 }
+.default {
+  color: black;
+  background-color: white;
+  padding: 12px;
+}

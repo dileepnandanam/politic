@@ -3,12 +3,40 @@ class Surveys::SurveyResponsesController < SurveysController
   before_action :find_survey
   protect_from_forgery with: :null_session
 
+  def copy
+    @users = SurveyResponse.where(user_id: current_user.id, state: 'accepted').joins(:survey)
+      .joins('inner join users on users.id = surveys.user_id')
+      .select('users.email, users.name, users.id')
+  end
+
+  def paste
+    @reciver = User.find(params[:user_id])
+    @response = SurveyResponse.find(params[:id])
+    @reciver.update survey_response_id: @response.id
+    @notif = V2::Notification.create(
+      sender_id: current_user.id,
+      item_id: @response.id,
+      item_type: 'SurveyResponse',
+      target_id: @reciver.id,
+      link: survey_survey_response_path(@response.survey, @response),
+      action: "You are assigned for a task"
+    )
+    message = ApplicationController.render(
+      partial: 'surveys/survey_responses/message',
+      locals: { notif: @notif }
+    )
+    ApplicationCable::SurveyNotificationsChannel.broadcast_to(
+      @reciver,
+      message: message
+    )
+    render plain: 'ack', status: 200
+  end
 
   def show
-    @response = @survey.survey_responses.find(params[:id])
-    if @response.user == current_user || @survey.user == current_user
-      V2::Notification.where(target_id: current_user.id, sender_id: @response.user.id, item_id: @response.id).first.try :destroy if @survey.user == current_user
-      V2::Notification.where(target_id: current_user.id, sender_id: @survey.user.id, item_id: @response.id).first.try :destroy if @response.user == current_user
+    @response = SurveyResponse.find(params[:id])
+    if @response.user == current_user || @survey.user == current_user || current_user.survey_response == @response
+      V2::Notification.where(target_id: current_user.id, sender_id: @response.user.id, item_id: @response.id).first.try :destroy
+      V2::Notification.where(target_id: current_user.id, sender_id: @survey.user.id, item_id: @response.id).first.try :destroy
       @next = @survey.survey_responses.where("survey_responses.id < #{@response.id}").last
       @previous = @survey.survey_responses.where("survey_responses.id > #{@response.id}").first
     else

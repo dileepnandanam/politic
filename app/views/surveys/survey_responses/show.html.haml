@@ -30,6 +30,8 @@
   - if @survey.user == current_user
     = link_to 'accept', accept_survey_survey_response_path(@survey, @response), remote: true, class: 'handle-response', method: :put
     = link_to 'reject', reject_survey_survey_response_path(@survey, @response), remote: true, class: 'handle-response', method: :put
+    = link_to 'pass details', copy_survey_survey_response_path(@survey, @response), class: 'handle-response'
+    
 - if current_user == @survey.user  
   - if @previous.present?
     = link_to "previous", survey_survey_response_path(@survey, @previous), class: 'response-navigate'

@@ -13,7 +13,7 @@
   .pictures
     - galery.pictures.each do |picture|
       = render partial: 'pictures/picture', locals: {picture: picture}
-    .clearfix
+  .clearfix
   - if current_user == galery.user
     - unless params[:preview]
       .upload-picture

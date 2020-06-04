@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :quick_polls
   has_many :group_responses
   has_many :galeries
+  belongs_to :survey_response, optional: true
   has_many :groups, through: :group_responses do 
     def visible
       where('group_responses.state = ?', 'accepted')

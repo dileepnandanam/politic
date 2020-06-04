@@ -107,7 +107,9 @@ label {
   margin-top: 12px;
 }
 .handle-response {
-  margin-right: 30%;
+  margin-right: 12px;
+  padding: 4px 6px;
+  border: 1px solid white;
 }
 .survey-question-text-line, .survey_response_answers_line {
   font-size: 24px;

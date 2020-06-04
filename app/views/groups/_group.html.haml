@@ -13,7 +13,7 @@
       .pull-left
         = link_to 'users', group_users_path(group), class: 'dashboard'
       .pull-left
-        = link_to 'questions and answers', dashboard_group_path(group), class: 'dashboard'
+        = link_to 'signup questions and answers', dashboard_group_path(group), class: 'dashboard'
       
       .clearfix
   - if !current_user.is_a_member_of(group) && group.user != current_user

@@ -1,5 +1,5 @@
 .chats-container.chats
-  %h3
+  %h3.default
     = "Chat with #{@user.name}"
   .chat-thread{id: @user.id}
     - @chats.each do |c|

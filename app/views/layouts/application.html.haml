@@ -45,7 +45,7 @@
             = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'dropdown-item account-action', rel: 'nofollow'
             
         
-        = link_to 'send location', '#', class: 'i-am-here pull-right', rel: :nofollow
+        = link_to 'Use GPS', '#', class: 'i-am-here pull-right', rel: :nofollow
         
         
         
@@ -86,5 +86,5 @@
     - if Rails.env.development? && !params[:preview]
       .acc-switcher
         - User.all.sort_by(&:name).each do |u|
-          = link_to u.name, switch_user_path(u), class: "user-switch pull-left #{(current_user== u ? 'black' : '')}"
+          = link_to u.name, switch_user_path(u), class: "user-switch pull-left #{(current_user== u ? 'white' : '')}"
         .clearfix
