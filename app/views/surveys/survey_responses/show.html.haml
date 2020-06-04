@@ -20,9 +20,9 @@
     - if group
       - group_response = group.group_responses.where(user_id: @response.user_id).first
     - if group_response
-      - group_response.answers.joins(:question).each do |a|
+      - group_response.answers.joins(:question).order('questions.sequence ASC').each do |a|
         = render partial: 'response', locals: {a: a, css: 'highlight'}
-    - @response.answers.joins(:question).each do |a|
+    - @response.answers.joins(:question).order('questions.sequence ASC').each do |a|
       = render partial: 'response', locals: {a: a, css: ''}
     - if @response.user.lat.present?
       .map-link{data:{addr: "#{@response.user.lat},#{@response.user.lngt}"}}

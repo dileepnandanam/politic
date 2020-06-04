@@ -14,7 +14,7 @@
           - else
             = link_to r.user.email, "tel:#{r.user.email}"
         .clearfix 
-      - r.answers.joins(:question).each do |a|
+      - r.answers.joins(:question).order('questions.sequence ASC').each do |a|
         .answer
           - if a.question.answer_type == 'line'
             .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
