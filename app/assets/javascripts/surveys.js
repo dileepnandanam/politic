@@ -90,7 +90,8 @@ $(document).on('turbolinks:load', function() {
   })
   
   $(document).on('ajax:success', '.assign-user', function(e) {
-    $(this).css('color', 'red')
+    $(this).css('color', 'yellow')
+    $(this).html('assigned')
   })
 })
 
