@@ -1,8 +1,8 @@
 $(document).on('turbolinks:load', function() {
+  audio = new Audio($('.response-notif').attr('src'));
   App.cable.subscriptions.create("ApplicationCable::NotificationsChannel", {
     received(data) {
-      $('.notification_count').html(parseInt($('.notification_count').text()) + 1)
-      $('.notification_count').addClass('has-new-chats')
+      audio.play()
     }
   })
 })

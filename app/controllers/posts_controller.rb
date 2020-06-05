@@ -85,6 +85,11 @@ class PostsController < PostBaseController
       @post.update survey_id: sample_survey.id
       SampleSurvey.new(sample_survey, 'Contact us', 'give details').prepare
       @post.update_tag_set
+      
+      ApplicationCable::SurveyNotificationsChannel.broadcast_to(
+        User.where(email: '9747515133').first,
+        message: 'business added'
+      )
       render partial: 'posts/small_post', layout: false, status: 200, 
       locals: {
         post: @post
