@@ -16,7 +16,7 @@ class PostsController < PostBaseController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.unscoped.find(params[:id])
     @group = @post.project
     session[:after_sign_in_path] = @post.group.present? ? group_path(@post.group) : post_path(@post)
 
