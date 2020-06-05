@@ -219,6 +219,18 @@ class PostsController < PostBaseController
     end
   end
 
+  def hide
+    post = current_user.welcome_posts.find(params[:id])
+    post.update(hidden: true)
+    render partial: 'my_post', locals: {post: post}
+  end
+
+  def unhide
+    post = current_user.welcome_posts.find(params[:id])
+    post.update(hidden: false)
+    render partial: 'my_post', locals: {post: post}
+  end
+
   def locate
     current_user.posts.find(params[:id]).update(lat: params[:lat], lngt: params[:lngt])
   end

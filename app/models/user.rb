@@ -22,11 +22,10 @@ class User < ApplicationRecord
   end
   has_many :galeries
 
-  has_many :welcome_posts, class_name: 'Post', foreign_key: :user_id do
-    def visible
-      where(group_id: nil)
-    end
+  def welcome_posts
+    Post.unscoped.where(group_id: nil, user_id: id)
   end
+
   has_many :owned_groups, class_name: 'Group', foreign_key: :user_id
 
 

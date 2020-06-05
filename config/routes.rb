@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   end
   
   resources :posts, controller: 'posts', scope: '/' do
+    put :hide, on: :member
+    put :unhide, on: :member
     get :boo, on: :collection
     put :update_urls, on: :member
     get :my_posts, on: :collection

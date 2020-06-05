@@ -268,4 +268,7 @@ bind_button_pin()
       $(this).closest('.social-links').replaceWith(e.detail[2].responseText)
     })
     
+    $(document).on('ajax:success', '.post-visibility', function(e) {
+      $(this).closest('.post').replaceWith(e.detail[2].responseText)
+    })
 })

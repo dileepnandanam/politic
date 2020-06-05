@@ -1,0 +1,12 @@
+.group-post.post.small-post
+  .small-post-title
+    %h1.text-left.text-left.pull-left.name= link_to "#{post.display_title}", "/#{post.id}", {}.merge(action_name == 'boo' ? {} : {rel: 'canonical'})
+    .pull-right
+      - if post.hidden?
+        = link_to 'unhide', unhide_post_path(post), method: :put, remote: true, class: 'post-visibility'
+      - else
+        = link_to 'hide', hide_post_path(post), method: :put, remote: true, class: 'post-visibility'
+  .clearfix
+  .post-body
+    .post-text.text-left
+      = raw(HTML_Truncator.truncate(post.text, 10))
