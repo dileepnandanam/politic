@@ -179,8 +179,8 @@ a.user-switch.pull-left {
   width: 100%;
   text-align: center;
 }
-.banner {
-  padding-top: 58%;
+.banner img {
+  width: 100%;
 }
 .banner-heading {
   position: absolute;

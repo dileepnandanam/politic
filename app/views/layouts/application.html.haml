@@ -22,8 +22,9 @@
     .current-user-location-data.d-none{data:{lat: current_user.present? ? current_user.lat.present?.to_s : 'true'}}
     - group = @group || @post.try(:project)
     - if ['groupsshow', 'postsshow'].include?(controller_name + action_name)
-      - if group.present? && group.banner_title.present?
-        .banner{style: (group.background.attachment ? "background-image: url('#{group.background.attachment.service_url}');" : '') + (group.blur_banner? ? "filter: blur(5px)" : '') }
+      - if group.present?
+        .banner{style: group.blur_banner? ? "filter: blur(5px)" : ''}
+          = image_tag_with_fallback(@group, :background)
         .banner-overlay
           .header-text-container
             .banner-heading
