@@ -220,13 +220,13 @@ class PostsController < PostBaseController
 
   def hide
     post = current_user.welcome_posts.find(params[:id])
-    post.update(published: true)
+    post.update(published: false)
     render partial: 'my_post', locals: {post: post}
   end
 
   def unhide
     post = current_user.welcome_posts.find(params[:id])
-    post.update(published: false)
+    post.update(published: true)
     render partial: 'my_post', locals: {post: post}
   end
 
