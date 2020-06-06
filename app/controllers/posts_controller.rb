@@ -48,7 +48,11 @@ class PostsController < PostBaseController
       @posts = Post.search(params[:query], nil, orientation, [current_user.try(:lat), current_user.try(:lngt)])
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
-      render 'posts', layout: false and return
+      if request.format.html? || bot_request?
+        render 'index' and return
+      else
+        render 'posts', layout: false and return
+      end
     else
       @posts = Post.where(group_id: nil).order('id asc')
       @posts = @posts.paginate(per_page: 12, page: params[:page])
@@ -56,12 +60,7 @@ class PostsController < PostBaseController
       
     end
 
-    render 'index' and return
-    if request.format.html? || bot_request?
-      render 'index'
-    else
-      render 'posts', layout: false
-    end
+    render 'index'
   end
 
   def my_posts
@@ -221,13 +220,13 @@ class PostsController < PostBaseController
 
   def hide
     post = current_user.welcome_posts.find(params[:id])
-    post.update(hidden: true)
+    post.update(published: true)
     render partial: 'my_post', locals: {post: post}
   end
 
   def unhide
     post = current_user.welcome_posts.find(params[:id])
-    post.update(hidden: false)
+    post.update(published: false)
     render partial: 'my_post', locals: {post: post}
   end
 

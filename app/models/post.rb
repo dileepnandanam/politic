@@ -51,7 +51,7 @@ class Post < ApplicationRecord
   def self.text_search(q, g, o)
     queries = q.split(' ')
     compount_query = queries.map{|query| "LOWER(tag_set) like '%#{query.downcase}%'"}.join(' AND ')
-    Post.where(compount_query).where(group_id: g)
+    Post.where(compount_query).where(group_id: g, published: true)
   end
 
   def self.text_search(q, g, o)
@@ -60,6 +60,7 @@ class Post < ApplicationRecord
     sql = ActsAsTaggableOn::Tag.where(compount_query)
                          .joins('inner join taggings on taggings.tag_id = tags.id')
                          .joins('inner join posts on taggings.taggable_id = posts.id')
+                         .where('posts.published = ?', true)
                          .select('posts.id as post_id')
                          
     Post.where(id: sql.map(&:post_id))
