@@ -149,6 +149,7 @@ a.user-switch.pull-left {
   position: relative;
   width: 100%;
   background-position: center;
+  min-height: 50%;
 }
 .banner.posts_page {
   display: block;
