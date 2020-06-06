@@ -1,6 +1,7 @@
 $(document).on('turbolinks:load', function() {
   $('.banner').imagesLoaded( function() {
     $('.banner-overlay').css('height', $('.banner').css('height'))
+    $('.banner-overlay').show()
   })
 
   $('.questions-container.reorderable-group-questions').sortable({
