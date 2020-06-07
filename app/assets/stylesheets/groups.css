@@ -76,7 +76,8 @@
 	color: black;
 }
 .comment-actions {
-	margin-top: 12px;
+	margin: 12px;
+  display: inline-block;
 }
 .new-group-post {
 	display: none;
