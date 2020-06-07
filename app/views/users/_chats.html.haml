@@ -1,6 +1,6 @@
 .chats-container
   %h3.default
-    = "Chat with #{@user.name}"
+    = "Chat with Us"
   .chat-thread{id: @user.id}
     - @chats.each do |c|
       = render partial: 'chats/chat', locals: {chat: c}
