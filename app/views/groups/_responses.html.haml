@@ -1,6 +1,9 @@
 - @responses.each do |r|
   .question
     = render partial: 'users/user_details', locals: {user: r.user}
+    - count = SurveyResponse.joins(:survey).where(surveys: {user_id: current_user.id}, survey_responses:{user_id: r.user.id}).count
+    .clearfix
+    = "#{count} response(s)"
     .clearfix
     .answers
       .answer
