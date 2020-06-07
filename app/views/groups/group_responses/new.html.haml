@@ -2,7 +2,7 @@
   = link_to 'edit questions', dashboard_group_path(@group), class: 'pull-right configure'
   .clearfix
   %h3= @group.name
-  %p.text-left= @group.description
+  %p.text-center= @group.description
   .clearfix
   - unless current_user
     .login-suggest.text-left
