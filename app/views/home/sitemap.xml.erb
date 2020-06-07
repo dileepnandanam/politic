@@ -8,19 +8,11 @@
 </url>
 <% end -%>
 
-  <% Post.where(group_id: nil).each do |p| -%>
+  <% Post.where(group_id: nil, published: true).each do |p| -%>
     <url>
       <loc>https://www.palkad.com/<%= p.id %></loc>
       <% t = p.updated_at.to_s.split %>
       <lastmod><%= "#{t[0]}T#{t[1]}+00:00" %></lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.5</priority>
-    </url>
-  <% end -%>
-
-  <% (1..Post.where(group_id: nil).count).each do |p| -%>
-    <url>
-      <loc>https://www.palkad.com/posts/boo?page=<%= p %></loc>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
