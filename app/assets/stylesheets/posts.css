@@ -162,6 +162,8 @@
 }
 .pictures {
   border-top: 1px solid;
+  display: flex;
+  justify-content: center;
 }
 .picture {
   text-align: right;
@@ -238,6 +240,7 @@
   color: black;
   background-color: white;
   padding: 12px;
+  border-radius: 12px;
 }
 .phones-container {
   margin-bottom: 24px;
