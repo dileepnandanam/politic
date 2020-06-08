@@ -61,7 +61,7 @@ class Post < ApplicationRecord
       ActsAsTaggableOn::Tag.where("name like '%#{queries[query]}%'").all.map(&:taggings).flatten.map(&:taggable_id)
     }
     post_ids = post_id_sets.inject{|p,q| p & q}
-    Post.where(id: post_ids)
+    Post.where(id: post_ids, published: true)
   end
 
   def self.search(q, group_id, orientation = nil, location = nil)
