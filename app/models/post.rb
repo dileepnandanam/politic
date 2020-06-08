@@ -56,14 +56,12 @@ class Post < ApplicationRecord
 
   def self.text_search(q, g, o)
     queries = q.split(' ').map(&:downcase).select{|t| !STOP_WORDS.include?(t)}
-    compount_query = queries.map{|query| "tags.name like '#{query}%'"}.join(' AND ')
-    sql = ActsAsTaggableOn::Tag.where(compount_query)
-                         .joins('inner join taggings on taggings.tag_id = tags.id')
-                         .joins('inner join posts on taggings.taggable_id = posts.id')
-                         .where('posts.published = ?', true)
-                         .select('posts.id as post_id')
-                         
-    Post.where(id: sql.map(&:post_id))
+    sql = []
+    post_id_sets = (0..(queries.count - 1)).map { |query|
+      ActsAsTaggableOn::Tag.where("name like '%#{queries[query]}%'").all.map(&:taggings).flatten.map(&:taggable_id)
+    }
+    post_ids = post_id_sets.inject{|p,q| p & q}
+    Post.where(id: post_ids)
   end
 
   def self.search(q, group_id, orientation = nil, location = nil)
