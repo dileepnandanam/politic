@@ -37,7 +37,7 @@ class PostsController < PostBaseController
     end
 
     if current_user && current_user.is_a_member_of(@group)
-      redirect_to group_path(@group) and return
+      @signed = true
     end
   end
 
@@ -248,7 +248,7 @@ class PostsController < PostBaseController
   protected
 
   def location
-    if current_user
+    if current_user && current_user.lat
       [current_user.try(:lat), current_user.try(:lngt)]
     else
       [session[:lat], session[:lngt]]

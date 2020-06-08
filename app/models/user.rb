@@ -77,4 +77,12 @@ class User < ApplicationRecord
     user = User.create(name: 'anonymous', email: random_str, password: random_str, password_confirmation: random_str)
     user
   end
+
+  def new_password
+    new_p = "abcdefghijklmnopqrstuvwxyz1234567890".split('').sample(6).join
+    self.password = new_p
+    self.password_confirmation = new_p
+    self.save
+    new_p
+  end
 end

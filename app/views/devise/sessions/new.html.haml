@@ -7,7 +7,7 @@
           label: 'email or phone no.',                     
           required: false,                     
           autofocus: true,                     
-          input_html: { autocomplete: "email" }
+          input_html: { autocomplete: "email", class: 'login-field' }
       .question
         = f.input :password,                              
           required: false,                                
@@ -18,5 +18,6 @@
     .clearfix
     = link_to 'new user join here', new_user_registration_path
     .clearfix
-    = link_to 'forgot password', new_user_password_path
+    = link_to 'forgot password', new_user_password_path, class: 'reset-email-pass'
     .clearfix
+    = link_to 'forgot password', sms_password_users_path, class: 'reset-phone-pass d-none', method: :put

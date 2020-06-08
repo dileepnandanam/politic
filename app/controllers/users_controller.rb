@@ -74,6 +74,37 @@ class UsersController < ApplicationController
     end
   end
 
+  def sms_password
+    email = params[:email]
+    user = User.where(email: email).first
+    if user.present?
+      new_password = user.new_password
+      message = %{
+        Palkad.com
+        Your new password is #{new_password} .
+        You can change this on Account > edit profile
+      }
+
+      requested_url = 'https://api.textlocal.in/send/?'
+                 
+      uri = URI.parse(requested_url)
+      http = Net::HTTP.start(uri.host, uri.port)
+      request = Net::HTTP::Get.new(uri.request_uri)
+       
+      res = Net::HTTP.post_form(uri, 
+        'apikey' => 'sy5OPGumyHI-2bNIEzDfny2v9FZdvOG3VRH4yaT1fP',
+        'message' => message,
+        #'sender' => 'palkad',
+        'numbers' => user.email)
+      response = JSON.parse(res.body)
+      binding.pry
+      flash[:notice] = 'A new password is sent to your registered phone number'
+    end
+    redirect_to root_path
+  end
+
+
+
   protected
 
   def after_sign_in_path
