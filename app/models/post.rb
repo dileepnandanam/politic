@@ -56,7 +56,7 @@ class Post < ApplicationRecord
 
   def self.text_search(q, g, o)
     queries = q.split(' ').map(&:downcase).select{|t| !STOP_WORDS.include?(t)}
-    compount_query = queries.map{|query| "tags.name like '#{query}%'"}.join(' OR ')
+    compount_query = queries.map{|query| "tags.name like '#{query}%'"}.join(' AND ')
     sql = ActsAsTaggableOn::Tag.where(compount_query)
                          .joins('inner join taggings on taggings.tag_id = tags.id')
                          .joins('inner join posts on taggings.taggable_id = posts.id')
