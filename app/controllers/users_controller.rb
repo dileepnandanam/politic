@@ -66,7 +66,12 @@ class UsersController < ApplicationController
   end
 
   def locate
-    current_user.update(lat: params[:lat], lngt: params[:lngt])
+    if current_user
+      current_user.update(lat: params[:lat], lngt: params[:lngt])
+    else
+      session[:lat] = params[:lat]
+      session[:lngt] = params[:lngt]
+    end
   end
 
   protected

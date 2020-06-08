@@ -45,7 +45,7 @@ class PostsController < PostBaseController
 
   def index
     if params[:query].present?
-      @posts = Post.search(params[:query], nil, orientation, [current_user.try(:lat), current_user.try(:lngt)])
+      @posts = Post.search(params[:query], nil, orientation, location)
       @posts = @posts.paginate(per_page: 12, page: params[:page])
       @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
       if request.format.html? || bot_request?
@@ -246,6 +246,14 @@ class PostsController < PostBaseController
 
 
   protected
+
+  def location
+    if current_user
+      [current_user.try(:lat), current_user.try(:lngt)]
+    else
+      [session[:lat], session[:lngt]]
+    end
+  end
 
   def orientation
     @orientation = cookies[:orientation]

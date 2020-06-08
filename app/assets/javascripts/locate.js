@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+  locate_me()
   fill_map_link()
   $('.free').click(function(e) {
     locate_post()

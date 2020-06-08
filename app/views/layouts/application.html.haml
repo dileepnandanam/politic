@@ -56,8 +56,8 @@
       .nav-bar.unsigned{class: current_user ? 'd-none' : ''}
           
         = link_to "Sign in", new_user_session_path, class: 'pull-right', rel: :nofollow
-        
-        = link_to "Sign up", new_user_registration_path, class: 'pull-right', rel: :nofollow
+
+        = link_to 'Use GPS', '#', class: 'i-am-here pull-right', rel: :nofollow
         = link_to 'home', '/', class: 'pull-right', rel: :nofollow
         .clearfix
       - if current_user.present? && params[:preview].blank?
@@ -84,9 +84,7 @@
           .model-response-viewer
             - V2::Notification.where(target_id: current_user.id).each do |notif|
               = render partial: 'surveys/survey_responses/message', locals: {notif: notif}
-        - elsif @group.blank? && @post.blank?
-          %h4.default.gps-message
-            Sign up or Sign in to use GPS and find nearby services.
+
         = yield
     - if Rails.env.development? && !params[:preview]
       .acc-switcher
