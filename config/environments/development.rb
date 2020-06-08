@@ -42,9 +42,9 @@ Rails.application.configure do
   config.action_mailer.smtp_settings  = {            
     :address              => "smtp.gmail.com", 
     :port                 => 465,
-    :domain               => 'lototribe.com',               
-    :user_name            => 'openstalk.notification@gmail.com',
-    :password             => ENV['GMAIL_PASSWORD'],         
+    :domain               => 'palkad.com',               
+    :user_name            => 'notification.palkad@gmail.com',
+    :password             => 'mypassword',         
     :authentication       => 'plain',
     :ssl                  => true,
     :tls                  => true,

@@ -15,5 +15,8 @@
       = f.input :remember_me, as: :boolean
     .form-actions
       = f.button :submit, "Log in"
+    .clearfix
     = link_to 'new user join here', new_user_registration_path
+    .clearfix
+    = link_to 'forgot password', new_user_password_path
     .clearfix
