@@ -224,3 +224,6 @@ a.user-switch.pull-left {
   background-color: darkgray;
   border-radius: 6px;
 }
+.chat-container {
+  margin: 12px;
+}
