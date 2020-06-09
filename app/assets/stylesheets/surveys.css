@@ -35,9 +35,8 @@
   margin-bottom: 12px;
 }
 .response-form, .response-form .question, .response-form.question {
-  background-color: white !important;
   color: black !important;
-  background-color: #859ede !important;
+  background-color: #859ede;
   color: black !important;
   border: #8d8dd8;
 }
