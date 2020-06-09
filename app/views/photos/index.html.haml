@@ -7,4 +7,4 @@
     - @photos.each do |photo|
       .photo.col-lg-4.pull-left
         = image_tag_with_fallback(photo, :file)
-        %p= "url('#{photo.file.attachment.service_url}')"
+

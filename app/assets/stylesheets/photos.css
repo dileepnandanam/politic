@@ -5,7 +5,3 @@
 .photo {
   word-break: break-word;
 }
-.photo p {
-  max-height: 100px;
-  overflow: scroll;
-}
