@@ -2,6 +2,7 @@ class Groups::PostsController < PostBaseController
   before_action :check_user, only:[:new, :create, :destroy, :upvote, :downvote, :pin, :unpin]
   before_action :check_membership
   protect_from_forgery with: :null_session
+
   def show
     @group = Group.find(params[:group_id])
     @post = Post.find(params[:id])
@@ -76,10 +77,10 @@ class Groups::PostsController < PostBaseController
 
 
   def destroy
+    @group = Group.find(params[:group_id])
     @post = current_user.posts.find(params[:id])
     @post.destroy
     @group.welcome_post.update_tag_set
-
   end
 
   def reorder
@@ -147,8 +148,11 @@ class Groups::PostsController < PostBaseController
   end  
 
   def post_params
-    @group = current_user.owned_groups.find(params[:group_id])
     params.require(:post).permit(:text, :image, :title, :enable_comment_vote, :visible)
+  end
+
+  def set_group
+    @group = current_user.owned_groups.find(params[:group_id])
   end
 
   def set_flag
