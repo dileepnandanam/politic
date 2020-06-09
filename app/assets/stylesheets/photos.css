@@ -1,0 +1,11 @@
+.photo img {
+  width: 90%;
+  margin: auto;
+}
+.photo {
+  word-break: break-word;
+}
+.photo p {
+  max-height: 100px;
+  overflow: scroll;
+}

@@ -1,0 +1,10 @@
+.my-space.common-bg
+  = simple_form_for Photo.new do |f|
+    = f.input :file
+    = f.submit 'upload'
+  .clearfix
+  .photos
+    - @photos.each do |photo|
+      .photo.col-lg-4.pull-left
+        = image_tag_with_fallback(photo, :file)
+        %p= "url('#{photo.file.attachment.service_url}')"

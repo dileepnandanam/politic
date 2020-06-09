@@ -69,6 +69,7 @@
           = link_to 'Polls', quick_polls_path, class: 'sub-nav-bar-item ' + (@flag == 'quick_poll' ? 'active-tab' : '')
           - if current_user.admin?
             = link_to 'Platform', users_platform_path, class: 'sub-nav-bar-item ' + (@flag == 'platform' ? 'active-tab' : '')
+            = link_to 'photos', photos_path, class: 'sub-nav-bar-item ' + (@flag == 'photos' ? 'active-tab' : '')
 
           - if @post.present?
             = link_to 'preview', post_path(@post, preview: true), target: '_blank', class: 'sub-nav-bar-item'
