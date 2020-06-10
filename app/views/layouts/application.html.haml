@@ -87,7 +87,7 @@
             - V2::Notification.where(target_id: current_user.id).each do |notif|
               = render partial: 'surveys/survey_responses/message', locals: {notif: notif}
         .confirm_email
-          - if current_user.otp.blank?
+          - if current_user.try(:otp).blank?
             = link_to 'confirm account', otp_path, class: 'send-otp-link'
         = yield
     - if Rails.env.development? && !params[:preview]
