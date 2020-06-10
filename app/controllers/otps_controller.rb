@@ -30,7 +30,7 @@ class OtpsController < ApplicationController
   end
 
   def confirm
-    User.find_by_otp(params[:id]).update(otp: nil)
+    User.find_by_otp(params[:id]).update(otp: 'confirmed')
     redirect_to root_path
   end
 end
