@@ -85,4 +85,16 @@ class User < ApplicationRecord
     self.save
     new_p
   end
+
+  def signed_with_email
+    email.to_s.include '@'
+  end
+
+  def generate_otp
+    self.update confirmation_token: "abcdefghijklmnopqrstuvwxyz1234567890".split('').sample(6).join
+  end
+
+  def signed_with_phone
+    !signed_with_email
+  end
 end
