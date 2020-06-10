@@ -2,7 +2,7 @@
   .post-actions
     - unless params[:preview]
       - if post.user == current_user || (current_user.try :admin?)
-        = link_to 'Delete', group_post_path(@group, post), remote: true, method: :delete, class: 'delete-post pull-right delete-question'
+        = link_to 'Delete', group_post_path(@group, post), remote: true, method: :delete, class: 'delete-post pull-right delete-question', data: {confirm: "Are you sure?"}
         = link_to 'Edit', edit_group_post_path(@group, post), remote: true, class: 'edit-post-link'
 
   .clearfix

@@ -5,7 +5,7 @@
   .post-actions
     - unless params[:preview]
       - if current_user == post.user
-        = link_to 'Delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right delete-question'
+        = link_to 'Delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right delete-question',data: {confirm: "Are you sure?"}
         - unless post.group
           = link_to 'We are free', '#', class: "feature free pull-right #{post.lat.nil? ? '' : 'd-none'}"
         = link_to 'We are busy', '#', class: "feature busy pull-right #{post.lat.present? ? '' : 'd-none'}"

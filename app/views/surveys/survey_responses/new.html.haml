@@ -1,4 +1,4 @@
-.question.response-form.survey{data: {anonymous: @survey.anonymous?.to_s}}
+.response-form.survey{data: {anonymous: @survey.anonymous?.to_s}}
   = link_to 'edit questions', dashboard_survey_path(@survey), class: 'pull-right configure'
   .clearfix
   - if current_user.blank? && !@survey.anonymous?
