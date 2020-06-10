@@ -7,6 +7,7 @@
     .pull-right
       - post = Post.find(params[:sender_id])
       .map-link.post-location{data:{addr: "#{post.lat},#{post.lngt}"}}
+        = image_tag('map.png', class: 'map-ico')
         = post.title
   .clearfix
   .answers

@@ -169,3 +169,6 @@ img.map-ico {
 .post-location:hover, .map-ico:hover {
   cursor: pointer;
 }
+.post-location img {
+  width: 25px !important;
+}
