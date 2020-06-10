@@ -136,4 +136,8 @@ class Post < ApplicationRecord
   def parent
     group
   end
+
+  def parent_post
+    try(:group).try(:welcome_post) || self
+  end
 end

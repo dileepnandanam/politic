@@ -18,7 +18,7 @@ class Surveys::SurveyResponsesController < SurveysController
       item_id: @response.id,
       item_type: 'SurveyResponse',
       target_id: @reciver.id,
-      link: survey_survey_response_path(@response.survey, @response),
+      link: survey_survey_response_path(@response.survey, @response, sender_id: params[:sender_id]),
       action: "You are assigned for a task"
     )
     message = ApplicationController.render(

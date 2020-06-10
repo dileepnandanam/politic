@@ -13,4 +13,8 @@ class Picture < ApplicationRecord
   def parent
     galery
   end
+
+  def parent_post
+    galery.post
+  end
 end

@@ -25,4 +25,8 @@ class Survey < ApplicationRecord
   def parent
     picture || post
   end
+
+  def parent_post
+    picture.try(:parent_post) || post.try(:parent_post)
+  end
 end

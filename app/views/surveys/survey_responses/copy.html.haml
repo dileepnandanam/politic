@@ -6,5 +6,5 @@
       .col-sm-4.pull-left
         = u.email
       .col-sm-4.pull-left
-        = link_to 'assign', paste_survey_survey_response_path(user_id: u.id), method: :post, remote: true, class: 'assign-user'
+        = link_to 'assign', paste_survey_survey_response_path(sender_id: @survey.parent_post.id, user_id: u.id), method: :post, remote: true, class: 'assign-user'
       .clearfix

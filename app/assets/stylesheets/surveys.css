@@ -163,3 +163,9 @@ img.map-ico {
 .questions-container {
   padding-bottom: 24px;
 }
+.post-location {
+  margin-right: 16px;
+}
+.post-location:hover, .map-ico:hover {
+  cursor: pointer;
+}
