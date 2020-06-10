@@ -97,7 +97,6 @@ class UsersController < ApplicationController
         #'sender' => 'palkad',
         'numbers' => user.email)
       response = JSON.parse(res.body)
-      binding.pry
       flash[:notice] = 'A new password is sent to your registered phone number'
     end
     redirect_to root_path

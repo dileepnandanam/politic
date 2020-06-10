@@ -40,6 +40,7 @@ class User < ApplicationRecord
   def groupes
     Group.joins(:responses).where(user_id: id, responses: {accepted: true})
   end
+
   validates :email, presence: true
   validates :name, presence: true
   # Include default devise modules. Others available are:
@@ -87,11 +88,11 @@ class User < ApplicationRecord
   end
 
   def signed_with_email
-    email.to_s.include '@'
+    email.to_s.include? '@'
   end
 
   def generate_otp
-    self.update confirmation_token: "abcdefghijklmnopqrstuvwxyz1234567890".split('').sample(6).join
+    self.update otp: "abcdefghijklmnopqrstuvwxyz1234567890".split('').sample(6).join
   end
 
   def signed_with_phone
