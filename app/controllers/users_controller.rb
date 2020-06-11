@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_user, only: [:show, :edit, :notifications, :connections, :update, :posts, :disconnect]
+  before_action :check_user, only: [:show, :notifications, :connections, :update, :posts, :disconnect]
   after_action :mark_as_seen, only: [:show]
   protect_from_forgery with: :null_session
 
