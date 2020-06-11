@@ -86,5 +86,5 @@
           - comment = post.comments.find(params[:comment_id])
         - if comment
           = render partial: 'posts/comments/comment', locals: {expand: true, new: false, comment: comment.parent || comment}
-    
+
   

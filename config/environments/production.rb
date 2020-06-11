@@ -76,7 +76,7 @@ Rails.application.configure do
     :address              => "smtp.gmail.com", 
     :port                 => 465,
     :domain               => 'palkad.com',               
-    :user_name            => 'notification.palkad@gmail.com',
+    :user_name            => 'palkad.customercare@gmail.com',
     :password             => ENV['GMAIL_PASSWORD'],         
     :authentication       => 'plain',
     :ssl                  => true,

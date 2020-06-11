@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def edit_mode(item)
+    !params[:preview] && current_user == item.user
+  end
+
   def display_for_bot
   	user_agent =  request.env['HTTP_USER_AGENT'].downcase
   	if user_agent.index('googlebot')
