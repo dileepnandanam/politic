@@ -92,7 +92,7 @@ class UsersController < ApplicationController
       request = Net::HTTP::Get.new(uri.request_uri)
        
       res = Net::HTTP.post_form(uri, 
-        'apikey' => 'sy5OPGumyHI-2bNIEzDfny2v9FZdvOG3VRH4yaT1fP',
+        'apikey' => ENV['TEXTLOCAL_API_KEY'],
         'message' => message,
         #'sender' => 'palkad',
         'numbers' => user.email)
