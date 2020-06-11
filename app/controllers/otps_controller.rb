@@ -8,7 +8,7 @@ class OtpsController < ApplicationController
       message = %{
         Palkad.com
         confirm account
-        https://www.palkad.com/otp/#{current_user.otp}/confirm
+        https://www.palkad.com/otp/confirm?otp=#{current_user.otp}
 
       }
 
