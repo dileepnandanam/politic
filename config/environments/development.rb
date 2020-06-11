@@ -44,7 +44,7 @@ Rails.application.configure do
     :port                 => 465,
     :domain               => 'palkad.com',               
     :user_name            => 'notification.palkad@gmail.com',
-    :password             => 'mypassword',         
+    :password             => 'mypass',         
     :authentication       => 'plain',
     :ssl                  => true,
     :tls                  => true,
