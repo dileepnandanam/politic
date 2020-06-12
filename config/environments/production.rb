@@ -74,13 +74,13 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings  = {            
     :address              => "smtp.gmail.com", 
-    :port                 => 587,
+    :port                 => 465,
     :domain               => 'palkad.com',               
-    :user_name            => 'palkad.customercare@gmail.com',
+    :user_name            => 'notification.palkad@gmail.com',
     :password             => ENV['GMAIL_PASSWORD'],         
     :authentication       => 'plain',
-    #:ssl                  => true,
-    #:tls                  => true,
+    :ssl                  => true,
+    :tls                  => true,
     :enable_starttls_auto => true,
   }
 
