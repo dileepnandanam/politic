@@ -264,8 +264,12 @@ label {
 .send-otp-link {
   margin: auto;
   padding: 6px 8px;
-  background-color: blue;
+  background-color: brown;
   border: 1px solid black;
   border-radius: 6px;
   margin: 12px;
+  display: inline-block;
+}
+.send-otp-link:hover {
+  color: white !important;
 }
