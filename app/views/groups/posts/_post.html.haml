@@ -61,4 +61,4 @@
           = render partial: 'posts/comments/comment', locals: {expand: true, new: false, comment: comment.parent || comment}
     
   - if edit_mode post
-    .default= "path: #{post_path(post)}"
+    %p.black= "href: #{post_path(post)}"

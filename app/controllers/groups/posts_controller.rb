@@ -48,6 +48,7 @@ class Groups::PostsController < PostBaseController
   end
 
   def create
+    set_group
     @post = current_user.posts.new post_params.merge(group_id: @group.id, user_id: current_user.id)
     if @post.save
       @post.update_tag_set
