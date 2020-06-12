@@ -98,6 +98,7 @@ class UsersController < ApplicationController
         'numbers' => user.email)
       response = JSON.parse(res.body)
       flash[:notice] = 'A new password is sent to your registered phone number'
+      flash[:notice] = response
     end
     redirect_to root_path
   end
