@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :check_user, only: [:index, :dashboard, :responses, :new, :edit, :create, :update, :destroy]
+  before_action :check_user, only: [:index, :dashboard, :responses, :new, :edit, :create, :update, :destroy, :my_groups ]
   before_action :find_group, only: [:dashboard, :responses]
   protect_from_forgery with: :null_session
   def index
