@@ -5,9 +5,13 @@ $(document).on('turbolinks:load', function() {
 
   sms_password_path = '/users/sms_password?email='
   $('.login-field').on('keyup', function() {
-    var email = $(this).val()
+    show_link(this)
+  })
+})
+show_link = function(that) {
+  var email = $(that).val()
     $('.reset-phone-pass').attr('href', sms_password_path + email)
-    if($(this).val().includes('@')) {
+    if($(that).val().includes('@')) {
       $('.reset-email-pass').removeClass('d-none')
       $('.reset-phone-pass').addClass('d-none')
     }
@@ -15,6 +19,4 @@ $(document).on('turbolinks:load', function() {
       $('.reset-email-pass').addClass('d-none')
       $('.reset-phone-pass').removeClass('d-none')
     }
-
-  })
-})
+}
