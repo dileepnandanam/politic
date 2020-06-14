@@ -5,11 +5,6 @@ initMasonry = function() {
 		})
 	}
 $(document).on('turbolinks:load', function() {
-	
-	$('.posts div').click(function() { 
-		alert('l')
-		$('.suggestions').addClass('d-none') 
-	})
 
 	search = function() {
 		query = $('.search input').val()
