@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   end
   
   resources :posts, controller: 'posts', scope: '/' do
+    get :search_suggestions, on: :collection
     put :hide, on: :member
     put :unhide, on: :member
     get :boo, on: :collection

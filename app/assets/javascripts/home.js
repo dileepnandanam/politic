@@ -6,7 +6,10 @@ initMasonry = function() {
 	}
 $(document).on('turbolinks:load', function() {
 	
-	
+	$('.posts div').click(function() { 
+		alert('l')
+		$('.suggestions').addClass('d-none') 
+	})
 
 	search = function() {
 		query = $('.search input').val()
@@ -23,7 +26,27 @@ $(document).on('turbolinks:load', function() {
 			}
 		})
 	}
+	auto_suggest = function() {
+		query = $('.search input').val()
+		if(!query)
+			return
+		$.ajax({
+			url: '/posts/search_suggestions',
+			data: {
+				query: query
+			},
+			success: function(data) {
+				$('.suggestions').html(data)
+				$('.suggestions').removeClass('d-none')
+			},
+			error: function() {
+				$('.suggestions').addClass('d-none')
+			}
+		})
+	}
+
 	$('.search input').keyup($.debounce(1250, search))
+	$('.search input').keyup(auto_suggest)
 	initMasonry()
 
 	$('.questions').on('ajax:success', '.view-more-questions', function() {
