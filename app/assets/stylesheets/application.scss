@@ -148,7 +148,10 @@ form a {
 a.view-more {
   color: black;
 }
-.question, .group-post {
+.question {
+  border: 1px solid #3d3d40;
+}
+.group-post {
   border: 1px solid #3d3d40;
 }
 .new-post form {
@@ -235,9 +238,10 @@ label {
 }
 .clickable:hover {
   width: 100%;
-  background: white;
+  background: #ffffff;
   padding: 5px 8px;
   border-radius: 5px;
+  color: blue;
 }
 .clickable {
   width: 100%;

@@ -9,18 +9,18 @@
   .questions-container.reorderable-group-questions{data:{url: reorder_group_questions_path(@group)}} 
     - @questions.each do |question|
       = render partial: 'groups/questions/question', locals: {question: question}
+  
+      
+  .new-question
+  .questions-actions
+    = link_to 'Add question', new_group_question_path(@group), class: 'add-question', remote: true
+    = link_to 'Preview', new_group_group_response_path(@group)
   .show-options.clickable.d-none
     %h3
       Show options
   .hide-options.clickable{class: @questions.any?{|q| q.options.present?} ? '' : 'd-none'}
     %h3
       Hide options
-      
-  .new-question
-  .questions-actions
-    = link_to 'Add question', new_group_question_path(@group), class: 'add-question', remote: true
-    = link_to 'Preview', new_group_group_response_path(@group)
-
   %h3= "Rearrange pages"
   .reorderable-group-post{data:{url: reorder_group_posts_path(@group)}}
     - @group.posts.order('sequence ASC').each do |post|
