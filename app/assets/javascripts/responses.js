@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   $(document).on('ajax:success', '.quick-poll-form, .survey_response_form', function(e) {
-    var container = $(this).closest('.question')
+    var container = $(this).closest('.response-form')
     var height = $(container).css('height')
     $(this).replaceWith(e.detail[2].responseText)
     $(container).css('height', height)
