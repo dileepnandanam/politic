@@ -16,3 +16,6 @@
     = link_to 'preview', new_survey_survey_response_path(survey), class: 'preview-submit'
   .clearfix
   .question-edit-form-container
+  = link_to 'get embed code', '#', remote: true, class: 'get-embed-code'
+  .embed-code.d-none
+    = "<div class='survey-container' data-id='#{survey.id}'></div>"

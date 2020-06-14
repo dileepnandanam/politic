@@ -19,3 +19,7 @@
   - if !current_user.is_a_member_of(group) && group.user != current_user
     = link_to 'join', new_group_group_response_path(group)
   .question-edit-form-container
+
+  = link_to 'get embed code', '#', remote: true, class: 'get-embed-code'
+  .embed-code.d-none
+    = "<div class='project-container' data-id='#{group.id}'></div>"

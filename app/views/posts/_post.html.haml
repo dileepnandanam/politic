@@ -10,6 +10,7 @@
           = link_to 'We are free', '#', class: "feature free pull-right #{post.lat.nil? ? '' : 'd-none'}"
         = link_to 'We are busy', '#', class: "feature busy pull-right #{post.lat.present? ? '' : 'd-none'}"
         = link_to 'Edit', edit_post_path(post), remote: true, class: 'edit-post-link'
+    .edit-container
   .clearfix
   .post-title
     - if post.project.present?
@@ -24,7 +25,7 @@
     .clearfix
     .post-text
       = raw(post.text)
-    .edit-container
+    
     .phones-container
       - post.phones.each do |p|
         = render partial: 'phones/phone', locals: {phone: p}

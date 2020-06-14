@@ -173,3 +173,10 @@ img.map-ico {
 .post-location img {
   width: 25px !important;
 }
+.embed-code {
+  background-color: white;
+  color: blue;
+  padding: 12px;
+  margin: 12px;
+  display: inline-block;
+}

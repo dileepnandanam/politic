@@ -5,6 +5,10 @@ fix_radio = function() {
   })
 }
 $(document).on('turbolinks:load', function() {
+  $('.get-embed-code').click(function() {
+    $(this).siblings('.embed-code').removeClass('d-none')
+  })
+
   fix_radio()
   $(document).on('ajax:success', '.new-option', function(e) {
     $(this).siblings('.new-option-form').html(e.detail[2].responseText)
