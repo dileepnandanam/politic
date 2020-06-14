@@ -66,7 +66,7 @@ class PostsController < PostBaseController
 
   def search_suggestions
     query = params[:query]
-    @suggestions = Query.where("string like '#{query}%'")
+    @suggestions = Query.where("string like '%#{query}%'")
     if @suggestions.count > 0
       render 'suggestions', layout: false, status: 200
     else
