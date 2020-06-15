@@ -6,10 +6,11 @@ class QueryRecorder
   def record
     super_query = Query.where("queries.string like '%#{@query}%'")
     if !super_query.present?
-      Query.create(string: @query)
-    else
-      super_query.update(count: super_query.count + 1)
+      Query.create(string: @query, count: @query.split(' ').length) if complete_query
     end
+  end
 
+  def complete_query
+    ActsAsTaggableOn::Tag.where(name: @query.split(' ').last).first.present?
   end
 end

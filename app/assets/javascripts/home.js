@@ -39,7 +39,7 @@ $(document).on('turbolinks:load', function() {
 			}
 		})
 	}
-
+	$('body').click(function(){$('.suggestions').addClass('d-none')})
 	$('.search input').keyup($.debounce(1250, search))
 	$('.search input').keyup(auto_suggest)
 	initMasonry()
