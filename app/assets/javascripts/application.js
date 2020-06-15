@@ -18,5 +18,4 @@
 //= require jquery-ui
 //= require jquery.form.min
 //= require_tree .
-//= require masonry/jquery.masonry
 //= require bootstrap
