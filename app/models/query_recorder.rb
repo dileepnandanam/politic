@@ -4,8 +4,8 @@ class QueryRecorder
   end
 
   def record
-    super_query = Query.where("queries.string like '%#{@query}%'")
-    if !super_query.present?
+    super_query = Query.where("queries.string = '#{@query}'").last
+    if super_query.blank?
       Query.create(string: @query, count: @query.split(' ').length) if complete_query
     end
   end
