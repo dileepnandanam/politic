@@ -1,8 +1,4 @@
 initMasonry = function() {
-		$('#masonry-container').masonry({
-			itemSelector: '.question-wraper',
-			gutter: 1000
-		})
 	}
 $(document).on('turbolinks:load', function() {
 
