@@ -30,7 +30,6 @@
 .answer {
   font-size: 24px;
   margin: 5px 0px 5px 0px;
-  border: 2px solid #210d0d;
   background: #2e358b;
 }
 .answer:last-child {
