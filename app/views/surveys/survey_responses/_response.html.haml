@@ -1,5 +1,5 @@
 .answer{class: css}
-  - if a.question.answer_type == 'line'
+  - if a.question.answer_type == 'line' && a.line.present?
     .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
       = a.question.text
     .clearfix
@@ -9,7 +9,7 @@
       - else
         = 'User has skipped this question'
     .clearfix
-  - elsif a.question.answer_type == 'number'
+  - elsif a.question.answer_type == 'number' && a.number.present?
     .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
       = a.question.text
     .clearfix
@@ -19,7 +19,7 @@
       - else
         = 'User has skipped this question'
     .clearfix  
-  - elsif a.question.answer_type == 'text'
+  - elsif a.question.answer_type == 'text' && a.text.present?
     .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.col-12
       = a.question.text
     .clearfix
@@ -29,7 +29,7 @@
       - else
         = 'User has skipped this question'
     .clearfix
-  - if a.question.answer_type == 'file'
+  - if a.question.answer_type == 'file' && a.file.attachment.present?
     .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
       = a.question.text
     .clearfix
@@ -39,7 +39,7 @@
       - else
         = 'User has skipped this question'
     .clearfix
-  - elsif a.question.answer_type == 'radio'
+  - elsif a.question.answer_type == 'radio' && a.choices.present?
     .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.col-12
       = a.question.text
     .clearfix
@@ -50,7 +50,7 @@
       - else
         = 'User has skipped this question'
     .clearfix
-  - elsif a.question.answer_type == 'checkbox'
+  - elsif a.question.answer_type == 'checkbox' && a.choices.present?
     .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
       = a.question.text
     .clearfix
