@@ -1,52 +1,53 @@
+- questions = @survey.questions.map{|q| [q.id, q]}.to_h
 = simple_form_for([@survey, @survey_response], html:{remote: true, class: 'survey_response_form' }) do |f|
   = f.fields_for :answers do |af|
-    .question{id: af.object.question.id, class: "#{af.object.question.answer_type}-question"}
+    .question{id: questions[af.object.question_id], class: "#{questions[af.object.question_id].answer_type}-question"}
       = image_tag_with_fallback(af.object.question, :img)
-      - if af.object.question.answer_type == 'line'
+      - if questions[af.object.question_id].answer_type == 'line'
         .survey-question-text-line
-          = af.object.question.text
+          = questions[af.object.question_id].text
         = af.input :line, label: false
         .clearfix
-      - if af.object.question.answer_type == 'number'
+      - if questions[af.object.question_id].answer_type == 'number'
         .survey-question-text-line
-          = af.object.question.text
+          = questions[af.object.question_id].text
         = af.input :number, label: false
         .clearfix
-      - elsif af.object.question.answer_type == 'file'
+      - elsif questions[af.object.question_id].answer_type == 'file'
         .survey-question-text-line
-          = af.object.question.text
+          = questions[af.object.question_id].text
         = af.input :file, label: false
-      - elsif af.object.question.answer_type == 'text'
+      - elsif questions[af.object.question_id].answer_type == 'text'
         .survey-question-text
-          = af.object.question.text
+          = questions[af.object.question_id].text
         .clearfix
         = af.input :text, label: false
-      - elsif af.object.question.answer_type == 'radio'
+      - elsif questions[af.object.question_id].answer_type == 'radio'
         .survey-question-text
-          = af.object.question.text
+          = questions[af.object.question_id].text
         .clearfix
         = af.fields_for :choices do |afc|
           = afc.radio_button :option_id, afc.object.option.id, checked: false, class: 'survey-radio pull-left'
           = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-11 col-md-10 col-xs-11 col-10'
           .clearfix
-      - elsif af.object.question.answer_type == 'multiline'
+      - elsif questions[af.object.question_id].answer_type == 'multiline'
         .survey-question-text
-          = af.object.question.text
+          = questions[af.object.question_id].text
         .clearfix
         = af.fields_for :choices do |afc|
           = afc.hidden_field :option_id, value: afc.object.option.id
           = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-6 col-md-6 col-xs-6 col-6'
           = afc.input :line, label: false, class: 'short-input col-sm-5'
           .clearfix
-      - elsif af.object.question.answer_type == 'checkbox'
+      - elsif questions[af.object.question_id].answer_type == 'checkbox'
         .survey-question-text
-          = af.object.question.text
+          = questions[af.object.question_id].text
         .clearfix
         = af.fields_for :choices do |afc|
           = afc.check_box :option_id, {checked: false, class: 'pull-left survey-checkbox'}, afc.object.option.id, nil
           = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-11 col-md-10 col-xs-11 col-10'
           .clearfix
-      = af.hidden_field :question_id, value: af.object.question.id
+      = af.hidden_field :question_id, value: questions[af.object.question_id].id
     .clearfix
   = f.button :submit, @survey.button_name, class: 'btn btn-primary'
   .clearfix
