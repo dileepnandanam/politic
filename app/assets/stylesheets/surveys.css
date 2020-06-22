@@ -174,3 +174,7 @@ img.map-ico {
   margin: 12px;
   display: inline-block;
 }
+.survey_response_answers_choices_line {
+  width: 40%;
+  float: right;
+}

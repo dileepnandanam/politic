@@ -12,7 +12,7 @@
   .options-area
     .answer-type-form-container
       = simple_form_for [@survey, question], html: {class: 'answer-type-form', remote: true} do |q|
-        = q.input :answer_type, as: :radio_buttons, collection: [['single line', 'line'], ['number', 'number'], ['text', 'text'], ['radio', 'radio'], ['checkbox', 'checkbox'], ['file', 'file']], label_method: :first, value_method: :last, :class => 'question-type'
+        = q.input :answer_type, as: :radio_buttons, collection: [['single line', 'line'], ['number', 'number'], ['text', 'text'], ['radio', 'radio'], ['checkbox', 'checkbox'], ['file', 'file'], ['multiline', 'multiline']], label_method: :first, value_method: :last, :class => 'question-type'
         = q.submit 'Change', class: 'd-none btn-primary'
         .clearfix
 

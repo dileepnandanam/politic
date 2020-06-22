@@ -29,6 +29,15 @@
           = afc.radio_button :option_id, afc.object.option.id, checked: false, class: 'survey-radio pull-left'
           = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-11 col-md-10 col-xs-11 col-10'
           .clearfix
+      - elsif af.object.question.answer_type == 'multiline'
+        .survey-question-text
+          = af.object.question.text
+        .clearfix
+        = af.fields_for :choices do |afc|
+          = afc.hidden_field :option_id, value: afc.object.option.id
+          = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-6 col-md-6 col-xs-6 col-6'
+          = afc.input :line, label: false, class: 'short-input col-sm-5'
+          .clearfix
       - elsif af.object.question.answer_type == 'checkbox'
         .survey-question-text
           = af.object.question.text

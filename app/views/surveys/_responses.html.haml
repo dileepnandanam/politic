@@ -69,6 +69,21 @@
             - else
               .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
                 = 'User has skipped this question'
+          - elsif a.question.answer_type == 'multiline' && a.choices.any?{|c| c.line.present?}
+            .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
+              = a.question.text
+            .clearfix
+            - if a.choices.present?
+              - a.choices.each do |choice|
+                - if choice.line.present?
+                  .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+                    = choice.option.name
+                    = " : "
+                    = choice.line
+              .clearfix
+            - else
+              .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+                = 'User has skipped this question'
     - if r.user.lat.present?
       .map-link.pull-left{data:{addr: "#{r.user.lat},#{r.user.lngt}"}}
         = image_tag('map.png', class: 'map-ico')
