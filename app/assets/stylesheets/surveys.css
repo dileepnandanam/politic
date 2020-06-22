@@ -35,9 +35,8 @@
   margin-bottom: 12px;
 }
 .response-form, .response-form .question, .response-form.question {
-  color: black !important;
-  background-color: #859ede;
-  color: black !important;
+  color: black;
+  color: black;
   border: #8d8dd8;
 }
 .new-option {
@@ -84,9 +83,6 @@ input[name=commit]:hover {
 .response-form .question {
   background-color: #eedede !important;
   border: #eedede;
-}
-.response-form .survey-label {
-  background-color: #eedede !important
 }
 .hide-options, .show-options {
   width: 70% !important;
@@ -177,4 +173,7 @@ img.map-ico {
 .survey_response_answers_choices_line {
   width: 40%;
   float: right;
+}
+.survey-question-text {
+  text-align: left;
 }

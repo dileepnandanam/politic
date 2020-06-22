@@ -1,20 +1,20 @@
 - questions = @survey.questions.map{|q| [q.id, q]}.to_h
 = simple_form_for([@survey, @survey_response], html:{remote: true, class: 'survey_response_form' }) do |f|
   = f.fields_for :answers do |af|
-    .question{id: questions[af.object.question_id], class: "#{questions[af.object.question_id].answer_type}-question"}
+    .survey-question{id: questions[af.object.question_id].id, class: "#{questions[af.object.question_id].answer_type}-question"}
       = image_tag_with_fallback(af.object.question, :img)
       - if questions[af.object.question_id].answer_type == 'line'
-        .survey-question-text-line
+        .survey-question-text
           = questions[af.object.question_id].text
         = af.input :line, label: false
         .clearfix
       - if questions[af.object.question_id].answer_type == 'number'
-        .survey-question-text-line
+        .survey-question-text
           = questions[af.object.question_id].text
         = af.input :number, label: false
         .clearfix
       - elsif questions[af.object.question_id].answer_type == 'file'
-        .survey-question-text-line
+        .survey-question-text
           = questions[af.object.question_id].text
         = af.input :file, label: false
       - elsif questions[af.object.question_id].answer_type == 'text'
