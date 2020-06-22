@@ -1,2 +1,5 @@
 %h3.message
-  Thanks for your feedback
+  - if @survey.thanks_message.present?  
+    = @survey.thanks_message
+  - else
+    = 'thanks'

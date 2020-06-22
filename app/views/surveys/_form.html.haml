@@ -4,6 +4,7 @@
     = f.input :description
     = f.input :anonymous, label: 'allow anonymous submission'
     = f.input :button_name, label: 'submit button label'
+    = f.input :thanks_message, label: 'thanks message'
     .clearfix
     = f.submit 'Submit', class: 'btn-primary pull-left'
     = link_to 'cancel', '#', class: 'cancel-form btn-primary pull-left', remote: true
