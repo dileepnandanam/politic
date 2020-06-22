@@ -11,7 +11,7 @@
       - if questions[af.object.question_id].answer_type == 'number'
         .survey-question-text
           = questions[af.object.question_id].text
-        = af.input :number, label: false
+        = af.input :number, label: false, input_html: {class: 'number-answer'}
         .clearfix
       - elsif questions[af.object.question_id].answer_type == 'file'
         .survey-question-text
