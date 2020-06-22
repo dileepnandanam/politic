@@ -109,8 +109,7 @@ label {
   max-width: 99%;
 }
 .survey_response_answers_line {
-  width: 66%;
-  float: right;
+  width: 100%;
 }
 img.map-ico {
   width: 50px;
@@ -176,4 +175,9 @@ img.map-ico {
 }
 .survey-question-text {
   text-align: left;
+}
+.survey-question {
+  padding: 12px;
+  border: 1px solid;
+  margin: 12px 0px;
 }
