@@ -4,4 +4,5 @@
 .phone-number {
   display: block;
   float: right;
+  margin-left: 12px;
 }
