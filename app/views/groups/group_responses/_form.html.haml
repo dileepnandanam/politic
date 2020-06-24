@@ -18,9 +18,9 @@
         = uf.input :password, label: false
         
   = f.fields_for :answers do |af|
-    .question
+    .survey-question
       .survey-question-text
-        = @questions[@questions[af.object.question_id]_id].text
+        = @questions[af.object.question_id].text
       .clearfix
       - if @questions[af.object.question_id].answer_type == 'line'
         = af.input :line, label: false
