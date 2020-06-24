@@ -55,9 +55,10 @@ a.edit-option, a.delete-option, a.edit-question, a.delete-question, a.new-option
 .button-select, .edit-question, .delete-question, .edit-post-link, .dashboard, .delete-option, .edit-option, .new-option, .add-question, .feature, .quick-poll-select, .survey-select, .project-select, .fbt-select-nil, .new-galery, .edit-button, .add-galery-picture, .edit-galery-picture, .remove-picture, .remove-image, .new-phone, .edit-phone, .delete-phone, .edit-social-link, .add-video, .edit-video, .delete-video, .new-phone, .handle-response {
   padding: 5px 6px;
   margin-top: 8px;
-  background: #89a5f1;
+  background: #dfd178;
   display: inline-block;
   box-shadow: 1px 1px 3px black;
+  color: black;
 }
 input[name=commit], .cancel-form {
   margin-right: 12px !important;
@@ -178,9 +179,10 @@ img.map-ico {
 }
 .survey-question {
   padding: 12px;
-  border: 1px solid;
-  margin: 12px 0px;
 }
 .number-answer {
   width: 100%
+}
+.post-text .survey_response_answers_text textarea {
+  height: 130px;
 }

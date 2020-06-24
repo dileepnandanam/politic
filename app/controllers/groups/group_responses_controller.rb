@@ -3,7 +3,7 @@ class Groups::GroupResponsesController < ApplicationController
   before_action :find_group
   def new
     prepare_response_form_placeholder
-    
+    @questions = @group.questions.map{|q| [q.id, q]}.to_h
     if params[:embed].present?
       render 'embed', layout: false
     elsif request.format.html?

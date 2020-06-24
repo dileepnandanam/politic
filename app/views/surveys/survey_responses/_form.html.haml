@@ -36,7 +36,7 @@
         .clearfix
         = af.fields_for :choices do |afc|
           = afc.hidden_field :option_id, value: afc.object.option.id
-          = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-6 col-md-6 col-xs-6 col-6'
+          = af.label afc.object.option.name, class: 'survey-label survey-question-text pull-left col-lg-6 col-md-6 col-xs-6 col-6'
           = afc.input :line, label: false, class: 'short-input col-sm-5'
           .clearfix
       - elsif questions[af.object.question_id].answer_type == 'checkbox'
