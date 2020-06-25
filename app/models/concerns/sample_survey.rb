@@ -3,7 +3,7 @@ class SampleSurvey
     @object = object
     @object.update name: name if @object.name.blank?
     @object.update description: description if @object.description.blank?
-    @object.update anonymous: true
+    @object.update anonymous: true if @object.is_a?(Survey)
   end
 
   def prepare
