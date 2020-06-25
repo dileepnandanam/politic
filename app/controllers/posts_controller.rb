@@ -67,7 +67,7 @@ class PostsController < PostBaseController
   def search_suggestions
     query = params[:query]
     q_length = params[:query].split(' ').length
-    @suggestions = Query.where("string like '#{query}%'")
+    @suggestions = Query.where("string like '#{query.downcase}%'")
       .where("count in (?)", [q_length, q_length + 1])
       .limit(8)
     if @suggestions.count > 0
