@@ -1,17 +1,17 @@
 = simple_form_for([@group, @response], html:{remote: true, class: 'project-form'}) do |f|
   - unless current_user
     = f.fields_for :user do |uf|
-      .question
+      .survey-question
         .survey-question-text
           = "name"
         .clearfix
         = uf.input :name, label: false
-      .question
+      .survey-question
         .survey-question-text
           = "email or phone no."
         .clearfix
         = uf.input :email, label: false
-      .question
+      .survey-question
         .survey-question-text
           = "password"
         .clearfix
