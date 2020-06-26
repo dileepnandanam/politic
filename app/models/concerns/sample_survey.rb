@@ -16,7 +16,7 @@ class SampleSurvey
 
   def prepare_survey_questions
     @object.questions << SampleQuestion.new('line', 'name', nil, nil).question
-    @object.questions << SampleQuestion.new('text', 'Address', nil, nil).question
+    @object.questions << SampleQuestion.new('text', 'Address (optional)', nil, nil).question
     @object.questions << SampleQuestion.new('line', 'contact phone number', nil, nil).question
   end
 

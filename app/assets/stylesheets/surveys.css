@@ -186,3 +186,6 @@ img.map-ico {
 .post-text .survey_response_answers_text textarea {
   height: 130px;
 }
+h3.message {
+  color: black;
+}
