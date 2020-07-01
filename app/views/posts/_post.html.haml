@@ -4,7 +4,7 @@
     .pull-left.user-avathar= render partial: 'users/user_details', locals: {user: post.user}
   .post-actions
     - unless params[:preview]
-      - if current_user == post.user
+      - if current_user == post.user || current_user.try(:admin?)
         = link_to 'Delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right delete-question',data: {confirm: "Are you sure?"}
         - unless post.group
           = link_to 'We are free', '#', class: "feature free pull-right #{post.lat.nil? ? '' : 'd-none'}"
