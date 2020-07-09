@@ -11,7 +11,7 @@
         - unless params[:preview] 
           = link_to 'New page', new_group_post_path(@group), remote: true, class: 'new-group-post'
     .new-post
-    .post
+    .post.chat-post
       .chat-container{data: {url: show_chats_group_user_path(@group, @group.user)}}
 - if current_user != @group.user || params[:preview].present?
   = stylesheet_link_tag('post_styles.css')
