@@ -244,11 +244,21 @@ class PostsController < PostBaseController
   end
 
   def locate
-    current_user.posts.find(params[:id]).update(lat: params[:lat], lngt: params[:lngt])
+    if current_user.admin?
+      @post = Post.find(params[:id])
+    else
+      @post = current_user.posts.find(params[:id])
+    end
+    @post.update(lat: params[:lat], lngt: params[:lngt])
   end
 
   def vanish
-    current_user.posts.find(params[:id]).update(lat: nil, lngt: nil)
+    if current_user.admin?
+      @post = Post.find(params[:id])
+    else
+      @post = current_user.posts.find(params[:id])
+    end
+    @post.update(lat: nil, lngt: nil)
   end
 
   def update_urls
