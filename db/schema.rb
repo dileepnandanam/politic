@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_101121) do
+ActiveRecord::Schema.define(version: 2020_07_11_093921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,6 +208,8 @@ ActiveRecord::Schema.define(version: 2020_06_22_101121) do
     t.string "pinterest_url"
     t.string "gmail"
     t.boolean "published", default: true
+    t.integer "parent_id"
+    t.text "style"
   end
 
   create_table "queries", force: :cascade do |t|

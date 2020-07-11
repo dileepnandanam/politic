@@ -1,0 +1,43 @@
+<% unless post.style.nil? %>
+  <style>
+    .post-title h1 {
+      color: <%= post.style[:text_color] %>;
+    }
+    .post-title h1 a {
+      color: <%= post.style[:text_color] %>;
+    }
+    .phone-number .name {
+      color: <%= post.style[:text_color] %>;
+    }
+    .phone-number .number a {
+      color: <%= post.style[:text_color] %>;
+    }
+    .video-caption {
+      color: <%= post.style[:text_color] %>;
+    }
+    .galery h2, .galery .post-text .text {
+      color: <%= post.style[:text_color] %>;
+    }
+    .post-text, label {
+      color: <%= post.style[:text_color] %>;
+    }
+    
+    .picture .inner p {
+      color: <%= post.style[:text_color] %>;
+    }
+    .response-form, .response-form p, .response-form h3  {
+      color: <%= post.style[:text_color] %>; 
+    }
+    .response-form {
+      border: 1px solid;
+    }
+
+    .post {
+      background-color: <%= post.style[:background_color] %>;
+    }
+    .response-form, .response-form p, .response-form h3  {
+      background-color: <%= post.style[:background_color] %>;
+    }
+
+  </style>
+<% end %>

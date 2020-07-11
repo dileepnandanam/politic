@@ -257,6 +257,16 @@ class PostsController < PostBaseController
     render partial: 'social_links', locals: {post: @post}, layout: false
   end
 
+  def change_style
+    @post = Post.find(params[:id])
+    if @post.style.nil?
+      StyleGenerator.new(@post).generate
+    else
+      StyleGenerator.new(@post).set_to_default
+    end
+    redirect_to post_path(@post)
+  end
+
 
   protected
 

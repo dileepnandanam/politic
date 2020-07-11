@@ -52,7 +52,7 @@ a.edit-option, a.delete-option, a.edit-question, a.delete-question, a.new-option
   font-weight: normal;
 }
 
-.button-select, .edit-question, .delete-question, .edit-post-link, .dashboard, .delete-option, .edit-option, .new-option, .add-question, .feature, .quick-poll-select, .survey-select, .project-select, .fbt-select-nil, .new-galery, .edit-button, .add-galery-picture, .edit-galery-picture, .remove-picture, .remove-image, .new-phone, .edit-phone, .delete-phone, .edit-social-link, .add-video, .edit-video, .delete-video, .new-phone, .handle-response {
+.button-select, .edit-question, .delete-question, .edit-post-link, .dashboard, .delete-option, .edit-option, .new-option, .add-question, .feature, .quick-poll-select, .survey-select, .project-select, .fbt-select-nil, .new-galery, .edit-button, .add-galery-picture, .edit-galery-picture, .remove-picture, .remove-image, .new-phone, .edit-phone, .delete-phone, .edit-social-link, .add-video, .edit-video, .delete-video, .new-phone, .handle-response, .style-buton {
   padding: 5px 6px;
   margin-top: 8px;
   background: #dfd178;

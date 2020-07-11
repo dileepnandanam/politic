@@ -54,6 +54,7 @@ Rails.application.routes.draw do
       put :upvote, on: :member
       put :downvote, on: :member
     end
+    put :change_style, on: :member
   end
   resources :users do
     put :sms_password, on: :collection

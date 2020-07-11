@@ -14,6 +14,7 @@ class Post < ApplicationRecord
   has_many :galeries
   has_many :phones
   has_many :videos
+  serialize :style
 
   after_create :notify_connections
 
