@@ -1,7 +1,7 @@
 = simple_form_for(@galery, html: {remote: true, class: 'edit-galery-form'}) do |f|
   = f.input :name
   = f.input :description
-  = f.input :column, as: :radio_buttons, collection: [['1 column', 1],['2 column', 2],['3 column', 3],['4 column', 4],['5 column', 5],['6 column', 6], ['12 column', 12]], label_method: :first, value_method: :last
+  = f.input :column, as: :radio_buttons, collection: [['1 column', 1],['2 column', 2],['3 column', 3],['4 column', 4], ['6 column', 6], ['12 column', 12]], label_method: :first, value_method: :last
   = f.submit
   = link_to 'cancel', '#', class: 'cancel-form', remote: true
   .clearfix

@@ -18,7 +18,7 @@
     .galery h2, .galery .post-text .text {
       color: <%= post.style[:text_color] %>;
     }
-    .post-text, label {
+    .post-text, label, .post-text a {
       color: <%= post.style[:text_color] %>;
     }
     
@@ -28,11 +28,17 @@
     .response-form, .response-form p, .response-form h3  {
       color: <%= post.style[:text_color] %>; 
     }
+    .access-restricted text-left {
+      color: <%= post.style[:text_color] %>;
+    }
     .response-form {
       border: 1px solid;
     }
 
     .post {
+      background-color: <%= post.style[:background_color] %>;
+    }
+    .access-restricted {
       background-color: <%= post.style[:background_color] %>;
     }
     .response-form, .response-form p, .response-form h3  {

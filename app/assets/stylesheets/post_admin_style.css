@@ -1,6 +1,10 @@
 .post form {
   background-color: white !important;
-  padding: 4px;
+  padding: 3%;
+  background-color: white !important;
+}
+.post form label {
+  color: black !important;
 }
 .post .video, .post .picture, .post .galery {
   border: 1px solid red;
@@ -10,4 +14,8 @@
 }
 .post .response-form form {
   background-color: transparent !important;
+}
+
+#post_project_id {
+  width: 186px;
 }

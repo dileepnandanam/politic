@@ -5,10 +5,7 @@
   .post-actions
     - unless params[:preview]
       - if current_user == post.user || current_user.try(:admin?)
-        - if post.style.nil?
-          = link_to 'Change style', change_style_post_path(post), method: :put, class: 'pull-right style-buton'
-        - else
-          = link_to 'Default style', change_style_post_path(post), method: :put, class: 'pull-right style-buton'
+        = link_to 'Change style', change_style_post_path(post), method: :put, class: 'pull-right style-buton', remote: true
 
         = link_to 'Delete', post_path(post), remote: true, method: :delete, class: 'delete-post pull-right delete-question',data: {confirm: "Are you sure?"}
         - unless post.group

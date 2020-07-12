@@ -269,12 +269,8 @@ class PostsController < PostBaseController
 
   def change_style
     @post = Post.find(params[:id])
-    if @post.style.nil?
-      StyleGenerator.new(@post).generate
-    else
-      StyleGenerator.new(@post).set_to_default
-    end
-    redirect_to post_path(@post)
+    StyleGenerator.new(@post).generate
+    render partial: 'posts/generated_style', locals: {post: @post.reload}, layout: false, status: :ok
   end
 
 

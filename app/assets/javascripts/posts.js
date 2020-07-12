@@ -271,4 +271,8 @@ bind_button_pin()
     $(document).on('ajax:success', '.post-visibility', function(e) {
       $(this).closest('.post').replaceWith(e.detail[2].responseText)
     })
+
+    $(document).on('ajax:success', '.style-buton', function(e) {
+      $('.style-container').html(e.detail[0])
+    })
 })
