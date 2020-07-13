@@ -31,6 +31,10 @@
     .access-restricted text-left {
       color: <%= post.style[:text_color] %>;
     }
+    .comment-actions a {
+      color: <%= post.style[:text_color] %>;
+      border: 1px solid <%= post.style[:text_color] %>;
+    }
     .response-form {
       border: 1px solid;
     }
@@ -44,6 +48,7 @@
     .response-form, .response-form p, .response-form h3  {
       background-color: <%= post.style[:background_color] %>;
     }
+
 
   </style>
 <% end %>

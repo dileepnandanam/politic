@@ -1,7 +1,8 @@
-.group-post.post.small-post
+.group-post.post.small-post{style: post.style.present? ? "background: #{post.style[:background_color]}" : nil}
   .small-post-title
-    %h1.text-left.text-left.pull-left.name= link_to "#{post.display_title}", "/#{post.id}", {}.merge(action_name == 'boo' ? {} : {rel: 'canonical'})
+    %h1.text-left.text-left.pull-left.name
+      = link_to "#{post.display_title}", "/#{post.id}", {style: post.style.present? ? "color: #{post.style[:text_color]}" : nil}.merge(action_name == 'boo' ? {} : {rel: 'canonical'})
   .clearfix
   .post-body
-    .post-text.text-left
+    .post-text.text-left{style: post.style.present? ? "color: #{post.style[:text_color]}" : nil}
       = raw(HTML_Truncator.truncate(post.text, 10))

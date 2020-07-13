@@ -268,3 +268,6 @@
   color: white;
   background-color: black;
 }
+.small-post a {
+  color: inherit;
+}
