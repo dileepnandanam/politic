@@ -1,11 +1,11 @@
 .group-post.post.small-post{style: post.style.present? ? "background: #{post.style[:background_color]}" : 'background: white'}
   .small-post-title
-    %h1.text-left.text-left.pull-left.name= link_to "#{post.display_title}", "/#{post.id}", {style: post.style.present? ? "color: #{post.style[:text_color]}" : 'color: black'}.merge(action_name == 'boo' ? {} : {rel: 'canonical'})
+    %h1.text-left.text-left.pull-left.name.col-10= link_to "#{post.display_title}", "/#{post.id}", {style: post.style.present? ? "color: #{post.style[:text_color]}" : 'color: black'}.merge(action_name == 'boo' ? {} : {rel: 'canonical'})
     .pull-right
       - if post.published?
-        = link_to 'hide', hide_post_path(post), method: :put, remote: true, class: 'post-visibility'
+        = link_to 'hide', hide_post_path(post), method: :put, remote: true, class: 'post-visibility', style: post.style.present? ? "color: #{post.style[:text_color]}" : 'color: black'
       - else
-        = link_to 'unhide', unhide_post_path(post), method: :put, remote: true, class: 'post-visibility'
+        = link_to 'unhide', unhide_post_path(post), method: :put, remote: true, class: 'post-visibility', style: post.style.present? ? "color: #{post.style[:text_color]}" : 'color: black'
   .clearfix
   .post-body
     .post-text.text-left{style: post.style.present? ? "color: #{post.style[:text_color]}" : 'color: black'}
