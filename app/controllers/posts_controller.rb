@@ -21,22 +21,15 @@ class PostsController < PostBaseController
     session[:after_sign_in_path] = @post.group.present? ? group_path(@post.group) : post_path(@post)
     if @group.nil?
       render 'show' and return
-    end
-
-    if current_user == @group.try(:user)
+    elsif current_user == @group.try(:user)
       render 'show' and return
-    end
-
-    if @group.bypass_welcome_page?
+    elsif @group.bypass_welcome_page?
       redirect_to group_path(@group) and return
-    end
-
-    if @group.questions.count == 0
+    elsif @group.questions.count == 0
       redirect_to group_path(@group) and return
-    end
-
-    if current_user && current_user.is_a_member_of(@group)
+    else current_user && current_user.is_a_member_of(@group)
       @signed = true
+      render 'show' and return
     end
   end
 

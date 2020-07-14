@@ -1,7 +1,10 @@
 .group-post.post.small-post{style: post.style.present? ? "background: #{post.style[:background_color]}" : 'background: white'}
   .small-post-title
     %h1.text-left.text-left.pull-left.name
-      = link_to "#{post.display_title}", "/#{post.id}", {style: post.style.present? ? "color: #{post.style[:text_color]}" : 'color: black'}.merge(action_name == 'boo' ? {} : {rel: 'canonical'})
+      - if post.project && post.project.bypass_welcome_page && post.user != current_user
+        = link_to "#{post.display_title}", group_path(post.project), {style: post.style.present? ? "color: #{post.style[:text_color]}" : 'color: black'}.merge(action_name == 'boo' ? {} : {rel: 'canonical'})
+      - else
+        = link_to "#{post.display_title}", "/#{post.id}", {style: post.style.present? ? "color: #{post.style[:text_color]}" : 'color: black'}.merge(action_name == 'boo' ? {} : {rel: 'canonical'})
   .clearfix
   .post-body
     .post-text.text-left{style: post.style.present? ? "color: #{post.style[:text_color]}" : 'color: black'}
