@@ -271,3 +271,13 @@
 .small-post a {
   color: inherit;
 }
+.expand-reply {
+  margin-top: 17px !important;
+}
+.comments-container {
+  margin: 0px 12px 12px 12px;
+}
+.comment {
+  border: 1px solid black;
+  padding: 12px;
+}

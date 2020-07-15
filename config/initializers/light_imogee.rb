@@ -1,7 +1,6 @@
 LightImogee::Data.set_imogee_type('browser')
 LightImogee::Data.add_imogee({
   ":)" => "slightly smiling face",
-  
   "8D" => "grinning squinting face",
   "':D" => "grinning face with sweat",
   "(rofl)" => "rolling on the floor laughing",
@@ -19,5 +18,6 @@ LightImogee::Data.add_imogee({
   "(sun)" => "sun with face",
   "(thinking)" => "thinking face",
   ":|" => "expressionless face",
-  ":D" => "grinning face"
+  ":D" => "grinning face",
+  "(y)" => "thumbs up"
 })
