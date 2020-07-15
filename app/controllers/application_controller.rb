@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
 
     def log_visit
       #Visit.create(request_url: request.url, group_id: @group.try(:id), post_id: @post.try(:id), user_agent: request.env['HTTP_USER_AGENT'].downcase)
+      session[:actual_user_id] = current_user.try(:id) if current_user.try(:admin?)
     end
 
     def redirect_to_affiliated_site

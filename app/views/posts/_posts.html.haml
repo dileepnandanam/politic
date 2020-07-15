@@ -1,6 +1,7 @@
-.confirm_email
-  - if current_user && current_user.otp != 'confirmed'
-    = link_to 'confirm account', otp_path, class: 'send-otp-link'
+- if false
+  .confirm_email
+    - if current_user && current_user.otp != 'confirmed'
+      = link_to 'confirm account', otp_path, class: 'send-otp-link'
 
 - posts.each do |p|
   = render partial: 'posts/small_post', locals: {post: p, rel: 'canonical'}

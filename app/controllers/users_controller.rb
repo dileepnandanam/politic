@@ -20,8 +20,14 @@ class UsersController < ApplicationController
   end
 
   def switch
-    sign_in(:user, User.find(params[:id]))
-    redirect_to root_path
+    if session[:actual_user_id] == User.where(admin: true).first.id
+      sign_in(:user, User.find(params[:id]))
+    end
+    if params[:return]
+      redirect_to params[:return]
+    else
+      redirect_to root_path
+    end
   end
 
   def notifications
