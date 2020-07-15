@@ -12,7 +12,7 @@
           = link_to 'We are free', '#', class: "feature free pull-right #{post.lat.nil? ? '' : 'd-none'}"
         = link_to 'We are busy', '#', class: "feature busy pull-right #{post.lat.present? ? '' : 'd-none'}"
         = link_to 'Edit', edit_post_path(post), remote: true, class: 'edit-post-link'
-      - unless params[:preiew] && !current_user.try(:admin?)
+      - if !params[:preiew] && current_user.try(:admin?)
         = link_to 'switch as post user', switch_user_path(post.user, return: post_path(post)), class: 'switch-post-user'
     .edit-container
   .clearfix
