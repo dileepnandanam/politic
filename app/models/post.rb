@@ -34,7 +34,7 @@ class Post < ApplicationRecord
  
   def tags
     content = "#{phones.map(&:tags).join(' ')} #{videos.map(&:tags).join(' ')} #{galeries.map(&:tags).map(&:to_s).join(' ')} #{title} #{strip_tags(text)} #{survey.try(:tags)} #{project.try(:tags)} #{quick_poll.try(&:tags)}"
-    content.split(' ').uniq.select{|t| !STOP_WORDS.include?(t)}
+    content.split(/[\s,\(\):]/).uniq.select{|t| !STOP_WORDS.include?(t)}
   end
 
   def update_tag_set
