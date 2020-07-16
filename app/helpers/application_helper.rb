@@ -3,6 +3,10 @@ module ApplicationHelper
     !params[:preview] && current_user == item.user
   end
 
+  def admin
+    session[:actual_user_id] == User.find_by_admin(true).id
+  end
+  
   def display_for_bot
   	user_agent =  request.env['HTTP_USER_AGENT'].downcase
   	if user_agent.index('googlebot')

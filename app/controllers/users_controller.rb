@@ -22,6 +22,8 @@ class UsersController < ApplicationController
   def switch
     if session[:actual_user_id] == User.where(admin: true).first.id
       sign_in(:user, User.find(params[:id]))
+    elsif Rails.env.development?
+      sign_in(:user, User.find(params[:id]))
     end
     if params[:return]
       redirect_to params[:return]

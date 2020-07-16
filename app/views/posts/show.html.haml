@@ -5,5 +5,9 @@
   = stylesheet_link_tag('post_styles.css')
 - if current_user == @post.user && !params[:preview].present?
   = stylesheet_link_tag('post_admin_style.css')
-.style-container  
-  = render partial: 'posts/generated_style', locals: {post: @post}
+.style-container
+  - if @post.group.present?
+    - @group = @post.group
+    - @post = @post.group.try(:welcome_posts).try(:first)
+  - if @post
+    = render partial: 'posts/generated_style', locals: {post: @post}
