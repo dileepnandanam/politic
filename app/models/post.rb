@@ -38,6 +38,10 @@ class Post < ApplicationRecord
   end
 
   def update_tag_set
+    TagJob.perform_later(id)
+  end
+
+  def update_tag_set_qu
     if group_id == nil
       tgs = tags
       tgs.each{|t| search_tag_list.add(t.downcase) }
@@ -46,8 +50,6 @@ class Post < ApplicationRecord
       group.welcome_posts.map(&:update_tag_set)
     end
   end
-
-  
 
   def self.text_search(q, g, o)
     queries = q.split(' ')
