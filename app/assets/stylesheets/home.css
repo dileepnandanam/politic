@@ -1,8 +1,9 @@
 .devine-container {
-  max-width:96%;
+  max-width: 100%;
   width: 400px;
   padding-top: 6px;
   border-radius: 6px;
+  background-color: white;
 }
 .devine {
   width: 30%;
@@ -14,7 +15,7 @@
   display: block;
 }
 .devinx img {
-  width: 14% !important;
+  width: 18px !important;
 }
 a:hover {
   color: blue !important;
@@ -173,7 +174,7 @@ pre code {
   height: 40px;
   font-size: 21px !important;
   padding-left: 10px;
-  max-width: 96%;
+  max-width: 100%;
   border: 1px solid blue !important;
   width: 400px;
 }
@@ -193,14 +194,14 @@ pre code {
 }
 
 .sub-nav-bar-item {
-  display: table-cell;
+  display: inline-block;
   margin-left: 20px;
   margin-top: 10px;
   float: left;
   color: black;
   padding: 3px 5px;
   border: 1px solid white;
-  width: 144px;
+  width: 148px;
   border-radius: 4px;
   text-align: center;
 }

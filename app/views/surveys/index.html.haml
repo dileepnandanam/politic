@@ -1,6 +1,6 @@
 .my-space.col-lg-4.col-sm-6.col-12.pull-left
   .responses-container.questions-container
-    %h3= "My Surveys"
+    %h3= "My Order Forms"
     - if @surveys.length == 0
       .question.help-text
         %p
@@ -9,7 +9,7 @@
       = render partial: 'survey', locals: {survey: survey, actions: true}
   .new-question
   .questions-actions
-    = link_to "New Survey", new_survey_path, class: 'add-question', remote: true
+    = link_to "New Order form", new_survey_path, class: 'add-question', remote: true
     
     - if false
       %H3= "Other Surveys"
@@ -19,7 +19,7 @@
   
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
   %h3
-    = "Find Survey"
+    = "Find Order Forms"
   .search
     = text_field_tag 'search', nil, placeholder: 'search', data: {url: search_surveys_path(page: 1)}
   .clearfix

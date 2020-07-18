@@ -66,7 +66,7 @@
         .sub-nav-bar{class: (current_user && current_user.posts.present? ? '' : 'd-none')}
           = link_to 'Services', my_posts_posts_path, class: 'sub-nav-bar-item ' + (@flag == 'post' ? 'active-tab' : '')
           = link_to 'Sites', groups_path, class: 'sub-nav-bar-item ' + (@flag == 'project' ? 'active-tab' : '')
-          = link_to 'Surveys', surveys_path, class: 'sub-nav-bar-item ' + (@flag == 'survey' ? 'active-tab' : '')
+          = link_to 'Order Form', surveys_path, class: 'sub-nav-bar-item ' + (@flag == 'survey' ? 'active-tab' : '')
           = link_to 'Polls', quick_polls_path, class: 'sub-nav-bar-item ' + (@flag == 'quick_poll' ? 'active-tab' : '')
           - if current_user.admin?
             = link_to 'Platform', users_platform_path, class: 'sub-nav-bar-item ' + (@flag == 'platform' ? 'active-tab' : '')

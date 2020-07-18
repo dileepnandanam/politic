@@ -153,7 +153,7 @@ class PostsController < PostBaseController
     if params[:post][:survey_id].blank?
       current_user.posts.find(params[:id]).update(survey_id: nil)
       render json: {
-        ack: "No survey has got pinned to this post",
+        ack: "No order forms has got pinned to this post",
         id: nil
       } and return
     end
