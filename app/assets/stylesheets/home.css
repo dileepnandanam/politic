@@ -1,9 +1,10 @@
 .devine-container {
   max-width: 100%;
-  width: 400px;
   padding-top: 6px;
   border-radius: 6px;
   background-color: white;
+  height: 45px;
+  display: none;
 }
 .devine {
   width: 30%;
