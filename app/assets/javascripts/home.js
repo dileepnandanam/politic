@@ -53,5 +53,10 @@ $(document).on('turbolinks:load', function() {
 		$(this).closest('.preview').addClass('d-none')
 	})
 
-  
+	color = ['yellow', 'red', 'orange', 'green', 'pink']
+  light_switch = function(elem, i) {
+  	$(elem).css('box-shadow','0px 0px 14px ' + color[i])
+  	setTimeout(function() {light_switch(elem, (i+1)%color.length)}, 500)
+  }
+  light_switch($('.devine-container'), 0)
 })

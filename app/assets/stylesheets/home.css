@@ -1,3 +1,21 @@
+.devine-container {
+  max-width:96%;
+  width: 400px;
+  padding-top: 6px;
+  border-radius: 6px;
+}
+.devine {
+  width: 30%;
+  display: inline-block;
+}
+.devine img {
+  width: 20%;
+  margin: auto;
+  display: block;
+}
+.devinx img {
+  width: 14% !important;
+}
 a:hover {
   color: blue !important;
 }

@@ -1,4 +1,12 @@
 .questions-container.whitish
+  
+  .devine-container
+    .devine
+      = image_tag('islam')
+    .devine
+      = image_tag('hindu')
+    .devine.devinx
+      = image_tag('christian')
   .search-panel.search
     = text_field_tag 'search',nil, placeholder: 'search nearby', value: (params[:query].present? ? params[:query] : nil), data: {url: posts_path(page: 1)},class: 'search-field'
     .suggestions.black.d-none
