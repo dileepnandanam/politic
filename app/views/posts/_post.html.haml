@@ -30,20 +30,22 @@
     .post-text
       = raw(post.text)
     
+
+    - unless params[:preview]
+      - if post.user == current_user
+        = link_to 'Add phone', new_phone_path(post_id: post.id), class: 'new-phone', remote: true
+        .clearfix
+        .phone-form-container
+
     .phones-container
       - post.phones.each do |p|
         = render partial: 'phones/phone', locals: {phone: p}
 
-    - unless params[:preview]
-      - if post.user == current_user
-        .phone-form-container
-        = link_to 'Add phone', new_phone_path(post_id: post.id), class: 'new-phone', remote: true
-        .clearfix
-
     .social_links-container
-      = render partial: 'posts/social_links', locals: {post: post}
     - if current_user == post.user && params[:preview].blank?
-      = link_to 'Edit social links', '#', class: 'edit-social-link pull-right'
+      = link_to 'Edit social links', '#', class: 'edit-social-link'
+      .clearfix
+      = render partial: 'posts/social_links', locals: {post: post}
     .clearfix
 
     .videos-container

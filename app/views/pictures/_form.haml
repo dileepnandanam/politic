@@ -8,6 +8,6 @@
   = f.input :caption, label: 'caption', class: 'inline-input'
   .clearfix
   = f.submit 'Submit', class: 'picture-submit'
-  .clearfix
   = f.hidden_field :galery_id, value: @galery.id
-  = link_to 'cancel', '#', class: 'cancel-form', remote: true
+  = link_to 'cancel', '#', class: 'cancel-form pull-left', remote: true
+  .clearfix

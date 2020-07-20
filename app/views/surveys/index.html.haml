@@ -4,7 +4,7 @@
     - if @surveys.length == 0
       .question.help-text
         %p
-          You dont have any surveys. create one and pin it to your page!
+          You dont have any Order forms. create one and pin it to your page!
     - @surveys.each do |survey|
       = render partial: 'survey', locals: {survey: survey, actions: true}
   .new-question

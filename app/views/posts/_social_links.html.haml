@@ -1,8 +1,11 @@
 .social-links.pull-right
-  - ['facebook_url', 'twitter_url', 'pinterest_url', 'gmail'].each do |name|
+  - ['facebook_url', 'twitter_url', 'pinterest_url'].each do |name|
     - if post[name].present?
       = link_to post[name] do
         = image_tag(image_path("#{name}.png"), class: 'social-ico') 
+  - if post.gmail.present?
+    = link_to "mailto:#{post.gmail}" do
+      = image_tag(image_path('gmail.png'), class: 'social-ico')
   .clearfix
   .edit-social-link-form.d-none
     = simple_form_for(post, url: update_urls_post_path(post), method: :put, html: {remote: true, class: 'edit-social-links'}) do |f|
