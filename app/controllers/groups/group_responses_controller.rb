@@ -30,6 +30,7 @@ class Groups::GroupResponsesController < ApplicationController
         render 'thanks', layout: false
       end
     else
+      @questions = @group.questions.map{|q| [q.id, q]}.to_h
       render '_form', layout: false, status: 422
     end
   end
