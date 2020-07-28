@@ -231,6 +231,7 @@ legend {
   height: 30px !important;
 }
 .boolean label {
+  display: inline;
   margin-left: -14px !important;
   margin-top: 5px !important;
   padding-top: 0px !important;

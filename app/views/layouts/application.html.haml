@@ -26,7 +26,7 @@
     - if ['groupsshow', 'postsshow'].include?(controller_name + action_name)
       - if group.present? && group.background.attachment.present?
         .banner{style: group.blur_banner? ? "filter: blur(5px)" : ''}
-          %img{src: group.background.service_url}
+          = image_tag group.background
         - if group.banner_title.present? || group.banner_description.present?
           .banner-overlay
             .header-text-container
