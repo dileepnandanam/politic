@@ -291,3 +291,6 @@ legend {
 .registrations-edit, .registrations-update {
   background-color: white;
 }
+.survey-label {
+  display: block;
+}
