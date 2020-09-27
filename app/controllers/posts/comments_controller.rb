@@ -1,5 +1,5 @@
 class Posts::CommentsController < ApplicationController
-  before_action :check_user, only: [:new, :create, :upvote, :downvote, :destroy]
+
   def new
     @post = Post.find(params[:post_id])
     @comment = Comment.new
