@@ -83,6 +83,7 @@
   padding-bottom: 0px;
   border: none !important;
   padding: 0px 12px;
+  background-image: linear-gradient(0deg, #beb0b2, transparent);
 }
 .small-post-title .name {
   margin-bottom: 0px;
@@ -184,7 +185,7 @@
   margin: 12px;
 }
 .posts-index {
-  background-color: #481313 !important;
+  background-color: #676bb3 !important;
 }
 .social-ico {
   width: 50px !important;
