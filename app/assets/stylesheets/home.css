@@ -294,3 +294,6 @@ legend {
 .survey-label {
   display: block;
 }
+suggestion:nth-child(2n+1) {
+  background: cyan;
+}

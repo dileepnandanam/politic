@@ -39,7 +39,6 @@ class PostsController < PostBaseController
     if params[:query].present?
       @posts = Post.search(params[:query], nil, orientation, location)
       @posts = @posts.paginate(per_page: 12, page: params[:page])
-      QueryRecorder.new(params[:query]).record if @posts.count > 0
       @next_path = posts_path(page: (params[:page].present? ? params[:page].to_i + 1 : 2), query: params[:query])
       if request.format.html? || bot_request?
         render 'index' and return
@@ -58,15 +57,14 @@ class PostsController < PostBaseController
 
   def search_suggestions
     query = params[:query]
-    q_length = params[:query].split(' ').length
-    @suggestions = Query.where("string like '#{query.downcase}%'")
-      .where("count in (?)", [q_length, q_length + 1])
-      .limit(8)
-    if @suggestions.count > 0
-      render 'suggestions', layout: false, status: 200
+    @suggestions = Post.search(query,nil,nil,location)
+    if @suggestion.is_a?(Array)
+      @suggestions = @suggestions.map(&:title).uniq
     else
-      render plain: 'nothing', status: 422
+      @suggestions = @suggestions.map(&:title).uniq
     end
+
+    render 'suggestions', layout: false
   end
 
   def my_posts
