@@ -53,6 +53,7 @@ class Post < ApplicationRecord
 
 
   def self.text_search(q, g, o)
+    q = q.gsub(',' ' or ').gsub('+', ' and ')
     queries = q.split(' ').map(&:downcase).select{|t| !STOP_WORDS.include?(t)}.uniq
     sql = []
     post_id_sets = (0..(queries.count - 1)).map { |query|
