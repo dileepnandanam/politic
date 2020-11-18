@@ -51,14 +51,9 @@ class Post < ApplicationRecord
     end
   end
 
-  def self.text_search(q, g, o)
-    queries = q.split(' ')
-    compount_query = queries.map{|query| "LOWER(tag_set) like '%#{query.downcase}%'"}.join(' AND ')
-    Post.where(compount_query).where(group_id: g, published: true)
-  end
 
   def self.text_search(q, g, o)
-    queries = q.split(' ').map(&:downcase).select{|t| !STOP_WORDS.include?(t)}
+    queries = q.split(' ').map(&:downcase).select{|t| !STOP_WORDS.include?(t)}.uniq
     sql = []
     post_id_sets = (0..(queries.count - 1)).map { |query|
       ActsAsTaggableOn::Tag.where("name like '%#{queries[query]}%'").all.map(&:taggings).flatten.map(&:taggable_id)
