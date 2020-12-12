@@ -47,10 +47,7 @@
               = link_to 'my services', my_posts_posts_path, class: "dropdown-item account-action  #{current_user && current_user.posts.count == 0 ? 'd-none' : ''}", rel: :nofollow
             = link_to "Edit Profile", edit_registration_path(:user), class: 'dropdown-item account-action', rel: 'nofollow'
             = link_to "Log Out", destroy_session_path(User.new), method: :delete, class: 'dropdown-item account-action', rel: 'nofollow'
-            
-        
-        = link_to 'Use GPS', '#', class: 'i-am-here pull-right', rel: :nofollow
-        
+                    
         
         
         = link_to 'home', '/', class: 'pull-right', rel: :nofollow
@@ -59,7 +56,6 @@
           
         = link_to "Sign in", new_user_session_path, class: 'pull-right', rel: :nofollow
 
-        = link_to 'Use GPS', '#', class: 'i-am-here pull-right', rel: :nofollow
         = link_to 'home', '/', class: 'pull-right', rel: :nofollow
         .clearfix
       - if current_user.present? && params[:preview].blank?
