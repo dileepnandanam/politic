@@ -3,6 +3,9 @@
   height: 40px;
   margin-top: 12px !important;
 }
+.group-post.small-post {
+  border-bottom: 1px solid yellow !important;
+}
 .pin-survey-ack, .pin-quick-poll-ack, .pin-project-ack {
   margin-top: 12px;
 }
