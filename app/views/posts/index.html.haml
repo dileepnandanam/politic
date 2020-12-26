@@ -10,15 +10,6 @@
   .search-panel.search
     = text_field_tag 'search',nil, placeholder: 'search nearby', value: (params[:query].present? ? params[:query] : nil), data: {url: posts_path(page: 1)},class: 'search-field'
     .suggestions.black.d-none
-      
-  .text-center.new-bussiness-lik
-    .group-action
-      - if current_user
-        = link_to 'Add service', new_post_path, remote: true, class: 'new-group-post'
-      - else
-        = link_to 'sign up to Add service', new_user_registration_path(start: true), class: 'new-group-post'
-  .clearfix
-
 
   .posts-container.posts
     - if @posts.length == 0
@@ -31,3 +22,10 @@
 
     = render partial: 'posts', locals: {posts: @posts}    
   .new-post
+  .text-center.new-bussiness-lik
+    .group-action
+      - if current_user
+        = link_to 'Add service', new_post_path, remote: true, class: 'new-group-post'
+      - else
+        = link_to 'sign up to Add service', new_user_registration_path(start: true), class: 'new-group-post'
+  .clearfix
