@@ -38,6 +38,8 @@
   margin-bottom: 12px;
 }
 .post-text {
+  font-size: 25px;
+  text-align: center;
   margin: 12px 12px 20px 12px;
 }
 .user-avathar {

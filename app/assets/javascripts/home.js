@@ -27,8 +27,11 @@ $(document).on('turbolinks:load', function() {
 				query: query
 			},
 			success: function(data) {
-				$('.suggestions').html(data)
-				$('.suggestions').removeClass('d-none')
+				if(data.length > 0){
+					$('.suggestions').html(data)
+				  $('.suggestions').removeClass('d-none')
+			  } else
+			    $('.suggestions').addClass('d-none')
 			},
 			error: function() {
 				$('.suggestions').addClass('d-none')
