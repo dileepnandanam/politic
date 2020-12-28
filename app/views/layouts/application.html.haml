@@ -51,9 +51,12 @@
         
         
         = link_to 'home', '/', class: 'pull-right', rel: :nofollow
+        .nav-search
+          = render partial: 'layouts/search'
         .clearfix
       .nav-bar.unsigned{class: current_user ? 'd-none' : ''}
-          
+        .nav-search
+          = render partial: 'layouts/search'
         = link_to "Sign in", new_user_session_path, class: 'pull-right', rel: :nofollow
 
         = link_to 'home', '/', class: 'pull-right', rel: :nofollow

@@ -27,6 +27,33 @@ p a {
 }
 .search-panel {
   width: 100% !important;
+  width: 100%;
+  max-width: 300px;
+}
+.nav-search {
+  padding: 10px;
+  display: none;
+  width: 100%;
+  max-width: 300px;
+}
+.post-search {
+  display: none;
+}
+@media(max-width: 621px) {
+  .nav-search {
+    display: none;
+  }
+  .post-search {
+    display: inline-block;
+  }
+}
+@media(min-width: 622px) {
+  .nav-search {
+    display: inline-block;
+  }
+  .post-search {
+    display: none;
+  }
 }
 .search-panel input {
   border-radius: 7px !important;
@@ -294,6 +321,6 @@ legend {
 .survey-label {
   display: block;
 }
-suggestion:nth-child(2n+1) {
+.suggestion:nth-child(2n+1) {
   background: cyan;
 }
