@@ -4,7 +4,7 @@
   background-color: white !important;
 }
 .post form label {
-  color: black !important;
+  color: black;
 }
 .post .video, .post .picture, .post .galery {
   border: 1px solid red;
