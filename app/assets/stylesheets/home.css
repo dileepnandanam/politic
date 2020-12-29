@@ -293,6 +293,7 @@ legend {
   color: black;
   padding: 12px;
   margin-bottom: 12px;
+  border: 1px solid;
 }
 .search-field {
   max-width: 360px;
