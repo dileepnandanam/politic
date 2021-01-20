@@ -3,7 +3,7 @@ initMasonry = function() {
 $(document).on('turbolinks:load', function() {
 
 	search = function() {
-		query = $('.search input').val()
+		query = $('.search input:focus').val()
 		if(!query)
 			return
 		$.ajax({
@@ -18,7 +18,7 @@ $(document).on('turbolinks:load', function() {
 		})
 	}
 	auto_suggest = function() {
-		query = $('.search input').val()
+		query = $('.search input:focus').val()
 		if(!query)
 			return
 		$.ajax({

@@ -8,7 +8,7 @@
     .devine.devinx
       = image_tag('christian')
   .post-search
-    = render partial: 'layouts/search'
+    = render partial: 'layouts/search', locals: {id: 'search_3'}
 
   .posts-container.posts
     - if @posts.length == 0
