@@ -133,3 +133,6 @@ textarea {
 .actions a {
     color: white !important;
 }
+.suggestions {
+    z-index: 999999;
+}
