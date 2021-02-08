@@ -4,4 +4,5 @@ class SurveyResponse < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :survey
   has_many :answers
+  validates_associated :answers
 end

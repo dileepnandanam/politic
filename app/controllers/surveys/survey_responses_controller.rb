@@ -110,28 +110,18 @@ class Surveys::SurveyResponsesController < SurveysController
   end
 
   def create
-    user = (current_user || anonymous_user)
-    @response = SurveyResponse.create response_params.merge(user_id: user.id, survey_id: @survey.id)
+    @user = (current_user || anonymous_user)
 
-    @notif = V2::Notification.create(
-      sender_id: user.id,
-      item_id: @response.id,
-      item_type: 'SurveyResponse',
-      target_id: @survey.user.id,
-      link: survey_survey_response_path(@survey, @response),
-      action: "#{user.name} responded to \"#{@survey.name}\""
-    )
+    @survey_response = ResponseBuilder.new(@survey, response_params).build
+    @survey_response.assign_attributes(user_id: @user.id, survey_id: @survey.id)
 
-    message = ApplicationController.render(
-      partial: 'surveys/survey_responses/message',
-      locals: { notif: @notif }
-    )
-    ApplicationCable::SurveyNotificationsChannel.broadcast_to(
-      @survey.user,
-      message: message
-    )
-
-    render 'thanks', layout: false
+    if(@survey_response.valid?)
+      @survey_response.save
+      notify_response
+      render 'thanks', layout: false
+    else
+      render 'new', layout: false, status: 422
+    end
   end
 
   protected
@@ -164,5 +154,25 @@ class Surveys::SurveyResponsesController < SurveysController
       parent_element = parent_element.parent
     end
     parent_post
+  end
+
+  def notify_response
+    @notif = V2::Notification.create(
+      sender_id: @user.id,
+      item_id: @survey_response.id,
+      item_type: 'SurveyResponse',
+      target_id: @survey.user.id,
+      link: survey_survey_response_path(@survey, @survey_response),
+      action: "#{@user.name} responded to \"#{@survey.name}\""
+    )
+
+    message = ApplicationController.render(
+      partial: 'surveys/survey_responses/message',
+      locals: { notif: @notif }
+    )
+    ApplicationCable::SurveyNotificationsChannel.broadcast_to(
+      @survey.user,
+      message: message
+    )
   end
 end

@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
   })
 
   $(document).on('ajax:error', '.quick-poll-form, .survey_response_form', function(e) {
-    $(this).replaceWith(e.detail[2].responseText)
+    $(this).closest('.response-form').replaceWith(e.detail[2].responseText)
   })
 
   $(document).on('click', '.survey-radio', function(e) {
