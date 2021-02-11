@@ -12,13 +12,30 @@ $(document).on('turbolinks:load', function() {
 				query: query
 			},
 			success: function(data) {
-				$('.questions, .posts').html(data)
+				$('.questions').html(data)
 				prepare_asinc_reload()
 			}
 		})
 	}
+
+	main_search = function() {
+		query = $('.main-search input:focus').val()
+		if(!query)
+			return
+		$.ajax({
+			url: $(this).data('url'),
+			data: {
+				query: query
+			},
+			success: function(data) {
+				$('.posts').html(data)
+				prepare_asinc_reload()
+			}
+		})
+	}
+
 	auto_suggest = function() {
-		query = $('.search input:focus').val()
+		query = $('.main-search input:focus').val()
 		if(!query)
 			return
 		$.ajax({
@@ -40,7 +57,8 @@ $(document).on('turbolinks:load', function() {
 	}
 	$('body').click(function(){$('.suggestions').addClass('d-none')})
 	$('.search input').keyup($.debounce(1250, search))
-	$('.search input').keyup(auto_suggest)
+	$('.main-search input').keyup($.debounce(1250, main_search))
+	$('.main-search input').keyup($.debounce(500, auto_suggest))
 	initMasonry()
 
 	$('.questions').on('ajax:success', '.view-more-questions', function() {

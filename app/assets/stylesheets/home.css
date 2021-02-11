@@ -36,6 +36,12 @@ p a {
   width: 100%;
   max-width: 300px;
 }
+.main-search input {
+  border-radius: 10px !important;
+  color: black !important;
+  padding: 12px;
+  font-size: 20px !important;
+}
 .post-search {
   display: none;
 }
