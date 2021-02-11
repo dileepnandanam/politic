@@ -2,33 +2,17 @@ initMasonry = function() {
 	}
 $(document).on('turbolinks:load', function() {
 
-	search = function() {
-		query = $('.search input:focus').val()
+	search = function(input, target) {
+		query = $(input).val()
 		if(!query)
 			return
 		$.ajax({
-			url: $(this).data('url'),
+			url: $(input).data('url'),
 			data: {
 				query: query
 			},
 			success: function(data) {
-				$('.questions').html(data)
-				prepare_asinc_reload()
-			}
-		})
-	}
-
-	main_search = function() {
-		query = $('.main-search input:focus').val()
-		if(!query)
-			return
-		$.ajax({
-			url: $(this).data('url'),
-			data: {
-				query: query
-			},
-			success: function(data) {
-				$('.posts').html(data)
+				$(target).html(data)
 				prepare_asinc_reload()
 			}
 		})
@@ -56,8 +40,8 @@ $(document).on('turbolinks:load', function() {
 		})
 	}
 	$('body').click(function(){$('.suggestions').addClass('d-none')})
-	$('.search input').keyup($.debounce(1250, search))
-	$('.main-search input').keyup($.debounce(1250, main_search))
+	$('.search input').keyup($.debounce(1250, function(){search('.search input:focus', '.questions')}))
+	$('.main-search input').keyup($.debounce(1250, function(){search('.main-search input:focus', '.posts')}))
 	$('.main-search input').keyup($.debounce(500, auto_suggest))
 	initMasonry()
 
