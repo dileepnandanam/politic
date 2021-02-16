@@ -148,8 +148,8 @@ bind_button_pin()
     window.location.href = e.detail[2].responseText
   })
 
-    $(document).on('ajax:error', '.project-form', function(e) {
-    $(this).replaceWith(e.detail[2].responseText)
+  $(document).on('ajax:error', '.project-form', function(e) {
+    $('.project-form').replaceWith(e.detail[2].responseText)
   })
 
 	$('.new-group-post').on('ajax:success', function(e) {

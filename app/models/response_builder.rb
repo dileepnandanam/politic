@@ -1,12 +1,13 @@
 class ResponseBuilder
-  def initialize(survey, params)
-    @survey = survey
+  def initialize(response_model, form_tool, params)
+    @response_model = response_model
+    @form_tool = form_tool
     @params = params
   end
 
   def build
-    @response = SurveyResponse.new
-    @survey.questions.each do |q|
+    @response = @response_model.new
+    @form_tool.questions.each do |q|
       answer = Answer.new({question_id: q.id}.merge(answer_for(q)))
       @response.answers << answer
       q.options.each do |opt|

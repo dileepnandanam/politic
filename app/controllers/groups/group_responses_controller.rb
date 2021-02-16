@@ -14,13 +14,15 @@ class Groups::GroupResponsesController < ApplicationController
   end
 
   def create
-    params_with_user = response_params
+    params_with_user = {}
     if current_user.present?
-      params_with_user = response_params.merge(user_id: current_user.id)
+      params_with_user = params_with_user.merge(user_id: current_user.id)
     end
 
-  	@response = GroupResponse.new params_with_user.merge(group_id: @group.id, state: (@group.allow_immediate_access? ? 'accepted' : 'new'))
-    
+    @response = ResponseBuilder.new(GroupResponse, @group, response_params).build
+    @response.assign_attributes params_with_user.merge(group_id: @group.id, state: (@group.allow_immediate_access? ? 'accepted' : 'new'))
+    @response.assign_attributes response_params.select{|k,v| k == "user_attributes"} unless current_user.present?
+
     if @response.valid?
       if @response.user_id == @response.group.user_id
         render 'thanks', layout: false

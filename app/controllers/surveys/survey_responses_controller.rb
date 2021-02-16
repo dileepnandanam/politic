@@ -112,7 +112,7 @@ class Surveys::SurveyResponsesController < SurveysController
   def create
     @user = (current_user || anonymous_user)
 
-    @survey_response = ResponseBuilder.new(@survey, response_params).build
+    @survey_response = ResponseBuilder.new(SurveyResponse, @survey, response_params).build
     @survey_response.assign_attributes(user_id: @user.id, survey_id: @survey.id)
 
     if(@survey_response.valid?)

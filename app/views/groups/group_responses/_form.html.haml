@@ -30,15 +30,17 @@
         = af.input :text, label: false
       - elsif @questions[af.object.question_id].answer_type == 'radio'
         = af.fields_for :choices do |afc|
-          = afc.radio_button :option_id, afc.object.option.id, checked: false, class: 'survey-radio pull-left'
+          = afc.radio_button :option_id, afc.object.option.id, checked: afc.object.checked, class: 'survey-radio pull-left'
           = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-11 col-md-10 col-xs-11 col-10'
           .clearfix
       - elsif @questions[af.object.question_id].answer_type == 'checkbox'
         = af.fields_for :choices do |afc|
-          = afc.check_box :option_id, {checked: false, class: 'pull-left survey-checkbox'}, afc.object.option.id, nil
+          = afc.check_box :option_id, {checked: afc.object.checked, class: 'pull-left survey-checkbox'}, afc.object.option.id, nil
           = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-11 col-md-10 col-xs-11 col-10'
           .clearfix
       = af.hidden_field :question_id, value: @questions[af.object.question_id].id
+      .error
+        = af.object.errors.messages.values.flatten.join(', ')
     .clearfix
   = f.submit 'Submit', class: 'btn-primary'
   .clearfix
