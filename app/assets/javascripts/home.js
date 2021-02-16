@@ -64,4 +64,7 @@ $(document).on('turbolinks:load', function() {
   	setTimeout(function() {light_switch(elem, (i+1)%color.length)}, 500)
   }
   //light_switch($('.devine-container'), 0)
+  $(document).on('click', '.small-post', function() {
+  	window.location.href = $(this).find('.small-post-title').find('a').attr('href')
+  })
 })

@@ -48,6 +48,18 @@
     .response-form, .response-form p, .response-form h3  {
       background-color: <%= post.style[:background_color] %>;
     }
+    .comment .user-details, .comment .comment-body {
+      color: <%= post.style[:text_color] %> !important;
+    }
+    .comment {
+      border: 1px solid <%= post.style[:text_color] %> !important;
+    }
+    .expand-comment {
+      color: <%= post.style[:text_color] %> !important;
+    }
+    .configure {
+      color: <%= post.style[:text_color] %> !important;      
+    }
 
   </style>
 <% end %>

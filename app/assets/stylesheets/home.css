@@ -331,3 +331,15 @@ legend {
 .suggestion:nth-child(2n+1) {
   background: cyan;
 }
+.small-post {
+  transition: background-color 0.1s ease-in 0s;
+}
+.small-post:hover, .small-post:active {
+  background-color: #494545;
+}
+.small-post-title a:hover {
+  color: yellow !important;
+}
+.new-post-form label {
+  color: black;
+}
