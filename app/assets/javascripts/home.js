@@ -41,7 +41,7 @@ $(document).on('turbolinks:load', function() {
 	}
 	$('body').click(function(){$('.suggestions').addClass('d-none')})
 	$('.search input').keyup($.debounce(1250, function(){search('.search input:focus', '.questions')}))
-	$('.main-search input').keyup($.debounce(1250, function(){search('.main-search input:focus', '.posts')}))
+	$('.main-search input').keyup($.debounce(1250, function(){search('.main-search input:focus', '.post-results')}))
 	$('.main-search input').keyup($.debounce(500, auto_suggest))
 	initMasonry()
 

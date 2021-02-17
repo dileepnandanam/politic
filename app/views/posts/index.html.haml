@@ -10,7 +10,7 @@
   .post-search
     = render partial: 'layouts/search', locals: {id: 'search_3'}
 
-  .posts-container.posts
+  .posts-container.posts.post-results
     - if @posts.length == 0
       .welcome
         %h1.text-center

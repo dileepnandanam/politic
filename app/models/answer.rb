@@ -1,5 +1,8 @@
 class AnswerValidator < ActiveModel::Validator
   def validate(record)
+    unless record.question.required
+      return
+    end
     if record.question.answer_type == "line"
       record.errors[:base] << "can't be blank" if record.line.blank?
     elsif record.question.answer_type == "number"
