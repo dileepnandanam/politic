@@ -278,6 +278,9 @@
 .expand-reply {
   margin-top: 17px !important;
 }
+.new-comment {
+  padding: 0px 12px;
+}
 .comments-container {
   margin: 0px 12px 12px 12px;
 }
