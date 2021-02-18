@@ -1,9 +1,6 @@
 .response-form.survey{data: {anonymous: @survey.anonymous?.to_s}}
   = link_to 'edit questions', dashboard_survey_path(@survey), class: 'pull-right configure'
-  .clearfix
-  - if current_user.blank? && !@survey.anonymous?
-    = render partial: 'authorize'
-  
+  .clearfix  
   %h3.text-center= @survey.name
   %p.text-center= @survey.description
   .clearfix

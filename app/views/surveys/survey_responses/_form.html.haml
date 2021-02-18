@@ -28,7 +28,7 @@
         .clearfix
         = af.fields_for :choices do |afc|
           = afc.radio_button :option_id, afc.object.option.id, checked: afc.object.checked, class: 'survey-radio pull-left'
-          = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-11 col-md-10 col-xs-11 col-10'
+          = af.label afc.object.option.name, class: 'survey-label pull-left col-lg-8 col-md-8 col-xs-8 col-8'
           .clearfix
       - elsif questions[af.object.question_id].answer_type == 'multiline'
         .survey-question-text

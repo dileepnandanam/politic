@@ -119,8 +119,9 @@ img.map-ico {
   color: blue;
 }
 .highlight {
-  border: 2px solid yellow !important;
+  border: 1px solid yellow !important;
   background-color: brown;
+  padding: 2px;
 }
 .highlight .answer-text {
   background-color: black !important;
