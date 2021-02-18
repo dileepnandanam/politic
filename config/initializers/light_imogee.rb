@@ -11,7 +11,6 @@ LightImogee::Data.add_imogee({
   ":/" => "confused face",
   ":(" => "slightly frowning face",
   ":O" => "face with open mouth",
-  "(poo)" => "pile of poo",
   "(wave)" => "waving hand",
   "(victory)" => "victory hand",
   "(beer)" => "beer mug",
