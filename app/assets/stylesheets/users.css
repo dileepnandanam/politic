@@ -24,3 +24,16 @@
 .reset-phone-pass-submit:hover {
   color: yellow !important;
 }
+.sessions-new .response-form, .registrations-new .response-form, .registrations-create .response-form {
+  background: #605a52 !important;
+  border-radius: 12px;
+  padding: 20px !important;
+  box-shadow: 0px 0px 12px #394651;
+}
+.new_user .question {
+  border-radius: 12px;
+  background: #82796d !important;
+}
+.invalid-feedback {
+  color: yellow !important;
+}
