@@ -265,7 +265,8 @@ bind_button_pin()
       $(this).closest('.edit-social-link-form').addClass('d-none')
     })
     $(document).on('ajax:success', '.edit-social-links', function(e) {
-      $(this).closest('.social-links').replaceWith(e.detail[2].responseText)
+      $(this).closest('.post').find('.social-links').replaceWith(e.detail[2].responseText)
+      $(this).remove()
     })
     
     $(document).on('ajax:success', '.post-visibility', function(e) {
