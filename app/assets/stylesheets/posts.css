@@ -190,6 +190,16 @@
 .posts-index {
   background-color: #000 !important;
 }
+.social-links a {
+  margin-bottom: 12px;
+  display: inline-block;
+}
+.social-links {
+  display: block;
+  margin: auto;
+  width: 100%;
+  max-width: 100px;
+}
 .social-ico {
   width: 50px !important;
 }
