@@ -1,4 +1,4 @@
-= simple_form_for @video, html: {remote: true, class: 'new-video-form'} do |f|
+= simple_form_for @video, html: {remote: true, class: 'new-video-form admin-form'} do |f|
   = f.input :iframe
   = f.input :caption
   = f.hidden_field :post_id, value: params[:post_id]

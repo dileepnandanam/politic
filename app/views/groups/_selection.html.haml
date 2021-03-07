@@ -6,7 +6,7 @@
       = link_to 'Link a site', '#', class: 'project-select', remote: true
     .clearfix
     .project-select-container.d-none
-      = form_for [:select_project, post], method: :put, html: {class: 'project-select-form', remote: true} do |f|
+      = form_for [:select_project, post], method: :put, html: {class: 'project-select-form admin-form', remote: true} do |f|
         = f.select :project_id, [['none', nil]] + current_user.owned_groups.map{|q| [q.display_name, q.id]}, html: {class: 'project-select-box'}
         .clearfix
         = f.submit 'pin'

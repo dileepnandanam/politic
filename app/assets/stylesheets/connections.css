@@ -3,11 +3,13 @@
     overflow: scroll;
     margin-bottom: 15px;
 }
+.new-chat {
+  background: transparent !important;
+}
 .chat-thread {
 	background-color: #343534;
 	padding: 20px;
-	border-radius: 10px;
-	margin-bottom: 16px;
+  border-radius: 10px 10px 0 0;
 	max-height: 380px;
   min-height: 100px;
 	overflow: scroll;
@@ -16,15 +18,17 @@
 	padding: 0px !important;
 }
 .chat {
-	background-color: #f1f1f1;
-	color: black;
-	border-radius: 8px;
-	padding: 15px;
-	width: fit-content;
-	margin-bottom: 10px;
-	max-width: 70%;
-	border: 1px solid #ddf;
-  font-size: 24px;
+  background-color: #f1f1f1;
+  color: black;
+  border-radius: 8px;
+  padding: 9px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 10px;
+  max-width: 70%;
+  border: 1px solid #ddf;
+  font-size: 20px;
 }
 .chat:last-child {
 	margin-bottom: none;

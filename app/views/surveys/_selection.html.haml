@@ -6,7 +6,7 @@
       = link_to 'Pin Order form', '#', class: 'survey-select', remote: true
     .clearfix
     .survey-select-container.d-none
-      = form_for [:select_survey, post], method: :put, html: {class: 'survey-select-form', remote: true} do |f|
+      = form_for [:select_survey, post], method: :put, html: {class: 'survey-select-form admin-form', remote: true} do |f|
         = f.select :survey_id, [['none', nil]] + current_user.surveys.map{|s| [s.name, s.id]}, html: {class: 'survey-select-box'}
         .clearfix
         = f.submit 'pin'

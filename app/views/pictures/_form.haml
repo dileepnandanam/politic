@@ -1,4 +1,4 @@
-= simple_form_for(@picture, html: {class: (@picture.persisted? ? 'edit-picture' : 'add-picture'), remote: true}) do |f|
+= simple_form_for(@picture, html: {class: (@picture.persisted? ? 'edit-picture admin-form' : 'add-picture admin-form'), remote: true}) do |f|
   = f.label 'Add Picture (optional)'
   .clearfix
   = f.input :img, label: false, class: 'inline-input'

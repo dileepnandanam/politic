@@ -1,6 +1,4 @@
-.post form {
-  background-color: white !important;
-  padding: 3%;
+.post .admin-form {
   background-color: white !important;
 }
 .post form label {
@@ -22,7 +20,8 @@
 .pictures {
   padding: 4px;
 }
-.form {
+.admin-form {
+  margin-top: 12px;
   padding: 20px;
   border-radius: 12px;
 }

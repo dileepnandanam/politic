@@ -228,3 +228,6 @@ a.user-switch.pull-left {
 .chat-container {
   margin: 12px;
 }
+.chat-input {
+  border-radius: 0 0 10px 10px !important;
+}

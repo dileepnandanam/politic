@@ -1,3 +1,7 @@
+.map-link {
+  width: 72px;
+  margin: auto;
+}
 #post_survey_id, #post_quick_poll_id, #post_project_id {
   width: 200px;
   height: 40px;
@@ -22,9 +26,7 @@
   background: aqua;
   width: 222px;
 }
-.pin-select {
-  width: 200px;
-}
+
 .user-details {
   font-size: 24px;
 }
@@ -198,7 +200,7 @@
   display: block;
   margin: auto;
   width: 100%;
-  max-width: 100px;
+  max-width: 52px;
 }
 .social-ico {
   width: 50px !important;
@@ -277,6 +279,8 @@
   padding: 3px 8px;
   width: 100%;
   display: block;
+  font-size: 20px;
+  font-weight: normal;
 }
 .suggestion:hover {
   color: white;

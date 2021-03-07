@@ -9,7 +9,7 @@
       = image_tag(image_path('gmail.png'), class: 'social-ico')
   .clearfix
 .edit-social-link-form.d-none
-  = simple_form_for(post, url: update_urls_post_path(post), method: :put, html: {remote: true, class: 'edit-social-links'}) do |f|
+  = simple_form_for(post, url: update_urls_post_path(post), method: :put, html: {remote: true, class: 'edit-social-links admin-form'}) do |f|
     - ['facebook_url', 'twitter_url', 'pinterest_url', 'gmail'].each do |name|
       = f.input name
     = f.submit 'submit'
