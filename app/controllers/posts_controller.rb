@@ -170,7 +170,7 @@ class PostsController < PostBaseController
     if params[:post][:quick_poll_id].blank?
       @post.update(quick_poll_id: nil)
       render json: {
-        ack: "No quick poll has got pinned to this post",
+        ack: "No Poll has got pinned to this post",
         id: nil
       } and return
     end
@@ -179,7 +179,7 @@ class PostsController < PostBaseController
     @post.update(quick_poll_id: @quick_poll.id)
     @post.update_tag_set
     render json: {
-      ack: "Pinning quick poll #{@quick_poll.name}",
+      ack: "Pinning Poll #{@quick_poll.name}",
       id: @quick_poll.id
     }
   end

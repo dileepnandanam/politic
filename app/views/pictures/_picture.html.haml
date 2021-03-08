@@ -7,7 +7,7 @@
         .edit-form-container
         .clearfix
     = image_tag_with_fallback(picture, :img)
-    %p.black.text-center= raw picture.caption
+    %p.text-center= raw picture.caption
     - if current_user && current_user.galeries.include?(picture.galery)  
       - unless params[:preview]
         = remove_tag_with_fallback(picture, :img)
