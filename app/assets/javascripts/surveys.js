@@ -5,7 +5,7 @@ fix_radio = function() {
   })
 }
 $(document).on('turbolinks:load', function() {
-  $('.get-embed-code').click(function() {
+  $('.common-bg').on('click', '.get-embed-code', function(e) {
     $(this).siblings('.embed-code').removeClass('d-none')
   })
 

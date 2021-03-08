@@ -1,7 +1,7 @@
-.question
+.admin-item
   = link_to new_quick_poll_quick_poll_response_path(quick_poll) do
-    %h3.clickable= quick_poll.display_name
-  %p
+    %h3.clickable.black= quick_poll.display_name
+  %p.black
     = quick_poll.description
   - if actions
     .question-actions
@@ -11,7 +11,7 @@
         = link_to 'delete', quick_poll_path(quick_poll), method: 'delete', remote: true, class: 'delete-question'
       .pull-left
         = link_to 'dashboard', dashboard_quick_poll_path(quick_poll), class: 'dashboard'
-  .pull-left
-    = link_to 'Cast Vote', new_quick_poll_quick_poll_response_path(quick_poll), class: 'preview-submit'
+  .clearfix
+  = link_to 'Cast Vote', new_quick_poll_quick_poll_response_path(quick_poll), class: 'preview-submit'
   .clearfix
   .question-edit-form-container

@@ -1,6 +1,6 @@
 .my-space.col-lg-4.col-sm-6.col-12.pull-left
   .responses-container.questions-container
-    %h3= "My Order Forms"
+    %h3.black= "My Order Forms"
     - if @surveys.length == 0
       .question.help-text
         %p
@@ -12,15 +12,15 @@
     = link_to "New Order form", new_survey_path, class: 'add-question', remote: true
     
     - if false
-      %H3= "Other Surveys"
+      %H3.black= "Other Surveys"
       - @other_surveys.each do |survey|
         = render partial: 'survey', locals: {survey: survey, actions: false}
 
   
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
-  %h3
+  %h3.black
     = "Find Order Forms"
   .search
     = text_field_tag 'search', nil, placeholder: 'search', data: {url: search_surveys_path(page: 1)}
   .clearfix
-  .questions
+  .admin-items-result

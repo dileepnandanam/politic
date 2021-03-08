@@ -61,6 +61,7 @@ a.edit-option, a.delete-option, a.edit-question, a.delete-question, a.new-option
   color: black;
   padding: 12px;
   border-radius: 10px;
+  margin-bottom: 12px;
 }
 input[name=commit], .cancel-form {
   margin-right: 12px !important;

@@ -15,22 +15,22 @@ $(document).on('turbolinks:load', function() {
 		$('.new-question').html(e.detail[2].responseText)
 	})
 
-	$('.questions-container').on('ajax:success', '.edit-question', function(e) {
-		$(this).closest('.question').find('.question-edit-form-container').html(e.detail[2].responseText)
+	$(document).on('ajax:success', '.edit-question', function(e) {
+		$(this).closest('.admin-item, .question').find('.question-edit-form-container').html(e.detail[2].responseText)
 	})
 
 	$('.questions-container').on('click', '.cancel-form', function() {
 		$(this).closest('form').remove()
 	})
 
-	$(document).on('ajax:success', '.questions-container > div > div > form', function(e) {
-		$(this).closest('.question').replaceWith(e.detail[2].responseText)
+	$(document).on('ajax:success', '.admin-item > div > form', function(e) {
+		$(this).closest('.question, .admin-item').replaceWith(e.detail[2].responseText)
 	}).on('ajax:error', 'form', function(e) {
 		$(this).closest('.question-edit-form-container').html(e.detail[2].responseText)
 	})
 
-	$('.questions-container').on('ajax:success', '.delete-question', function() {
-		$(this).closest('.question').remove()
+	$(document).on('ajax:success', '.delete-question', function() {
+		$(this).closest('.question, .admin-item').remove()
 	})
 
 	$('.questions-container.reorderable-user-questions').sortable({

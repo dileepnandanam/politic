@@ -2,9 +2,9 @@
   .responses-container.questions-container
     - if @groups.length == 0
       .question.help-text
-        %p
+        %p.black
           You dont have any sites. create one and pin it to your page!
-    %h3= "My sites"
+    %h3.black= "My sites"
     - @groups.each do |group|
       = render partial: 'group', locals: {group: group, actions: true}
     - current_user.joined_groups.each do |group|
@@ -14,14 +14,14 @@
     = link_to "New site", new_group_path, class: 'add-question', remote: true
 
   - if false
-    %h3= "Other sites"
+    %h3.black= "Other sites"
     - @other_groups.each do |group|
       = render partial: 'group', locals: {group: group, actions: false}
   
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
-  %h3
+  %h3.black
     = "Find sites"
   .search
     = text_field_tag 'search', nil, placeholder: 'search', data: {url: search_groups_path(page: 1)}
   .clearfix
-  .questions
+  .admin-items-result

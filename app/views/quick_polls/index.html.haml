@@ -1,9 +1,9 @@
 .my-space.col-lg-4.col-sm-6.col-12.pull-left
   .responses-container.questions-container
-    %h3= "My QuickPolls"
+    %h3.black= "My QuickPolls"
     - if @quick_polls.length == 0
       .question.help-text
-        %p
+        %p.black
           You dont have any quick polls. create one and pin it to your page!
     - @quick_polls.each do |quick_poll|
       = render partial: 'quick_poll', locals: {quick_poll: quick_poll, actions: true}
@@ -12,15 +12,14 @@
     = link_to "New QuickPoll", new_quick_poll_path, class: 'add-question', remote: true
   
   - if false
-    %H3= "Other Quick Polls"
+    %H3.black= "Other Quick Polls"
     - @other_quick_polls.each do |quick_poll|
       = render partial: 'quick_poll', locals: {quick_poll: quick_poll, actions: false}
 
 .my-space.col-lg-8.col-sm-6.col-12.pull-left
-  %h3
+  %h3.black
     = "Find QuickPolls"
   .search
     = text_field_tag 'search', nil, placeholder: 'search', data: {url: search_quick_polls_path(page: 1)}
   .clearfix
-  .questions
-    
+  .admin-items-result    
