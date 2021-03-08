@@ -302,3 +302,6 @@
   border: 1px solid black;
   padding: 12px;
 }
+.post-search {
+  width: 100% !important;
+}

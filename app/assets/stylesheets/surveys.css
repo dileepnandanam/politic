@@ -58,10 +58,17 @@ a.edit-option, a.delete-option, a.edit-question, a.delete-question, a.new-option
   background: #dfd178;
   display: inline-block;
   box-shadow: 1px 1px 3px black;
-  color: black;
+  color: black !important;
   padding: 12px;
   border-radius: 10px;
   margin-bottom: 12px;
+  transition: transform 0.1s ease-in 0s;
+}
+.button-select:hover, .edit-question:hover, .delete-question:hover, .edit-post-link:hover, .dashboard:hover, .delete-option:hover, .edit-option:hover, .new-option:hover, .add-question:hover, .feature:hover, .quick-poll-select:hover, .survey-select:hover, .project-select:hover, .fbt-select-nil:hover, .new-galery:hover, .edit-button:hover, .add-galery-picture:hover, .edit-galery-picture:hover, .remove-picture:hover, .remove-image:hover, .new-phone:hover, .edit-phone:hover, .delete-phone:hover, .edit-social-link:hover, .add-video:hover, .edit-video:hover, .delete-video:hover, .new-phone:hover, .handle-response:hover, .style-buton:hover, .switch-post-user:hover {
+  transform: scale(1.05, 1.05);
+  text-decoration: none;
+  color: black;
+  box-shadow: 3px 3px 3px black;
 }
 input[name=commit], .cancel-form {
   margin-right: 12px !important;

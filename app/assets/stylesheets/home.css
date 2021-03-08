@@ -221,7 +221,7 @@ pre code {
 	font-size: 20px;
 }
 .sub-nav-bar {
-  background: #6172c2;
+  background: #fff;
   position: relative;
   width: 100%;
   padding: 12px;
@@ -238,9 +238,10 @@ pre code {
   width: 150px;
   border-radius: 4px;
   text-align: center;
+  transition: transform 0.1s ease-in 0s;
 }
 a.sub-nav-bar-item:hover {
-	color: yellow !important;
+	transform: scale(1.05, 1.05);
 }
 .question.response-form {
 	background-color: #2d3d3d;
