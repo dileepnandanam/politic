@@ -220,6 +220,11 @@ a.user-switch.pull-left {
 .picture .remove-image, .picture .select-survey, .picture .pin-select {
   margin-right: 12px; 
 }
+.chats-container {
+  max-width: 500px;
+  display: block;
+  margin: auto;
+}
 .chats-container .chats {
   padding: 2% !important;
   background-color: darkgray;
@@ -230,4 +235,5 @@ a.user-switch.pull-left {
 }
 .chat-input {
   border-radius: 0 0 10px 10px !important;
+  height: 72px;
 }
