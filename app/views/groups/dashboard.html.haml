@@ -16,7 +16,7 @@
     = link_to 'Add question', new_group_question_path(@group), class: 'add-question', remote: true
     = link_to 'Preview', new_group_group_response_path(@group)
 
-  %h3= "Rearrange pages"
+  %h3.black= "Rearrange pages"
   .reorderable-group-post{data:{url: reorder_group_posts_path(@group)}}
     - @group.posts.order('sequence ASC').each do |post|
       = render partial: 'groups/posts/tiny_post', locals: {post: post}

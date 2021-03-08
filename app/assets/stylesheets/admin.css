@@ -1,7 +1,7 @@
 .admin-item {
   border-radius: 12px;
   box-shadow: 0px 0px 12px #6b6b7fbf;
-  padding: 12px;
+  padding: 18px;
   margin-bottom: 24px;
   margin-top: 12px;
 }
@@ -15,4 +15,17 @@
 }
 .black {
   color: black !important;
+}
+.black a {
+  color: black;
+}
+.answers {
+  background-color: black;
+}
+.answer-text a {
+  color: yellow;
+  text-decoration: none;
+}
+.answer-text a:hover {
+  text-decoration: none;
 }

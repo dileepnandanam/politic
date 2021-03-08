@@ -29,7 +29,7 @@ $(document).on('turbolinks:load', function() {
   })
 
   $(document).on('ajax:success', '.answer-type-form', function(e) {
-    $(this).closest('.question').replaceWith(e.detail[2].responseText)
+    $(this).closest('.question, .admin-item').replaceWith(e.detail[2].responseText)
     fix_radio()
   })
 
@@ -70,7 +70,7 @@ $(document).on('turbolinks:load', function() {
     handle: '.option-handle',
     stop: function() {
       $.ajax({
-        data: $('.options').sortable('serialize'),
+        data: $(this).sortable('serialize'),
         url: '/groups/reorder_options',
         method: 'PUT'
       })

@@ -62,6 +62,9 @@
   border-radius: 4px;
   border: 1px solid #2640a0;
   background: linear-gradient(90deg, rgba(199,193,3,1) 0%, rgba(180,237,17,1) 35%, rgba(0,212,255,1) 100%);
+  display: inline-block;
+  margin-bottom: 4px;
+  width: 100%;
 }
 .notification a {
   color: black;

@@ -1,5 +1,5 @@
 - @responses.each do |r|
-  .question
+  .answers-container
     = link_to r.user.name, survey_survey_response_path(@survey, r)
     .pull-right= r.created_at.in_time_zone('Mumbai').strftime("%Y %B %d - %I:%M %P")
     .clearfix
@@ -8,7 +8,7 @@
         .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
           phone no
         .clearfix
-        .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+        .answer-text.col-lg-12.col-sm-12.col-xs-12.col-12
           - if r.user.email.include?('@')
             = r.user.email
           - else
@@ -20,7 +20,7 @@
             .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
               = a.question.text
             .clearfix
-            .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+            .answer-text.col-lg-12.col-sm-12.col-xs-12.col-12
               - if a.line.present?
                 = a.line
               - else
@@ -30,7 +30,7 @@
             .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
               = a.question.text
             .clearfix
-            .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+            .answer-text.col-lg-12.col-sm-12.col-xs-12.col-12
               - if a.number.present?
                 = a.number
               - else
@@ -40,7 +40,7 @@
             .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.col-12
               = a.question.text
             .clearfix
-            .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+            .answer-text.col-lg-12.col-sm-12.col-xs-12.col-12
               - if a.text.present?
                 = a.text
               - else
@@ -50,7 +50,7 @@
             .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.col-12
               = a.question.text
             .clearfix
-            .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+            .answer-text.col-lg-12.col-sm-12.col-xs-12.col-12
               .clearfix
               - if a.choices.present?
                 = a.choices.first.option.name
@@ -63,11 +63,11 @@
             .clearfix
             - if a.choices.present?
               - a.choices.each do |choice|
-                .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+                .answer-text.col-lg-12.col-sm-12.col-xs-12.col-12
                   = choice.option.name
               .clearfix
             - else
-              .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+              .answer-text.col-lg-12.col-sm-12.col-xs-12.col-12
                 = 'User has skipped this question'
           - elsif a.question.answer_type == 'multiline' && a.choices.any?{|c| c.line.present?}
             .question-text.pull-left.col-lg-12.col-sm-12.col-xs-12.cpl-12
@@ -76,13 +76,13 @@
             - if a.choices.present?
               - a.choices.each do |choice|
                 - if choice.line.present?
-                  .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+                  .answer-text.col-lg-12.col-sm-12.col-xs-12.col-12
                     = choice.option.name
                     = " : "
                     = choice.line
               .clearfix
             - else
-              .answer-text.question.col-lg-12.col-sm-12.col-xs-12.col-12
+              .answer-text.col-lg-12.col-sm-12.col-xs-12.col-12
                 = 'User has skipped this question'
     - if r.user.lat.present?
       .map-link.pull-left{data:{addr: "#{r.user.lat},#{r.user.lngt}"}}

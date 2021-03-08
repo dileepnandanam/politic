@@ -1,14 +1,14 @@
-.question.response-form
+.black.response-form
   %h2 Already have an account? sign in
   = simple_form_for(User.new, url: signin_users_path) do |f|
     .form-inputs
-      .question
+      .white
         = f.input :email,
           label: 'email or phone no.',                     
           required: false,                     
           autofocus: true,                     
           input_html: { class: 'login-field' }
-      .question
+      .white
         = f.input :password,                              
           required: false,                                
           input_html: { autocomplete: "current-password" }

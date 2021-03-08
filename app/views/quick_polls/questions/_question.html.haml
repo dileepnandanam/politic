@@ -1,8 +1,8 @@
-.question{id: "sequence_#{question.id}"}
+.admin-item{id: "sequence_#{question.id}"}
   .quick-poll-question-handle
   .question-text.clickable
     = question.text
-  .count
+  .count.black
     = "#{@quick_poll.quick_poll_responses.where(question_id: question.id).count('distinct quick_poll_responses.user_id')} people voted"
   .question-actions
     .pull-left

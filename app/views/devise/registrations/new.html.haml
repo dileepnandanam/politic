@@ -1,21 +1,21 @@
 - if params[:start]
   %p.black.text-center
     you need to sign up or sign in to add service
-.question.response-form
+.black.response-form
   %h2 Sign Up
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = f.error_notification
     .form-inputs
-      .question
+      .white
         = f.input :name,
           required: true
-      .question  
+      .white  
         = f.input :email,
           label: 'email or phone no.',                    
           required: true,                      
           autofocus: true,                     
           input_html: { autocomplete: "email" }
-      .question
+      .white
         = f.input :password,                                                                  
           required: true,                                                                      
           hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

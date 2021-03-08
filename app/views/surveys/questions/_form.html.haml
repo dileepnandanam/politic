@@ -1,5 +1,5 @@
 = simple_form_for [@survey, @question], {remote: true, class: 'option-form'} do |f|
-  .question
+  .admin-item
     = f.input :text, label: false
     = f.input :img
     = f.input :required, as: :boolean, label: 'mandatory'
