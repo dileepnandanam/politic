@@ -2,7 +2,7 @@
   .responses-container.questions-container
     %h3.black= "My Polls"
     - if @quick_polls.length == 0
-      .question.help-text
+      .help-text
         %p.black
           You dont have any Polls. create one and pin it to your page!
     - @quick_polls.each do |quick_poll|

@@ -29,3 +29,13 @@
 .answer-text a:hover {
   text-decoration: none;
 }
+.help-text {
+  background: #bdb6ad !important;
+  border: none;
+  margin-bottom: 16px;
+  padding: 12px;
+}
+.help-text p {
+  color: black;
+  font-weight: normal;
+}

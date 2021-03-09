@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function() {
 	$('.new-question').on('ajax:success', 'form', function(e) {
 		$('.questions-container').append(e.detail[2].responseText)
 		$(this).remove()
-		$('.question.help-text').remove()
+		$('.help-text').remove()
 	}).on('ajax:error', function(e) {
 		$('.new-question').html(e.detail[2].responseText)
 	})

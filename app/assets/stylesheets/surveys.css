@@ -1,6 +1,3 @@
-.question.help-text {
-  margin: 12px 10px 0px 0px;
-}
 .question-text {
 /*  margin-bottom: 12px; */
 }
@@ -202,4 +199,7 @@ h3.message {
 }
 .question-actions a {
     color: black;
+}
+.answers-container .answers {
+  padding: 12px;
 }

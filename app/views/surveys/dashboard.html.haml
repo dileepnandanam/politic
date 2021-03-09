@@ -3,7 +3,7 @@
     Survey Questions
 
   - if @questions.count == 0
-    .question.help-text
+    .help-text
       %p.black
         You haven't created any questions.
   .questions-container.responses-container.reorderable-survey-questions{data: {url: reorder_survey_questions_path(@survey)}} 
@@ -22,7 +22,7 @@
   %h3.black
     = "Responses(#{@responses.count})"
   - if @responses.count == 0
-    .question.help-text
+    .help-text
       %p.black
         No submissions made to the survey
   .responses-container

@@ -1,7 +1,9 @@
 - @responses.each do |r|
   .answers-container
-    = link_to r.user.name, survey_survey_response_path(@survey, r)
-    .pull-right= r.created_at.in_time_zone('Mumbai').strftime("%Y %B %d - %I:%M %P")
+    .black
+      = link_to r.user.name, survey_survey_response_path(@survey, r)
+    .black
+      = r.created_at.in_time_zone('Mumbai').strftime("%Y %B %d - %I:%M %P")
     .clearfix
     .answers
       .answer.highlight
