@@ -1,6 +1,6 @@
 class StyleGenerator
-  TEXT_COLORS = ['blue', 'red', 'yellow', 'orange', 'brown', '#5F4B8BFF', '#00203FFF', '#EEA47FFF', '#9CC3D5FF', '#FEE715FF', '#E94B3CFF', '#990011FF', '#FCF6F5FF', 'white', 'yellow', 'black', 'black', 'yellow', '#E69A8DFF', '#ADEFD1FF', '#00539CFF', '#0063B2FF', '#101820FF', '#2D2926FF', '#FCF6F5FF', '#990011FF']
-  BG_COLORS   = ['white', 'yellow', 'black', 'black', 'yellow', '#E69A8DFF', '#ADEFD1FF', '#00539CFF', '#0063B2FF', '#101820FF', '#2D2926FF', '#FCF6F5FF', '#990011FF', 'blue', 'red', 'yellow', 'orange', 'brown', '#5F4B8BFF', '#00203FFF', '#EEA47FFF', '#9CC3D5FF', '#FEE715FF', '#E94B3CFF', '#990011FF', '#FCF6F5FF']
+  TEXT_COLORS = ['black', 'white', 'yellow', 'black', 'black', '#fcfbe2', '#c7c6bc', '#e9c8ec', '#a9aff8', '#ffed1f', '#fffac6', 'white', '#f7e205']
+  BG_COLORS   = ['white', 'black', 'black', '#bdbdb8', '#fbfbe7', 'black', 'black', 'black', 'black', '#1c2550', '#7b0c54', '#480d0d', '#480d0d']
 
   def initialize(post)
     @post = post
