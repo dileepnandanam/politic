@@ -152,7 +152,7 @@ bind_button_pin()
     $('.project-form').replaceWith(e.detail[2].responseText)
   })
 
-	$('.new-group-post').on('ajax:success', function(e) {
+	$('.new-bussiness-lik').on('ajax:success', function(e) {
 		$('.new-post').html(e.detail[2].responseText)
     $('html, body').animate({
         scrollTop: $(".new-post").offset().top

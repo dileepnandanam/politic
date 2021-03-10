@@ -34,6 +34,12 @@
   border-radius: 12px;
   background: #82796d !important;
 }
+.new_user a {
+  font-weight: normal;
+}
+.user_remember_me .form-check {
+  padding-left: 0px; 
+}
 .invalid-feedback {
   color: yellow !important;
 }

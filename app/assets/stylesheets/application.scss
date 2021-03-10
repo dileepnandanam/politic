@@ -261,8 +261,20 @@ label {
   color: black;
 }
 .new-bussiness-lik {
-  background: aquamarine;
-  margin-top: 12px;
+  background: #75bd5e;
+  margin: auto;
+  display: block;
+  width: 200px;
+  border-radius: 12px;
+  padding: 12px 0px;
+  transition: all 0.2s ease-in 0s;
+}
+.new-bussiness-lik:hover {
+  transform: scale(1.05, 1.05);
+  text-decoration: none;
+  background: #3d6331;
+  color: black !important;
+  border-radius: 18px;
 }
 .send-otp-link {
   margin: auto;
@@ -278,4 +290,7 @@ label {
 }
 pre code {
   color: inherit !important;
+}
+.normal {
+  font-weight: normal;
 }
