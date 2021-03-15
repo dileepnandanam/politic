@@ -1,0 +1,6 @@
+.social_links-container
+- if current_user == post.user && params[:preview].blank?
+  = link_to 'Edit social links', '#', class: 'edit-social-link'
+  .clearfix
+= render partial: 'posts/social_links', locals: {post: post}
+.clearfix

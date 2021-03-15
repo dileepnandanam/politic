@@ -1,0 +1,3 @@
+- unless params[:preview]
+  = render partial: 'surveys/selection', locals: {post: post}
+.survey-container{data: {id: post.survey_id, anonymous: post.survey.try(:anonymous).present?.to_s}}

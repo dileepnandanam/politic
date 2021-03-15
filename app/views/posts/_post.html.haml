@@ -28,60 +28,11 @@
         = image_tag('map.png', class: 'map-ico')
     .clearfix
     .post-text
-      = raw(post.text)
-    
+      = raw(post.text)   
 
-    - unless params[:preview]
-      - if post.user == current_user
-        = link_to 'Add phone', new_phone_path(post_id: post.id), class: 'new-phone', remote: true
-        .clearfix
-        .phone-form-container
-
-    .phones-container
-      - post.phones.each do |p|
-        = render partial: 'phones/phone', locals: {phone: p}
-
-    .social_links-container
-    - if current_user == post.user && params[:preview].blank?
-      = link_to 'Edit social links', '#', class: 'edit-social-link'
-      .clearfix
-    = render partial: 'posts/social_links', locals: {post: post}
-    .clearfix
-
-    .videos-container
-      = render partial: 'videos/videos', locals: {post: post}
-      .clearfix
-    - unless params[:preview]
-      - if post.user == current_user
-        = link_to 'Add video', new_video_path(post_id: post.id), remote: true, class: 'add-video pull-right'
-    .clearfix
-    
-
-    
-    .galeries-container
-      - post.galeries.order('updated_at desc').each do |g|
-        = render partial: 'galeries/galery', locals: {galery: g}
-    .galery-form-container
-    .clearfix
-    - unless params[:preview]
-      - if post.user == current_user
-        = link_to 'Add galery', new_galery_path(post_id: post.id), remote: true, class: 'new-galery'
-        .clearfix
-    .clearfix
-
-    
-
-    - unless params[:preview]  
-      = render partial: 'groups/selection', locals: {post: post}
-    - unless current_user && current_user.groups.map(&:id).include?(post.project_id)
-      .project-container{data: {id: post.project_id}}
-    - unless params[:preview]
-      = render partial: 'surveys/selection', locals: {post: post}
-    .survey-container{data: {id: post.survey_id, anonymous: post.survey.try(:anonymous).present?.to_s}}
-    - unless params[:preview]
-      = render partial: 'quick_polls/selection', locals: {post: post}
-    .quick-poll-container{data: {id: post.quick_poll_id}}
-    
+    - post.sections.each do |section|
+      = render partial: "posts/sections/#{section}", locals: {post: post}
+        
     .clearfix
   - if post.enable_comment_vote?
     = render partial: 'posts/comment_actions', locals: {post: post}

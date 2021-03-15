@@ -1,0 +1,7 @@
+.videos-container
+  = render partial: 'videos/videos', locals: {post: post}
+  .clearfix
+- unless params[:preview]
+  - if post.user == current_user
+    = link_to 'Add video', new_video_path(post_id: post.id), remote: true, class: 'add-video pull-right'
+.clearfix

@@ -1,0 +1,3 @@
+- unless params[:preview]
+  = render partial: 'quick_polls/selection', locals: {post: post}
+.quick-poll-container{data: {id: post.quick_poll_id}}

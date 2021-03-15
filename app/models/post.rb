@@ -139,4 +139,8 @@ class Post < ApplicationRecord
   def parent_post
     try(:group).try(:welcome_post) || self
   end
+
+  def sections
+    %w{phone social_links videos galeries group survey quick_poll}
+  end
 end

@@ -1,0 +1,9 @@
+- unless params[:preview]
+  - if post.user == current_user
+    = link_to 'Add phone', new_phone_path(post_id: post.id), class: 'new-phone', remote: true
+    .clearfix
+    .phone-form-container
+
+.phones-container
+  - post.phones.each do |p|
+    = render partial: 'phones/phone', locals: {phone: p}

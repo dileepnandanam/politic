@@ -1,0 +1,4 @@
+- unless params[:preview]  
+  = render partial: 'groups/selection', locals: {post: post}
+- unless current_user && current_user.groups.map(&:id).include?(post.project_id)
+  .project-container{data: {id: post.project_id}}
