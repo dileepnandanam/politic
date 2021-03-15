@@ -8,5 +8,5 @@
   - unless current_user
     .login-suggest.text-left
       Already have an account,
-      = link_to 'try sign in', new_user_session_path, style: 'color: blue'
+      = link_to 'try sign in', new_user_session_path, class: 'group-sign-in-hint'
   = render partial: 'form'
