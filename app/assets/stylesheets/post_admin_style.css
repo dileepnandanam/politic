@@ -25,3 +25,18 @@
   padding: 20px;
   border-radius: 12px;
 }
+.components {
+  padding: 12px;
+  background-color: black;
+  max-width: 300px;
+}
+.component {
+  padding: 6px;
+  display: block;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+.component-handle {
+  padding: 10px;
+  background-color: white;
+}

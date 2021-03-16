@@ -140,7 +140,7 @@ class Post < ApplicationRecord
     try(:group).try(:welcome_post) || self
   end
 
-  def sections
-    %w{phone social_links videos galeries group survey quick_poll}
+  def components_array
+    components.split(' ')
   end
 end

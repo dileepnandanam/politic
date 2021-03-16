@@ -30,8 +30,8 @@
     .post-text
       = raw(post.text)   
 
-    - post.sections.each do |section|
-      = render partial: "posts/sections/#{section}", locals: {post: post}
+    - post.components_array.each do |component|
+      = render partial: "posts/components/#{component}", locals: {post: post}
         
     .clearfix
   - if post.enable_comment_vote?
@@ -45,4 +45,13 @@
         - if comment
           = render partial: 'posts/comments/comment', locals: {expand: true, new: false, comment: comment.parent || comment}
 
-  
+- unless params[:preview]
+  - if post.user == current_user
+    .post
+      .components{data: {url: reorder_components_post_path(post)}}
+        - post.components_array.each do |component|
+          .component{id: "sequence_#{component}"}
+            .component-handle.pull-right 
+            .pull-left= component.humanize
+            .clearfix  
+      

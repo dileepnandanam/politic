@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     put :select_project, on: :member
     put :pin, on: :member
     put :unpin, on: :member
+    put :reorder_components, on: :member
     resources :comments, controller: 'posts/comments' do
       put :upvote, on: :member
       put :downvote, on: :member

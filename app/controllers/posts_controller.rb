@@ -264,6 +264,11 @@ class PostsController < PostBaseController
     render partial: 'posts/generated_style', locals: {post: @post.reload}, layout: false, status: :ok
   end
 
+  def reorder_components
+    @post = Post.find(params[:id])
+    @post.update(components: params[:sequence].join(' '))
+  end
+
 
   protected
 

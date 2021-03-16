@@ -276,4 +276,16 @@ bind_button_pin()
     $(document).on('ajax:success', '.style-buton', function(e) {
       $('.style-container').html(e.detail[0])
     })
+
+    $('.components').sortable({
+    handle: '.component-handle',
+    stop: function() {
+      $.ajax({
+        data: $(this).sortable('serialize'),
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        url: $(this).data('url'),
+        method: 'PUT'
+      })
+    }
+  })
 })
