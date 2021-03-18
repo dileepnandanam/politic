@@ -1,0 +1,12 @@
+- if item.present? && item.background.attachment.present?
+  .banner{style: item.blur_banner? ? "filter: blur(3px)" : ''}
+    = image_tag item.background
+  - if item.banner_title.present? || item.banner_description.present?
+    .banner-overlay
+      .header-text-container
+        .banner-heading
+          - if item.banner_title.present?
+            .white.text-center= item.banner_title
+          - if item.banner_description.present?
+            .banner-site-description.white
+              .white= raw item.banner_description

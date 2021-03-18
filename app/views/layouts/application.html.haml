@@ -24,18 +24,10 @@
     .current-user-location-data.d-none{data:{lat: current_user.present? ? current_user.lat.present?.to_s : 'true'}}
     - group = @group || @post.try(:project)
     - if ['groupsshow', 'postsshow'].include?(controller_name + action_name)
+      - if @post.present? && @post.background.attachment.present?
+        = render partial: 'layouts/banner', locals: {item: @post}
       - if group.present? && group.background.attachment.present?
-        .banner{style: group.blur_banner? ? "filter: blur(3px)" : ''}
-          = image_tag group.background
-        - if group.banner_title.present? || group.banner_description.present?
-          .banner-overlay
-            .header-text-container
-              .banner-heading
-                - if group.banner_title.present?
-                  .white.text-center= group.banner_title
-                - if group.banner_description.present?
-                  .banner-site-description.white
-                    .white= raw group.banner_description
+        = render partial: 'layouts/banner', locals: {item: group}
     .page.col-lg-12.col-sm-12.col-12
       .nav-bar.signed{class: current_user ? '' : 'd-none'}
         .dropdown

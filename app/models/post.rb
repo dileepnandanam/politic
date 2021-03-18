@@ -18,6 +18,7 @@ class Post < ApplicationRecord
 
   after_create :notify_connections
 
+  has_one_attached :background
 
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
@@ -142,5 +143,13 @@ class Post < ApplicationRecord
 
   def components_array
     components.split(' ')
+  end
+
+  def banner_title
+    title
+  end
+
+  def banner_description
+    nil
   end
 end

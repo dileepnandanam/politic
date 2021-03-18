@@ -305,7 +305,7 @@ class PostsController < PostBaseController
   end
 
   def post_params
-    params.require(:post).permit(:text, :image, :title, :enable_comment_vote, :visible)
+    params.require(:post).permit(:text, :image, :background, :blur_banner, :extra_style, :title, :enable_comment_vote, :visible)
   end
 
   def url_params

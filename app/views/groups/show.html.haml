@@ -19,4 +19,7 @@
 - if current_user == @group.user && !params[:preview].present?
   = stylesheet_link_tag('post_admin_style.css')
 - if @group.welcome_posts.first
-  = render partial: 'posts/generated_style', locals: {post: @group.welcome_posts.first}
+  .style-container
+    = render partial: 'posts/generated_style', locals: {post: @group.welcome_posts.first}
+  %style
+    = raw(@group.welcome_posts.first.extra_style)
