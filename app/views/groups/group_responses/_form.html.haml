@@ -44,4 +44,7 @@
     .clearfix
   = f.submit 'Submit', class: 'survey-button'
   .clearfix
+  - if current_user == @group.user || @group.bypass_welcome_page || @group.visible
+    = link_to 'Skip Signup', group_path(@group), class: 'survey-button p-2 mt-2 rounded'
+  .clearfix
 .ack
