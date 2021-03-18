@@ -26,7 +26,7 @@
     - if ['groupsshow', 'postsshow'].include?(controller_name + action_name)
       - if @post.present? && @post.background.attachment.present?
         = render partial: 'layouts/banner', locals: {item: @post}
-      - if group.present? && group.background.attachment.present?
+      - elsif group.present? && group.background.attachment.present?
         = render partial: 'layouts/banner', locals: {item: group}
     .page.col-lg-12.col-sm-12.col-12
       .nav-bar.signed{class: current_user ? '' : 'd-none'}
